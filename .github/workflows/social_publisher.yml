@@ -46,7 +46,7 @@ jobs:
         run: |
           git config user.name "social-bot"
           git config user.email "bot@noreply.github.com"
-          git add pinterest_done.json pinterest_log.txt pinterest_idx.json
+          git add pinterest_done.json pinterest_log.txt pinterest_idx.json pinterest_video_idx.json
           git diff --cached --quiet || git commit -m "pinterest: $(date -u +%Y-%m-%d_%Hh)"
           git pull --rebase || true
           git push
@@ -72,8 +72,8 @@ jobs:
       - name: Generate images
         run: python publish_instagram.py --generate
 
-      # Step 2: Push images to PUBLIC ig-assets repo via deploy key
-      - name: Push images to public CDN (ig-assets)
+      # Step 2: Push images and reel video to PUBLIC ig-assets repo via deploy key
+      - name: Push images and reel to public CDN (ig-assets)
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.IG_ASSETS_DEPLOY_KEY }}" > ~/.ssh/id_ed25519
@@ -83,12 +83,24 @@ jobs:
 
           git clone git@github.com:dali-aoun/ig-assets.git /tmp/ig-assets
           TODAY=$(date -u +%Y-%m-%d)
+
+          # Copy today's images
+          mkdir -p /tmp/ig-assets/ig_content
           cp ig_content/${TODAY}_*.jpg /tmp/ig-assets/ig_content/ 2>/dev/null || true
+
+          # Copy today's reel video if pending
+          if [ -f ig_reel_pending.json ]; then
+            REEL_FILE=$(python3 -c "import json; d=json.load(open('ig_reel_pending.json')); print(d.get('mp4_filename',''))" 2>/dev/null || echo "")
+            if [ -n "$REEL_FILE" ] && [ -f "yt_shorts/$REEL_FILE" ]; then
+              mkdir -p /tmp/ig-assets/ig_reels
+              cp "yt_shorts/$REEL_FILE" "/tmp/ig-assets/ig_reels/$REEL_FILE"
+            fi
+          fi
 
           cd /tmp/ig-assets
           git config user.name "social-bot"
           git config user.email "bot@noreply.github.com"
-          git add ig_content/
+          git add ig_content/ ig_reels/
           git diff --cached --quiet || git commit -m "ig: ${TODAY}"
           for i in 1 2 3; do
             git push && break || sleep 5
@@ -99,7 +111,7 @@ jobs:
         run: |
           git config user.name "social-bot"
           git config user.email "bot@noreply.github.com"
-          git add ig_content/ ig_pending.json ig_post_index.json
+          git add ig_content/ ig_pending.json ig_post_index.json ig_reel_idx.json ig_reel_pending.json
           git diff --cached --quiet || git commit -m "ig-images: $(date -u +%Y-%m-%d)"
           for i in 1 2 3 4 5; do
             git pull --rebase && git push && break

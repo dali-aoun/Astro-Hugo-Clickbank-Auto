@@ -18,7 +18,9 @@ DONE_FILE      = os.path.join(BASE_DIR, "ig_published_done.json")
 LOG_FILE       = os.path.join(BASE_DIR, "ig_publish_log.txt")
 POST_IDX_FILE  = os.path.join(BASE_DIR, "ig_post_index.json")
 CONTENT_DIR    = os.path.join(BASE_DIR, "ig_content")
-PENDING_FILE   = os.path.join(BASE_DIR, "ig_pending.json")
+PENDING_FILE      = os.path.join(BASE_DIR, "ig_pending.json")
+REEL_IDX_FILE     = os.path.join(BASE_DIR, "ig_reel_idx.json")
+REEL_PENDING_FILE = os.path.join(BASE_DIR, "ig_reel_pending.json")
 
 IG_TOKEN   = os.environ.get("INSTAGRAM_ACCESS_TOKEN", "")
 IG_USER_ID = os.environ.get("INSTAGRAM_USER_ID", "")
@@ -560,6 +562,109 @@ def save_idx(state):
 
 import random
 
+# ── Reel helpers ──────────────────────────────────────────────────────────────
+
+def get_github_reels_url(filename):
+    return f"https://raw.githubusercontent.com/{ASSETS_REPO}/master/ig_reels/{filename}"
+
+
+def load_reel_products():
+    """Return list of products that have a matching yt_shorts MP4."""
+    products_file = os.path.join(BASE_DIR, "products.json")
+    try:
+        with open(products_file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception:
+        return []
+    result = []
+    for cat in data.get("categories", []):
+        cat_slug = cat["slug"]
+        for p in cat.get("products", []):
+            slug = p["slug"]
+            mp4_path = os.path.join(BASE_DIR, "yt_shorts", f"{slug}.mp4")
+            if os.path.exists(mp4_path):
+                result.append({
+                    "slug": slug,
+                    "name": p["name"],
+                    "category_slug": cat_slug,
+                    "mp4_filename": f"{slug}.mp4",
+                    "mp4_path": mp4_path,
+                })
+    return result
+
+
+def load_reel_idx():
+    try:
+        with open(REEL_IDX_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {"idx": 0}
+
+
+def save_reel_idx(state):
+    with open(REEL_IDX_FILE, "w", encoding="utf-8") as f:
+        json.dump(state, f, indent=2)
+
+
+def make_reel_caption(product_name, cat_slug, slug):
+    review_url = f"{SITE_URL}/{cat_slug}/{slug}/"
+    return (
+        f"Honest review of {product_name}\n\n"
+        f"Does it really work? We break down the ingredients, benefits, and real results.\n\n"
+        f"Full review: {review_url}\n\n"
+        f"#HealthSupplements #SupplementReview #NaturalHealth #HonestReview #HealthTips "
+        f"#WellnessReview #HealthReview #SupplementFacts"
+    )
+
+
+def publish_ig_reel(video_url, caption):
+    """Publish a Reel via Instagram Graph API. Returns (status_code, response_json)."""
+    import requests
+
+    IG_API = f"https://graph.facebook.com/v19.0/{IG_USER_ID}"
+
+    r = requests.post(
+        f"{IG_API}/media",
+        params={
+            "media_type": "REELS",
+            "video_url": video_url,
+            "caption": caption,
+            "access_token": IG_TOKEN,
+        },
+        timeout=60,
+    )
+    if r.status_code != 200:
+        return r.status_code, r.json()
+
+    container_id = r.json().get("id")
+    if not container_id:
+        return r.status_code, r.json()
+
+    log(f"    Reel container: {container_id}")
+
+    for _ in range(30):
+        time.sleep(10)
+        pr = requests.get(
+            f"https://graph.facebook.com/v19.0/{container_id}",
+            params={"fields": "status_code", "access_token": IG_TOKEN},
+            timeout=30,
+        )
+        if pr.status_code == 200:
+            status = pr.json().get("status_code", "")
+            log(f"    Reel status: {status}")
+            if status == "FINISHED":
+                break
+            if status == "ERROR":
+                return 500, {"error": "Reel container processing failed"}
+
+    pub = requests.post(
+        f"{IG_API}/media_publish",
+        params={"creation_id": container_id, "access_token": IG_TOKEN},
+        timeout=60,
+    )
+    return pub.status_code, pub.json()
+
+
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def generate_phase():
@@ -620,6 +725,24 @@ def generate_phase():
 
     with open(PENDING_FILE, "w") as f:
         json.dump({"date": today_key, "posts": pending}, f, indent=2)
+
+    # Select Reel for today
+    reel_products = load_reel_products()
+    if reel_products:
+        r_state = load_reel_idx()
+        r_idx = r_state.get("idx", 0) % len(reel_products)
+        reel_product = reel_products[r_idx]
+        r_state["idx"] = r_idx + 1
+        save_reel_idx(r_state)
+        with open(REEL_PENDING_FILE, "w") as f:
+            json.dump({
+                "date": today_key,
+                "slug": reel_product["slug"],
+                "name": reel_product["name"],
+                "category_slug": reel_product["category_slug"],
+                "mp4_filename": reel_product["mp4_filename"],
+            }, f, indent=2)
+        log(f"Reel pending: {reel_product['name']} ({reel_product['mp4_filename']})")
 
     log(f"=== Generate done: {len([p for p in pending if p['filename']])} images saved ===")
 
@@ -685,6 +808,29 @@ def publish_phase():
     }
     save_done(done)
     log(f"=== Termine: {published} publies | {errors} erreurs ===")
+
+    # Publish Reel
+    if os.path.exists(REEL_PENDING_FILE):
+        try:
+            with open(REEL_PENDING_FILE, "r") as f:
+                reel_data = json.load(f)
+            if reel_data.get("date") == today_key:
+                mp4_filename = reel_data["mp4_filename"]
+                video_url = get_github_reels_url(mp4_filename)
+                caption = make_reel_caption(
+                    reel_data["name"],
+                    reel_data["category_slug"],
+                    reel_data["slug"],
+                )
+                log(f"=== Publishing Reel: {reel_data['name']} ===")
+                log(f"  URL: {video_url}")
+                reel_status, reel_resp = publish_ig_reel(video_url, caption)
+                if reel_status == 200:
+                    log(f"  Reel OK id={reel_resp.get('id', '?')}")
+                else:
+                    log(f"  Reel ERREUR {reel_status}: {reel_resp}")
+        except Exception as e:
+            log(f"  Reel exception: {e}")
 
 
 if __name__ == "__main__":

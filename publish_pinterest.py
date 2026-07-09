@@ -12,7 +12,8 @@ from datetime import date, datetime, timezone, timedelta
 BASE_DIR  = os.path.dirname(os.path.abspath(__file__))
 DONE_FILE = os.path.join(BASE_DIR, "pinterest_done.json")
 LOG_FILE  = os.path.join(BASE_DIR, "pinterest_log.txt")
-IDX_FILE  = os.path.join(BASE_DIR, "pinterest_idx.json")
+IDX_FILE       = os.path.join(BASE_DIR, "pinterest_idx.json")
+VIDEO_IDX_FILE = os.path.join(BASE_DIR, "pinterest_video_idx.json")
 
 PINTEREST_TOKEN = os.environ.get("PINTEREST_ACCESS_TOKEN", "")
 SITE_URL = "https://reviews.thehappy-healthy-life.com"
@@ -34,6 +35,21 @@ BOARDS = {
     "sleep":    {"id": "1140677480561291823", "name": "Sleep Supplements",        "accent": (99, 102, 241),  "cat_url": "sleep"},
     "heart":    {"id": "1140677480561291834", "name": "Heart Health Reviews",     "accent": (244, 63, 94),   "cat_url": "heart-health"},
     "general":  {"id": "1140677480561291839", "name": "General Health Reviews",   "accent": (34, 197, 94),   "cat_url": "general-health"},
+}
+
+# Map product category slug → BOARDS key
+CAT_TO_BOARD = {
+    "dental-health":    "dental",
+    "prostate-health":  "prostate",
+    "male-performance": "male",
+    "brain-and-senses": "brain",
+    "weight-loss":      "weight",
+    "beauty-skin":      "beauty",
+    "womens-health":    "womens",
+    "blood-sugar":      "blood",
+    "joint-pain":       "joint",
+    "heart-health":     "heart",
+    "general-health":   "general",
 }
 
 # Board rotation order (balanced across categories)
@@ -579,6 +595,168 @@ def save_idx(state):
         json.dump(state, f, indent=2)
 
 
+# ── Video Idea Pin helpers ────────────────────────────────────────────────────
+
+def load_video_products():
+    """Return list of products that have a matching yt_shorts MP4."""
+    products_file = os.path.join(BASE_DIR, "products.json")
+    try:
+        with open(products_file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception:
+        return []
+    result = []
+    for cat in data.get("categories", []):
+        cat_slug = cat["slug"]
+        for p in cat.get("products", []):
+            slug = p["slug"]
+            mp4_path = os.path.join(BASE_DIR, "yt_shorts", f"{slug}.mp4")
+            if os.path.exists(mp4_path):
+                result.append({
+                    "slug": slug,
+                    "name": p["name"],
+                    "category_slug": cat_slug,
+                    "mp4_path": mp4_path,
+                })
+    return result
+
+
+def load_video_idx():
+    try:
+        with open(VIDEO_IDX_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {"idx": 0}
+
+
+def save_video_idx(state):
+    with open(VIDEO_IDX_FILE, "w", encoding="utf-8") as f:
+        json.dump(state, f, indent=2)
+
+
+def upload_video_to_pinterest(mp4_path, headers):
+    """Register upload with Pinterest, push to S3, poll until ready. Returns media_id or None."""
+    import requests
+
+    r = requests.post(
+        "https://api.pinterest.com/v5/media",
+        json={"media_type": "video"},
+        headers=headers,
+        timeout=30,
+    )
+    if r.status_code not in (200, 201):
+        log(f"    video register failed {r.status_code}: {r.text[:200]}")
+        return None
+
+    data = r.json()
+    media_id = data.get("media_id")
+    upload_url = data.get("upload_url")
+    upload_params = data.get("upload_parameters", {})
+
+    if not media_id or not upload_url:
+        log(f"    video register missing fields: {list(data.keys())}")
+        return None
+
+    file_size = os.path.getsize(mp4_path)
+    log(f"    media_id={media_id}, uploading {file_size // 1024}KB to S3...")
+
+    with open(mp4_path, "rb") as fh:
+        video_bytes = fh.read()
+
+    form_fields = {k: (None, v) for k, v in upload_params.items()}
+    form_fields["file"] = ("video.mp4", video_bytes, "video/mp4")
+
+    s3 = requests.post(upload_url, files=form_fields, timeout=300)
+    if s3.status_code not in (200, 201, 204):
+        log(f"    S3 upload failed {s3.status_code}")
+        return None
+
+    log(f"    S3 ok, polling media status...")
+    for _ in range(30):
+        time.sleep(10)
+        pr = requests.get(
+            f"https://api.pinterest.com/v5/media/{media_id}",
+            headers=headers,
+            timeout=30,
+        )
+        if pr.status_code == 200:
+            status = pr.json().get("status", "")
+            log(f"    status={status}")
+            if status == "succeeded":
+                return media_id
+            if status == "failed":
+                log(f"    video processing failed")
+                return None
+
+    log(f"    video processing timed out after 5 min")
+    return None
+
+
+def publish_video_pin(headers):
+    """Publish one video Idea Pin using the next product in rotation. Returns True on success."""
+    import requests
+
+    products = load_video_products()
+    if not products:
+        log("  [VIDEO] No video products found — skip")
+        return False
+
+    v_state = load_video_idx()
+    idx = v_state.get("idx", 0) % len(products)
+    product = products[idx]
+    v_state["idx"] = idx + 1
+    save_video_idx(v_state)
+
+    slug = product["slug"]
+    name = product["name"]
+    cat_slug = product["category_slug"]
+    mp4_path = product["mp4_path"]
+
+    board_key = CAT_TO_BOARD.get(cat_slug)
+    if not board_key or board_key not in BOARDS:
+        log(f"  [VIDEO] No board mapped for {cat_slug} — skip")
+        return False
+
+    board = BOARDS[board_key]
+    link = f"{SITE_URL}/{cat_slug}/{slug}/"
+
+    log(f"  [VIDEO] {name} -> {board['name']}")
+    log(f"    link: {link}")
+
+    media_id = upload_video_to_pinterest(mp4_path, headers)
+    if not media_id:
+        return False
+
+    payload = {
+        "title": f"{name} Review — Does It Really Work?",
+        "description": (
+            f"Honest review of {name} — ingredients, benefits, and real user results. "
+            f"Full detailed review: {link}"
+        )[:500],
+        "board_id": board["id"],
+        "media_source": {
+            "source_type": "video_id",
+            "media_id": media_id,
+        },
+        "link": link,
+    }
+
+    for attempt in range(3):
+        try:
+            r = requests.post(
+                "https://api.pinterest.com/v5/pins",
+                json=payload, headers=headers, timeout=60,
+            )
+            if r.status_code in (200, 201):
+                log(f"    VIDEO pin ok pin_id={r.json().get('id', '?')}")
+                return True
+            log(f"    VIDEO pin erreur {r.status_code}: {r.text[:200]}")
+        except Exception as e:
+            log(f"    VIDEO pin exception tentative {attempt + 1}: {e}")
+            time.sleep(5)
+    return False
+
+
 # â”€â”€ Main â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 def main():
@@ -652,6 +830,9 @@ def main():
     state["board_idx"] = board_idx
     state["content_idx"] = content_idx
     save_idx(state)
+
+    log("=== Video Idea Pin ===")
+    publish_video_pin(headers)
 
     done[today_key] = {
         "published": published,
