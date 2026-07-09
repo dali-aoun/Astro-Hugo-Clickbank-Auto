@@ -1,0 +1,33 @@
+{
+  "site_url": "https://reviews.thehappy-healthy-life.com",
+  "pinterest": {
+    "username": "happyhealthyreviews",
+    "pins_per_slot": 5,
+    "slots_per_day": 2,
+    "slots": ["08h", "17h"]
+  },
+  "instagram": {
+    "username": "happyhealthyreviews",
+    "posts_per_day": 2,
+    "slot": "12h"
+  },
+  "youtube": {
+    "channel": "Happy Healthy Life Reviews",
+    "shorts_per_day": 1,
+    "slot": "14h"
+  },
+  "boards": {
+    "Dental Health Reviews": "dental-health",
+    "Prostate Health Reviews": "prostate-health",
+    "Male Performance Reviews": "male-performance",
+    "Brain & Cognitive Health": "brain-and-senses",
+    "Weight Loss Supplements": "weight-loss",
+    "Beauty & Skin Care": "beauty-skin",
+    "Women's Health Reviews": "womens-health",
+    "Blood Sugar Support": "blood-sugar",
+    "Joint Pain Relief": "joint-pain",
+    "Sleep Supplements": "sleep",
+    "Heart Health Reviews": "heart-health",
+    "General Health Reviews": "general-health"
+  }
+}

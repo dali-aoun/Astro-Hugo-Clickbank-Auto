@@ -1,0 +1,15 @@
+# Logs
+*.txt
+*.log
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Local dev / secrets
+.env
+*.env
+
+# Temp files
+*.tmp

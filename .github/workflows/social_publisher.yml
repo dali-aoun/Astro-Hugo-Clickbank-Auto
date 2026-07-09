@@ -1,0 +1,161 @@
+name: Social Publisher (Pinterest + Instagram + YouTube)
+
+on:
+  schedule:
+    # Pinterest slot 1: 08h Tunis = 07:00 UTC
+    - cron: '0 7 * * *'
+    # Instagram + YouTube: 12h Tunis = 11:00 UTC
+    - cron: '0 11 * * *'
+    # Pinterest slot 2: 17h Tunis = 16:00 UTC
+    - cron: '0 16 * * *'
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: 'Platform to publish'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - pinterest
+          - instagram
+          - youtube
+
+jobs:
+  pinterest:
+    if: >
+      github.event_name == 'schedule' ||
+      github.event.inputs.platform == 'all' ||
+      github.event.inputs.platform == 'pinterest'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install system fonts (Ubuntu)
+        run: sudo apt-get install -y --no-install-recommends fonts-liberation fonts-dejavu-core
+      - run: pip install requests Pillow
+      - name: Publish Pinterest pins
+        env:
+          PINTEREST_ACCESS_TOKEN: ${{ secrets.PINTEREST_ACCESS_TOKEN }}
+        run: python publish_pinterest.py
+      - name: Commit state
+        run: |
+          git config user.name "social-bot"
+          git config user.email "bot@noreply.github.com"
+          git add pinterest_done.json pinterest_log.txt pinterest_idx.json
+          git diff --cached --quiet || git commit -m "pinterest: $(date -u +%Y-%m-%d_%Hh)"
+          git pull --rebase || true
+          git push
+
+  instagram:
+    if: >
+      (github.event_name == 'schedule' && github.event.schedule == '0 11 * * *') ||
+      github.event.inputs.platform == 'all' ||
+      github.event.inputs.platform == 'instagram'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install system fonts (Ubuntu)
+        run: sudo apt-get install -y --no-install-recommends fonts-liberation fonts-dejavu-core
+      - run: pip install requests Pillow
+
+      # Step 1: Generate images (saved to ig_content/, URLs point to public ig-assets repo)
+      - name: Generate images
+        run: python publish_instagram.py --generate
+
+      # Step 2: Push images to PUBLIC ig-assets repo via deploy key
+      - name: Push images to public CDN (ig-assets)
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.IG_ASSETS_DEPLOY_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null
+          export GIT_SSH_COMMAND="ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no"
+
+          git clone git@github.com:dali-aoun/ig-assets.git /tmp/ig-assets
+          TODAY=$(date -u +%Y-%m-%d)
+          cp ig_content/${TODAY}_*.jpg /tmp/ig-assets/ig_content/ 2>/dev/null || true
+
+          cd /tmp/ig-assets
+          git config user.name "social-bot"
+          git config user.email "bot@noreply.github.com"
+          git add ig_content/
+          git diff --cached --quiet || git commit -m "ig: ${TODAY}"
+          for i in 1 2 3; do
+            git push && break || sleep 5
+          done
+
+      # Step 3: Also commit images to private repo for archival + update state files
+      - name: Commit images and state to private repo
+        run: |
+          git config user.name "social-bot"
+          git config user.email "bot@noreply.github.com"
+          git add ig_content/ ig_pending.json ig_post_index.json
+          git diff --cached --quiet || git commit -m "ig-images: $(date -u +%Y-%m-%d)"
+          for i in 1 2 3 4 5; do
+            git pull --rebase && git push && break
+            echo "Push attempt $i failed, retrying in 5s..."
+            sleep 5
+          done
+
+      # Step 4: Wait for GitHub CDN to serve the new images from ig-assets
+      - name: Wait for CDN propagation
+        run: sleep 15
+
+      # Step 5: Publish to Instagram using ig-assets public URLs
+      - name: Publish to Instagram
+        env:
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+        run: python publish_instagram.py --publish
+
+      # Step 6: Commit final publish state
+      - name: Commit state
+        run: |
+          git config user.name "social-bot"
+          git config user.email "bot@noreply.github.com"
+          git add ig_published_done.json ig_publish_log.txt
+          git diff --cached --quiet || git commit -m "instagram: $(date -u +%Y-%m-%d)"
+          for i in 1 2 3 4 5; do
+            git pull --rebase && git push && break
+            echo "Push attempt $i failed, retrying in 5s..."
+            sleep 5
+          done
+
+  youtube:
+    if: >
+      (github.event_name == 'schedule' && github.event.schedule == '0 11 * * *') ||
+      github.event.inputs.platform == 'all' ||
+      github.event.inputs.platform == 'youtube'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests google-auth google-auth-oauthlib
+      - name: Upload YouTube Short
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: python publish_youtube.py
+      - name: Commit state
+        run: |
+          git config user.name "social-bot"
+          git config user.email "bot@noreply.github.com"
+          git add yt_published_done.json yt_publish_log.txt yt_post_index.json
+          git diff --cached --quiet || git commit -m "youtube: $(date -u +%Y-%m-%d)"
+          git pull --rebase || true
+          git push

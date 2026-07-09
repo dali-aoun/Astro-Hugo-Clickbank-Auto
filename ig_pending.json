@@ -1,0 +1,23 @@
+{
+  "date": "2026-07-08",
+  "posts": [
+    {
+      "filename": "2026-07-08_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-08_1.jpg",
+      "cat_key": "beauty",
+      "headline": "Tip",
+      "body": "Retinol stimulates collagen production faster than any other ingredient.\nStart at 0.025% and work up slowly.",
+      "cta": "Retinol is the gold standard anti-aging ingredient.",
+      "hashtags": "#SkinCare #Beauty #AntiAging #GlowingSkin #SkincareTips #HealthySkin #SkincareFacts #BeautyTips #NaturalBeauty #SkincareRoutine"
+    },
+    {
+      "filename": "2026-07-08_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-08_2.jpg",
+      "cat_key": "heart",
+      "headline": "Tip",
+      "body": "Omega-3 fatty acids reduce triglycerides by up to 30%.\nAim for 2 servings of fatty fish per week.",
+      "cta": "Fatty fish 2x a week protects your heart.",
+      "hashtags": "#HeartHealth #CardiovascularHealth #HeartDisease #HeartCare #HeartHealthTips #CardiovascularFitness #HealthyHeart #HeartFacts #BloodPressure #Cholesterol"
+    }
+  ]
+}

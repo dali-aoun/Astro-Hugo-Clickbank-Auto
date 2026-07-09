@@ -1,0 +1,531 @@
+{
+  "site": {
+    "name": "The Happy Healthy Life Reviews",
+    "domain": "reviews.thehappy-healthy-life.com",
+    "affiliate_id": "dali84",
+    "source": "CBSnooper.com",
+    "date_extraction": "2026-06-23"
+  },
+  "categories": [
+    {
+      "name": "Dental Health",
+      "slug": "dental-health",
+      "description": "Honest reviews of the best oral health supplements — probiotics, gum support, and natural dental care solutions.",
+      "products": [
+        {
+          "name": "ProDentim",
+          "slug": "prodentim",
+          "nickname": "prodentim",
+          "tier": 1,
+          "gravity": 99.48,
+          "payout": 153.91,
+          "aov": "$294",
+          "description": "Probiotic candy with 3.5 billion beneficial bacteria strains to support teeth, gums, and fresh breath by repopulating the oral microbiome.",
+          "audience": "Adults concerned about gum health, bad breath, and natural dental care alternatives.",
+          "vendor_page": "prodentim.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=prodentim&cbpage=tsl&affop=1",
+          "status": "ok"
+        },
+        {
+          "name": "DentaBiome",
+          "slug": "dentabiome",
+          "nickname": "dentabiome",
+          "tier": 2,
+          "gravity": 23.72,
+          "payout": 163.49,
+          "aov": "~$294",
+          "description": "Oral probiotic supplement to support teeth and gum health through microbiome balance.",
+          "audience": "Adults looking for a natural complement to their regular dental hygiene routine.",
+          "vendor_page": "getdentabiome.com",
+          "hoplink": "https://hop.clickbank.net/?vendor=dentabiome&pid=21&affiliate=dali84",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "name": "Prostate Health",
+      "slug": "prostate-health",
+      "description": "In-depth reviews of top prostate supplements — urinary flow, prostate support, and men's health solutions.",
+      "products": [
+        {
+          "name": "ProstaVive",
+          "slug": "prostavive",
+          "nickname": "provive",
+          "tier": 1,
+          "gravity": 94.82,
+          "payout": 144.34,
+          "aov": "$234",
+          "description": "Natural powder supplement to support prostate health, urinary flow, and sexual performance through improved blood circulation.",
+          "audience": "Men of all ages seeking prostate support, better urinary flow, and renewed sexual vitality.",
+          "vendor_page": "prostavive.org",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=provive&pid=20&tid=track",
+          "status": "ok"
+        },
+        {
+          "name": "Prostadine",
+          "slug": "prostadine",
+          "nickname": "prostadine",
+          "tier": 2,
+          "gravity": 35.83,
+          "payout": 111.47,
+          "aov": "$294",
+          "description": "Liquid dropper with 9 plant-based ingredients to support prostate and urinary system by removing harmful mineral buildup.",
+          "audience": "Men 40+ experiencing reduced urinary flow or prostate concerns.",
+          "vendor_page": "getprostadine.com",
+          "hoplink": "https://prostadine24.com/video.php?aff=dali84&cam=CAMPAIGNKEY",
+          "status": "ok"
+        },
+        {
+          "name": "ViriFlow",
+          "slug": "viriflow",
+          "nickname": "viriflow",
+          "tier": 2,
+          "gravity": 18.45,
+          "payout": 156.27,
+          "aov": "$294",
+          "description": "Natural formula targeting harmful mineral buildup in the urinary system to maintain a healthy prostate well into old age.",
+          "audience": "Men concerned with prostate health, bladder control, and urinary function.",
+          "vendor_page": "viriflow.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=viriflow&cbpage=tsl&affop=1",
+          "status": "ok"
+        },
+        {
+          "name": "TitanFlow",
+          "slug": "titanflow",
+          "nickname": "titanflow",
+          "tier": 2,
+          "gravity": 19.82,
+          "payout": 93.95,
+          "aov": "$234",
+          "description": "Urinary health supplement to strengthen urethra walls and support healthy urinary flow in aging men.",
+          "audience": "Men 40+ dealing with frequent bathroom trips and nighttime urination.",
+          "vendor_page": "prostaterevealed.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=titanflow&v=bvsl",
+          "status": "ok"
+        },
+        {
+          "name": "Prosta Peak",
+          "slug": "prosta-peak",
+          "nickname": "prostapeak",
+          "tier": 2,
+          "gravity": 0,
+          "payout": 0,
+          "aov": "$294",
+          "description": "Natural supplement with 20+ ingredients to support prostate health and improve energy levels in aging men.",
+          "audience": "Men 45+ concerned about prostate health, urinary tract function, and quality of life.",
+          "vendor_page": "prostapeak.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=prostapeak&pg=news",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "name": "Male Performance",
+      "slug": "male-performance",
+      "description": "Reviews of natural male vitality supplements — nitric oxide boosters, libido support, and performance enhancers.",
+      "products": [
+        {
+          "name": "Nitric Boost",
+          "slug": "nitric-boost",
+          "nickname": "noboost",
+          "tier": 1,
+          "gravity": 58.98,
+          "payout": 120.77,
+          "aov": "$294",
+          "description": "Daily nitric oxide-boosting powder to support sexual performance and enhance erectile function naturally.",
+          "audience": "Men seeking to improve sexual performance and intimate confidence.",
+          "vendor_page": "getnitricboost.com",
+          "hoplink": "https://hop.clickbank.net/?vendor=noboost&pid=17&affiliate=dali84",
+          "status": "ok"
+        },
+        {
+          "name": "Spartamax",
+          "slug": "spartamax",
+          "nickname": "spartamax",
+          "tier": 2,
+          "gravity": 44.61,
+          "payout": 135.47,
+          "aov": "$294",
+          "description": "Gummy formula with L-Arginine, Tongkat Ali, and Maca Root to enhance male vitality, libido, and stamina.",
+          "audience": "Men looking to boost sexual performance, stamina, and overall vitality.",
+          "vendor_page": "getspartamax.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=spartamax&tid=&pid=112&hd=0",
+          "status": "ok"
+        },
+        {
+          "name": "Red Boost",
+          "slug": "red-boost",
+          "nickname": "hwtonic",
+          "tier": 2,
+          "gravity": 23.01,
+          "payout": 120.45,
+          "aov": "$234",
+          "description": "Natural powder targeting oxidative stress in smooth muscle to support healthy blood flow and erectile performance.",
+          "audience": "Men experiencing age-related decline in sexual stamina and performance.",
+          "vendor_page": "mymorningtonic.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=hwtonic&pid=117&tid=track",
+          "status": "whitelist"
+        }
+      ]
+    },
+    {
+      "name": "Brain & Senses",
+      "slug": "brain-and-senses",
+      "description": "Reviews of brain health, hearing, and vision supplements — nootropics, cognitive support, and sensory wellness.",
+      "products": [
+        {
+          "name": "Audifort",
+          "slug": "audifort",
+          "nickname": "audifort",
+          "tier": 1,
+          "gravity": 59.87,
+          "payout": 116.52,
+          "aov": "$294",
+          "description": "Natural liquid drops with 20+ plant-based ingredients to support hearing health, reduce tinnitus, and boost cognitive clarity.",
+          "audience": "Adults 30-70 concerned about hearing, tinnitus, and mental sharpness.",
+          "vendor_page": "audisoothe.com",
+          "hoplink": "https://hop.clickbank.net/?custom=1&affiliate=dali84&vendor=audifort&pid=new",
+          "status": "ok"
+        },
+        {
+          "name": "VisiFlora",
+          "slug": "visiflora",
+          "nickname": "visiflora",
+          "tier": 1,
+          "gravity": 62.26,
+          "payout": 110.83,
+          "aov": "~$294",
+          "description": "Natural supplement to support eye health and preserve vision with targeted ingredients.",
+          "audience": "Adults concerned about vision decline, eye fatigue, and age-related eye health.",
+          "vendor_page": "getvisiflora.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=visiflora&pid=v1&tid=YOURTID",
+          "status": "ok"
+        },
+        {
+          "name": "Neuro Serge",
+          "slug": "neuro-serge",
+          "nickname": "getneuro",
+          "tier": 2,
+          "gravity": 42.79,
+          "payout": 167.29,
+          "aov": "~$294",
+          "description": "Nootropic supplement to support cognitive function, memory, and mental clarity.",
+          "audience": "Adults dealing with brain fog, memory issues, and mental productivity needs.",
+          "vendor_page": "getneuroserge.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=getneuro&pg=news",
+          "status": "ok"
+        },
+        {
+          "name": "Pineal Guardian X",
+          "slug": "pineal-guardian-x",
+          "nickname": "pgrdnvip",
+          "tier": 2,
+          "gravity": 33.77,
+          "payout": 111.15,
+          "aov": "$234",
+          "description": "Liquid formula to eliminate fluoride buildup in the pineal gland, restore natural melatonin production, and improve memory.",
+          "audience": "Adults experiencing memory loss, brain fog, and age-related cognitive decline.",
+          "vendor_page": "thepinealguardian.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=pgrdnvip&pid=indexvsm&utm_medium=&utm_content=&utm_campaign=&tid=",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "name": "Weight Loss",
+      "slug": "weight-loss",
+      "description": "Reviews of natural weight management supplements — metabolism boosters, fat burners, and slimming teas.",
+      "products": [
+        {
+          "name": "All Day Slimming Tea",
+          "slug": "all-day-slimming-tea",
+          "nickname": "allslimtea",
+          "tier": 1,
+          "gravity": 54.89,
+          "payout": 111.59,
+          "aov": "$294",
+          "description": "Natural herbal tea blend to support weight loss, boost metabolism, improve digestion, and enhance energy throughout the day.",
+          "audience": "Adults 40+ seeking natural weight loss, metabolism support, and sustained energy.",
+          "vendor_page": "allslimmingherbs.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=allslimtea&op=vsl26&tid=tracking",
+          "status": "whitelist"
+        },
+        {
+          "name": "Ikaria Juice",
+          "slug": "ikaria-juice",
+          "nickname": "lbjuice",
+          "tier": 2,
+          "gravity": 40.61,
+          "payout": 118.49,
+          "aov": "$234",
+          "description": "Powdered drink targeting ceramides to support metabolism and weight loss with fucoxanthin, ginseng, and green tea extract.",
+          "audience": "Men and women 30-60 struggling with belly fat and slow metabolism.",
+          "vendor_page": "theikariajuice.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=lbjuice&pid=16",
+          "status": "ok"
+        },
+        {
+          "name": "Okinawa Flat Belly Tonic",
+          "slug": "okinawa-flat-belly-tonic",
+          "nickname": "fbtonic",
+          "tier": 2,
+          "gravity": 14.18,
+          "payout": 130.98,
+          "aov": "$234",
+          "description": "Metabolism-boosting powder supplement to support weight loss and fat burning when consumed daily.",
+          "audience": "People struggling with carb cravings, low energy, and excess belly fat.",
+          "vendor_page": "getokinawatonic.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=fbtonic",
+          "status": "ok"
+        },
+        {
+          "name": "Cardio Slim Tea",
+          "slug": "cardio-slim-tea",
+          "nickname": "cardioslim",
+          "tier": 2,
+          "gravity": 0,
+          "payout": 0,
+          "aov": "~$294",
+          "description": "Herbal slimming tea for cardiovascular and weight management support.",
+          "audience": "Adults seeking a natural tea-based approach to weight loss and heart health.",
+          "vendor_page": "trycardioslimtea.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=cardioslim&op=vsl&tid=tracking",
+          "status": "whitelist"
+        },
+        {
+          "name": "LeanBiome",
+          "slug": "leanbiome",
+          "nickname": "leanbiome",
+          "tier": 2,
+          "gravity": 0,
+          "payout": 0,
+          "aov": "~$294",
+          "description": "Prebiotic fiber and trace mineral blend to support lean body composition, gut health, and a diverse microbiome.",
+          "audience": "Adults interested in weight management through gut microbiome science and fiber supplementation.",
+          "vendor_page": "bestleanlife.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=leanbiome&v=bvsl",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "name": "Beauty & Skin",
+      "slug": "beauty-skin",
+      "description": "Reviews of skin, nail, and beauty supplements — anti-aging, fungal care, and gut-skin connection solutions.",
+      "products": [
+        {
+          "name": "Kerassentials",
+          "slug": "kerassentials",
+          "nickname": "kerassent",
+          "tier": 2,
+          "gravity": 38.15,
+          "payout": 154.33,
+          "aov": "$294",
+          "description": "Topical oil formula combining essential oils and vitamins to combat toenail fungus while supporting healthy nails and skin.",
+          "audience": "People dealing with toenail fungal infections, nail discoloration, and itching.",
+          "vendor_page": "kerassentials.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=medali123&vendor=kerassent&cbpage=tsl&affop=1",
+          "status": "ok"
+        },
+        {
+          "name": "PrimeBiome",
+          "slug": "primebiome",
+          "nickname": "primebiome",
+          "tier": 2,
+          "gravity": 27.86,
+          "payout": 161.73,
+          "aov": "$294",
+          "description": "Probiotic gummy formula to support skin cell turnover and gut health for a more youthful appearance.",
+          "audience": "Adults concerned with aging skin, digestive wellness, and weight management.",
+          "vendor_page": "getprimebiome.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=medali123&vendor=primebiome&cbpage=tsl&affop=1",
+          "status": "ok"
+        },
+        {
+          "name": "Metanail Complex",
+          "slug": "metanail-complex",
+          "nickname": "metacmplx",
+          "tier": 2,
+          "gravity": 18.76,
+          "payout": 127.62,
+          "aov": "$294",
+          "description": "20-in-1 nail and feet essential formula with natural ingredients for superior, long-lasting results.",
+          "audience": "People concerned with nail and feet appearance seeking natural care solutions.",
+          "vendor_page": "metanailcomplex.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=metacmplx&pid=disc&tid=YOURTID",
+          "status": "ok"
+        },
+        {
+          "name": "Neotonics",
+          "slug": "neotonics",
+          "nickname": "neotonics",
+          "tier": 2,
+          "gravity": 14.46,
+          "payout": 114.45,
+          "aov": "$294",
+          "description": "Probiotic gummy with 500 million bacteria units and 9 natural ingredients to improve skin and digestion via the gut microbiome.",
+          "audience": "Adults dealing with wrinkles, dark spots, sagging skin, and digestive issues seeking natural anti-aging.",
+          "vendor_page": "neotonics.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=neotonics&cbpage=tsl&affop=1",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "name": "Women's Health",
+      "slug": "womens-health",
+      "description": "Reviews of women's health supplements — bladder support, pelvic floor strength, and urinary wellness.",
+      "products": [
+        {
+          "name": "NewEra Protect",
+          "slug": "newera-protect",
+          "nickname": "newera",
+          "tier": 2,
+          "gravity": 37.66,
+          "payout": 163.02,
+          "aov": "$294",
+          "description": "Plant-based supplement to strengthen pelvic floor and bladder health — a natural alternative to Kegel exercises.",
+          "audience": "Women experiencing bladder leakage and urinary urgency.",
+          "vendor_page": "neweraprotect.com",
+          "hoplink": "",
+          "status": "whitelist"
+        },
+        {
+          "name": "FemiPro",
+          "slug": "femipro",
+          "nickname": "femipro",
+          "tier": 2,
+          "gravity": 22.56,
+          "payout": 151.40,
+          "aov": "$294",
+          "description": "Natural bladder-rebalancing supplement to support healthy urinary microbiome bacteria and reduce involuntary leaks.",
+          "audience": "Women seeking natural solutions for bladder control and urinary tract health.",
+          "vendor_page": "getfemipro.com",
+          "hoplink": "",
+          "status": "whitelist"
+        },
+        {
+          "name": "FemiCore",
+          "slug": "femicore",
+          "nickname": "femicore",
+          "tier": 2,
+          "gravity": 0,
+          "payout": 0,
+          "aov": "$294",
+          "description": "Natural supplement to support bladder control and urinary health by addressing microbiome imbalance.",
+          "audience": "Women experiencing bladder control issues looking for natural, herbal solutions.",
+          "vendor_page": "getfemicore.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=femicore&cbpage=tsl&tid=YOUR_TID&affop=video4",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "name": "Blood Sugar",
+      "slug": "blood-sugar",
+      "description": "Reviews of blood sugar and metabolism supplements for healthy glucose management.",
+      "products": [
+        {
+          "name": "Gluco6",
+          "slug": "gluco6",
+          "nickname": "gluco6",
+          "tier": 1,
+          "gravity": 52.71,
+          "payout": 101.29,
+          "aov": "~$294",
+          "description": "Supplement to support healthy blood sugar levels and balanced metabolism.",
+          "audience": "Pre-diabetic adults and those concerned about blood sugar and metabolic health.",
+          "vendor_page": "gluco6.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=medali123&vendor=gluco6&pid=vsl&tid=",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "name": "Joint Pain",
+      "slug": "joint-pain",
+      "description": "Reviews of joint health supplements for mobility, flexibility, and pain relief.",
+      "products": [
+        {
+          "name": "Joint Genesis",
+          "slug": "joint-genesis",
+          "nickname": "jointgen",
+          "tier": 1,
+          "gravity": 83.85,
+          "payout": 143.30,
+          "aov": "~$234",
+          "description": "BioDynamix joint supplement to support mobility, flexibility, and joint comfort with clinically studied ingredients.",
+          "audience": "Adults 40+ dealing with joint pain, reduced mobility, and arthritis concerns.",
+          "vendor_page": "completejointcare.net",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=jointgen&v=bvsl",
+          "status": "ok",
+          "notes": "Has rebill at $89.62"
+        }
+      ]
+    },
+    {
+      "name": "Sleep",
+      "slug": "sleep",
+      "description": "Reviews of natural sleep supplements for better rest without dependency.",
+      "products": [
+        {
+          "name": "Yu Sleep",
+          "slug": "yu-sleep",
+          "nickname": "yusleep",
+          "tier": 1,
+          "gravity": 118.06,
+          "payout": 149.44,
+          "aov": "~$294",
+          "description": "Natural sleep supplement to improve sleep quality and help you fall asleep faster without creating dependency.",
+          "audience": "Adults with sleep disorders, insomnia, and nighttime waking issues.",
+          "vendor_page": "getyusleep.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=yusleep&op=glp&tid=tracking",
+          "status": "whitelist"
+        }
+      ]
+    },
+    {
+      "name": "Heart Health",
+      "slug": "heart-health",
+      "description": "Reviews of cardiovascular and cholesterol support supplements for a healthy heart.",
+      "products": [
+        {
+          "name": "Cholibrium",
+          "slug": "cholibrium",
+          "nickname": "cholibrium",
+          "tier": 2,
+          "gravity": 0,
+          "payout": 0,
+          "aov": "$234",
+          "description": "Mushroom-based supplement to support healthy heart function and maintain cholesterol levels already within normal range.",
+          "audience": "Men and women seeking cardiovascular health support through natural, mushroom-derived wellness.",
+          "vendor_page": "cholibrium.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=cholibrium&cbpage=lander&pid=index",
+          "status": "ok"
+        }
+      ]
+    },
+    {
+      "name": "General Health",
+      "slug": "general-health",
+      "description": "Reviews of general wellness supplements — respiratory health, lung support, and overall vitality.",
+      "products": [
+        {
+          "name": "Breathe",
+          "slug": "breathe",
+          "nickname": "scalefast",
+          "tier": 2,
+          "gravity": 20.98,
+          "payout": 142.06,
+          "aov": "$294",
+          "description": "Natural lung-cleansing supplement to clear excess mucus buildup and improve breathing and respiratory function.",
+          "audience": "People with breathing difficulties, former smokers, and those seeking respiratory health support.",
+          "vendor_page": "lungreset.com",
+          "hoplink": "https://hop.clickbank.net/?vendor=scalefast&affiliate=dali84&v=y",
+          "status": "ok",
+          "notes": "Has rebill at $38.71"
+        }
+      ]
+    }
+  ]
+}
