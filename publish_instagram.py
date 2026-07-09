@@ -505,7 +505,8 @@ def make_caption(cat_key, headline, body, cta, hashtags):
         "Follow us for more research-backed health content.",
         "Follow to learn something new about your health every day.",
     ])
-    bio_cta = "Full supplement reviews and health guides at link in bio."
+    cat_url = CATEGORIES[cat_key]["cat_url"]
+    bio_cta = f"Full reviews & guides: {SITE_URL}/{cat_url}/ (link in bio)"
 
     return f"""{headline}: {body_clean}
 
