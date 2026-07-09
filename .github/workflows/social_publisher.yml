@@ -100,7 +100,8 @@ jobs:
           cd /tmp/ig-assets
           git config user.name "social-bot"
           git config user.email "bot@noreply.github.com"
-          git add ig_content/ ig_reels/
+          git add ig_content/
+          [ -d ig_reels ] && git add ig_reels/ || true
           git diff --cached --quiet || git commit -m "ig: ${TODAY}"
           for i in 1 2 3; do
             git push && break || sleep 5
@@ -123,19 +124,26 @@ jobs:
       - name: Wait for CDN propagation
         run: sleep 15
 
-      # Step 5: Publish to Instagram using ig-assets public URLs
-      - name: Publish to Instagram
+      # Step 5: Publish images to Instagram
+      - name: Publish images to Instagram
         env:
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
           INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
         run: python publish_instagram.py --publish
+
+      # Step 5b: Publish Reel to Instagram (independent of images done state)
+      - name: Publish Reel to Instagram
+        env:
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+        run: python publish_instagram.py --publish-reel
 
       # Step 6: Commit final publish state
       - name: Commit state
         run: |
           git config user.name "social-bot"
           git config user.email "bot@noreply.github.com"
-          git add ig_published_done.json ig_publish_log.txt
+          git add ig_published_done.json ig_publish_log.txt ig_reel_done.json
           git diff --cached --quiet || git commit -m "instagram: $(date -u +%Y-%m-%d)"
           for i in 1 2 3 4 5; do
             git pull --rebase && git push && break

@@ -809,28 +809,55 @@ def publish_phase():
     save_done(done)
     log(f"=== Termine: {published} publies | {errors} erreurs ===")
 
-    # Publish Reel
-    if os.path.exists(REEL_PENDING_FILE):
-        try:
-            with open(REEL_PENDING_FILE, "r") as f:
-                reel_data = json.load(f)
-            if reel_data.get("date") == today_key:
-                mp4_filename = reel_data["mp4_filename"]
-                video_url = get_github_reels_url(mp4_filename)
-                caption = make_reel_caption(
-                    reel_data["name"],
-                    reel_data["category_slug"],
-                    reel_data["slug"],
-                )
-                log(f"=== Publishing Reel: {reel_data['name']} ===")
-                log(f"  URL: {video_url}")
-                reel_status, reel_resp = publish_ig_reel(video_url, caption)
-                if reel_status == 200:
-                    log(f"  Reel OK id={reel_resp.get('id', '?')}")
-                else:
-                    log(f"  Reel ERREUR {reel_status}: {reel_resp}")
-        except Exception as e:
-            log(f"  Reel exception: {e}")
+
+REEL_DONE_FILE = os.path.join(BASE_DIR, "ig_reel_done.json")
+
+
+def publish_reel_phase():
+    """Publish today's Reel independently — can run even when images are already published."""
+    if not IG_TOKEN or not IG_USER_ID:
+        log("ERREUR: INSTAGRAM_ACCESS_TOKEN ou INSTAGRAM_USER_ID non defini")
+        sys.exit(1)
+
+    tz_tunis = timezone(timedelta(hours=1))
+    today_key = datetime.now(timezone.utc).astimezone(tz_tunis).strftime("%Y-%m-%d")
+
+    try:
+        with open(REEL_DONE_FILE, "r") as f:
+            reel_done = json.load(f)
+    except Exception:
+        reel_done = {}
+
+    if reel_done.get(today_key):
+        log(f"Instagram Reel deja publie pour {today_key}")
+        sys.exit(0)
+
+    if not os.path.exists(REEL_PENDING_FILE):
+        log("ERREUR: ig_reel_pending.json introuvable — lancer --generate d'abord")
+        sys.exit(1)
+
+    with open(REEL_PENDING_FILE, "r") as f:
+        reel_data = json.load(f)
+
+    if reel_data.get("date") != today_key:
+        log(f"ERREUR: ig_reel_pending.json est pour {reel_data.get('date')}, pas {today_key}")
+        sys.exit(1)
+
+    video_url = get_github_reels_url(reel_data["mp4_filename"])
+    caption = make_reel_caption(reel_data["name"], reel_data["category_slug"], reel_data["slug"])
+
+    log(f"=== Publishing Reel: {reel_data['name']} ===")
+    log(f"  URL: {video_url}")
+
+    reel_status, reel_resp = publish_ig_reel(video_url, caption)
+    if reel_status == 200:
+        log(f"  Reel OK id={reel_resp.get('id', '?')}")
+        reel_done[today_key] = {"id": reel_resp.get("id"), "at": datetime.utcnow().isoformat()}
+        with open(REEL_DONE_FILE, "w") as f:
+            json.dump(reel_done, f, indent=2)
+    else:
+        log(f"  Reel ERREUR {reel_status}: {reel_resp}")
+        sys.exit(1)
 
 
 if __name__ == "__main__":
@@ -838,6 +865,8 @@ if __name__ == "__main__":
     try:
         if mode == "--generate":
             generate_phase()
+        elif mode == "--publish-reel":
+            publish_reel_phase()
         else:
             publish_phase()
     except Exception:
