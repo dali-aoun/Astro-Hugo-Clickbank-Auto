@@ -10,7 +10,7 @@ Modes:
   (no arg)     Full flow: generate + upload check + publish (local testing only)
 """
 
-import os, sys, json, time, io, traceback
+import os, sys, json, time, io, traceback, subprocess, asyncio, tempfile, random as _random
 from datetime import datetime, timezone, timedelta
 
 BASE_DIR       = os.path.dirname(os.path.abspath(__file__))
@@ -28,6 +28,166 @@ ASSETS_REPO = "dali-aoun/ig-assets"  # Public repo — accessible by Meta crawle
 
 SITE_URL     = "https://reviews.thehappy-healthy-life.com"
 POSTS_PER_DAY = 2
+PEXELS_API_KEY = os.environ.get("PEXELS_API_KEY", "")
+
+# ── Pexels search queries per category ───────────────────────────────────────
+PEXELS_QUERIES = {
+    "dental-health":    ["woman smiling healthy teeth", "dental care woman", "oral hygiene routine"],
+    "prostate-health":  ["senior man active healthy", "older man jogging outdoors", "men health active lifestyle"],
+    "male-performance": ["man workout fitness gym", "athletic man training", "male energy fitness"],
+    "brain-and-senses": ["woman meditation focus", "person studying concentration", "brain health yoga mindfulness"],
+    "weight-loss":      ["woman healthy eating salad", "fitness woman exercise", "weight loss workout active"],
+    "beauty-skin":      ["woman skincare routine", "healthy glowing skin woman", "beauty face care ritual"],
+    "womens-health":    ["woman yoga wellness", "healthy woman exercise outdoor", "women fitness lifestyle"],
+    "blood-sugar":      ["healthy eating vegetables fruits", "woman healthy diet kitchen", "person healthy lifestyle"],
+    "joint-pain":       ["senior person stretching yoga", "older adult exercise gentle", "joint mobility workout"],
+    "sleep":            ["person sleeping peacefully", "woman resting bedroom calm", "good night sleep relaxing"],
+    "heart-health":     ["woman running cardio outdoor", "heart healthy lifestyle active", "person exercise health park"],
+    "general-health":   ["healthy lifestyle woman nature", "wellness nutrition healthy", "person healthy living outdoor"],
+}
+
+# ── Pexels + FFmpeg + TTS helpers ────────────────────────────────────────────
+
+def pexels_search_video(query, api_key, orientation="portrait", per_page=10):
+    import requests
+    headers = {"Authorization": api_key}
+    params  = {"query": query, "orientation": orientation, "per_page": per_page, "size": "medium"}
+    try:
+        r = requests.get("https://api.pexels.com/videos/search", headers=headers, params=params, timeout=15)
+        if r.status_code != 200:
+            return None
+        videos = r.json().get("videos", [])
+        if not videos:
+            return None
+        pool = videos[:5]
+        video = _random.choice(pool)
+        files = video.get("video_files", [])
+        hd = [f for f in files if f.get("width", 0) >= 720 and f.get("height", 0) >= f.get("width", 1)]
+        chosen = hd[0] if hd else (files[0] if files else None)
+        return chosen["link"] if chosen else None
+    except Exception:
+        return None
+
+
+def download_video(url, dest_path):
+    import requests
+    r = requests.get(url, stream=True, timeout=60)
+    r.raise_for_status()
+    with open(dest_path, "wb") as f:
+        for chunk in r.iter_content(65536):
+            f.write(chunk)
+
+
+def _reel_tts_async(script, audio_path):
+    import edge_tts
+    async def _run():
+        comm = edge_tts.Communicate(script, voice="en-US-AriaNeural", rate="+5%", volume="+10%")
+        await comm.save(audio_path)
+    asyncio.run(_run())
+
+
+def make_reel_voiceover(product, audio_path):
+    name     = product["name"]
+    desc     = product.get("description", "a health supplement")
+    audience = product.get("audience", "people looking to improve their health")
+    gravity  = float(product.get("gravity", 50))
+    rating   = min(5.0, max(3.5, 3.5 + (gravity / 200.0)))
+    slug     = product.get("slug", "")
+    cat_slug = product.get("category_slug", "general-health")
+    link     = f"{SITE_URL}/{cat_slug}/{slug}/"
+
+    script = f"""
+{name}. Is it really worth it?
+{name} is {desc}.
+It's designed for {audience}.
+With a popularity score of {int(gravity)}, thousands of people are already using it.
+My honest rating? {rating:.1f} out of 5 stars.
+Want the full ingredient breakdown and real results?
+Tap the link in my bio right now.
+Follow me for more honest supplement reviews every day.
+""".strip()
+    _reel_tts_async(script, audio_path)
+
+
+def get_audio_duration_ig(path):
+    try:
+        r = subprocess.run(
+            ["ffprobe", "-v", "quiet", "-print_format", "json", "-show_format", path],
+            capture_output=True, text=True, check=True,
+        )
+        return float(json.loads(r.stdout)["format"]["duration"])
+    except Exception:
+        return 45.0
+
+
+def process_reel_video(raw_path, audio_path, output_path, product):
+    name    = product["name"]
+    cat_slug = product.get("category_slug", "general-health")
+    gravity = float(product.get("gravity", 50))
+    rating  = min(5.0, max(3.5, 3.5 + (gravity / 200.0)))
+    stars   = "★" * int(round(rating)) + "☆" * (5 - int(round(rating)))
+    site    = "reviews.thehappy-healthy-life.com"
+    cta     = "Link in bio → Full Review"
+
+    target_dur = get_audio_duration_ig(audio_path) + 1.5
+
+    font_paths = [
+        "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+    ]
+    font_file = next((p for p in font_paths if os.path.exists(p)), "")
+    safe_font = font_file.replace(":", "\\:")
+
+    def esc(t):
+        return t.replace("'", "’").replace(":", "\\:")
+
+    if safe_font:
+        vf = (
+            f"scale=1080:1920:force_original_aspect_ratio=increase,"
+            f"crop=1080:1920,"
+            f"drawbox=x=0:y=ih*0.60:w=iw:h=ih*0.40:color=black@0.70:t=fill,"
+            f"drawtext=fontfile={safe_font}:text='{esc(name)}':fontsize=56:fontcolor=white"
+            f":x=(w-text_w)/2:y=h*0.63:line_spacing=8,"
+            f"drawtext=fontfile={safe_font}:text='{stars}  {rating:.1f}/5':fontsize=44"
+            f":fontcolor=#FFD700:x=(w-text_w)/2:y=h*0.75,"
+            f"drawtext=fontfile={safe_font}:text='{esc(site)}':fontsize=30"
+            f":fontcolor=#AAAAAA:x=(w-text_w)/2:y=h*0.84,"
+            f"drawtext=fontfile={safe_font}:text='{esc(cta)}':fontsize=34"
+            f":fontcolor=white:x=(w-text_w)/2:y=h*0.90"
+        )
+    else:
+        vf = "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920"
+
+    cmd = [
+        "ffmpeg", "-y",
+        "-stream_loop", "-1", "-i", raw_path,
+        "-i", audio_path,
+        "-vf", vf,
+        "-c:v", "libx264", "-preset", "fast", "-crf", "23",
+        "-c:a", "aac", "-b:a", "128k",
+        "-pix_fmt", "yuv420p",
+        "-t", str(target_dur),
+        "-shortest",
+        output_path,
+    ]
+    subprocess.run(cmd, check=True, capture_output=True)
+
+
+def load_all_products():
+    """Load all products from products.json (no MP4 file check)."""
+    products_file = os.path.join(BASE_DIR, "products.json")
+    try:
+        with open(products_file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception:
+        return []
+    result = []
+    for cat in data.get("categories", []):
+        for p in cat.get("products", []):
+            if p.get("status") == "ok":
+                result.append({**p, "category_slug": cat["slug"]})
+    return result
+
 
 # ── Category config ───────────────────────────────────────────────────────────
 CATEGORIES = {
@@ -562,35 +722,13 @@ def save_idx(state):
 
 import random
 
+# keep `random` alias for existing caption helpers that use random.choice
 # ── Reel helpers ──────────────────────────────────────────────────────────────
 
 def get_github_reels_url(filename):
     return f"https://raw.githubusercontent.com/{ASSETS_REPO}/master/ig_reels/{filename}"
 
 
-def load_reel_products():
-    """Return list of products that have a matching yt_shorts MP4."""
-    products_file = os.path.join(BASE_DIR, "products.json")
-    try:
-        with open(products_file, "r", encoding="utf-8") as f:
-            data = json.load(f)
-    except Exception:
-        return []
-    result = []
-    for cat in data.get("categories", []):
-        cat_slug = cat["slug"]
-        for p in cat.get("products", []):
-            slug = p["slug"]
-            mp4_path = os.path.join(BASE_DIR, "yt_shorts", f"{slug}.mp4")
-            if os.path.exists(mp4_path):
-                result.append({
-                    "slug": slug,
-                    "name": p["name"],
-                    "category_slug": cat_slug,
-                    "mp4_filename": f"{slug}.mp4",
-                    "mp4_path": mp4_path,
-                })
-    return result
 
 
 def load_reel_idx():
@@ -726,23 +864,59 @@ def generate_phase():
     with open(PENDING_FILE, "w") as f:
         json.dump({"date": today_key, "posts": pending}, f, indent=2)
 
-    # Select Reel for today
-    reel_products = load_reel_products()
+    # Generate Reel video dynamically with Pexels + edge-tts + FFmpeg
+    reel_products = load_all_products()
     if reel_products:
         r_state = load_reel_idx()
         r_idx = r_state.get("idx", 0) % len(reel_products)
-        reel_product = reel_products[r_idx]
+        product = reel_products[r_idx]
         r_state["idx"] = r_idx + 1
         save_reel_idx(r_state)
+
+        cat_slug     = product["category_slug"]
+        reel_filename = f"{today_key}.mp4"
+        reels_dir    = os.path.join(BASE_DIR, "ig_reels")
+        os.makedirs(reels_dir, exist_ok=True)
+        reel_path    = os.path.join(reels_dir, reel_filename)
+        generated_ok = False
+
+        if PEXELS_API_KEY:
+            try:
+                queries   = PEXELS_QUERIES.get(cat_slug, ["healthy lifestyle woman"])
+                query     = _random.choice(queries)
+                log(f"Reel [{product['name']}]: Pexels search '{query}'")
+                video_url = pexels_search_video(query, PEXELS_API_KEY)
+                if video_url:
+                    with tempfile.TemporaryDirectory() as tmp:
+                        raw_path   = os.path.join(tmp, "raw.mp4")
+                        audio_path = os.path.join(tmp, "audio.mp3")
+                        download_video(video_url, raw_path)
+                        size_kb = os.path.getsize(raw_path) // 1024
+                        log(f"  downloaded {size_kb}KB")
+                        log(f"  generating voiceover (edge-tts)...")
+                        make_reel_voiceover(product, audio_path)
+                        log(f"  processing FFmpeg overlay...")
+                        process_reel_video(raw_path, audio_path, reel_path, product)
+                        generated_ok = os.path.exists(reel_path)
+                        if generated_ok:
+                            log(f"  reel video {reel_filename} {os.path.getsize(reel_path)//1024}KB OK")
+                else:
+                    log("  Pexels: no video found")
+            except Exception as e:
+                log(f"  Reel generation error: {e}")
+        else:
+            log("  PEXELS_API_KEY not set — skipping reel video generation")
+
         with open(REEL_PENDING_FILE, "w") as f:
             json.dump({
                 "date": today_key,
-                "slug": reel_product["slug"],
-                "name": reel_product["name"],
-                "category_slug": reel_product["category_slug"],
-                "mp4_filename": reel_product["mp4_filename"],
+                "slug": product["slug"],
+                "name": product["name"],
+                "category_slug": cat_slug,
+                "mp4_filename": reel_filename,
+                "generated": generated_ok,
             }, f, indent=2)
-        log(f"Reel pending: {reel_product['name']} ({reel_product['mp4_filename']})")
+        log(f"Reel pending: {product['name']} generated={generated_ok}")
 
     log(f"=== Generate done: {len([p for p in pending if p['filename']])} images saved ===")
 

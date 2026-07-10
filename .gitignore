@@ -13,3 +13,6 @@ __pycache__/
 
 # Temp files
 *.tmp
+
+# Generated reel videos (pushed to ig-assets, not main repo)
+ig_reels/
