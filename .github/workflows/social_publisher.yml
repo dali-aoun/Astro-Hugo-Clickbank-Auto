@@ -176,7 +176,7 @@ jobs:
         run: |
           git config user.name "social-bot"
           git config user.email "bot@noreply.github.com"
-          git add yt_published_done.json yt_publish_log.txt yt_post_index.json
+          git add yt_published_done.json yt_post_index.json
           git diff --cached --quiet || git commit -m "youtube: $(date -u +%Y-%m-%d)"
           git pull --rebase || true
           git push
