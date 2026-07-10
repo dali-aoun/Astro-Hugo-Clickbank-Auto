@@ -35,12 +35,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install system fonts (Ubuntu)
-        run: sudo apt-get install -y --no-install-recommends fonts-liberation fonts-dejavu-core
-      - run: pip install requests Pillow
+      - name: Install system fonts and ffmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends fonts-liberation fonts-dejavu-core ffmpeg
+      - run: pip install requests Pillow edge-tts
       - name: Publish Pinterest pins
         env:
           PINTEREST_ACCESS_TOKEN: ${{ secrets.PINTEREST_ACCESS_TOKEN }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
         run: python publish_pinterest.py
       - name: Commit state
         run: |

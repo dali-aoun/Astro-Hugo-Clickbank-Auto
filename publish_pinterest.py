@@ -5,7 +5,7 @@ Images generated on-the-fly with Pillow, uploaded as base64 directly to Pinteres
 3 pins per day, rotating across boards and content library
 """
 
-import os, sys, json, time, base64, io, random, traceback
+import os, sys, json, time, base64, io, random, traceback, subprocess, asyncio, tempfile
 from PIL import Image, ImageDraw, ImageFont
 from datetime import date, datetime, timezone, timedelta
 
@@ -597,8 +597,25 @@ def save_idx(state):
 
 # ── Video Idea Pin helpers ────────────────────────────────────────────────────
 
-def load_video_products():
-    """Return list of products that have a matching yt_shorts MP4."""
+# Pexels search queries per category — real people, health-related
+PEXELS_QUERIES = {
+    "dental-health":    ["woman smiling healthy teeth", "dental care woman", "oral hygiene"],
+    "prostate-health":  ["senior man active healthy", "older man jogging", "men health doctor"],
+    "male-performance": ["man workout fitness", "athletic man training", "male energy fitness"],
+    "brain-and-senses": ["woman meditation focus", "person studying concentration", "brain health yoga"],
+    "weight-loss":      ["woman healthy eating salad", "fitness woman exercise", "weight loss workout"],
+    "beauty-skin":      ["woman skincare routine", "healthy glowing skin woman", "beauty face care"],
+    "womens-health":    ["woman yoga wellness", "healthy woman exercise", "women fitness lifestyle"],
+    "blood-sugar":      ["healthy eating vegetables", "person diabetes care", "woman healthy diet"],
+    "joint-pain":       ["senior person stretching", "older adult exercise", "joint mobility workout"],
+    "sleep":            ["person sleeping peacefully", "woman resting bed", "good night sleep"],
+    "heart-health":     ["woman running cardio", "heart healthy lifestyle", "person exercise health"],
+    "general-health":   ["healthy lifestyle woman", "wellness nutrition", "person healthy living"],
+}
+
+
+def load_all_products():
+    """Return all active products from products.json."""
     products_file = os.path.join(BASE_DIR, "products.json")
     try:
         with open(products_file, "r", encoding="utf-8") as f:
@@ -607,18 +624,169 @@ def load_video_products():
         return []
     result = []
     for cat in data.get("categories", []):
-        cat_slug = cat["slug"]
         for p in cat.get("products", []):
-            slug = p["slug"]
-            mp4_path = os.path.join(BASE_DIR, "yt_shorts", f"{slug}.mp4")
-            if os.path.exists(mp4_path):
-                result.append({
-                    "slug": slug,
-                    "name": p["name"],
-                    "category_slug": cat_slug,
-                    "mp4_path": mp4_path,
-                })
+            if p.get("status") == "ok":
+                result.append({**p, "category_slug": cat["slug"]})
     return result
+
+
+def pexels_search_video(query, api_key, orientation="portrait", per_page=10):
+    """Search Pexels for a video. Returns a download URL or None."""
+    import requests
+    try:
+        r = requests.get(
+            "https://api.pexels.com/videos/search",
+            headers={"Authorization": api_key},
+            params={"query": query, "orientation": orientation, "per_page": per_page, "size": "medium"},
+            timeout=30,
+        )
+        if r.status_code != 200:
+            log(f"    Pexels search failed {r.status_code}")
+            return None
+        videos = r.json().get("videos", [])
+        if not videos:
+            return None
+        # Pick a random video from results to vary content
+        video = random.choice(videos[:5])
+        # Prefer HD or SD file
+        files = video.get("video_files", [])
+        # Sort by quality: prefer 1080p portrait, then any portrait, then any
+        files_sorted = sorted(
+            files,
+            key=lambda f: (
+                "hd" in (f.get("quality") or ""),
+                f.get("width", 0) <= f.get("height", 1),  # portrait preferred
+                f.get("height", 0),
+            ),
+            reverse=True,
+        )
+        for f in files_sorted:
+            url = f.get("link")
+            if url:
+                return url
+    except Exception as e:
+        log(f"    Pexels exception: {e}")
+    return None
+
+
+def download_video(url, dest_path):
+    """Download a video from URL to dest_path."""
+    import requests
+    r = requests.get(url, stream=True, timeout=120)
+    r.raise_for_status()
+    with open(dest_path, "wb") as f:
+        for chunk in r.iter_content(chunk_size=65536):
+            f.write(chunk)
+    size_kb = os.path.getsize(dest_path) // 1024
+    log(f"    Downloaded {size_kb} KB")
+
+
+def get_video_duration(path):
+    """Return video duration in seconds using ffprobe."""
+    result = subprocess.run(
+        ["ffprobe", "-v", "error", "-show_entries", "format=duration",
+         "-of", "default=noprint_wrappers=1:nokey=1", path],
+        capture_output=True, text=True,
+    )
+    try:
+        return float(result.stdout.strip())
+    except Exception:
+        return 30.0
+
+
+async def _tts_async(text, path, voice="en-US-AriaNeural"):
+    import edge_tts
+    communicate = edge_tts.Communicate(text, voice=voice, rate="+5%", volume="+10%")
+    await communicate.save(path)
+
+
+def make_voiceover(product, audio_path):
+    name = product["name"]
+    desc = product.get("description", "a popular supplement")
+    gravity = product.get("gravity", 0)
+    rating = min(4.9, max(3.8, 3.5 + gravity / 50))
+    script = (
+        f"Looking for an honest review of {name}? "
+        f"{name} is {desc[:200].rstrip('.')}. "
+        f"With thousands of satisfied customers and a rating of {rating:.1f} out of five, "
+        f"it's one of the most trusted supplements in its category. "
+        f"Read our full review — link in bio. "
+        f"Follow for more honest health supplement reviews."
+    )
+    asyncio.run(_tts_async(script, audio_path))
+
+
+def get_font_paths():
+    candidates = [
+        "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+    ]
+    for p in candidates:
+        if os.path.exists(p):
+            return p
+    return None
+
+
+def process_video_with_overlay(raw_path, audio_path, output_path, product):
+    """
+    Crop raw video to 9:16 (1080x1920), add dark bottom overlay + text,
+    mix in voiceover audio, clamp duration to min(60s, audio_duration).
+    """
+    name = product["name"]
+    gravity = product.get("gravity", 0)
+    rating = min(4.9, max(3.8, 3.5 + gravity / 50))
+    stars = "★" * int(round(rating)) + "☆" * (5 - int(round(rating)))
+
+    audio_dur = get_video_duration(audio_path)
+    target_dur = min(60.0, audio_dur + 1.5)
+
+    font_path = get_font_paths()
+    font_filter = ""
+    if font_path:
+        safe_font = font_path.replace(":", "\\:")
+        # Bottom gradient overlay + 3 text lines
+        font_filter = (
+            f"drawbox=x=0:y=ih*0.62:w=iw:h=ih*0.38:color=black@0.65:t=fill,"
+            f"drawtext=fontfile={safe_font}:text='{name}':fontsize=58:fontcolor=white"
+            f":x=(w-text_w)/2:y=h*0.65:shadowx=2:shadowy=2,"
+            f"drawtext=fontfile={safe_font}:text='{stars} {rating:.1f}/5':fontsize=44"
+            f":fontcolor=gold:x=(w-text_w)/2:y=h*0.75:shadowx=1:shadowy=1,"
+            f"drawtext=fontfile={safe_font}:text='thehappy-healthy-life.com':fontsize=34"
+            f":fontcolor=white@0.9:x=(w-text_w)/2:y=h*0.84,"
+            f"drawtext=fontfile={safe_font}:text='FULL REVIEW IN BIO':fontsize=36"
+            f":fontcolor=yellow:x=(w-text_w)/2:y=h*0.91:shadowx=1:shadowy=1"
+        )
+    else:
+        font_filter = "drawbox=x=0:y=ih*0.7:w=iw:h=ih*0.3:color=black@0.7:t=fill"
+
+    # Video filter: scale + crop to portrait 9:16, then overlay text
+    vf = (
+        f"scale=1080:1920:force_original_aspect_ratio=increase,"
+        f"crop=1080:1920,"
+        f"{font_filter}"
+    )
+
+    cmd = [
+        "ffmpeg", "-y",
+        "-stream_loop", "-1",          # loop the stock video if shorter than audio
+        "-i", raw_path,
+        "-i", audio_path,
+        "-vf", vf,
+        "-c:v", "libx264",
+        "-preset", "fast",
+        "-c:a", "aac",
+        "-b:a", "128k",
+        "-pix_fmt", "yuv420p",
+        "-t", str(target_dur),
+        "-shortest",
+        output_path,
+    ]
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    if result.returncode != 0:
+        log(f"    FFmpeg error: {result.stderr[-300:]}")
+        raise RuntimeError("ffmpeg failed")
+    size_kb = os.path.getsize(output_path) // 1024
+    log(f"    Video ready: {size_kb} KB, {target_dur:.1f}s")
 
 
 def load_video_idx():
@@ -693,12 +861,19 @@ def upload_video_to_pinterest(mp4_path, headers):
 
 
 def publish_video_pin(headers):
-    """Publish one video Idea Pin using the next product in rotation. Returns True on success."""
+    """
+    Publish one video Idea Pin with real people from Pexels.
+    Pipeline: Pexels search → download → edge-tts voiceover → FFmpeg overlay → Pinterest upload.
+    """
     import requests
 
-    products = load_video_products()
+    if not PEXELS_API_KEY:
+        log("  [VIDEO] PEXELS_API_KEY not set — skip")
+        return False
+
+    products = load_all_products()
     if not products:
-        log("  [VIDEO] No video products found — skip")
+        log("  [VIDEO] No products found — skip")
         return False
 
     v_state = load_video_idx()
@@ -710,7 +885,6 @@ def publish_video_pin(headers):
     slug = product["slug"]
     name = product["name"]
     cat_slug = product["category_slug"]
-    mp4_path = product["mp4_path"]
 
     board_key = CAT_TO_BOARD.get(cat_slug)
     if not board_key or board_key not in BOARDS:
@@ -719,19 +893,60 @@ def publish_video_pin(headers):
 
     board = BOARDS[board_key]
     link = f"{SITE_URL}/{cat_slug}/{slug}/"
+    log(f"  [VIDEO] {name} ({cat_slug}) -> {board['name']}")
 
-    log(f"  [VIDEO] {name} -> {board['name']}")
-    log(f"    link: {link}")
+    # Search Pexels for a real-person video matching this category
+    queries = PEXELS_QUERIES.get(cat_slug, ["healthy lifestyle"])
+    video_url = None
+    for query in queries:
+        log(f"    Pexels search: '{query}'")
+        video_url = pexels_search_video(query, PEXELS_API_KEY)
+        if video_url:
+            break
 
-    media_id = upload_video_to_pinterest(mp4_path, headers)
-    if not media_id:
+    if not video_url:
+        log("  [VIDEO] No Pexels video found — skip")
         return False
 
+    with tempfile.TemporaryDirectory() as tmp:
+        raw_path    = os.path.join(tmp, "raw.mp4")
+        audio_path  = os.path.join(tmp, "voice.mp3")
+        output_path = os.path.join(tmp, "final.mp4")
+
+        log(f"    Downloading stock video...")
+        try:
+            download_video(video_url, raw_path)
+        except Exception as e:
+            log(f"    Download failed: {e}")
+            return False
+
+        log(f"    Generating voiceover (edge-tts)...")
+        try:
+            make_voiceover(product, audio_path)
+        except Exception as e:
+            log(f"    TTS failed: {e}")
+            return False
+
+        log(f"    Processing video with FFmpeg overlay...")
+        try:
+            process_video_with_overlay(raw_path, audio_path, output_path, product)
+        except Exception as e:
+            log(f"    FFmpeg failed: {e}")
+            return False
+
+        log(f"    Uploading to Pinterest...")
+        media_id = upload_video_to_pinterest(output_path, headers)
+        if not media_id:
+            return False
+
+    gravity = product.get("gravity", 0)
+    rating = min(4.9, max(3.8, 3.5 + gravity / 50))
     payload = {
-        "title": f"{name} Review — Does It Really Work?",
+        "title": f"{name} Review {datetime.utcnow().year} — {rating:.1f}/5 ⭐",
         "description": (
-            f"Honest review of {name} — ingredients, benefits, and real user results. "
-            f"Full detailed review: {link}"
+            f"Honest review of {name}. {product.get('description', '')[:200]} "
+            f"Real results, no fluff. Full review: {link} "
+            f"#supplementreview #{cat_slug.replace('-', '')} #healthtips #honestreviews"
         )[:500],
         "board_id": board["id"],
         "media_source": {
@@ -748,7 +963,7 @@ def publish_video_pin(headers):
                 json=payload, headers=headers, timeout=60,
             )
             if r.status_code in (200, 201):
-                log(f"    VIDEO pin ok pin_id={r.json().get('id', '?')}")
+                log(f"    VIDEO pin OK pin_id={r.json().get('id', '?')}")
                 return True
             log(f"    VIDEO pin erreur {r.status_code}: {r.text[:200]}")
         except Exception as e:
