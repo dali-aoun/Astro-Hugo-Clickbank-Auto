@@ -952,6 +952,7 @@ def publish_video_pin(headers):
         "media_source": {
             "source_type": "video_id",
             "media_id": media_id,
+            "cover_image_key_frame_time": 1,
         },
         "link": link,
     }
