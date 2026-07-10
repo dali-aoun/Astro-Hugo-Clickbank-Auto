@@ -144,7 +144,7 @@ jobs:
         run: |
           git config user.name "social-bot"
           git config user.email "bot@noreply.github.com"
-          git add ig_published_done.json ig_publish_log.txt ig_reel_done.json
+          git add ig_published_done.json ig_reel_done.json
           git diff --cached --quiet || git commit -m "instagram: $(date -u +%Y-%m-%d)"
           for i in 1 2 3 4 5; do
             git pull --rebase && git push && break
