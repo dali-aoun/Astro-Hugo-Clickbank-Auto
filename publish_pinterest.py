@@ -802,7 +802,7 @@ def main():
         link = f"{SITE_URL}/{cat_url}/"
         first_line = body.split("\n")[0].strip()
         title = f"{headline}: {first_line}"[:100]
-        description = f”{body.replace(chr(10), ' ')} | Full reviews: {link}”[:500]
+        description = f"{body.replace(chr(10), ' ')} | Full reviews: {link}"[:500]
 
         log(f"  [{i+1}/{PINS_PER_DAY}] {board['name']} â€” {headline}: {first_line[:50]}")
 
