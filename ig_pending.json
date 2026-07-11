@@ -1,23 +1,23 @@
 {
-  "date": "2026-07-10",
+  "date": "2026-07-11",
   "posts": [
     {
-      "filename": "2026-07-10_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-10_1.jpg",
-      "cat_key": "brain",
+      "filename": "2026-07-11_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-11_1.jpg",
+      "cat_key": "beauty",
       "headline": "Warning",
-      "body": "Chronic stress physically shrinks the hippocampus \u2014 your memory center.\nStress management is literally brain protection.",
-      "cta": "Chronic stress shrinks your brain.",
-      "hashtags": "#BrainHealth #CognitiveHealth #Nootropics #MentalClarity #BrainFog #NeuroplasticityTraining #BrainFacts #MemoryBoost #FocusTips #BrainScience"
+      "body": "Hot showers strip your skin's natural oil barrier.\nShower in lukewarm water and moisturize within 3 minutes.",
+      "cta": "Hot showers age your skin.",
+      "hashtags": "#SkinCare #Beauty #AntiAging #GlowingSkin #SkincareTips #HealthySkin #SkincareFacts #BeautyTips #NaturalBeauty #SkincareRoutine"
     },
     {
-      "filename": "2026-07-10_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-10_2.jpg",
-      "cat_key": "prostate",
+      "filename": "2026-07-11_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-11_2.jpg",
+      "cat_key": "heart",
       "headline": "Warning",
-      "body": "Sitting for more than 8 hours per day increases prostate inflammation risk.\nTake a 5-minute standing break every hour.",
-      "cta": "Sitting is killing your prostate.",
-      "hashtags": "#ProstateHealth #MensHealth #BPH #ProstateSupport #MensWellness #ProstateCancer #MaleHealth #UrinaryHealth #MensNutrition #HealthyMen"
+      "body": "Trans fats increase LDL AND decrease HDL \u2014 doubling your heart disease risk.\nCheck labels for 'partially hydrogenated oils'.",
+      "cta": "Trans fats double your heart disease risk.",
+      "hashtags": "#HeartHealth #CardiovascularHealth #HeartDisease #HeartCare #HeartHealthTips #CardiovascularFitness #HealthyHeart #HeartFacts #BloodPressure #Cholesterol"
     }
   ]
 }
