@@ -1,23 +1,23 @@
 {
-  "date": "2026-07-11",
+  "date": "2026-07-12",
   "posts": [
     {
-      "filename": "2026-07-11_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-11_1.jpg",
-      "cat_key": "beauty",
-      "headline": "Warning",
-      "body": "Hot showers strip your skin's natural oil barrier.\nShower in lukewarm water and moisturize within 3 minutes.",
-      "cta": "Hot showers age your skin.",
-      "hashtags": "#SkinCare #Beauty #AntiAging #GlowingSkin #SkincareTips #HealthySkin #SkincareFacts #BeautyTips #NaturalBeauty #SkincareRoutine"
+      "filename": "2026-07-12_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-12_1.jpg",
+      "cat_key": "male",
+      "headline": "Statistic",
+      "body": "1 in 4 men over 40 have clinically low testosterone.\nLow T causes fatigue, depression, weight gain, and muscle loss.",
+      "cta": "1 in 4 men over 40 have low testosterone.",
+      "hashtags": "#Testosterone #MensHealth #MalePerformance #TestosteroneBoost #MaleVitality #MensWellness #HormoneHealth #MaleFitness #MensFitness #Vitality"
     },
     {
-      "filename": "2026-07-11_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-11_2.jpg",
-      "cat_key": "heart",
+      "filename": "2026-07-12_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-12_2.jpg",
+      "cat_key": "blood",
       "headline": "Warning",
-      "body": "Trans fats increase LDL AND decrease HDL \u2014 doubling your heart disease risk.\nCheck labels for 'partially hydrogenated oils'.",
-      "cta": "Trans fats double your heart disease risk.",
-      "hashtags": "#HeartHealth #CardiovascularHealth #HeartDisease #HeartCare #HeartHealthTips #CardiovascularFitness #HealthyHeart #HeartFacts #BloodPressure #Cholesterol"
+      "body": "White bread spikes blood sugar as fast as pure table sugar.\nChoose whole grain alternatives.",
+      "cta": "White bread is worse than you think.",
+      "hashtags": "#BloodSugar #Diabetes #PreDiabetes #MetabolicHealth #BloodSugarControl #InsulinResistance #DiabetesTips #GlucoseControl #DiabetesPrevention #HealthyBloodSugar"
     }
   ]
 }

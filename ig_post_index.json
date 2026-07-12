@@ -1,7 +1,7 @@
 {
   "idx": 4,
   "reel_idx": 0,
-  "cat_idx": 42,
+  "cat_idx": 44,
   "content_idx": {
     "dental": 4,
     "weight": 4,
@@ -9,8 +9,8 @@
     "prostate": 4,
     "beauty": 4,
     "heart": 4,
-    "male": 3,
-    "blood": 3,
+    "male": 4,
+    "blood": 4,
     "sleep": 3,
     "joint": 3,
     "womens": 3,
