@@ -90,7 +90,9 @@ jobs:
           export GIT_SSH_COMMAND="ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no"
 
           git clone git@github.com:dali-aoun/ig-assets.git /tmp/ig-assets
-          TODAY=$(date -u +%Y-%m-%d)
+          # Use date from ig_pending.json (written by Python with Tunis timezone) to avoid UTC mismatch
+          TODAY=$(python3 -c "import json; print(json.load(open('ig_pending.json'))['date'])" 2>/dev/null || TZ='Africa/Tunis' date +%Y-%m-%d)
+          echo "Using date: $TODAY"
 
           # Copy today's images
           mkdir -p /tmp/ig-assets/ig_content
