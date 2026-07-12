@@ -130,7 +130,7 @@ jobs:
 
       # Step 4: Wait for GitHub CDN to serve the new images from ig-assets
       - name: Wait for CDN propagation
-        run: sleep 15
+        run: sleep 60
 
       # Step 5: Publish images to Instagram
       - name: Publish images to Instagram

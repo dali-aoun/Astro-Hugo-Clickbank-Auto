@@ -623,6 +623,24 @@ def get_github_raw_url(filename):
     return f"https://raw.githubusercontent.com/{ASSETS_REPO}/master/ig_content/{filename}"
 
 
+def wait_for_url(url, max_wait=90, interval=10):
+    """Poll url until it returns HTTP 200 or max_wait seconds elapse. Returns True if accessible."""
+    import urllib.request
+    import urllib.error
+    elapsed = 0
+    while elapsed < max_wait:
+        try:
+            req = urllib.request.Request(url, method="HEAD")
+            with urllib.request.urlopen(req, timeout=8) as resp:
+                if resp.status == 200:
+                    return True
+        except Exception:
+            pass
+        time.sleep(interval)
+        elapsed += interval
+    return False
+
+
 # ── Instagram API ──────────────────────────────────────────────────────────────
 
 def publish_ig_image(image_url, caption):
@@ -961,6 +979,14 @@ def publish_phase():
 
         log(f"  [{i+1}] {CATEGORIES[post['cat_key']]['name']} — {post['headline']}")
         log(f"    URL: {img_url}")
+
+        # Verify the image is accessible on GitHub CDN before sending to Instagram
+        log(f"    Vérification CDN...")
+        if not wait_for_url(img_url, max_wait=90, interval=10):
+            log(f"    ERREUR: URL inaccessible après 90s — skip")
+            errors += 1
+            continue
+        log(f"    CDN OK — publication...")
 
         caption = make_caption(post["cat_key"], post["headline"], post["body"], post["cta"], post["hashtags"])
 
