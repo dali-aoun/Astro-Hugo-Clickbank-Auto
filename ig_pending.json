@@ -1,23 +1,23 @@
 {
-  "date": "2026-07-12",
+  "date": "2026-07-13",
   "posts": [
     {
-      "filename": "2026-07-12_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-12_1.jpg",
-      "cat_key": "male",
-      "headline": "Statistic",
-      "body": "1 in 4 men over 40 have clinically low testosterone.\nLow T causes fatigue, depression, weight gain, and muscle loss.",
-      "cta": "1 in 4 men over 40 have low testosterone.",
-      "hashtags": "#Testosterone #MensHealth #MalePerformance #TestosteroneBoost #MaleVitality #MensWellness #HormoneHealth #MaleFitness #MensFitness #Vitality"
+      "filename": "2026-07-13_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-13_1.jpg",
+      "cat_key": "sleep",
+      "headline": "Warning",
+      "body": "Alcohol ruins sleep quality even when it helps you fall asleep.\nIt suppresses REM \u2014 the most restorative stage.",
+      "cta": "Alcohol kills your REM sleep.",
+      "hashtags": "#SleepTips #BetterSleep #SleepHealth #Insomnia #SleepScience #NaturalSleepAid #SleepBetter #SleepFacts #SleepSupport #HealthySleep"
     },
     {
-      "filename": "2026-07-12_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-12_2.jpg",
-      "cat_key": "blood",
+      "filename": "2026-07-13_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-13_2.jpg",
+      "cat_key": "joint",
       "headline": "Warning",
-      "body": "White bread spikes blood sugar as fast as pure table sugar.\nChoose whole grain alternatives.",
-      "cta": "White bread is worse than you think.",
-      "hashtags": "#BloodSugar #Diabetes #PreDiabetes #MetabolicHealth #BloodSugarControl #InsulinResistance #DiabetesTips #GlucoseControl #DiabetesPrevention #HealthyBloodSugar"
+      "body": "NSAIDs (ibuprofen) mask pain but accelerate cartilage breakdown with long-term use.",
+      "cta": "Ibuprofen is destroying your cartilage.",
+      "hashtags": "#JointHealth #JointPain #Arthritis #JointCare #JointRelief #JointPainRelief #AntiInflammatory #BoneHealth #ArthritisTips #JointSupport"
     }
   ]
 }
