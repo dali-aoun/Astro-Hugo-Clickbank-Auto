@@ -1,23 +1,23 @@
 {
-  "date": "2026-07-13",
+  "date": "2026-07-14",
   "posts": [
     {
-      "filename": "2026-07-13_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-13_1.jpg",
-      "cat_key": "brain",
+      "filename": "2026-07-14_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-14_1.jpg",
+      "cat_key": "beauty",
       "headline": "Statistic",
-      "body": "65 million people worldwide live with dementia.\nLifestyle changes in your 40s reduce risk by up to 40%.",
-      "cta": "Prevention starts now, not later.",
-      "hashtags": "#BrainHealth #CognitiveHealth #Nootropics #MentalClarity #BrainFog #NeuroplasticityTraining #BrainFacts #MemoryBoost #FocusTips #BrainScience"
+      "body": "Collagen production decreases by 1% every year after age 20.\nBy 50, you've lost 30% of your skin's structural support.",
+      "cta": "You're losing collagen every year after 20.",
+      "hashtags": "#SkinCare #Beauty #AntiAging #GlowingSkin #SkincareTips #HealthySkin #SkincareFacts #BeautyTips #NaturalBeauty #SkincareRoutine"
     },
     {
-      "filename": "2026-07-13_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-13_2.jpg",
-      "cat_key": "prostate",
+      "filename": "2026-07-14_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-14_2.jpg",
+      "cat_key": "heart",
       "headline": "Statistic",
-      "body": "Prostate problems affect 50% of men over 50, and 90% of men over 80.\nStarting prevention in your 40s makes a massive difference.",
-      "cta": "Half of men over 50 have prostate issues.",
-      "hashtags": "#ProstateHealth #MensHealth #BPH #ProstateSupport #MensWellness #ProstateCancer #MaleHealth #UrinaryHealth #MensNutrition #HealthyMen"
+      "body": "50% of heart attacks occur in people with normal cholesterol.\nInflammation, not just cholesterol, is the real risk factor.",
+      "cta": "Half of heart attacks happen to 'healthy' people.",
+      "hashtags": "#HeartHealth #CardiovascularHealth #HeartDisease #HeartCare #HeartHealthTips #CardiovascularFitness #HealthyHeart #HeartFacts #BloodPressure #Cholesterol"
     }
   ]
 }
