@@ -1,23 +1,23 @@
 {
-  "date": "2026-07-14",
+  "date": "2026-07-15",
   "posts": [
     {
-      "filename": "2026-07-14_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-14_1.jpg",
-      "cat_key": "beauty",
-      "headline": "Statistic",
-      "body": "Collagen production decreases by 1% every year after age 20.\nBy 50, you've lost 30% of your skin's structural support.",
-      "cta": "You're losing collagen every year after 20.",
-      "hashtags": "#SkinCare #Beauty #AntiAging #GlowingSkin #SkincareTips #HealthySkin #SkincareFacts #BeautyTips #NaturalBeauty #SkincareRoutine"
+      "filename": "2026-07-15_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-15_1.jpg",
+      "cat_key": "male",
+      "headline": "Fact",
+      "body": "Ashwagandha (KSM-66) raises testosterone by 17% and reduces cortisol by 27% in trials.",
+      "cta": "Ashwagandha is clinically proven to raise T.",
+      "hashtags": "#Testosterone #MensHealth #MalePerformance #TestosteroneBoost #MaleVitality #MensWellness #HormoneHealth #MaleFitness #MensFitness #Vitality"
     },
     {
-      "filename": "2026-07-14_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-14_2.jpg",
-      "cat_key": "heart",
+      "filename": "2026-07-15_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-15_2.jpg",
+      "cat_key": "blood",
       "headline": "Statistic",
-      "body": "50% of heart attacks occur in people with normal cholesterol.\nInflammation, not just cholesterol, is the real risk factor.",
-      "cta": "Half of heart attacks happen to 'healthy' people.",
-      "hashtags": "#HeartHealth #CardiovascularHealth #HeartDisease #HeartCare #HeartHealthTips #CardiovascularFitness #HealthyHeart #HeartFacts #BloodPressure #Cholesterol"
+      "body": "Reversing prediabetes is possible in 70% of cases through diet and exercise alone.",
+      "cta": "70% of prediabetes cases are reversible.",
+      "hashtags": "#BloodSugar #Diabetes #PreDiabetes #MetabolicHealth #BloodSugarControl #InsulinResistance #DiabetesTips #GlucoseControl #DiabetesPrevention #HealthyBloodSugar"
     }
   ]
 }
