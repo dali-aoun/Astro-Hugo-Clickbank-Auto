@@ -1,10 +1,10 @@
 """
 publish_youtube.py - YouTube Shorts generator + uploader
-Pipeline: script -> edge-tts (free TTS) -> Pillow background -> FFmpeg assembly -> YouTube upload
-Zero cost: edge-tts uses Microsoft Edge TTS API, FFmpeg is pre-installed on GitHub Actions
+Pipeline: Pexels real-person video -> edge-tts voiceover -> FFmpeg overlay -> YouTube upload
+Fallback: static Pillow gradient background when PEXELS_API_KEY is absent or search fails.
 """
 
-import os, sys, json, time, traceback, subprocess, asyncio, tempfile
+import os, sys, json, time, traceback, subprocess, asyncio, tempfile, random
 from datetime import datetime, timezone, timedelta
 from PIL import Image, ImageDraw, ImageFont
 
@@ -16,6 +16,7 @@ POST_INDEX_FILE = os.path.join(BASE_DIR, "yt_post_index.json")
 YT_CLIENT_ID     = os.environ.get("YT_CLIENT_ID", "")
 YT_CLIENT_SECRET = os.environ.get("YT_CLIENT_SECRET", "")
 YT_REFRESH_TOKEN = os.environ.get("YT_REFRESH_TOKEN", "")
+PEXELS_API_KEY   = os.environ.get("PEXELS_API_KEY", "")
 
 SITE_URL = "https://reviews.thehappy-healthy-life.com"
 
@@ -307,6 +308,133 @@ def assemble_video(bg_path, audio_path, output_path):
     ], check=True, capture_output=True)
 
 
+# ── Pexels video integration ──────────────────────────────────────────────────
+
+PEXELS_QUERIES = {
+    "dental-health":    ["woman smiling healthy teeth", "dental care smile", "oral hygiene woman"],
+    "prostate-health":  ["senior man active outdoors", "older man jogging park", "men health active"],
+    "male-performance": ["man workout fitness gym", "athletic man training", "male energy fitness"],
+    "brain-and-senses": ["woman meditation focus", "person studying concentration", "yoga mindfulness"],
+    "weight-loss":      ["woman healthy eating salad", "fitness woman exercise", "weight loss workout"],
+    "beauty-skin":      ["woman skincare face", "beauty skincare routine", "woman glowing skin"],
+    "womens-health":    ["woman yoga wellness", "healthy woman lifestyle", "woman exercise outdoor"],
+    "blood-sugar":      ["healthy food vegetables", "person checking health", "diabetes healthy lifestyle"],
+    "joint-pain":       ["senior couple walking outdoors", "physical therapy exercise", "knee pain relief"],
+    "sleep":            ["person sleeping peaceful bed", "woman relaxing bedroom", "sleep wellness"],
+    "heart-health":     ["woman running cardio outdoor", "active woman jogging", "heart health fitness"],
+    "general-health":   ["healthy family lifestyle", "wellness healthy living", "person healthy outdoor"],
+}
+
+
+def pexels_search_video(query):
+    """Search Pexels for a portrait video. Returns a download URL or None."""
+    import requests
+    try:
+        r = requests.get(
+            "https://api.pexels.com/videos/search",
+            headers={"Authorization": PEXELS_API_KEY},
+            params={"query": query, "orientation": "portrait", "per_page": 10, "size": "medium"},
+            timeout=30,
+        )
+        if r.status_code != 200:
+            log(f"    Pexels search failed {r.status_code}")
+            return None
+        videos = r.json().get("videos", [])
+        if not videos:
+            return None
+        video = random.choice(videos[:5])
+        files = video.get("video_files", [])
+        files_sorted = sorted(
+            [f for f in files if f.get("quality") in ("hd", "sd")],
+            key=lambda x: x.get("width", 0), reverse=True,
+        )
+        for f in files_sorted:
+            url = f.get("link")
+            if url:
+                return url
+    except Exception as e:
+        log(f"    Pexels exception: {e}")
+    return None
+
+
+def download_video(url, dest_path):
+    import requests
+    r = requests.get(url, stream=True, timeout=120)
+    r.raise_for_status()
+    with open(dest_path, "wb") as f:
+        for chunk in r.iter_content(chunk_size=65536):
+            f.write(chunk)
+    size_kb = os.path.getsize(dest_path) // 1024
+    log(f"    Downloaded {size_kb} KB")
+
+
+def get_font_paths():
+    candidates = [
+        "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+    ]
+    for p in candidates:
+        if os.path.exists(p):
+            return p
+    return None
+
+
+def process_pexels_video(raw_path, audio_path, output_path, product):
+    """Crop Pexels video to 9:16, add text overlay, mix TTS audio."""
+    name    = product["name"]
+    gravity = product.get("gravity", 0)
+    rating  = min(4.9, max(3.8, 3.5 + gravity / 50))
+    stars   = "★" * int(round(rating)) + "☆" * (5 - int(round(rating)))
+
+    audio_dur  = get_audio_duration(audio_path)
+    target_dur = min(60.0, audio_dur + 1.5)
+
+    font_path = get_font_paths()
+    if font_path:
+        safe_font   = font_path.replace(":", "\\:")
+        name_escaped = name.replace("'", "\\'").replace(":", "\\:")
+        font_filter = (
+            f"drawbox=x=0:y=ih*0.62:w=iw:h=ih*0.38:color=black@0.65:t=fill,"
+            f"drawtext=fontfile={safe_font}:text='HONEST REVIEW':fontsize=36"
+            f":fontcolor=white@0.85:x=(w-text_w)/2:y=h*0.60:shadowx=1:shadowy=1,"
+            f"drawtext=fontfile={safe_font}:text='{name_escaped}':fontsize=58:fontcolor=white"
+            f":x=(w-text_w)/2:y=h*0.66:shadowx=2:shadowy=2,"
+            f"drawtext=fontfile={safe_font}:text='{stars} {rating:.1f}/5':fontsize=44"
+            f":fontcolor=gold:x=(w-text_w)/2:y=h*0.77:shadowx=1:shadowy=1,"
+            f"drawtext=fontfile={safe_font}:text='thehappy-healthy-life.com':fontsize=32"
+            f":fontcolor=white@0.9:x=(w-text_w)/2:y=h*0.86,"
+            f"drawtext=fontfile={safe_font}:text='FULL REVIEW IN DESCRIPTION':fontsize=34"
+            f":fontcolor=yellow:x=(w-text_w)/2:y=h*0.92:shadowx=1:shadowy=1"
+        )
+    else:
+        font_filter = "drawbox=x=0:y=ih*0.7:w=iw:h=ih*0.3:color=black@0.7:t=fill"
+
+    vf = (
+        f"scale=1080:1920:force_original_aspect_ratio=increase,"
+        f"crop=1080:1920,"
+        f"{font_filter}"
+    )
+    cmd = [
+        "ffmpeg", "-y",
+        "-stream_loop", "-1",
+        "-i", raw_path,
+        "-i", audio_path,
+        "-vf", vf,
+        "-c:v", "libx264", "-preset", "fast",
+        "-c:a", "aac", "-b:a", "128k",
+        "-pix_fmt", "yuv420p",
+        "-t", str(target_dur),
+        "-shortest",
+        output_path,
+    ]
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    if result.returncode != 0:
+        log(f"    FFmpeg error: {result.stderr[-300:]}")
+        raise RuntimeError("ffmpeg failed on Pexels video")
+    size_kb = os.path.getsize(output_path) // 1024
+    log(f"    Video ready: {size_kb} KB, {target_dur:.1f}s")
+
+
 # ── Full generation pipeline ───────────────────────────────────────────────────
 
 def generate_short(product, output_path):
@@ -315,17 +443,38 @@ def generate_short(product, output_path):
 
     with tempfile.TemporaryDirectory() as tmp:
         audio_path = os.path.join(tmp, "audio.mp3")
-        bg_path    = os.path.join(tmp, "bg.jpg")
 
         log(f"  Generating TTS audio (edge-tts)...")
         generate_tts(script, audio_path)
 
-        log(f"  Generating background image...")
-        bg = make_background_image(product)
-        bg.save(bg_path, "JPEG", quality=95)
+        # Try Pexels real-person video first
+        pexels_ok = False
+        if PEXELS_API_KEY:
+            cat_slug = product.get("category_slug", "general-health")
+            queries  = PEXELS_QUERIES.get(cat_slug, ["healthy lifestyle"])
+            for query in queries:
+                log(f"  Pexels search: '{query}'")
+                video_url = pexels_search_video(query)
+                if video_url:
+                    raw_path = os.path.join(tmp, "raw.mp4")
+                    log(f"  Downloading Pexels video...")
+                    try:
+                        download_video(video_url, raw_path)
+                        log(f"  Processing video with FFmpeg overlay...")
+                        process_pexels_video(raw_path, audio_path, output_path, product)
+                        pexels_ok = True
+                    except Exception as e:
+                        log(f"  Pexels video failed: {e} — falling back to static bg")
+                    break
 
-        log(f"  Assembling video (FFmpeg)...")
-        assemble_video(bg_path, audio_path, output_path)
+        if not pexels_ok:
+            # Fallback: static gradient background
+            bg_path = os.path.join(tmp, "bg.jpg")
+            log(f"  Generating static background image...")
+            bg = make_background_image(product)
+            bg.save(bg_path, "JPEG", quality=95)
+            log(f"  Assembling video (FFmpeg)...")
+            assemble_video(bg_path, audio_path, output_path)
 
     size_kb = os.path.getsize(output_path) // 1024
     log(f"  Video ready: {size_kb} KB at {output_path}")
@@ -386,8 +535,6 @@ def upload_short(video_path, title, description, tags, access_token):
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
-    import random
-
     if not YT_CLIENT_ID or not YT_CLIENT_SECRET or not YT_REFRESH_TOKEN:
         log("ERREUR: secrets YouTube non definis")
         sys.exit(1)
