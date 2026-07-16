@@ -1,23 +1,23 @@
 {
-  "date": "2026-07-15",
+  "date": "2026-07-16",
   "posts": [
     {
-      "filename": "2026-07-15_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-15_1.jpg",
-      "cat_key": "male",
-      "headline": "Fact",
-      "body": "Ashwagandha (KSM-66) raises testosterone by 17% and reduces cortisol by 27% in trials.",
-      "cta": "Ashwagandha is clinically proven to raise T.",
-      "hashtags": "#Testosterone #MensHealth #MalePerformance #TestosteroneBoost #MaleVitality #MensWellness #HormoneHealth #MaleFitness #MensFitness #Vitality"
+      "filename": "2026-07-16_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-16_1.jpg",
+      "cat_key": "sleep",
+      "headline": "Statistic",
+      "body": "People who sleep 7\u20139 hours live significantly longer than those who sleep less than 6.",
+      "cta": "Sleep duration = lifespan.",
+      "hashtags": "#SleepTips #BetterSleep #SleepHealth #Insomnia #SleepScience #NaturalSleepAid #SleepBetter #SleepFacts #SleepSupport #HealthySleep"
     },
     {
-      "filename": "2026-07-15_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-15_2.jpg",
-      "cat_key": "blood",
+      "filename": "2026-07-16_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-16_2.jpg",
+      "cat_key": "joint",
       "headline": "Statistic",
-      "body": "Reversing prediabetes is possible in 70% of cases through diet and exercise alone.",
-      "cta": "70% of prediabetes cases are reversible.",
-      "hashtags": "#BloodSugar #Diabetes #PreDiabetes #MetabolicHealth #BloodSugarControl #InsulinResistance #DiabetesTips #GlucoseControl #DiabetesPrevention #HealthyBloodSugar"
+      "body": "350 million people worldwide live with arthritis.\nInflammatory diet is the most modifiable risk factor.",
+      "cta": "Diet is the #1 modifiable arthritis risk.",
+      "hashtags": "#JointHealth #JointPain #Arthritis #JointCare #JointRelief #JointPainRelief #AntiInflammatory #BoneHealth #ArthritisTips #JointSupport"
     }
   ]
 }
