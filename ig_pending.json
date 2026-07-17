@@ -1,23 +1,23 @@
 {
-  "date": "2026-07-16",
+  "date": "2026-07-17",
   "posts": [
     {
-      "filename": "2026-07-16_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-16_1.jpg",
-      "cat_key": "sleep",
+      "filename": "2026-07-17_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-17_1.jpg",
+      "cat_key": "womens",
       "headline": "Statistic",
-      "body": "People who sleep 7\u20139 hours live significantly longer than those who sleep less than 6.",
-      "cta": "Sleep duration = lifespan.",
-      "hashtags": "#SleepTips #BetterSleep #SleepHealth #Insomnia #SleepScience #NaturalSleepAid #SleepBetter #SleepFacts #SleepSupport #HealthySleep"
+      "body": "1 in 3 women over 45 experience some form of urinary incontinence.",
+      "cta": "It's common \u2014 but not inevitable.",
+      "hashtags": "#WomensHealth #PelvicFloor #BladderHealth #WomenWellness #WomensBodyHealth #PelvicHealthTips #UTIPrevention #WomensHormones #HormoneBalance #WomensFitness"
     },
     {
-      "filename": "2026-07-16_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-16_2.jpg",
-      "cat_key": "joint",
+      "filename": "2026-07-17_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-17_2.jpg",
+      "cat_key": "general",
       "headline": "Statistic",
-      "body": "350 million people worldwide live with arthritis.\nInflammatory diet is the most modifiable risk factor.",
-      "cta": "Diet is the #1 modifiable arthritis risk.",
-      "hashtags": "#JointHealth #JointPain #Arthritis #JointCare #JointRelief #JointPainRelief #AntiInflammatory #BoneHealth #ArthritisTips #JointSupport"
+      "body": "Only 12% of Americans are considered metabolically healthy.",
+      "cta": "88% of Americans have metabolic problems.",
+      "hashtags": "#HealthTips #WellnessTips #NaturalHealth #HealthFacts #HealthyLiving #Supplements #NaturalRemedies #WellnessJourney #HealthAndWellness #DailyHealth"
     }
   ]
 }
