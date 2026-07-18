@@ -1,23 +1,23 @@
 {
-  "date": "2026-07-17",
+  "date": "2026-07-18",
   "posts": [
     {
-      "filename": "2026-07-17_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-17_1.jpg",
-      "cat_key": "womens",
-      "headline": "Statistic",
-      "body": "1 in 3 women over 45 experience some form of urinary incontinence.",
-      "cta": "It's common \u2014 but not inevitable.",
-      "hashtags": "#WomensHealth #PelvicFloor #BladderHealth #WomenWellness #WomensBodyHealth #PelvicHealthTips #UTIPrevention #WomensHormones #HormoneBalance #WomensFitness"
+      "filename": "2026-07-18_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-18_1.jpg",
+      "cat_key": "dental",
+      "headline": "Did You Know?",
+      "body": "Your tongue holds more bacteria than any other part of your mouth.\nCleaning it daily can eliminate up to 70% of bad breath.",
+      "cta": "Don't skip your tongue.",
+      "hashtags": "#OralHealth #DentalTips #GumHealth #TeethCare #OralCare #DentalHealth #SmileHealth #ToothCare #OralHygiene #HealthySmile"
     },
     {
-      "filename": "2026-07-17_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-17_2.jpg",
-      "cat_key": "general",
-      "headline": "Statistic",
-      "body": "Only 12% of Americans are considered metabolically healthy.",
-      "cta": "88% of Americans have metabolic problems.",
-      "hashtags": "#HealthTips #WellnessTips #NaturalHealth #HealthFacts #HealthyLiving #Supplements #NaturalRemedies #WellnessJourney #HealthAndWellness #DailyHealth"
+      "filename": "2026-07-18_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-18_2.jpg",
+      "cat_key": "weight",
+      "headline": "Fact",
+      "body": "Protein requires 25\u201330% of its own calories to be digested.\nEating more protein literally boosts your metabolism.",
+      "cta": "Protein is the ultimate metabolism food.",
+      "hashtags": "#WeightLoss #FatBurner #MetabolismBoost #WeightLossTips #HealthyWeight #WeightLossJourney #Slim #FatLoss #WeightLossFacts #Metabolism"
     }
   ]
 }
