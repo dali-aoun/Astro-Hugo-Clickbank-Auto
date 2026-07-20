@@ -1,23 +1,23 @@
 {
-  "date": "2026-07-19",
+  "date": "2026-07-20",
   "posts": [
     {
-      "filename": "2026-07-19_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-19_1.jpg",
-      "cat_key": "brain",
+      "filename": "2026-07-20_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-20_1.jpg",
+      "cat_key": "beauty",
       "headline": "Fact",
-      "body": "Omega-3 DHA makes up 40% of brain's polyunsaturated fats.\nLow DHA = slower thinking, worse memory.",
-      "cta": "Low DHA = brain fog.",
-      "hashtags": "#BrainHealth #CognitiveHealth #Nootropics #MentalClarity #BrainFog #NeuroplasticityTraining #BrainFacts #MemoryBoost #FocusTips #BrainScience"
+      "body": "Your gut microbiome directly influences acne, eczema, and rosacea.\nClear skin starts in the digestive system.",
+      "cta": "Clear skin starts in your gut.",
+      "hashtags": "#SkinCare #Beauty #AntiAging #GlowingSkin #SkincareTips #HealthySkin #SkincareFacts #BeautyTips #NaturalBeauty #SkincareRoutine"
     },
     {
-      "filename": "2026-07-19_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-19_2.jpg",
-      "cat_key": "prostate",
+      "filename": "2026-07-20_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-20_2.jpg",
+      "cat_key": "heart",
       "headline": "Fact",
-      "body": "Lycopene from cooked tomatoes reduces prostate cancer risk by up to 35%.\nCook your tomatoes \u2014 heat releases lycopene.",
-      "cta": "Cook your tomatoes for prostate protection.",
-      "hashtags": "#ProstateHealth #MensHealth #BPH #ProstateSupport #MensWellness #ProstateCancer #MaleHealth #UrinaryHealth #MensNutrition #HealthyMen"
+      "body": "Exercise reduces heart attack risk by 35% \u2014 more than most medications.\n150 minutes of moderate activity per week is the target.",
+      "cta": "Exercise protects your heart better than pills.",
+      "hashtags": "#HeartHealth #CardiovascularHealth #HeartDisease #HeartCare #HeartHealthTips #CardiovascularFitness #HealthyHeart #HeartFacts #BloodPressure #Cholesterol"
     }
   ]
 }

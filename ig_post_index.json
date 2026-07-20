@@ -1,14 +1,14 @@
 {
   "idx": 4,
   "reel_idx": 0,
-  "cat_idx": 64,
+  "cat_idx": 66,
   "content_idx": {
     "dental": 6,
     "weight": 6,
     "brain": 6,
     "prostate": 6,
-    "beauty": 5,
-    "heart": 5,
+    "beauty": 6,
+    "heart": 6,
     "male": 5,
     "blood": 5,
     "sleep": 5,
