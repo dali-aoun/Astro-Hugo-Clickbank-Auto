@@ -1,23 +1,23 @@
 {
-  "date": "2026-07-21",
+  "date": "2026-07-22",
   "posts": [
     {
-      "filename": "2026-07-21_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-21_1.jpg",
-      "cat_key": "sleep",
+      "filename": "2026-07-22_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-22_1.jpg",
+      "cat_key": "womens",
       "headline": "Fact",
-      "body": "Magnesium glycinate relaxes the nervous system and increases GABA \u2014 your brain's 'off switch'.",
-      "cta": "Magnesium glycinate = natural off switch for your brain.",
-      "hashtags": "#SleepTips #BetterSleep #SleepHealth #Insomnia #SleepScience #NaturalSleepAid #SleepBetter #SleepFacts #SleepSupport #HealthySleep"
+      "body": "D-Mannose prevents UTI-causing bacteria from adhering to the bladder wall.\nAs effective as antibiotics for uncomplicated UTIs in some studies.",
+      "cta": "D-Mannose is nature's antibiotic for UTIs.",
+      "hashtags": "#WomensHealth #PelvicFloor #BladderHealth #WomenWellness #WomensBodyHealth #PelvicHealthTips #UTIPrevention #WomensHormones #HormoneBalance #WomensFitness"
     },
     {
-      "filename": "2026-07-21_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-21_2.jpg",
-      "cat_key": "joint",
+      "filename": "2026-07-22_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-22_2.jpg",
+      "cat_key": "general",
       "headline": "Fact",
-      "body": "Turmeric's curcumin is as effective as 800mg ibuprofen for osteoarthritis pain.\nCombine with black pepper for 2000% better absorption.",
-      "cta": "Turmeric + black pepper = natural pain relief.",
-      "hashtags": "#JointHealth #JointPain #Arthritis #JointCare #JointRelief #JointPainRelief #AntiInflammatory #BoneHealth #ArthritisTips #JointSupport"
+      "body": "Fasting for 16+ hours activates autophagy \u2014 your body's cellular recycling and repair system.",
+      "cta": "Fasting activates your body's self-repair.",
+      "hashtags": "#HealthTips #WellnessTips #NaturalHealth #HealthFacts #HealthyLiving #Supplements #NaturalRemedies #WellnessJourney #HealthAndWellness #DailyHealth"
     }
   ]
 }
