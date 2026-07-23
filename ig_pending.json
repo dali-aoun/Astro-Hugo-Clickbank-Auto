@@ -1,23 +1,23 @@
 {
-  "date": "2026-07-22",
+  "date": "2026-07-23",
   "posts": [
     {
-      "filename": "2026-07-22_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-22_1.jpg",
-      "cat_key": "womens",
-      "headline": "Fact",
-      "body": "D-Mannose prevents UTI-causing bacteria from adhering to the bladder wall.\nAs effective as antibiotics for uncomplicated UTIs in some studies.",
-      "cta": "D-Mannose is nature's antibiotic for UTIs.",
-      "hashtags": "#WomensHealth #PelvicFloor #BladderHealth #WomenWellness #WomensBodyHealth #PelvicHealthTips #UTIPrevention #WomensHormones #HormoneBalance #WomensFitness"
+      "filename": "2026-07-23_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-23_1.jpg",
+      "cat_key": "dental",
+      "headline": "Tip",
+      "body": "Oil pulling with coconut oil for 10\u201315 minutes\nreduces harmful bacteria by up to 30%.\nAncient practice, modern science confirms it.",
+      "cta": "Ancient wisdom meets modern research.",
+      "hashtags": "#OralHealth #DentalTips #GumHealth #TeethCare #OralCare #DentalHealth #SmileHealth #ToothCare #OralHygiene #HealthySmile"
     },
     {
-      "filename": "2026-07-22_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-22_2.jpg",
-      "cat_key": "general",
-      "headline": "Fact",
-      "body": "Fasting for 16+ hours activates autophagy \u2014 your body's cellular recycling and repair system.",
-      "cta": "Fasting activates your body's self-repair.",
-      "hashtags": "#HealthTips #WellnessTips #NaturalHealth #HealthFacts #HealthyLiving #Supplements #NaturalRemedies #WellnessJourney #HealthAndWellness #DailyHealth"
+      "filename": "2026-07-23_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-23_2.jpg",
+      "cat_key": "weight",
+      "headline": "Did You Know?",
+      "body": "Stress triggers cortisol, which directs your body to store fat around the belly.\nManaging stress is a weight loss strategy.",
+      "cta": "Belly fat starts in your mind.",
+      "hashtags": "#WeightLoss #FatBurner #MetabolismBoost #WeightLossTips #HealthyWeight #WeightLossJourney #Slim #FatLoss #WeightLossFacts #Metabolism"
     }
   ]
 }
