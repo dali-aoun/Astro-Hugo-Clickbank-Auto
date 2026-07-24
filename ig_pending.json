@@ -1,23 +1,23 @@
 {
-  "date": "2026-07-23",
+  "date": "2026-07-24",
   "posts": [
     {
-      "filename": "2026-07-23_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-23_1.jpg",
-      "cat_key": "dental",
-      "headline": "Tip",
-      "body": "Oil pulling with coconut oil for 10\u201315 minutes\nreduces harmful bacteria by up to 30%.\nAncient practice, modern science confirms it.",
-      "cta": "Ancient wisdom meets modern research.",
-      "hashtags": "#OralHealth #DentalTips #GumHealth #TeethCare #OralCare #DentalHealth #SmileHealth #ToothCare #OralHygiene #HealthySmile"
+      "filename": "2026-07-24_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-24_1.jpg",
+      "cat_key": "brain",
+      "headline": "Did You Know?",
+      "body": "Your gut produces 95% of your body's serotonin.\nAn unhealthy gut means poor mood, brain fog, and anxiety.",
+      "cta": "The gut-brain connection is real.",
+      "hashtags": "#BrainHealth #CognitiveHealth #Nootropics #MentalClarity #BrainFog #NeuroplasticityTraining #BrainFacts #MemoryBoost #FocusTips #BrainScience"
     },
     {
-      "filename": "2026-07-23_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-23_2.jpg",
-      "cat_key": "weight",
-      "headline": "Did You Know?",
-      "body": "Stress triggers cortisol, which directs your body to store fat around the belly.\nManaging stress is a weight loss strategy.",
-      "cta": "Belly fat starts in your mind.",
-      "hashtags": "#WeightLoss #FatBurner #MetabolismBoost #WeightLossTips #HealthyWeight #WeightLossJourney #Slim #FatLoss #WeightLossFacts #Metabolism"
+      "filename": "2026-07-24_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-24_2.jpg",
+      "cat_key": "prostate",
+      "headline": "Tip",
+      "body": "Pumpkin seeds are rich in zinc \u2014 the mineral most concentrated in healthy prostate tissue.\nA handful a day supports prostate function.",
+      "cta": "Pumpkin seeds = prostate food.",
+      "hashtags": "#ProstateHealth #MensHealth #BPH #ProstateSupport #MensWellness #ProstateCancer #MaleHealth #UrinaryHealth #MensNutrition #HealthyMen"
     }
   ]
 }
