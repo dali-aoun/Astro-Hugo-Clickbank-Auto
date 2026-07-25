@@ -1,23 +1,23 @@
 {
-  "date": "2026-07-24",
+  "date": "2026-07-25",
   "posts": [
     {
-      "filename": "2026-07-24_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-24_1.jpg",
-      "cat_key": "brain",
+      "filename": "2026-07-25_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-25_1.jpg",
+      "cat_key": "beauty",
       "headline": "Did You Know?",
-      "body": "Your gut produces 95% of your body's serotonin.\nAn unhealthy gut means poor mood, brain fog, and anxiety.",
-      "cta": "The gut-brain connection is real.",
-      "hashtags": "#BrainHealth #CognitiveHealth #Nootropics #MentalClarity #BrainFog #NeuroplasticityTraining #BrainFacts #MemoryBoost #FocusTips #BrainScience"
+      "body": "Silk pillowcases reduce sleep wrinkles and hair breakage significantly.\nSmall upgrade, big results.",
+      "cta": "Switch to silk \u2014 your skin will thank you.",
+      "hashtags": "#SkinCare #Beauty #AntiAging #GlowingSkin #SkincareTips #HealthySkin #SkincareFacts #BeautyTips #NaturalBeauty #SkincareRoutine"
     },
     {
-      "filename": "2026-07-24_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-24_2.jpg",
-      "cat_key": "prostate",
+      "filename": "2026-07-25_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-25_2.jpg",
+      "cat_key": "heart",
       "headline": "Tip",
-      "body": "Pumpkin seeds are rich in zinc \u2014 the mineral most concentrated in healthy prostate tissue.\nA handful a day supports prostate function.",
-      "cta": "Pumpkin seeds = prostate food.",
-      "hashtags": "#ProstateHealth #MensHealth #BPH #ProstateSupport #MensWellness #ProstateCancer #MaleHealth #UrinaryHealth #MensNutrition #HealthyMen"
+      "body": "Dark chocolate (70%+) lowers blood pressure by 5 points.\n1\u20132 squares daily is therapeutic.",
+      "cta": "Dark chocolate is heart medicine.",
+      "hashtags": "#HeartHealth #CardiovascularHealth #HeartDisease #HeartCare #HeartHealthTips #CardiovascularFitness #HealthyHeart #HeartFacts #BloodPressure #Cholesterol"
     }
   ]
 }
