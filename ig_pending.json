@@ -1,23 +1,23 @@
 {
-  "date": "2026-07-25",
+  "date": "2026-07-26",
   "posts": [
     {
-      "filename": "2026-07-25_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-25_1.jpg",
-      "cat_key": "beauty",
-      "headline": "Did You Know?",
-      "body": "Silk pillowcases reduce sleep wrinkles and hair breakage significantly.\nSmall upgrade, big results.",
-      "cta": "Switch to silk \u2014 your skin will thank you.",
-      "hashtags": "#SkinCare #Beauty #AntiAging #GlowingSkin #SkincareTips #HealthySkin #SkincareFacts #BeautyTips #NaturalBeauty #SkincareRoutine"
+      "filename": "2026-07-26_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-26_1.jpg",
+      "cat_key": "male",
+      "headline": "Tip",
+      "body": "Cold therapy raises testosterone and reduces inflammatory cortisol.\nCold showers directly affect hormone production.",
+      "cta": "Cold showers boost testosterone.",
+      "hashtags": "#Testosterone #MensHealth #MalePerformance #TestosteroneBoost #MaleVitality #MensWellness #HormoneHealth #MaleFitness #MensFitness #Vitality"
     },
     {
-      "filename": "2026-07-25_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-25_2.jpg",
-      "cat_key": "heart",
-      "headline": "Tip",
-      "body": "Dark chocolate (70%+) lowers blood pressure by 5 points.\n1\u20132 squares daily is therapeutic.",
-      "cta": "Dark chocolate is heart medicine.",
-      "hashtags": "#HeartHealth #CardiovascularHealth #HeartDisease #HeartCare #HeartHealthTips #CardiovascularFitness #HealthyHeart #HeartFacts #BloodPressure #Cholesterol"
+      "filename": "2026-07-26_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-26_2.jpg",
+      "cat_key": "blood",
+      "headline": "Did You Know?",
+      "body": "Muscle tissue is your body's largest glucose storage depot.\nBuilding muscle is the most powerful long-term blood sugar tool.",
+      "cta": "Muscle is your body's blood sugar buffer.",
+      "hashtags": "#BloodSugar #Diabetes #PreDiabetes #MetabolicHealth #BloodSugarControl #InsulinResistance #DiabetesTips #GlucoseControl #DiabetesPrevention #HealthyBloodSugar"
     }
   ]
 }
