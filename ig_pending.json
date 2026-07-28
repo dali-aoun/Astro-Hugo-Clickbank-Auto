@@ -1,23 +1,23 @@
 {
-  "date": "2026-07-27",
+  "date": "2026-07-28",
   "posts": [
     {
-      "filename": "2026-07-27_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-27_1.jpg",
-      "cat_key": "sleep",
+      "filename": "2026-07-28_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-28_1.jpg",
+      "cat_key": "womens",
       "headline": "Did You Know?",
-      "body": "During deep sleep, your brain flushes toxic waste \u2014 including amyloid plaques linked to Alzheimer's.",
-      "cta": "Sleep is your brain's self-cleaning cycle.",
-      "hashtags": "#SleepTips #BetterSleep #SleepHealth #Insomnia #SleepScience #NaturalSleepAid #SleepBetter #SleepFacts #SleepSupport #HealthySleep"
+      "body": "Estrogen and progesterone influence brain chemistry, bone density, cardiovascular health, and immune function.",
+      "cta": "Your hormones control far more than reproduction.",
+      "hashtags": "#WomensHealth #PelvicFloor #BladderHealth #WomenWellness #WomensBodyHealth #PelvicHealthTips #UTIPrevention #WomensHormones #HormoneBalance #WomensFitness"
     },
     {
-      "filename": "2026-07-27_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-27_2.jpg",
-      "cat_key": "joint",
-      "headline": "Did You Know?",
-      "body": "Your joints contain synovial fluid \u2014 nature's lubricant.\nDehydration reduces it and causes friction and pain.",
-      "cta": "Dehydration causes joint pain.",
-      "hashtags": "#JointHealth #JointPain #Arthritis #JointCare #JointRelief #JointPainRelief #AntiInflammatory #BoneHealth #ArthritisTips #JointSupport"
+      "filename": "2026-07-28_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-28_2.jpg",
+      "cat_key": "general",
+      "headline": "Tip",
+      "body": "Sunlight in the morning sets your circadian rhythm and boosts serotonin.\n10\u201315 minutes outside within 1 hour of waking.",
+      "cta": "Morning sunlight is the best free health hack.",
+      "hashtags": "#HealthTips #WellnessTips #NaturalHealth #HealthFacts #HealthyLiving #Supplements #NaturalRemedies #WellnessJourney #HealthAndWellness #DailyHealth"
     }
   ]
 }
