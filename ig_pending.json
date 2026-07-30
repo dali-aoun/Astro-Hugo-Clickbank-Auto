@@ -1,23 +1,23 @@
 {
-  "date": "2026-07-29",
+  "date": "2026-07-30",
   "posts": [
     {
-      "filename": "2026-07-29_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-29_1.jpg",
-      "cat_key": "dental",
-      "headline": "Warning",
-      "body": "Dry mouth is a silent tooth destroyer.\nSaliva neutralizes acids and remineralizes enamel.\nWithout it, cavities accelerate.",
-      "cta": "Stay hydrated for healthier teeth.",
-      "hashtags": "#OralHealth #DentalTips #GumHealth #TeethCare #OralCare #DentalHealth #SmileHealth #ToothCare #OralHygiene #HealthySmile"
+      "filename": "2026-07-30_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-30_1.jpg",
+      "cat_key": "brain",
+      "headline": "Tip",
+      "body": "Learning a new skill creates new neural pathways \u2014 literally changing your brain's structure.\nLearn something new every week.",
+      "cta": "New skills = new brain connections.",
+      "hashtags": "#BrainHealth #CognitiveHealth #Nootropics #MentalClarity #BrainFog #NeuroplasticityTraining #BrainFacts #MemoryBoost #FocusTips #BrainScience"
     },
     {
-      "filename": "2026-07-29_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-29_2.jpg",
-      "cat_key": "weight",
-      "headline": "Tip",
-      "body": "A 10-minute walk after eating reduces blood sugar spikes by 22%.\nThis simple habit prevents fat storage.",
-      "cta": "Walk after meals \u2014 it works.",
-      "hashtags": "#WeightLoss #FatBurner #MetabolismBoost #WeightLossTips #HealthyWeight #WeightLossJourney #Slim #FatLoss #WeightLossFacts #Metabolism"
+      "filename": "2026-07-30_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-30_2.jpg",
+      "cat_key": "prostate",
+      "headline": "Warning",
+      "body": "Red meat and dairy increase prostate cancer risk when consumed in excess.\nAim for 2 servings or less per week.",
+      "cta": "Watch your red meat intake.",
+      "hashtags": "#ProstateHealth #MensHealth #BPH #ProstateSupport #MensWellness #ProstateCancer #MaleHealth #UrinaryHealth #MensNutrition #HealthyMen"
     }
   ]
 }
