@@ -1,23 +1,23 @@
 {
-  "date": "2026-07-30",
+  "date": "2026-07-31",
   "posts": [
     {
-      "filename": "2026-07-30_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-30_1.jpg",
-      "cat_key": "brain",
+      "filename": "2026-07-31_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-31_1.jpg",
+      "cat_key": "beauty",
       "headline": "Tip",
-      "body": "Learning a new skill creates new neural pathways \u2014 literally changing your brain's structure.\nLearn something new every week.",
-      "cta": "New skills = new brain connections.",
-      "hashtags": "#BrainHealth #CognitiveHealth #Nootropics #MentalClarity #BrainFog #NeuroplasticityTraining #BrainFacts #MemoryBoost #FocusTips #BrainScience"
+      "body": "Vitamin C serum (morning) + retinol (night) is the most effective anti-aging routine.\nThey work on different skin repair pathways.",
+      "cta": "Morning C, night retinol \u2014 the ultimate combo.",
+      "hashtags": "#SkinCare #Beauty #AntiAging #GlowingSkin #SkincareTips #HealthySkin #SkincareFacts #BeautyTips #NaturalBeauty #SkincareRoutine"
     },
     {
-      "filename": "2026-07-30_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-30_2.jpg",
-      "cat_key": "prostate",
+      "filename": "2026-07-31_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-07-31_2.jpg",
+      "cat_key": "heart",
       "headline": "Warning",
-      "body": "Red meat and dairy increase prostate cancer risk when consumed in excess.\nAim for 2 servings or less per week.",
-      "cta": "Watch your red meat intake.",
-      "hashtags": "#ProstateHealth #MensHealth #BPH #ProstateSupport #MensWellness #ProstateCancer #MaleHealth #UrinaryHealth #MensNutrition #HealthyMen"
+      "body": "Loneliness raises cortisol chronically, increasing heart disease risk by 29%.\nSocial connection is literally heart medicine.",
+      "cta": "Loneliness is as dangerous as smoking.",
+      "hashtags": "#HeartHealth #CardiovascularHealth #HeartDisease #HeartCare #HeartHealthTips #CardiovascularFitness #HealthyHeart #HeartFacts #BloodPressure #Cholesterol"
     }
   ]
 }
