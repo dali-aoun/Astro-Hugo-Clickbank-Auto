@@ -1,23 +1,23 @@
 {
-  "date": "2026-08-01",
+  "date": "2026-08-02",
   "posts": [
     {
-      "filename": "2026-08-01_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-01_1.jpg",
-      "cat_key": "male",
-      "headline": "Warning",
-      "body": "Alcohol reduces testosterone by up to 23% per session.\nEven moderate drinking affects hormone levels for 24 hours.",
-      "cta": "Every drink lowers your testosterone.",
-      "hashtags": "#Testosterone #MensHealth #MalePerformance #TestosteroneBoost #MaleVitality #MensWellness #HormoneHealth #MaleFitness #MensFitness #Vitality"
+      "filename": "2026-08-02_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-02_1.jpg",
+      "cat_key": "sleep",
+      "headline": "Tip",
+      "body": "A consistent WAKE time is more important than a consistent bedtime.\nYour circadian rhythm anchors on wake time.",
+      "cta": "Focus on your wake time, not bedtime.",
+      "hashtags": "#SleepTips #BetterSleep #SleepHealth #Insomnia #SleepScience #NaturalSleepAid #SleepBetter #SleepFacts #SleepSupport #HealthySleep"
     },
     {
-      "filename": "2026-08-01_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-01_2.jpg",
-      "cat_key": "blood",
+      "filename": "2026-08-02_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-02_2.jpg",
+      "cat_key": "joint",
       "headline": "Tip",
-      "body": "Cinnamon (Ceylon) reduces fasting blood glucose by 11\u201329% in studies.\n1/2 tsp daily is the effective dose.",
-      "cta": "Ceylon cinnamon lowers blood sugar.",
-      "hashtags": "#BloodSugar #Diabetes #PreDiabetes #MetabolicHealth #BloodSugarControl #InsulinResistance #DiabetesTips #GlucoseControl #DiabetesPrevention #HealthyBloodSugar"
+      "body": "Swimming reduces body weight impact by 90%.\nStrength and cardio without stress on the joints.",
+      "cta": "Swimming is the perfect joint exercise.",
+      "hashtags": "#JointHealth #JointPain #Arthritis #JointCare #JointRelief #JointPainRelief #AntiInflammatory #BoneHealth #ArthritisTips #JointSupport"
     }
   ]
 }
