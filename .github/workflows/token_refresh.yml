@@ -9,31 +9,11 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     steps:
-      - name: Refresh Instagram token
-        id: refresh
+      - uses: actions/checkout@v4
+
+      - name: Refresh Instagram token and update secret
         env:
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
-        run: |
-          python3 -c "
-import urllib.request, json, sys, os
-token = os.environ['INSTAGRAM_ACCESS_TOKEN']
-url = 'https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=' + token
-with urllib.request.urlopen(url, timeout=30) as r:
-    data = json.loads(r.read())
-new_token = data['access_token']
-days = data.get('expires_in', 0) // 86400
-print('expires_in_days=' + str(days))
-with open(os.environ['GITHUB_ENV'], 'a') as f:
-    f.write('NEW_IG_TOKEN=' + new_token + '\n')
-    f.write('TOKEN_DAYS=' + str(days) + '\n')
-print('Token Instagram rafraichi pour ' + str(days) + ' jours')
-"
-
-      - name: Update secret
-        env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
-        run: |
-          gh secret set INSTAGRAM_ACCESS_TOKEN \
-            --repo "${{ github.repository }}" \
-            --body "${{ env.NEW_IG_TOKEN }}"
-          echo "Secret INSTAGRAM_ACCESS_TOKEN mis a jour — valide ${{ env.TOKEN_DAYS }} jours"
+          REPO: ${{ github.repository }}
+        run: python3 refresh_token.py
