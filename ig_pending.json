@@ -1,23 +1,23 @@
 {
-  "date": "2026-08-02",
+  "date": "2026-08-03",
   "posts": [
     {
-      "filename": "2026-08-02_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-02_1.jpg",
-      "cat_key": "sleep",
+      "filename": "2026-08-03_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-03_1.jpg",
+      "cat_key": "womens",
       "headline": "Tip",
-      "body": "A consistent WAKE time is more important than a consistent bedtime.\nYour circadian rhythm anchors on wake time.",
-      "cta": "Focus on your wake time, not bedtime.",
-      "hashtags": "#SleepTips #BetterSleep #SleepHealth #Insomnia #SleepScience #NaturalSleepAid #SleepBetter #SleepFacts #SleepSupport #HealthySleep"
+      "body": "Pumpkin seed extract reduces overactive bladder symptoms by 40%.\nClinically studied for both frequency and urgency.",
+      "cta": "Pumpkin seed extract calms an overactive bladder.",
+      "hashtags": "#WomensHealth #PelvicFloor #BladderHealth #WomenWellness #WomensBodyHealth #PelvicHealthTips #UTIPrevention #WomensHormones #HormoneBalance #WomensFitness"
     },
     {
-      "filename": "2026-08-02_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-02_2.jpg",
-      "cat_key": "joint",
-      "headline": "Tip",
-      "body": "Swimming reduces body weight impact by 90%.\nStrength and cardio without stress on the joints.",
-      "cta": "Swimming is the perfect joint exercise.",
-      "hashtags": "#JointHealth #JointPain #Arthritis #JointCare #JointRelief #JointPainRelief #AntiInflammatory #BoneHealth #ArthritisTips #JointSupport"
+      "filename": "2026-08-03_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-03_2.jpg",
+      "cat_key": "general",
+      "headline": "Warning",
+      "body": "Most Americans are deficient in Vitamin D, magnesium, Omega-3, and zinc.",
+      "cta": "The 4 nutrients most Americans are missing.",
+      "hashtags": "#HealthTips #WellnessTips #NaturalHealth #HealthFacts #HealthyLiving #Supplements #NaturalRemedies #WellnessJourney #HealthAndWellness #DailyHealth"
     }
   ]
 }
