@@ -1,0 +1,16 @@
+name: Debug Pinterest Account
+on:
+  workflow_dispatch:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check account and boards
+        env:
+          PINTEREST_ACCESS_TOKEN: ${{ secrets.PINTEREST_ACCESS_TOKEN }}
+        run: |
+          echo "=== USER ==="
+          curl -s https://api.pinterest.com/v5/user_account -H "Authorization: Bearer $PINTEREST_ACCESS_TOKEN"
+          echo ""
+          echo "=== BOARDS ==="
+          curl -s "https://api.pinterest.com/v5/boards?page_size=25" -H "Authorization: Bearer $PINTEREST_ACCESS_TOKEN"
