@@ -1,16 +1,16 @@
 {
-  "board_idx": 305,
+  "board_idx": 310,
   "content_idx": {
     "dental": 6,
     "weight": 6,
     "brain": 6,
     "prostate": 6,
     "beauty": 6,
-    "heart": 5,
-    "male": 5,
-    "blood": 5,
-    "sleep": 5,
-    "joint": 5,
+    "heart": 6,
+    "male": 6,
+    "blood": 6,
+    "sleep": 6,
+    "joint": 6,
     "womens": 5,
     "general": 5
   }
