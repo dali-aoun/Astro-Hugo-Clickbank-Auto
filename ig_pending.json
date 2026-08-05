@@ -1,23 +1,23 @@
 {
-  "date": "2026-08-04",
+  "date": "2026-08-05",
   "posts": [
     {
-      "filename": "2026-08-04_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-04_1.jpg",
-      "cat_key": "dental",
-      "headline": "Fact",
-      "body": "Vitamin D deficiency is directly linked to higher rates of tooth decay.\nYour teeth need vitamins too.",
-      "cta": "Vitamin D = stronger teeth.",
-      "hashtags": "#OralHealth #DentalTips #GumHealth #TeethCare #OralCare #DentalHealth #SmileHealth #ToothCare #OralHygiene #HealthySmile"
+      "filename": "2026-08-05_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-05_1.jpg",
+      "cat_key": "brain",
+      "headline": "Warning",
+      "body": "Even moderate drinking reduces brain volume over time.\nAlcohol kills brain cells and shrinks the prefrontal cortex.",
+      "cta": "Alcohol shrinks your brain.",
+      "hashtags": "#BrainHealth #CognitiveHealth #Nootropics #MentalClarity #BrainFog #NeuroplasticityTraining #BrainFacts #MemoryBoost #FocusTips #BrainScience"
     },
     {
-      "filename": "2026-08-04_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-04_2.jpg",
-      "cat_key": "weight",
-      "headline": "Statistic",
-      "body": "70% of your weight loss results come from what you eat.\nExercise alone rarely works without diet changes.",
-      "cta": "You can't out-exercise a bad diet.",
-      "hashtags": "#WeightLoss #FatBurner #MetabolismBoost #WeightLossTips #HealthyWeight #WeightLossJourney #Slim #FatLoss #WeightLossFacts #Metabolism"
+      "filename": "2026-08-05_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-05_2.jpg",
+      "cat_key": "prostate",
+      "headline": "Fact",
+      "body": "Exercise reduces the risk of BPH by up to 25%.\nJust 30 minutes of walking daily is enough.",
+      "cta": "Walking protects your prostate.",
+      "hashtags": "#ProstateHealth #MensHealth #BPH #ProstateSupport #MensWellness #ProstateCancer #MaleHealth #UrinaryHealth #MensNutrition #HealthyMen"
     }
   ]
 }
