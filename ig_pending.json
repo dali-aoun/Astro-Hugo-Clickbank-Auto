@@ -1,23 +1,23 @@
 {
-  "date": "2026-08-05",
+  "date": "2026-08-06",
   "posts": [
     {
-      "filename": "2026-08-05_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-05_1.jpg",
-      "cat_key": "brain",
-      "headline": "Warning",
-      "body": "Even moderate drinking reduces brain volume over time.\nAlcohol kills brain cells and shrinks the prefrontal cortex.",
-      "cta": "Alcohol shrinks your brain.",
-      "hashtags": "#BrainHealth #CognitiveHealth #Nootropics #MentalClarity #BrainFog #NeuroplasticityTraining #BrainFacts #MemoryBoost #FocusTips #BrainScience"
+      "filename": "2026-08-06_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-06_1.jpg",
+      "cat_key": "beauty",
+      "headline": "Fact",
+      "body": "Hyaluronic acid holds up to 1000x its weight in water.\nThe most effective hydrating molecule for skin.",
+      "cta": "One molecule holds 1000x its weight in water.",
+      "hashtags": "#SkinCare #Beauty #AntiAging #GlowingSkin #SkincareTips #HealthySkin #SkincareFacts #BeautyTips #NaturalBeauty #SkincareRoutine"
     },
     {
-      "filename": "2026-08-05_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-05_2.jpg",
-      "cat_key": "prostate",
+      "filename": "2026-08-06_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-06_2.jpg",
+      "cat_key": "heart",
       "headline": "Fact",
-      "body": "Exercise reduces the risk of BPH by up to 25%.\nJust 30 minutes of walking daily is enough.",
-      "cta": "Walking protects your prostate.",
-      "hashtags": "#ProstateHealth #MensHealth #BPH #ProstateSupport #MensWellness #ProstateCancer #MaleHealth #UrinaryHealth #MensNutrition #HealthyMen"
+      "body": "Magnesium deficiency is linked to 7x higher risk of sudden cardiac death.\nIt regulates heart rhythm and blood pressure.",
+      "cta": "Magnesium protects heart rhythm.",
+      "hashtags": "#HeartHealth #CardiovascularHealth #HeartDisease #HeartCare #HeartHealthTips #CardiovascularFitness #HealthyHeart #HeartFacts #BloodPressure #Cholesterol"
     }
   ]
 }
