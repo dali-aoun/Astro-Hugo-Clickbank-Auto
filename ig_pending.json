@@ -1,23 +1,23 @@
 {
-  "date": "2026-08-06",
+  "date": "2026-08-07",
   "posts": [
     {
-      "filename": "2026-08-06_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-06_1.jpg",
-      "cat_key": "beauty",
-      "headline": "Fact",
-      "body": "Hyaluronic acid holds up to 1000x its weight in water.\nThe most effective hydrating molecule for skin.",
-      "cta": "One molecule holds 1000x its weight in water.",
-      "hashtags": "#SkinCare #Beauty #AntiAging #GlowingSkin #SkincareTips #HealthySkin #SkincareFacts #BeautyTips #NaturalBeauty #SkincareRoutine"
+      "filename": "2026-08-07_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-07_1.jpg",
+      "cat_key": "male",
+      "headline": "Statistic",
+      "body": "40% of men over 40 have some degree of erectile dysfunction.\nCardiovascular health and ED share the same root causes.",
+      "cta": "40% of men over 40 experience ED.",
+      "hashtags": "#Testosterone #MensHealth #MalePerformance #TestosteroneBoost #MaleVitality #MensWellness #HormoneHealth #MaleFitness #MensFitness #Vitality"
     },
     {
-      "filename": "2026-08-06_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-06_2.jpg",
-      "cat_key": "heart",
-      "headline": "Fact",
-      "body": "Magnesium deficiency is linked to 7x higher risk of sudden cardiac death.\nIt regulates heart rhythm and blood pressure.",
-      "cta": "Magnesium protects heart rhythm.",
-      "hashtags": "#HeartHealth #CardiovascularHealth #HeartDisease #HeartCare #HeartHealthTips #CardiovascularFitness #HealthyHeart #HeartFacts #BloodPressure #Cholesterol"
+      "filename": "2026-08-07_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-07_2.jpg",
+      "cat_key": "blood",
+      "headline": "Warning",
+      "body": "Fruit juice concentrates sugar \u2014 a glass of OJ has the sugar of 4 oranges.\nEat the whole fruit.",
+      "cta": "Fruit juice is sugar water.",
+      "hashtags": "#BloodSugar #Diabetes #PreDiabetes #MetabolicHealth #BloodSugarControl #InsulinResistance #DiabetesTips #GlucoseControl #DiabetesPrevention #HealthyBloodSugar"
     }
   ]
 }
