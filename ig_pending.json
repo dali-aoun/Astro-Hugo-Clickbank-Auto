@@ -1,23 +1,23 @@
 {
-  "date": "2026-08-07",
+  "date": "2026-08-08",
   "posts": [
     {
-      "filename": "2026-08-07_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-07_1.jpg",
-      "cat_key": "womens",
-      "headline": "Fact",
-      "body": "Vitamin D deficiency is linked to overactive bladder and pelvic floor weakness.",
-      "cta": "Vitamin D deficiency weakens your pelvic floor.",
-      "hashtags": "#WomensHealth #PelvicFloor #BladderHealth #WomenWellness #WomensBodyHealth #PelvicHealthTips #UTIPrevention #WomensHormones #HormoneBalance #WomensFitness"
+      "filename": "2026-08-08_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-08_1.jpg",
+      "cat_key": "dental",
+      "headline": "Tip",
+      "body": "Flossing removes plaque from 35% of tooth surfaces your brush can't reach.\nSkip floss, skip a third of your mouth.",
+      "cta": "Flossing isn't optional.",
+      "hashtags": "#OralHealth #DentalTips #GumHealth #TeethCare #OralCare #DentalHealth #SmileHealth #ToothCare #OralHygiene #HealthySmile"
     },
     {
-      "filename": "2026-08-07_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-07_2.jpg",
-      "cat_key": "general",
-      "headline": "Fact",
-      "body": "The liver processes over 500 functions \u2014 detoxification, hormone regulation, and cholesterol production.",
-      "cta": "Your liver does 500 things \u2014 protect it.",
-      "hashtags": "#HealthTips #WellnessTips #NaturalHealth #HealthFacts #HealthyLiving #Supplements #NaturalRemedies #WellnessJourney #HealthAndWellness #DailyHealth"
+      "filename": "2026-08-08_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-08_2.jpg",
+      "cat_key": "weight",
+      "headline": "Warning",
+      "body": "Skipping meals slows your metabolism by up to 30%.\nYour body goes into starvation mode and holds onto fat.",
+      "cta": "Skipping meals is counterproductive.",
+      "hashtags": "#WeightLoss #FatBurner #MetabolismBoost #WeightLossTips #HealthyWeight #WeightLossJourney #Slim #FatLoss #WeightLossFacts #Metabolism"
     }
   ]
 }
