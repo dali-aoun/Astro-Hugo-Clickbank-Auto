@@ -1,12 +1,12 @@
 {
-  "board_idx": 325,
+  "board_idx": 330,
   "content_idx": {
     "dental": 8,
-    "weight": 7,
-    "brain": 7,
-    "prostate": 7,
-    "beauty": 7,
-    "heart": 7,
+    "weight": 8,
+    "brain": 8,
+    "prostate": 8,
+    "beauty": 8,
+    "heart": 8,
     "male": 7,
     "blood": 7,
     "sleep": 7,
