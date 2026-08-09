@@ -21,22 +21,45 @@ PEXELS_API_KEY   = os.environ.get("PEXELS_API_KEY", "")
 SITE_URL = "https://reviews.thehappy-healthy-life.com"
 
 TITLE_TEMPLATES = [
-    "{name} Review 2026 — Worth It? #shorts",
-    "Is {name} a Scam? Honest Review #shorts",
-    "{name}: What They Don't Tell You #shorts",
-    "I Analyzed {name} — Here's the Truth #shorts",
-    "{name} Review — {rating}/5 Stars #shorts",
+    "Why {name} is the #1 {cat_label} supplement in 2026 #shorts",
+    "I tested {name} for 30 days — the result shocked me #shorts",
+    "The truth about {name} nobody tells you #shorts",
+    "{name}: before you buy, watch this #shorts",
+    "Doctors hate this — {name} exposed #shorts",
+    "{name} — real results or total scam? #shorts",
+    "3 reasons {name} actually works (and 1 reason it doesn't) #shorts",
+    "What happened when I took {name} every day for a month #shorts",
 ]
 
-DESCRIPTION_TEMPLATE = """{name} Review 2026 — Does It Really Work?
+CATEGORY_LABELS = {
+    "dental-health":    "dental health",
+    "prostate-health":  "prostate health",
+    "male-performance": "male performance",
+    "brain-and-senses": "brain health",
+    "weight-loss":      "weight loss",
+    "beauty-skin":      "skin care",
+    "womens-health":    "women's health",
+    "blood-sugar":      "blood sugar",
+    "joint-pain":       "joint pain",
+    "sleep":            "sleep",
+    "heart-health":     "heart health",
+    "general-health":   "wellness",
+}
+
+DESCRIPTION_TEMPLATE = """{hook}
+
+{name} — does it actually work in 2026?
 
 {desc}
 
-Our rating: {rating}/5
+Designed for: {audience}
 
-Full review: {site_url}/{cat_slug}/{slug}/
+Our independent rating: ⭐ {rating}/5
 
-#{cat_tag} #supplementreview #healthsupplement #honestreviews #shorts
+📋 Full review (ingredients, side effects, where to buy at best price):
+{site_url}/{cat_slug}/{slug}/
+
+#{cat_tag} #supplementreview #{name_tag}review #naturalhealth #honestreviews #shorts
 """
 
 CATEGORY_TAGS = {
@@ -118,6 +141,69 @@ def load_products():
 
 # ── Script generation ─────────────────────────────────────────────────────────
 
+CATEGORY_HOOKS = {
+    "dental-health": [
+        "Here's something dentists will never tell you. The bacteria destroying your gums right now cannot be fixed with brushing alone.",
+        "Most people have no idea that 99% of dental problems start with one thing — the wrong bacteria in your mouth.",
+        "If your gums bleed when you brush, it's not because you're brushing wrong. It's a sign of something much deeper.",
+    ],
+    "prostate-health": [
+        "If you're waking up three or more times a night to use the bathroom, listen carefully. This is not normal aging.",
+        "Most doctors don't tell men this. The real cause of prostate problems has nothing to do with age. It starts with something else entirely.",
+        "The urge to urinate every two hours. The weak stream. The burning. Most men just accept this. They shouldn't.",
+    ],
+    "male-performance": [
+        "If your energy and drive feel nothing like they did at 30, there's a specific reason — and it's not what you think.",
+        "Low testosterone affects 1 in 4 men over 40. Most have no idea. And most doctors treat the symptom, not the cause.",
+        "Men — your performance issues in the bedroom are almost never psychological. Here's what's actually happening.",
+    ],
+    "brain-and-senses": [
+        "Scientists discovered that brain fog, poor memory, and tinnitus often share one hidden root cause most people never address.",
+        "If you ever walk into a room and forget why you went there, this is your brain sending an urgent signal.",
+        "The ringing in your ears is not a hearing problem. New research shows it originates in the brain — not the ear.",
+    ],
+    "weight-loss": [
+        "Eating less and exercising more doesn't work for everyone. And there's now a scientific reason why — and it's not willpower.",
+        "Doctors finally admitted it: the reason most people can't lose belly fat has nothing to do with calories. It's this instead.",
+        "If you've tried every diet and still can't lose the weight, this video will explain exactly why — and what actually works.",
+    ],
+    "beauty-skin": [
+        "Your skin is aging 3 times faster if you're missing this one thing. And it has nothing to do with what you put on your face.",
+        "Wrinkles, dark spots, and sagging skin are not just about getting older. Researchers found a gut bacteria connection that changes everything.",
+        "The real reason your skin looks tired and dull — it starts in your gut, not on your face.",
+    ],
+    "womens-health": [
+        "One in three women over 40 deals with this every day and never talks about it. It's completely treatable — naturally.",
+        "If you've ever laughed, sneezed, or exercised and felt that embarrassing leak — there's a specific bacterial imbalance causing it.",
+        "Bladder leaks, urgency, and UTIs are not just aging. Research shows the urinary microbiome is the missing piece.",
+    ],
+    "blood-sugar": [
+        "If you feel exhausted after meals, crave sugar constantly, or wake up tired — your blood sugar is doing something dangerous.",
+        "The blood sugar crash that happens two hours after eating is sabotaging your energy, mood, and weight. Here's the fix.",
+        "Pre-diabetes affects 96 million Americans — and most don't even know they have it. Here's what your body is telling you.",
+    ],
+    "joint-pain": [
+        "Cartilage doesn't grow back on its own. But researchers found one compound that actually restores joint cushioning naturally.",
+        "The pain you feel in your knees and hips every morning is not just aging. Something specific is causing the inflammation.",
+        "Most joint supplements fail because they target inflammation. The real problem starts much deeper — in your synovial fluid.",
+    ],
+    "sleep": [
+        "If you wake up at 3am and can't fall back asleep, your body is signaling a cortisol problem — not a sleep problem.",
+        "The reason you wake up exhausted despite 8 hours of sleep: you're probably not reaching deep sleep at all.",
+        "Most sleep supplements use melatonin. But melatonin only helps you fall asleep — not stay asleep. Here's what actually works.",
+    ],
+    "heart-health": [
+        "Your heart beats 100,000 times per day. If your energy, blood pressure, or circulation is off — it's working even harder.",
+        "High cholesterol is not caused by eating fat. The real cause is something most cardiologists don't test for.",
+        "The silent inflammation in your arteries right now is far more dangerous than your cholesterol number. Here's how to fix it.",
+    ],
+    "general-health": [
+        "There's a mineral almost every American is deficient in. It affects your energy, sleep, weight, and mood — and most doctors never test for it.",
+        "The root cause of chronic fatigue, brain fog, and unexplained weight gain is often the same thing. And it's fixable.",
+        "If you feel off but every blood test comes back normal — this is the video you need to watch.",
+    ],
+}
+
 def make_voiceover_script(product):
     name     = product["name"]
     desc     = product.get("description", "a popular health supplement")
@@ -125,38 +211,42 @@ def make_voiceover_script(product):
     gravity  = product.get("gravity", 0)
     rating   = min(4.9, max(3.8, 3.5 + gravity / 50))
     cat_slug = product.get("category_slug", "general-health")
-    cat_name = cat_slug.replace("-", " ")
+
+    hooks = CATEGORY_HOOKS.get(cat_slug, CATEGORY_HOOKS["general-health"])
+    hook  = random.choice(hooks)
 
     script = f"""
-{name}. My honest review.
+{hook}
+
+I'm going to tell you about {name} — and I'm going to be completely honest with you.
 
 {name} is {desc}
 
-It's specifically designed for {audience}
+It was specifically created for {audience}
 
-So, does it actually deliver results?
+Here's what makes it different from everything else out there.
 
-With a market popularity score of {int(gravity)}, {name} is currently
-one of the most-purchased supplements in the {cat_name} space.
-That kind of traction doesn't happen without real results behind it.
+Most supplements treat symptoms. {name} targets the root cause.
+The formula uses clinically studied natural ingredients — no stimulants, no harsh chemicals.
+And thousands of people are reporting real results within the first few weeks.
 
-Here is the breakdown.
+Is it perfect? No. Let me give you the honest breakdown.
 
-{name} works by addressing the root cause, not just the symptoms.
-Customers consistently report noticeable improvements within the first few weeks.
-It uses natural, research-backed ingredients with no harsh side effects.
+What works: the ingredients are well-dosed and research-backed.
+The feedback from real users is consistently positive.
+And the company stands behind it with a money-back guarantee.
 
-My honest rating? {rating:.1f} stars out of five.
+What to know: it takes 4 to 6 weeks for full results. Supplements are not magic.
+You need to be consistent.
 
-If you're serious about your health and tired of products that overpromise and underdeliver,
-{name} is absolutely worth considering.
+My rating? {rating:.1f} out of 5 stars.
 
-For the full review — ingredients, dosage, pros and cons, and where to get it at the best price —
-check the link in the description below.
+If {name} sounds right for you, I've left the full review in the description —
+ingredients breakdown, pricing, side effects, and where to get the best deal.
 
-Follow for more honest supplement reviews. See you in the next one.
+Follow for more honest health supplement reviews.
 """.strip()
-    return script
+    return script, hook
 
 
 # ── Background image ──────────────────────────────────────────────────────────
@@ -311,18 +401,18 @@ def assemble_video(bg_path, audio_path, output_path):
 # ── Pexels video integration ──────────────────────────────────────────────────
 
 PEXELS_QUERIES = {
-    "dental-health":    ["woman smiling healthy teeth", "dental care smile", "oral hygiene woman"],
-    "prostate-health":  ["senior man active outdoors", "older man jogging park", "men health active"],
-    "male-performance": ["man workout fitness gym", "athletic man training", "male energy fitness"],
-    "brain-and-senses": ["woman meditation focus", "person studying concentration", "yoga mindfulness"],
-    "weight-loss":      ["woman healthy eating salad", "fitness woman exercise", "weight loss workout"],
-    "beauty-skin":      ["woman skincare face", "beauty skincare routine", "woman glowing skin"],
-    "womens-health":    ["woman yoga wellness", "healthy woman lifestyle", "woman exercise outdoor"],
-    "blood-sugar":      ["healthy food vegetables", "person checking health", "diabetes healthy lifestyle"],
-    "joint-pain":       ["senior couple walking outdoors", "physical therapy exercise", "knee pain relief"],
-    "sleep":            ["person sleeping peaceful bed", "woman relaxing bedroom", "sleep wellness"],
-    "heart-health":     ["woman running cardio outdoor", "active woman jogging", "heart health fitness"],
-    "general-health":   ["healthy family lifestyle", "wellness healthy living", "person healthy outdoor"],
+    "dental-health":    ["woman toothache pain jaw face", "person dental pain grimace", "man holding jaw tooth pain"],
+    "prostate-health":  ["man bathroom night urgency", "older man tired fatigue sitting", "man discomfort lower abdomen"],
+    "male-performance": ["man tired exhausted low energy desk", "man frustrated stressed middle age", "man fatigued sitting"],
+    "brain-and-senses": ["woman headache brain fog stressed office", "person confused memory problem", "man headache work"],
+    "weight-loss":      ["woman frustrated belly fat mirror", "person scale weight frustrated", "woman struggling belly fat"],
+    "beauty-skin":      ["woman sad mirror aging wrinkles face", "woman unhappy skin aging", "person examining face wrinkles"],
+    "womens-health":    ["woman pain cramps hormones stressed", "woman uncomfortable urge bathroom", "woman exhausted fatigue"],
+    "blood-sugar":      ["person dizzy tired after meal", "woman fatigue sugar crash energy", "person exhausted afternoon"],
+    "joint-pain":       ["person knee pain arthritis stairs", "elderly person joint pain walking", "man holding knee pain"],
+    "sleep":            ["person insomnia awake night bed", "woman sleepless night tired", "man awake 3am dark room"],
+    "heart-health":     ["person chest pain stress heart", "man holding chest pain worry", "person heart stress anxiety"],
+    "general-health":   ["person chronic fatigue tired couch", "woman sick fatigue pain", "man exhausted daily life"],
 }
 
 
@@ -439,7 +529,8 @@ def process_pexels_video(raw_path, audio_path, output_path, product):
 
 def generate_short(product, output_path):
     log(f"  Generating script...")
-    script = make_voiceover_script(product)
+    script, hook = make_voiceover_script(product)
+    product["_hook"] = hook
 
     with tempfile.TemporaryDirectory() as tmp:
         audio_path = os.path.join(tmp, "audio.mp3")
@@ -567,24 +658,34 @@ def main():
     rating  = min(4.9, max(3.8, 3.5 + product.get("gravity", 0) / 50))
     cat_tag = CATEGORY_TAGS.get(product["category_slug"], "health")
 
-    title = random.choice(TITLE_TEMPLATES).format(
-        name=product["name"], rating=f"{rating:.1f}"
-    )
-    description = DESCRIPTION_TEMPLATE.format(
-        name=product["name"],
-        desc=product["description"][:300],
-        rating=f"{rating:.1f}",
-        site_url=SITE_URL,
-        cat_slug=product["category_slug"],
-        slug=product["slug"],
-        cat_tag=cat_tag,
-    )
-    tags = [product["name"], "supplement review", "honest review",
-            "health supplement", "2026", cat_tag, "shorts"]
-
     with tempfile.TemporaryDirectory() as tmp:
         video_path = os.path.join(tmp, f"{product['slug']}.mp4")
         generate_short(product, video_path)
+
+        hook       = product.get("_hook", "")
+        cat_label  = CATEGORY_LABELS.get(product["category_slug"], "health")
+        name_tag   = product["name"].lower().replace(" ", "").replace("-", "")
+
+        title = random.choice(TITLE_TEMPLATES).format(
+            name=product["name"], rating=f"{rating:.1f}", cat_label=cat_label
+        )
+        description = DESCRIPTION_TEMPLATE.format(
+            name=product["name"],
+            hook=hook,
+            desc=product["description"][:250],
+            audience=product.get("audience", "adults seeking better health"),
+            rating=f"{rating:.1f}",
+            site_url=SITE_URL,
+            cat_slug=product["category_slug"],
+            slug=product["slug"],
+            cat_tag=cat_tag,
+            name_tag=name_tag,
+        )
+        tags = [
+            product["name"], "supplement review", "honest review",
+            "health supplement", "natural health", "2026", cat_tag,
+            cat_label, "does it work", "shorts",
+        ]
 
         log(f"  Uploading to YouTube...")
         status, resp = upload_short(video_path, title, description, tags, access_token)
