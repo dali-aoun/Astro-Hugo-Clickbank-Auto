@@ -32,18 +32,18 @@ PEXELS_API_KEY = os.environ.get("PEXELS_API_KEY", "")
 
 # ── Pexels search queries per category ───────────────────────────────────────
 PEXELS_QUERIES = {
-    "dental-health":    ["woman smiling healthy teeth", "dental care woman", "oral hygiene routine"],
-    "prostate-health":  ["senior man active healthy", "older man jogging outdoors", "men health active lifestyle"],
-    "male-performance": ["man workout fitness gym", "athletic man training", "male energy fitness"],
-    "brain-and-senses": ["woman meditation focus", "person studying concentration", "brain health yoga mindfulness"],
-    "weight-loss":      ["woman healthy eating salad", "fitness woman exercise", "weight loss workout active"],
-    "beauty-skin":      ["woman skincare routine", "healthy glowing skin woman", "beauty face care ritual"],
-    "womens-health":    ["woman yoga wellness", "healthy woman exercise outdoor", "women fitness lifestyle"],
-    "blood-sugar":      ["healthy eating vegetables fruits", "woman healthy diet kitchen", "person healthy lifestyle"],
-    "joint-pain":       ["senior person stretching yoga", "older adult exercise gentle", "joint mobility workout"],
-    "sleep":            ["person sleeping peacefully", "woman resting bedroom calm", "good night sleep relaxing"],
-    "heart-health":     ["woman running cardio outdoor", "heart healthy lifestyle active", "person exercise health park"],
-    "general-health":   ["healthy lifestyle woman nature", "wellness nutrition healthy", "person healthy living outdoor"],
+    "dental-health":    ["woman toothache jaw pain grimace", "person dental pain holding face", "man tooth pain suffering"],
+    "prostate-health":  ["man bathroom urgency night discomfort", "older man tired low energy", "man sitting discomfort"],
+    "male-performance": ["man exhausted tired low energy sitting", "man frustrated stressed bedroom", "man fatigue middle age"],
+    "brain-and-senses": ["woman headache brain fog stressed", "person memory problem confused", "person tinnitus ear pain"],
+    "weight-loss":      ["woman frustrated belly fat scale", "person stomach fat struggle mirror", "woman unhappy body weight"],
+    "beauty-skin":      ["woman sad wrinkles aging mirror", "woman aging skin unhappy reflection", "person examine skin face"],
+    "womens-health":    ["woman pain cramps hormones stressed", "woman discomfort pelvic bathroom urgency", "woman exhausted hormonal"],
+    "blood-sugar":      ["person dizzy fatigue sugar crash meal", "woman tired energy crash afternoon", "person exhausted lunch"],
+    "joint-pain":       ["person knee pain stairs arthritis", "elderly knee joint pain walking", "person holding knee pain"],
+    "sleep":            ["person insomnia awake night dark room", "woman sleepless night tired exhausted", "man awake night bed"],
+    "heart-health":     ["person chest pain heart worry stress", "man holding chest cardiovascular", "person heart anxiety"],
+    "general-health":   ["person chronic fatigue sick tired couch", "woman ill pain daily life", "man exhausted energy"],
 }
 
 # ── Pexels + FFmpeg + TTS helpers ────────────────────────────────────────────
