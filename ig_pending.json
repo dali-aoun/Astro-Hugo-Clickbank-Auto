@@ -1,23 +1,23 @@
 {
-  "date": "2026-08-09",
+  "date": "2026-08-10",
   "posts": [
     {
-      "filename": "2026-08-09_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-09_1.jpg",
-      "cat_key": "brain",
-      "headline": "Fact",
-      "body": "Sleep is when your brain clears toxic waste through the glymphatic system.\nSkipping sleep lets toxins build up in your brain.",
-      "cta": "Sleep is your brain's detox cycle.",
-      "hashtags": "#BrainHealth #CognitiveHealth #Nootropics #MentalClarity #BrainFog #NeuroplasticityTraining #BrainFacts #MemoryBoost #FocusTips #BrainScience"
+      "filename": "2026-08-10_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-10_1.jpg",
+      "cat_key": "beauty",
+      "headline": "Statistic",
+      "body": "Women touch their face an average of 23 times per hour.\nEach touch transfers bacteria and causes breakouts.",
+      "cta": "Stop touching your face \u2014 23x per hour!",
+      "hashtags": "#SkinCare #Beauty #AntiAging #GlowingSkin #SkincareTips #HealthySkin #SkincareFacts #BeautyTips #NaturalBeauty #SkincareRoutine"
     },
     {
-      "filename": "2026-08-09_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-09_2.jpg",
-      "cat_key": "prostate",
+      "filename": "2026-08-10_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-10_2.jpg",
+      "cat_key": "heart",
       "headline": "Statistic",
-      "body": "Men who drink 5+ cups of coffee per day have a 59% lower risk of lethal prostate cancer.\nCaffeine appears to slow cancer cell growth.",
-      "cta": "Coffee is good for your prostate.",
-      "hashtags": "#ProstateHealth #MensHealth #BPH #ProstateSupport #MensWellness #ProstateCancer #MaleHealth #UrinaryHealth #MensNutrition #HealthyMen"
+      "body": "People who sleep 6\u20138 hours have a 48% lower risk of heart disease.\nSleep is cardiovascular medicine.",
+      "cta": "Sleep duration is a heart health factor.",
+      "hashtags": "#HeartHealth #CardiovascularHealth #HeartDisease #HeartCare #HeartHealthTips #CardiovascularFitness #HealthyHeart #HeartFacts #BloodPressure #Cholesterol"
     }
   ]
 }
