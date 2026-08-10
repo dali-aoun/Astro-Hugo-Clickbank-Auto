@@ -1,17 +1,18 @@
-"""
+﻿"""
 get_yt_refresh_token.py
 =======================
-Script one-shot pour obtenir le refresh token YouTube OAuth2.
+Script one-shot pour obtenir ET ENREGISTRER le refresh token YouTube OAuth2.
 
 Usage :
   set YT_CLIENT_ID=...
   set YT_CLIENT_SECRET=...
   python get_yt_refresh_token.py
 
-Le script ouvre le navigateur, tu autorises, et il affiche le refresh token.
+Le script ouvre le navigateur, tu autorises, il recupere le refresh token
+et met automatiquement a jour le secret GitHub YT_REFRESH_TOKEN.
 """
 
-import os, sys, json, webbrowser, urllib.parse
+import os, sys, json, webbrowser, urllib.parse, subprocess
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import requests
 
@@ -19,6 +20,7 @@ CLIENT_ID     = os.environ.get("YT_CLIENT_ID", "")
 CLIENT_SECRET = os.environ.get("YT_CLIENT_SECRET", "")
 REDIRECT_URI  = "http://localhost:8080/callback"
 SCOPE         = "https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube"
+REPO          = os.environ.get("REPO", "dali-aoun/Astro-Hugo-Clickbank-Auto")
 
 AUTH_URL   = "https://accounts.google.com/o/oauth2/v2/auth"
 TOKEN_URL  = "https://oauth2.googleapis.com/token"
@@ -44,7 +46,6 @@ class Handler(BaseHTTPRequestHandler):
             self.wfile.write(f"<h2>Erreur Google : {error}</h2>".encode())
             print(f"Erreur Google OAuth : {error}")
         else:
-            # Ignore favicon etc.
             self.send_response(200)
             self.end_headers()
 
@@ -52,11 +53,29 @@ class Handler(BaseHTTPRequestHandler):
         pass
 
 
+def save_to_github(refresh_token):
+    """Met a jour le secret YT_REFRESH_TOKEN sur GitHub."""
+    print("\n[GitHub] Mise a jour du secret YT_REFRESH_TOKEN...")
+    r = subprocess.run(
+        ["gh", "secret", "set", "YT_REFRESH_TOKEN",
+         "--repo", REPO, "--body", refresh_token],
+        capture_output=True, text=True
+    )
+    if r.returncode == 0:
+        print("[GitHub] Secret YT_REFRESH_TOKEN mis a jour avec succes.")
+    else:
+        print(f"[GitHub] ERREUR mise a jour secret: {r.stderr}")
+        print(f"[MANUEL] Copie ce refresh token dans GitHub Secrets manuellement:")
+        print(f"  {refresh_token}")
+
+
 def main():
     if not CLIENT_ID or not CLIENT_SECRET:
         print("\nERREUR : variables manquantes")
-        print("  set YT_CLIENT_ID=...")
-        print("  set YT_CLIENT_SECRET=...\n")
+        print("  set YT_CLIENT_ID=<ton_client_id>")
+        print("  set YT_CLIENT_SECRET=<ton_client_secret>")
+        print("")
+        print("Trouve ces valeurs dans : https://console.cloud.google.com/apis/credentials")
         sys.exit(1)
 
     params = {
@@ -77,7 +96,6 @@ def main():
     print("\nEn attente du callback sur http://localhost:8080 ...")
     print(">>> Autorise l'acces dans le navigateur qui vient de s'ouvrir <<<\n")
     server = HTTPServer(("localhost", 8080), Handler)
-    # Handle multiple requests until we get the code (ignore favicon etc.)
     while not auth_code:
         server.handle_request()
 
@@ -94,23 +112,21 @@ def main():
     })
 
     if r.status_code != 200:
-        print(f"Erreur token : {r.text}")
+        print(f"Erreur echange de code : {r.status_code} {r.text}")
         sys.exit(1)
 
     data = r.json()
     refresh_token = data.get("refresh_token", "")
+    access_token  = data.get("access_token", "")
 
     if not refresh_token:
-        print("Erreur : pas de refresh_token dans la reponse.")
-        print(json.dumps(data, indent=2))
+        print(f"ERREUR : pas de refresh_token dans la reponse : {data}")
         sys.exit(1)
 
-    print("\n" + "="*60)
-    print("REFRESH TOKEN OBTENU :")
-    print(refresh_token)
-    print("="*60)
-    print("\nAjoute ce token comme secret GitHub : YT_REFRESH_TOKEN")
-    print("Ne partage jamais ce token.\n")
+    print(f"\nRefresh token obtenu avec succes.")
+    save_to_github(refresh_token)
+    print("\nYouTube operationnel. Lance un test :")
+    print("  gh workflow run social_publisher.yml --repo dali-aoun/Astro-Hugo-Clickbank-Auto -f platform=youtube")
 
 
 if __name__ == "__main__":
