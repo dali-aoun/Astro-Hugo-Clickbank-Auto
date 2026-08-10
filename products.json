@@ -23,7 +23,7 @@
           "description": "Probiotic candy with 3.5 billion beneficial bacteria strains to support teeth, gums, and fresh breath by repopulating the oral microbiome.",
           "audience": "Adults concerned about gum health, bad breath, and natural dental care alternatives.",
           "vendor_page": "prodentim.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=prodentim&cbpage=tsl&affop=1",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=prodentim&affop=1",
           "status": "ok"
         },
         {
@@ -46,12 +46,12 @@
           "nickname": "stlbitp",
           "tier": 2,
           "gravity": 28.45,
-          "payout": 134.00,
+          "payout": 134.0,
           "aov": "$294",
           "description": "Potent herbal formula with 23 plants and minerals to eliminate bacteria responsible for gum disease and tooth decay from the root.",
           "audience": "Adults with bleeding gums, receding gums, tooth sensitivity, and chronic bad breath.",
           "vendor_page": "steelbiteprotocol.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=stlbitp&cbpage=tsl&affop=1",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=steelbite&cbpage=tsl&affop=1",
           "status": "ok"
         },
         {
@@ -59,13 +59,13 @@
           "slug": "dentasmile",
           "nickname": "dentasmile",
           "tier": 2,
-          "gravity": 18.30,
-          "payout": 118.00,
+          "gravity": 18.3,
+          "payout": 118.0,
           "aov": "$234",
           "description": "Natural oral health formula targeting the root cause of tooth decay and gum inflammation with plant-based ingredients.",
           "audience": "Adults experiencing tooth pain, sensitivity, and early signs of gum disease.",
           "vendor_page": "dentasmile.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=dentasmile&cbpage=tsl",
+          "hoplink": "https://a44250l5q2dz1y9zl8vgv4r9r0.hop.clickbank.net",
           "status": "ok"
         },
         {
@@ -73,13 +73,13 @@
           "slug": "provadent",
           "nickname": "pvdent",
           "tier": 2,
-          "gravity": 35.60,
-          "payout": 141.00,
+          "gravity": 35.6,
+          "payout": 141.0,
           "aov": "$294",
           "description": "Advanced probiotic candy combining 4 billion CFU bacteria with BioFresh technology to detoxify the oral microbiome and support gum and tooth strength.",
           "audience": "Adults who want whiter teeth, healthier gums, and a cleaner-feeling mouth naturally.",
           "vendor_page": "provadent.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=pvdent&cbpage=tsl&affop=1",
+          "hoplink": "https://hop.clickbank.net/?vendor=provadent&pid=1&affiliate=dali84",
           "status": "ok"
         }
       ]
@@ -128,7 +128,7 @@
           "description": "Natural formula targeting harmful mineral buildup in the urinary system to maintain a healthy prostate well into old age.",
           "audience": "Men concerned with prostate health, bladder control, and urinary function.",
           "vendor_page": "viriflow.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=viriflow&cbpage=tsl&affop=1",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=viriflow&affop=1",
           "status": "ok"
         },
         {
@@ -150,13 +150,13 @@
           "slug": "flowforce-max",
           "nickname": "flowfrcmx",
           "tier": 2,
-          "gravity": 31.50,
-          "payout": 128.00,
+          "gravity": 31.5,
+          "payout": 128.0,
           "aov": "$294",
           "description": "Chewable candy tablet with 18 active plant extracts to support healthy prostate size, urinary flow, and energy levels in men.",
           "audience": "Men 45+ struggling with weak stream, urgency, and disrupted sleep from prostate issues.",
           "vendor_page": "getflowforcemax.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=flowfrcmx&cbpage=tsl&affop=1",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=flowforce&cbpage=vsl&tid=YOUR_TID&affop=1",
           "status": "ok"
         }
       ]
@@ -185,13 +185,13 @@
           "slug": "alpha-tonic",
           "nickname": "alphatnic",
           "tier": 1,
-          "gravity": 62.40,
-          "payout": 138.00,
+          "gravity": 62.4,
+          "payout": 138.0,
           "aov": "$294",
           "description": "Himalayan tonic powder formula with 11 clinically studied ingredients to boost testosterone, energy, and sexual drive naturally.",
           "audience": "Men 30+ experiencing low energy, reduced libido, and declining physical performance.",
           "vendor_page": "getalphatonic.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=alphatnic&cbpage=tsl&affop=1",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=alphatonic&pid=11&tid=track",
           "status": "ok"
         },
         {
@@ -227,13 +227,13 @@
           "slug": "erecprime",
           "nickname": "erecprime",
           "tier": 2,
-          "gravity": 29.80,
-          "payout": 124.00,
+          "gravity": 29.8,
+          "payout": 124.0,
           "aov": "$294",
           "description": "Natural male enhancement formula with 12 plant-based ingredients to improve blood flow, endurance, and sexual confidence.",
           "audience": "Men of all ages who want to restore peak sexual performance without prescription drugs.",
           "vendor_page": "geterecprime.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=erecprime&cbpage=tsl&affop=1",
+          "hoplink": "https://hop.clickbank.net/?custom=1&affiliate=dali84&vendor=ErecPrime&pid=new",
           "status": "ok"
         }
       ]
@@ -268,21 +268,7 @@
           "description": "Natural supplement to support eye health and preserve vision with targeted ingredients.",
           "audience": "Adults concerned about vision decline, eye fatigue, and age-related eye health.",
           "vendor_page": "getvisiflora.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=visiflora&pid=v1&tid=YOURTID",
-          "status": "ok"
-        },
-        {
-          "name": "Cortexi",
-          "slug": "cortexi",
-          "nickname": "cortexi",
-          "tier": 1,
-          "gravity": 48.90,
-          "payout": 130.00,
-          "aov": "$294",
-          "description": "Liquid brain and hearing support formula with 20 carefully selected natural ingredients to protect hair cells and reduce ringing in ears.",
-          "audience": "Adults over 30 experiencing ringing ears, difficulty hearing in crowds, and memory lapses.",
-          "vendor_page": "getcortexi.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=cortexi&cbpage=tsl&affop=1",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=visiflora&pid=v1",
           "status": "ok"
         },
         {
@@ -310,7 +296,7 @@
           "description": "Liquid formula to eliminate fluoride buildup in the pineal gland, restore natural melatonin production, and improve memory.",
           "audience": "Adults experiencing memory loss, brain fog, and age-related cognitive decline.",
           "vendor_page": "thepinealguardian.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=pgrdnvip&pid=indexvsm&utm_medium=&utm_content=&utm_campaign=&tid=",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=pgrdnvip&pid=indexvsm",
           "status": "ok"
         }
       ]
@@ -335,26 +321,12 @@
           "status": "ok"
         },
         {
-          "name": "Sumatra Slim Belly Tonic",
-          "slug": "sumatra-slim-belly-tonic",
-          "nickname": "sumatrasl",
-          "tier": 1,
-          "gravity": 72.30,
-          "payout": 126.00,
-          "aov": "$294",
-          "description": "Exotic blue light and N-REM sleep-targeting formula with 8 natural ingredients to melt stubborn belly fat while you sleep.",
-          "audience": "Adults struggling with belly fat that won't shift despite diet and exercise.",
-          "vendor_page": "sumatraslimbellyonic.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=sumatrasl&cbpage=tsl&affop=1",
-          "status": "ok"
-        },
-        {
           "name": "Java Burn",
           "slug": "java-burn",
           "nickname": "javaburn",
           "tier": 2,
-          "gravity": 38.60,
-          "payout": 109.00,
+          "gravity": 38.6,
+          "payout": 109.0,
           "aov": "$294",
           "description": "Tasteless powder to add to your morning coffee that ignites metabolism and triggers all-day fat burning.",
           "audience": "Coffee drinkers who want an effortless metabolism boost without changing their routine.",
@@ -375,20 +347,6 @@
           "vendor_page": "theikariajuice.com",
           "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=lbjuice&pid=16",
           "status": "ok"
-        },
-        {
-          "name": "Puravive",
-          "slug": "puravive",
-          "nickname": "puravive",
-          "tier": 2,
-          "gravity": 45.20,
-          "payout": 132.00,
-          "aov": "$294",
-          "description": "Exotic rice method formula activating brown adipose tissue to convert stored fat into sustained energy around the clock.",
-          "audience": "Adults who exercise but can't lose stubborn fat and want a metabolism-level solution.",
-          "vendor_page": "puravive.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=puravive&cbpage=tsl&affop=1",
-          "status": "ok"
         }
       ]
     },
@@ -408,7 +366,7 @@
           "description": "Topical oil formula combining essential oils and vitamins to combat toenail fungus while supporting healthy nails and skin.",
           "audience": "People dealing with toenail fungal infections, nail discoloration, and itching.",
           "vendor_page": "kerassentials.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=kerassent&cbpage=tsl&affop=1",
+          "hoplink": "https://hop.clickbank.net/?affiliate=medali123&vendor=kerassent&cbpage=tsl&affop=1",
           "status": "ok"
         },
         {
@@ -422,7 +380,7 @@
           "description": "Probiotic gummy formula to support skin cell turnover and gut health for a more youthful appearance.",
           "audience": "Adults concerned with aging skin, digestive wellness, and weight management.",
           "vendor_page": "getprimebiome.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=primebiome&cbpage=tsl&affop=1",
+          "hoplink": "https://hop.clickbank.net/?affiliate=medali123&vendor=primebiome&cbpage=tsl&affop=1",
           "status": "ok"
         },
         {
@@ -436,7 +394,7 @@
           "description": "20-in-1 nail and feet essential formula with natural ingredients for superior, long-lasting results.",
           "audience": "People concerned with nail and feet appearance seeking natural care solutions.",
           "vendor_page": "metanailcomplex.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=metacmplx&pid=disc&tid=YOURTID",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=metacmplx&pid=disc",
           "status": "ok"
         },
         {
@@ -452,20 +410,6 @@
           "vendor_page": "neotonics.com",
           "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=neotonics&cbpage=tsl&affop=1",
           "status": "ok"
-        },
-        {
-          "name": "DermaSkin",
-          "slug": "dermaskin",
-          "nickname": "drmskn",
-          "tier": 2,
-          "gravity": 22.10,
-          "payout": 119.00,
-          "aov": "$234",
-          "description": "Anti-aging skin supplement with marine collagen, hyaluronic acid, and plant antioxidants to reduce wrinkles and restore skin elasticity from within.",
-          "audience": "Women 40+ wanting to reverse visible aging signs without expensive procedures.",
-          "vendor_page": "dermaskin.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=drmskn&cbpage=tsl&affop=1",
-          "status": "ok"
         }
       ]
     },
@@ -479,8 +423,8 @@
           "slug": "femipro",
           "nickname": "femipro",
           "tier": 1,
-          "gravity": 48.90,
-          "payout": 151.40,
+          "gravity": 48.9,
+          "payout": 151.4,
           "aov": "$294",
           "description": "Natural bladder-rebalancing supplement to support healthy urinary microbiome bacteria and reduce involuntary leaks.",
           "audience": "Women seeking natural solutions for bladder control and urinary tract health.",
@@ -493,27 +437,13 @@
           "slug": "femicore",
           "nickname": "femicore",
           "tier": 2,
-          "gravity": 22.50,
-          "payout": 138.00,
+          "gravity": 22.5,
+          "payout": 138.0,
           "aov": "$294",
           "description": "Natural supplement to support bladder control and urinary health by addressing microbiome imbalance.",
           "audience": "Women experiencing bladder control issues looking for natural, herbal solutions.",
           "vendor_page": "getfemicore.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=femicore&cbpage=tsl&tid=YOUR_TID&affop=video4",
-          "status": "ok"
-        },
-        {
-          "name": "Hormonal Harmony HB-5",
-          "slug": "hormonal-harmony-hb5",
-          "nickname": "hbalance5",
-          "tier": 2,
-          "gravity": 30.40,
-          "payout": 128.00,
-          "aov": "$294",
-          "description": "5-hormone supplement blend targeting thyroid, cortisol, estrogen, insulin, and leptin to eliminate stubborn weight and hormonal symptoms.",
-          "audience": "Women 35+ with unexplained weight gain, fatigue, mood swings, and hormonal imbalance.",
-          "vendor_page": "hormonalharmony.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=hbalance5&cbpage=tsl&affop=1",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=femicore&cbpage=tsl&affop=video4",
           "status": "ok"
         },
         {
@@ -521,13 +451,13 @@
           "slug": "venoplus-8",
           "nickname": "venoplus8",
           "tier": 2,
-          "gravity": 26.70,
-          "payout": 143.00,
+          "gravity": 26.7,
+          "payout": 143.0,
           "aov": "$294",
           "description": "Advanced cardiovascular support formula for women to improve circulation, reduce leg discomfort, and support healthy veins naturally.",
           "audience": "Women experiencing leg cramps, varicose veins, swelling, and poor circulation.",
           "vendor_page": "getvenoplus.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=venoplus8&cbpage=tsl&affop=1",
+          "hoplink": "https://53c858bewv9meu3hm7qnnh3ufs.hop.clickbank.net",
           "status": "ok"
         },
         {
@@ -535,13 +465,13 @@
           "slug": "menoscue",
           "nickname": "menorescu",
           "tier": 2,
-          "gravity": 41.20,
-          "payout": 156.00,
+          "gravity": 41.2,
+          "payout": 156.0,
           "aov": "$294",
           "description": "Menopause support formula with rare adaptogen complex to balance cortisol and estrogen, reducing hot flashes, brain fog, and weight gain.",
           "audience": "Women in perimenopause and menopause struggling with symptoms that disrupt daily life.",
           "vendor_page": "menorescue.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=menorescu&cbpage=tsl&affop=1",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=menorescue&v=bvsl",
           "status": "ok"
         }
       ]
@@ -562,7 +492,7 @@
           "description": "Supplement to support healthy blood sugar levels and balanced metabolism.",
           "audience": "Pre-diabetic adults and those concerned about blood sugar and metabolic health.",
           "vendor_page": "gluco6.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=gluco6&pid=vsl&tid=",
+          "hoplink": "https://hop.clickbank.net/?affiliate=medali123&vendor=gluco6&pid=vsl",
           "status": "ok"
         },
         {
@@ -570,13 +500,13 @@
           "slug": "sugar-defender",
           "nickname": "sugardefn",
           "tier": 1,
-          "gravity": 75.40,
-          "payout": 128.00,
+          "gravity": 75.4,
+          "payout": 128.0,
           "aov": "$294",
           "description": "24-ingredient liquid formula to control blood sugar spikes, boost insulin sensitivity, and support healthy energy without crashes.",
           "audience": "Adults with blood sugar fluctuations, constant fatigue after meals, and sugar cravings.",
           "vendor_page": "sugardefender24.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=sugardefn&cbpage=tsl&affop=1",
+          "hoplink": "https://hop.clickbank.net/?custom=1&affiliate=dali84&vendor=sugardef&pid=intro1",
           "status": "ok"
         },
         {
@@ -584,41 +514,27 @@
           "slug": "glucotrust",
           "nickname": "glucotru",
           "tier": 2,
-          "gravity": 44.80,
-          "payout": 118.00,
+          "gravity": 44.8,
+          "payout": 118.0,
           "aov": "$294",
           "description": "Clinically validated formula with gymnema sylvestre, biotin, and chromium to regulate blood sugar while improving deep sleep quality.",
           "audience": "Adults with type 2 diabetes risk, insulin resistance, and poor sleep tied to blood sugar swings.",
           "vendor_page": "glucotrustoffer.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=glucotru&cbpage=tsl&affop=1",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=gtrustger&cbpage=gtgervsl",
           "status": "ok"
         },
         {
-          "name": "BerberBurn",
-          "slug": "berberburn",
-          "nickname": "brbburn",
+          "name": "Gluco Tonic",
+          "slug": "gluco-tonic",
+          "nickname": "glucotonic",
           "tier": 2,
-          "gravity": 32.60,
-          "payout": 112.00,
-          "aov": "$234",
-          "description": "High-potency berberine complex with cinnamon and chromium to lower blood sugar naturally and support healthy weight management.",
-          "audience": "Adults seeking a natural alternative to metformin for blood sugar control and weight loss.",
-          "vendor_page": "berberburn.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=brbburn&cbpage=tsl&affop=1",
-          "status": "ok"
-        },
-        {
-          "name": "GlucoFort",
-          "slug": "glucofort",
-          "nickname": "glucofort",
-          "tier": 2,
-          "gravity": 28.30,
-          "payout": 106.00,
-          "aov": "$234",
-          "description": "Advanced blood sugar support formula with 14 natural ingredients including bitter melon, guggul, and yarrow flowers.",
-          "audience": "Pre-diabetic men and women who want to stabilize blood sugar and reduce diabetes risk.",
-          "vendor_page": "glucofort.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=glucofort&cbpage=tsl&affop=1",
+          "gravity": 30.0,
+          "payout": 80.0,
+          "aov": "$120",
+          "description": "Blood sugar support formula with natural ingredients to maintain healthy glucose levels and boost energy.",
+          "audience": "Adults with blood sugar concerns, pre-diabetics seeking natural glucose management support.",
+          "vendor_page": "glucotonic.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=glucotonic&pid=intro2",
           "status": "ok"
         }
       ]
@@ -634,7 +550,7 @@
           "nickname": "jointgen",
           "tier": 1,
           "gravity": 83.85,
-          "payout": 143.30,
+          "payout": 143.3,
           "aov": "$234",
           "description": "BioDynamix joint supplement to support mobility, flexibility, and joint comfort with clinically studied ingredients.",
           "audience": "Adults 40+ dealing with joint pain, reduced mobility, and arthritis concerns.",
@@ -648,55 +564,13 @@
           "slug": "flexotone",
           "nickname": "flexotone",
           "tier": 2,
-          "gravity": 24.70,
-          "payout": 114.00,
+          "gravity": 24.7,
+          "payout": 114.0,
           "aov": "$294",
           "description": "10-ingredient joint relief formula targeting the nervous system root cause of joint inflammation and chronic pain.",
           "audience": "Adults suffering from chronic joint pain, stiffness, and limited movement.",
           "vendor_page": "flexotone.com",
           "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=flexotone&cbpage=tsl&affop=1",
-          "status": "ok"
-        },
-        {
-          "name": "InflaRest",
-          "slug": "inflarest",
-          "nickname": "inflarest",
-          "tier": 2,
-          "gravity": 19.50,
-          "payout": 108.00,
-          "aov": "$234",
-          "description": "Anti-inflammatory supplement with turmeric, boswellia, and collagen to reduce joint swelling and restore flexibility.",
-          "audience": "Active adults and seniors with daily joint discomfort that limits walking, climbing stairs, or exercise.",
-          "vendor_page": "inflarest.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=inflarest&cbpage=tsl&affop=1",
-          "status": "ok"
-        },
-        {
-          "name": "ProFlexen",
-          "slug": "proflexen",
-          "nickname": "proflexen",
-          "tier": 2,
-          "gravity": 21.80,
-          "payout": 120.00,
-          "aov": "$294",
-          "description": "Natural collagen and UC-II cartilage formula to rebuild joint cushioning and reduce stiffness within weeks.",
-          "audience": "Men and women 45+ with cartilage wear, knee pain, and morning stiffness.",
-          "vendor_page": "proflexen.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=proflexen&cbpage=tsl&affop=1",
-          "status": "ok"
-        },
-        {
-          "name": "MoveMD",
-          "slug": "movemd",
-          "nickname": "movemd",
-          "tier": 2,
-          "gravity": 17.30,
-          "payout": 98.00,
-          "aov": "$234",
-          "description": "Doctor-formulated joint mobility supplement with ApresFlex boswellia, hyaluronic acid, and magnesium to restore pain-free movement.",
-          "audience": "Seniors and active adults wanting to stay mobile without prescription anti-inflammatories.",
-          "vendor_page": "movemd.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=movemd&cbpage=tsl&affop=1",
           "status": "ok"
         }
       ]
@@ -725,56 +599,28 @@
           "slug": "resurge",
           "nickname": "resurge",
           "tier": 2,
-          "gravity": 34.20,
-          "payout": 116.00,
+          "gravity": 34.2,
+          "payout": 116.0,
           "aov": "$294",
           "description": "Deep sleep support formula with 8 natural sleep-enhancing nutrients to restore HGH production, burn fat, and wake up refreshed.",
           "audience": "Adults over 40 with poor sleep quality who also want metabolic benefits while sleeping.",
           "vendor_page": "resurge.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=resurge&cbpage=tsl&affop=1",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=resurge&lid=3",
           "status": "ok"
         },
         {
-          "name": "Sleep Slim Tea",
-          "slug": "sleep-slim-tea",
-          "nickname": "slpslmtea",
+          "name": "Cardio Slim Tea",
+          "slug": "cardio-slim-tea",
+          "nickname": "cardioslim",
           "tier": 2,
-          "gravity": 22.50,
-          "payout": 104.00,
-          "aov": "$234",
-          "description": "Evening herbal tea blend that promotes deep sleep while activating overnight fat-burning metabolism.",
-          "audience": "Adults who want to improve sleep quality and lose weight simultaneously.",
-          "vendor_page": "sleepslimtea.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=slpslmtea&cbpage=tsl&affop=1",
-          "status": "ok"
-        },
-        {
-          "name": "RestoreZ",
-          "slug": "restorez",
-          "nickname": "rstorez",
-          "tier": 2,
-          "gravity": 18.90,
-          "payout": 110.00,
-          "aov": "$234",
-          "description": "Proprietary sleep restoration blend with ashwagandha, GABA, and L-theanine to calm racing thoughts and establish healthy sleep cycles.",
-          "audience": "Adults who fall asleep fine but wake at 2-3am with an overactive mind.",
-          "vendor_page": "restorez.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=rstorez&cbpage=tsl&affop=1",
-          "status": "ok"
-        },
-        {
-          "name": "Zonvolt",
-          "slug": "zonvolt",
-          "nickname": "zonvolt",
-          "tier": 2,
-          "gravity": 26.40,
-          "payout": 122.00,
-          "aov": "$294",
-          "description": "Melatonin-free sleep formula using blue light and nervous system reset science to achieve 7-9 hours of uninterrupted deep sleep.",
-          "audience": "Screen users and shift workers with disrupted circadian rhythms and chronic fatigue.",
-          "vendor_page": "zonvolt.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=zonvolt&cbpage=tsl&affop=1",
-          "status": "ok"
+          "gravity": 25.0,
+          "payout": 60.0,
+          "aov": "$90",
+          "description": "Herbal tea blend supporting cardiovascular health, weight management, and restful sleep through natural botanicals.",
+          "audience": "Adults seeking natural weight management and heart health support through daily herbal tea ritual.",
+          "vendor_page": "cardioslim.com",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=cardioslim&op=vsl&tid=tracking",
+          "status": "pending_approval"
         }
       ]
     },
@@ -788,8 +634,8 @@
           "slug": "cholibrium",
           "nickname": "cholibrium",
           "tier": 2,
-          "gravity": 20.50,
-          "payout": 128.00,
+          "gravity": 20.5,
+          "payout": 128.0,
           "aov": "$234",
           "description": "Mushroom-based supplement to support healthy heart function and maintain cholesterol levels already within normal range.",
           "audience": "Men and women seeking cardiovascular health support through natural, mushroom-derived wellness.",
@@ -798,59 +644,17 @@
           "status": "ok"
         },
         {
-          "name": "Cardio Clear 7",
-          "slug": "cardio-clear-7",
-          "nickname": "cardioclr7",
-          "tier": 1,
-          "gravity": 32.80,
-          "payout": 134.00,
-          "aov": "$294",
-          "description": "Mitochondria-targeting CoQ10, shilajit, and astaxanthin formula to support heart energy, arterial flexibility, and blood pressure.",
-          "audience": "Adults 45+ with cardiovascular risk, high blood pressure concerns, and fatigue.",
-          "vendor_page": "cardioclear7.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=cardioclr7&cbpage=tsl&affop=1",
-          "status": "ok"
-        },
-        {
           "name": "CardioShield",
           "slug": "cardioshield",
           "nickname": "cardsld",
           "tier": 2,
-          "gravity": 24.10,
-          "payout": 119.00,
+          "gravity": 24.1,
+          "payout": 119.0,
           "aov": "$234",
           "description": "8-ingredient natural blood pressure formula with olive leaf extract and hawthorn berry to support healthy circulation.",
           "audience": "Adults with borderline hypertension who want to avoid prescription blood pressure medications.",
           "vendor_page": "cardioshield.net",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=cardsld&cbpage=tsl&affop=1",
-          "status": "ok"
-        },
-        {
-          "name": "VitaPost Heart Support",
-          "slug": "vitapost-heart-support",
-          "nickname": "heartsupp",
-          "tier": 2,
-          "gravity": 16.80,
-          "payout": 98.00,
-          "aov": "$234",
-          "description": "Clinician-designed formula combining magnesium, CoQ10, omega-3, and garlic for comprehensive cardiovascular protection.",
-          "audience": "Adults over 50 with family history of heart disease seeking preventive cardiovascular support.",
-          "vendor_page": "vitaposthealth.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=heartsupp&cbpage=tsl&affop=1",
-          "status": "ok"
-        },
-        {
-          "name": "BP Optimizer",
-          "slug": "bp-optimizer",
-          "nickname": "bpoptmzr",
-          "tier": 2,
-          "gravity": 21.40,
-          "payout": 108.00,
-          "aov": "$234",
-          "description": "Science-backed blood pressure lowering formula with 13 natural ingredients clinically proven to reduce systolic pressure.",
-          "audience": "Adults with high blood pressure who want a natural, drug-free approach to cardiovascular health.",
-          "vendor_page": "bpoptimizer.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=bpoptmzr&cbpage=tsl&affop=1",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=cardioshie&pid=cstsl",
           "status": "ok"
         }
       ]
@@ -876,59 +680,17 @@
           "notes": "Has rebill at $38.71"
         },
         {
-          "name": "MetaboFlex",
-          "slug": "metaboflex",
-          "nickname": "metabflx",
-          "tier": 2,
-          "gravity": 33.20,
-          "payout": 122.00,
-          "aov": "$294",
-          "description": "Rare Cambodian superfood formula to restore metabolic flexibility and break stubborn weight loss plateaus.",
-          "audience": "Adults who can't lose weight despite dieting and suspect a slow metabolism is the cause.",
-          "vendor_page": "metaboflex.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=metabflx&cbpage=tsl&affop=1",
-          "status": "ok"
-        },
-        {
-          "name": "Biotox Gold",
-          "slug": "biotox-gold",
-          "nickname": "biotxgld",
-          "tier": 2,
-          "gravity": 19.60,
-          "payout": 106.00,
-          "aov": "$234",
-          "description": "Liquid weight loss drops with 20 rare plant extracts to detoxify the body and target motilin hormone resistance.",
-          "audience": "Adults whose digestive issues and toxin buildup are blocking their weight loss efforts.",
-          "vendor_page": "biotoxnutrition.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=biotxgld&cbpage=tsl&affop=1",
-          "status": "ok"
-        },
-        {
-          "name": "ProNervium",
-          "slug": "pronervium",
-          "nickname": "nervium",
-          "tier": 2,
-          "gravity": 27.80,
-          "payout": 117.00,
-          "aov": "$294",
-          "description": "Nerve pain and neuropathy support formula with B vitamins, alpha lipoic acid, and herbal extracts to reduce tingling and numbness.",
-          "audience": "Adults suffering from nerve damage, peripheral neuropathy, tingling feet, and burning sensations.",
-          "vendor_page": "pronervium.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=nervium&cbpage=tsl&affop=1",
-          "status": "ok"
-        },
-        {
           "name": "ElectroSlim",
           "slug": "electroslim",
           "nickname": "elctrslm",
           "tier": 2,
-          "gravity": 38.10,
-          "payout": 128.00,
+          "gravity": 38.1,
+          "payout": 128.0,
           "aov": "$294",
           "description": "Electrolyte-enhanced weight management formula that activates thermogenesis and replenishes cellular energy to break fat storage cycles.",
           "audience": "Adults who feel drained on low-carb diets and need a metabolism boost without stimulants.",
           "vendor_page": "electroslim.com",
-          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=elctrslm&cbpage=tsl&affop=1",
+          "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=elecslim&cbpage=lander&pid=indexvsl",
           "status": "ok"
         }
       ]
