@@ -1,23 +1,23 @@
 {
-  "date": "2026-08-10",
+  "date": "2026-08-11",
   "posts": [
     {
-      "filename": "2026-08-10_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-10_1.jpg",
-      "cat_key": "beauty",
-      "headline": "Statistic",
-      "body": "Women touch their face an average of 23 times per hour.\nEach touch transfers bacteria and causes breakouts.",
-      "cta": "Stop touching your face \u2014 23x per hour!",
-      "hashtags": "#SkinCare #Beauty #AntiAging #GlowingSkin #SkincareTips #HealthySkin #SkincareFacts #BeautyTips #NaturalBeauty #SkincareRoutine"
+      "filename": "2026-08-11_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-11_1.jpg",
+      "cat_key": "male",
+      "headline": "Did You Know?",
+      "body": "Morning erection is a health indicator.\nIts absence may signal low T or vascular issues.",
+      "cta": "Morning erection = hormone health marker.",
+      "hashtags": "#Testosterone #MensHealth #MalePerformance #TestosteroneBoost #MaleVitality #MensWellness #HormoneHealth #MaleFitness #MensFitness #Vitality"
     },
     {
-      "filename": "2026-08-10_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-10_2.jpg",
-      "cat_key": "heart",
-      "headline": "Statistic",
-      "body": "People who sleep 6\u20138 hours have a 48% lower risk of heart disease.\nSleep is cardiovascular medicine.",
-      "cta": "Sleep duration is a heart health factor.",
-      "hashtags": "#HeartHealth #CardiovascularHealth #HeartDisease #HeartCare #HeartHealthTips #CardiovascularFitness #HealthyHeart #HeartFacts #BloodPressure #Cholesterol"
+      "filename": "2026-08-11_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-11_2.jpg",
+      "cat_key": "blood",
+      "headline": "Fact",
+      "body": "Chromium picolinate improves insulin sensitivity and reduces sugar cravings.\nDeficiency is common in Western diets.",
+      "cta": "Chromium controls sugar cravings.",
+      "hashtags": "#BloodSugar #Diabetes #PreDiabetes #MetabolicHealth #BloodSugarControl #InsulinResistance #DiabetesTips #GlucoseControl #DiabetesPrevention #HealthyBloodSugar"
     }
   ]
 }
