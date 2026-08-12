@@ -52,8 +52,11 @@ jobs:
           git add pinterest_done.json pinterest_idx.json
           [ -f pinterest_video_idx.json ] && git add pinterest_video_idx.json || true
           git diff --cached --quiet || git commit -m "pinterest: $(date -u +%Y-%m-%d_%Hh)"
-          git pull --rebase || true
-          git push
+          for i in 1 2 3 4 5; do
+            git pull --rebase && git push && break
+            echo "Push attempt $i failed, retrying in 5s..."
+            sleep 5
+          done
 
   instagram:
     if: >
@@ -192,5 +195,8 @@ jobs:
           git config user.email "bot@noreply.github.com"
           git add yt_published_done.json yt_post_index.json
           git diff --cached --quiet || git commit -m "youtube: $(date -u +%Y-%m-%d)"
-          git pull --rebase || true
-          git push
+          for i in 1 2 3 4 5; do
+            git pull --rebase && git push && break
+            echo "Push attempt $i failed, retrying in 5s..."
+            sleep 5
+          done

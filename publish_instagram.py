@@ -1043,11 +1043,21 @@ def publish_reel_phase():
         log(f"ERREUR: ig_reel_pending.json est pour {reel_data.get('date')}, pas {today_key}")
         sys.exit(1)
 
+    if not reel_data.get("generated"):
+        log(f"  Reel non genere (generated=False) — skip publication")
+        sys.exit(0)
+
     video_url = get_github_reels_url(reel_data["mp4_filename"])
     caption = make_reel_caption(reel_data["name"], reel_data["category_slug"], reel_data["slug"])
 
     log(f"=== Publishing Reel: {reel_data['name']} ===")
     log(f"  URL: {video_url}")
+
+    log(f"  Verification CDN video ({video_url})...")
+    if not wait_for_url(video_url, max_wait=120, interval=10):
+        log(f"  ERREUR: video inaccessible apres 120s — skip")
+        sys.exit(1)
+    log(f"  CDN OK — publication...")
 
     reel_status, reel_resp = publish_ig_reel(video_url, caption)
     if reel_status == 200:
