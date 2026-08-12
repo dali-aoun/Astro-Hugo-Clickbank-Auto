@@ -1,23 +1,23 @@
 {
-  "date": "2026-08-11",
+  "date": "2026-08-12",
   "posts": [
     {
-      "filename": "2026-08-11_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-11_1.jpg",
-      "cat_key": "male",
-      "headline": "Did You Know?",
-      "body": "Morning erection is a health indicator.\nIts absence may signal low T or vascular issues.",
-      "cta": "Morning erection = hormone health marker.",
-      "hashtags": "#Testosterone #MensHealth #MalePerformance #TestosteroneBoost #MaleVitality #MensWellness #HormoneHealth #MaleFitness #MensFitness #Vitality"
+      "filename": "2026-08-12_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-12_1.jpg",
+      "cat_key": "sleep",
+      "headline": "Fact",
+      "body": "Ashwagandha reduces cortisol by 27% and improves sleep quality scores by 72% in trials.",
+      "cta": "Ashwagandha dramatically improves sleep quality.",
+      "hashtags": "#SleepTips #BetterSleep #SleepHealth #Insomnia #SleepScience #NaturalSleepAid #SleepBetter #SleepFacts #SleepSupport #HealthySleep"
     },
     {
-      "filename": "2026-08-11_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-11_2.jpg",
-      "cat_key": "blood",
+      "filename": "2026-08-12_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-12_2.jpg",
+      "cat_key": "joint",
       "headline": "Fact",
-      "body": "Chromium picolinate improves insulin sensitivity and reduces sugar cravings.\nDeficiency is common in Western diets.",
-      "cta": "Chromium controls sugar cravings.",
-      "hashtags": "#BloodSugar #Diabetes #PreDiabetes #MetabolicHealth #BloodSugarControl #InsulinResistance #DiabetesTips #GlucoseControl #DiabetesPrevention #HealthyBloodSugar"
+      "body": "Boswellic acids block the specific enzyme that causes joint inflammation\nwithout the side effects of NSAIDs.",
+      "cta": "Boswellia: anti-inflammatory without side effects.",
+      "hashtags": "#JointHealth #JointPain #Arthritis #JointCare #JointRelief #JointPainRelief #AntiInflammatory #BoneHealth #ArthritisTips #JointSupport"
     }
   ]
 }
