@@ -1,23 +1,23 @@
 {
-  "date": "2026-08-12",
+  "date": "2026-08-13",
   "posts": [
     {
-      "filename": "2026-08-12_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-12_1.jpg",
-      "cat_key": "sleep",
-      "headline": "Fact",
-      "body": "Ashwagandha reduces cortisol by 27% and improves sleep quality scores by 72% in trials.",
-      "cta": "Ashwagandha dramatically improves sleep quality.",
-      "hashtags": "#SleepTips #BetterSleep #SleepHealth #Insomnia #SleepScience #NaturalSleepAid #SleepBetter #SleepFacts #SleepSupport #HealthySleep"
+      "filename": "2026-08-13_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-13_1.jpg",
+      "cat_key": "womens",
+      "headline": "Statistic",
+      "body": "Women experience anxiety and depression at 2x the rate of men.\nHormonal fluctuations directly affect serotonin and GABA.",
+      "cta": "Hormones drive women's mood disorders.",
+      "hashtags": "#WomensHealth #PelvicFloor #BladderHealth #WomenWellness #WomensBodyHealth #PelvicHealthTips #UTIPrevention #WomensHormones #HormoneBalance #WomensFitness"
     },
     {
-      "filename": "2026-08-12_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-12_2.jpg",
-      "cat_key": "joint",
-      "headline": "Fact",
-      "body": "Boswellic acids block the specific enzyme that causes joint inflammation\nwithout the side effects of NSAIDs.",
-      "cta": "Boswellia: anti-inflammatory without side effects.",
-      "hashtags": "#JointHealth #JointPain #Arthritis #JointCare #JointRelief #JointPainRelief #AntiInflammatory #BoneHealth #ArthritisTips #JointSupport"
+      "filename": "2026-08-13_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-13_2.jpg",
+      "cat_key": "general",
+      "headline": "Statistic",
+      "body": "People with strong social connections live an average of 7 years longer.",
+      "cta": "Loneliness shortens your life by 7 years.",
+      "hashtags": "#HealthTips #WellnessTips #NaturalHealth #HealthFacts #HealthyLiving #Supplements #NaturalRemedies #WellnessJourney #HealthAndWellness #DailyHealth"
     }
   ]
 }
