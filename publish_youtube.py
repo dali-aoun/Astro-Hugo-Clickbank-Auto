@@ -57,7 +57,7 @@ Designed for: {audience}
 Our independent rating: ⭐ {rating}/5
 
 📋 Full review (ingredients, side effects, where to buy at best price):
-{site_url}/{cat_slug}/{slug}/
+{site_url}/{cat_slug}/{slug}/?utm_source=youtube&utm_medium=shorts&utm_content={slug}
 
 #{cat_tag} #supplementreview #{name_tag}review #naturalhealth #honestreviews #shorts
 """

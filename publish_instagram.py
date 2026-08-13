@@ -686,7 +686,7 @@ def make_caption(cat_key, headline, body, cta, hashtags):
         "Follow to learn something new about your health every day.",
     ])
     cat_url = CATEGORIES[cat_key]["cat_url"]
-    bio_cta = f"Full reviews & guides: {SITE_URL}/{cat_url}/ (link in bio)"
+    bio_cta = f"Full reviews & guides: {SITE_URL}/{cat_url}/?utm_source=instagram&utm_medium=post&utm_content={cat_key} (link in bio)"
 
     return f"""{headline}: {body_clean}
 
@@ -763,7 +763,7 @@ def save_reel_idx(state):
 
 
 def make_reel_caption(product_name, cat_slug, slug):
-    review_url = f"{SITE_URL}/{cat_slug}/{slug}/"
+    review_url = f"{SITE_URL}/{cat_slug}/{slug}/?utm_source=instagram&utm_medium=reel&utm_content={slug}"
     return (
         f"Honest review of {product_name}\n\n"
         f"Does it really work? We break down the ingredients, benefits, and real results.\n\n"
