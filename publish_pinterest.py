@@ -1,4 +1,4 @@
-"""
+﻿"""
 publish_pinterest.py â€” Pinterest educational content publisher
 Strategy: informational tips/facts per board â†’ saves â†’ organic reach â†’ bio link clicks
 Images generated on-the-fly with Pillow, uploaded as base64 directly to Pinterest API v5
@@ -895,7 +895,7 @@ def publish_video_pin(headers):
         return False
 
     board = BOARDS[board_key]
-    link = f"{SITE_URL}/{cat_slug}/{slug}/"
+    link = f"{SITE_URL}/{cat_slug}/{slug}/?utm_source=pinterest&utm_medium=video&utm_content={slug}"
     log(f"  [VIDEO] {name} ({cat_slug}) -> {board['name']}")
 
     # Search Pexels for a real-person video matching this category
@@ -986,9 +986,13 @@ def main():
     tz_tunis = timezone(timedelta(hours=1))
     today_key = datetime.now(timezone.utc).astimezone(tz_tunis).strftime("%Y-%m-%d")
 
+    hour_utc = datetime.now(timezone.utc).hour
+    slot_id = "am" if hour_utc < 12 else "pm"
+    slot_key = f"{today_key}_{slot_id}"
+
     done = load_done()
-    if done.get(today_key):
-        log(f"Pinterest deja publie pour {today_key}")
+    if done.get(slot_key):
+        log(f"Pinterest deja publie pour slot {slot_key}")
         sys.exit(0)
 
     state = load_idx()
@@ -1018,7 +1022,7 @@ def main():
 
         # Build pin metadata
         cat_url = board["cat_url"]
-        link = f"{SITE_URL}/{cat_url}/"
+        link = f"{SITE_URL}/{cat_url}/?utm_source=pinterest&utm_medium=pin&utm_content={board_key}"
         first_line = body.split("\n")[0].strip()
         title = headline[:100]
         description = f"{body.replace(chr(10), ' ')} | Full reviews: {link}"[:500]
@@ -1050,10 +1054,13 @@ def main():
     state["content_idx"] = content_idx
     save_idx(state)
 
-    log("=== Video Idea Pin ===")
-    publish_video_pin(headers)
+    if slot_id == "am":
+        log("=== Video Idea Pin (AM slot only) ===")
+        publish_video_pin(headers)
+    else:
+        log("=== Video Idea Pin skipped (PM slot) ===")
 
-    done[today_key] = {
+    done[slot_key] = {
         "published": published,
         "errors": errors,
         "at": datetime.utcnow().isoformat(),
