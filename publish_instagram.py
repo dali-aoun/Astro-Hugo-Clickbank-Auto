@@ -1,4 +1,4 @@
-"""
+﻿"""
 publish_instagram.py — Instagram educational content publisher
 Strategy: informational health tips → followers → bio link clicks (no product photos)
 Images generated with Pillow (1080x1350), committed to the repo, then served via
@@ -387,6 +387,9 @@ CONTENT = {
         ("Fact", "Alpha-lipoic acid reduces fasting blood sugar and protects nerves damaged by high glucose.", "ALA protects nerves from blood sugar damage."),
         ("Statistic", "People who eat 5+ vegetable servings daily have 23% lower risk of type 2 diabetes.", "Vegetables cut diabetes risk by 23%."),
         ("Fact", "Intermittent fasting improves insulin sensitivity significantly within 2–4 weeks of consistent practice.", "Intermittent fasting resets insulin sensitivity."),
+        # Blog article promo posts
+        ("Best of 2026", "We ranked every major blood sugar supplement by ingredient quality, clinical evidence, and real results.\nGlucoTonic, Sugar Defender, Glucoberry and 5 more — fully tested.", "See our complete ranked list — link in bio.", "https://reviews.thehappy-healthy-life.com/blog/best-blood-sugar-supplements-2026/?utm_source=instagram&utm_medium=post&utm_content=blood-sugar-blog"),
+        ("Ranked", "Which blood sugar supplement actually works in 2026?\nWe spent 3 months reviewing ingredients, doses, and real user data.", "No sponsored rankings. Full list in bio.", "https://reviews.thehappy-healthy-life.com/blog/best-blood-sugar-supplements-2026/?utm_source=instagram&utm_medium=post&utm_content=blood-sugar-blog"),
     ],
     "joint": [
         ("Fact", "Cartilage has no blood supply — it gets nutrients from movement.\nSitting still literally starves your joints.", "Move to feed your joints."),
@@ -431,6 +434,9 @@ CONTENT = {
         ("Warning", "Melatonin supplements are 80% unregulated — many contain 400% more than labeled.\n0.3–1mg is effective; high doses disrupt natural production.", "Most melatonin supplements are overdosed."),
         ("Fact", "Exercise improves sleep quality by 65% — but avoid exercise 3+ hours before bed.", "Exercise is the best sleep supplement."),
         ("Did You Know?", "Your mattress should be replaced every 7–10 years.\nA poor mattress contributes to both back pain and poor sleep.", "Replace your mattress every 7-10 years."),
+        # Blog article promo posts
+        ("Best of 2026", "We ranked every sleep supplement by clinical evidence, safety, and real results.\nMagnesium glycinate, ashwagandha, L-theanine and more — honest breakdown.", "See what actually works — link in bio.", "https://reviews.thehappy-healthy-life.com/blog/best-sleep-supplements-2026/?utm_source=instagram&utm_medium=post&utm_content=sleep-blog"),
+        ("Ranked", "Which sleep supplements are worth buying in 2026?\nIndependent research, no paid placements. All evidence-based.", "Full ranking in bio — no fluff.", "https://reviews.thehappy-healthy-life.com/blog/best-sleep-supplements-2026/?utm_source=instagram&utm_medium=post&utm_content=sleep-blog"),
     ],
     "womens": [
         ("Fact", "70% of bladder leakage in women is caused by weakened pelvic floor muscles — and 85% respond to targeted exercises.", "Bladder leakage is often fixable with exercise."),
@@ -672,7 +678,7 @@ def publish_ig_image(image_url, caption):
 
 # ── Caption builder ───────────────────────────────────────────────────────────
 
-def make_caption(cat_key, headline, body, cta, hashtags):
+def make_caption(cat_key, headline, body, cta, hashtags, blog_url=None):
     cat_name = CATEGORIES[cat_key]["name"]
     body_clean = body.replace("\n", " ")
     save_cta = random.choice([
@@ -686,7 +692,10 @@ def make_caption(cat_key, headline, body, cta, hashtags):
         "Follow to learn something new about your health every day.",
     ])
     cat_url = CATEGORIES[cat_key]["cat_url"]
-    bio_cta = f"Full reviews & guides: {SITE_URL}/{cat_url}/?utm_source=instagram&utm_medium=post&utm_content={cat_key} (link in bio)"
+    if blog_url:
+        bio_cta = f"Full ranked review: {blog_url} (link in bio)"
+    else:
+        bio_cta = f"Full reviews & guides: {SITE_URL}/{cat_url}/?utm_source=instagram&utm_medium=post&utm_content={cat_key} (link in bio)"
 
     return f"""{headline}: {body_clean}
 
@@ -848,7 +857,9 @@ def generate_phase():
         cidx = content_idx.get(cat_key, 0) % len(items)
         content_idx[cat_key] = cidx + 1
 
-        headline, body, cta = items[cidx]
+        item = items[cidx]
+        headline, body, cta = item[0], item[1], item[2]
+        blog_url = item[3] if len(item) > 3 else None
         hashtags = CATEGORIES[cat_key]["hashtags"]
         filename = f"{today_key}_{i+1}.jpg"
 
@@ -873,6 +884,7 @@ def generate_phase():
             "body": body,
             "cta": cta,
             "hashtags": hashtags,
+            "blog_url": blog_url,
         })
 
     state["cat_idx"] = cat_idx
@@ -988,7 +1000,7 @@ def publish_phase():
             continue
         log(f"    CDN OK — publication...")
 
-        caption = make_caption(post["cat_key"], post["headline"], post["body"], post["cta"], post["hashtags"])
+        caption = make_caption(post["cat_key"], post["headline"], post["body"], post["cta"], post["hashtags"], blog_url=post.get("blog_url"))
 
         status, resp = publish_ig_image(img_url, caption)
         if status == 200:

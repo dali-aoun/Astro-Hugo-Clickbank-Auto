@@ -1,4 +1,4 @@
-name: Social Publisher (Pinterest + Instagram + YouTube)
+﻿name: Social Publisher (Pinterest + Instagram + YouTube)
 
 on:
   schedule:
@@ -51,6 +51,7 @@ jobs:
           git config user.email "bot@noreply.github.com"
           git add pinterest_done.json pinterest_idx.json
           [ -f pinterest_video_idx.json ] && git add pinterest_video_idx.json || true
+          [ -f pinterest_blog_idx.json ] && git add pinterest_blog_idx.json || true
           git diff --cached --quiet || git commit -m "pinterest: $(date -u +%Y-%m-%d_%Hh)"
           for i in 1 2 3 4 5; do
             git pull --rebase && git push && break

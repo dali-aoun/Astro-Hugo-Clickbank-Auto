@@ -327,6 +327,170 @@ CONTENT = {
     ],
 }
 
+# Blog article pins — link directly to long-form review posts
+BLOG_PINS = [
+    {
+        "board_key": "blood",
+        "board_id": "1140677480561291821",
+        "title": "Best Blood Sugar Supplements 2026 — Evidence-Based Rankings",
+        "description": (
+            "We independently tested and ranked every major blood sugar supplement by "
+            "ingredient quality, clinical evidence, and real user results. "
+            "No sponsored rankings, no affiliate bias. "
+            "GlucoTonic, Sugar Defender, Glucoberry + 5 more reviewed. "
+            "Full breakdown: reviews.thehappy-healthy-life.com "
+            "#BloodSugar #BloodSugarSupplements #GlucoTonic #DiabetesSupplement #BloodSugarControl"
+        ),
+        "url": "https://reviews.thehappy-healthy-life.com/blog/best-blood-sugar-supplements-2026/?utm_source=pinterest&utm_medium=blog&utm_content=blood-sugar-blog",
+        "photo_query": "person checking blood sugar glucose meter finger test",
+    },
+    {
+        "board_key": "sleep",
+        "board_id": "1140677480561291823",
+        "title": "Best Sleep Supplements 2026 — What Actually Works (Ranked)",
+        "description": (
+            "Ranked: the sleep supplements that actually deliver deep, restorative sleep "
+            "without dependency or next-day grogginess. "
+            "Magnesium glycinate, melatonin, ashwagandha, L-theanine + more tested. "
+            "Independent research, no paid placements. "
+            "Full rankings: reviews.thehappy-healthy-life.com "
+            "#SleepSupplements #SleepAid #InsomniaCure #SleepHealth #BestSleepSupplement"
+        ),
+        "url": "https://reviews.thehappy-healthy-life.com/blog/best-sleep-supplements-2026/?utm_source=pinterest&utm_medium=blog&utm_content=sleep-blog",
+        "photo_query": "person sleeping peacefully deep sleep bedroom night calm",
+    },
+]
+
+BLOG_PIN_IDX_FILE = os.path.join(BASE_DIR, "pinterest_blog_idx.json")
+
+def load_blog_idx():
+    try:
+        with open(BLOG_PIN_IDX_FILE) as f:
+            return json.load(f)
+    except Exception:
+        return {"idx": 0}
+
+def save_blog_idx(state):
+    with open(BLOG_PIN_IDX_FILE, "w") as f:
+        json.dump(state, f, indent=2)
+
+
+def publish_blog_pin(headers):
+    """Publish one blog article pin, rotating through BLOG_PINS."""
+    state = load_blog_idx()
+    idx = state.get("idx", 0)
+    pin = BLOG_PINS[idx % len(BLOG_PINS)]
+    state["idx"] = idx + 1
+    save_blog_idx(state)
+
+    board_key = pin["board_key"]
+    log(f"  [BLOG PIN] {pin['title'][:60]}...")
+
+    # Fetch a relevant Pexels photo using the blog pin's custom query
+    bg = None
+    if PEXELS_API_KEY:
+        try:
+            import requests as _req
+            r = _req.get(
+                "https://api.pexels.com/v1/search",
+                headers={"Authorization": PEXELS_API_KEY},
+                params={"query": pin["photo_query"], "orientation": "portrait", "size": "large", "per_page": 15},
+                timeout=15,
+            )
+            if r.status_code == 200:
+                photos = r.json().get("photos", [])
+                if photos:
+                    photo = random.choice(photos)
+                    img_url = photo["src"].get("large2x") or photo["src"].get("large")
+                    ir = _req.get(img_url, timeout=20)
+                    if ir.status_code == 200:
+                        bg = Image.open(io.BytesIO(ir.content)).convert("RGB")
+        except Exception as e:
+            log(f"    Pexels fetch failed: {e}")
+
+    img_bytes = make_pin_image(board_key, pin["title"], "", "") if not bg else None
+
+    # Build the image with blog-specific layout if we have a photo
+    if bg:
+        W, H = 1000, 1500
+        img = _crop_cover(bg, W, H)
+        img = _gradient_overlay(img)
+        draw = ImageDraw.Draw(img)
+
+        def _font(sz):
+            for name in ["LiberationSans-Bold.ttf", "DejaVuSans-Bold.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"]:
+                try: return ImageFont.truetype(name, sz)
+                except Exception: pass
+            return ImageFont.load_default()
+        def _font_reg(sz):
+            for name in ["LiberationSans-Regular.ttf", "DejaVuSans.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"]:
+                try: return ImageFont.truetype(name, sz)
+                except Exception: pass
+            return ImageFont.load_default()
+
+        BADGE_COLORS = {"blood": (255, 112, 67), "sleep": (92, 107, 192)}
+        badge_color = BADGE_COLORS.get(board_key, (41, 182, 246))
+        f_badge = _font(22)
+        badge_text = "INDEPENDENT REVIEW 2026"
+        bw = draw.textlength(badge_text, font=f_badge) + 36
+        draw.rounded_rectangle([36, 40, 36 + bw, 82], radius=8, fill=badge_color)
+        draw.text((54, 50), badge_text, font=f_badge, fill=(255, 255, 255))
+
+        f_h = _font(60)
+        words = pin["title"].split()
+        lines, line = [], ""
+        for w in words:
+            test = (line + " " + w).strip()
+            if draw.textlength(test, font=f_h) <= 920:
+                line = test
+            else:
+                if line: lines.append(line)
+                line = w
+        if line: lines.append(line)
+
+        y = 480
+        for ln in lines:
+            tw = draw.textlength(ln, font=f_h)
+            draw.text(((W - tw) // 2 + 2, y + 2), ln, font=f_h, fill=(0, 0, 0, 160))
+            draw.text(((W - tw) // 2, y), ln, font=f_h, fill=(255, 255, 255))
+            y += 74
+
+        draw.rectangle([80, y + 16, W - 80, y + 19], fill=badge_color)
+
+        f_sub = _font_reg(34)
+        sub = "Full evidence-based ranking — link in bio"
+        sw = draw.textlength(sub, font=f_sub)
+        draw.text(((W - sw) // 2, y + 36), sub, font=f_sub, fill=(220, 220, 220))
+
+        draw.rectangle([0, 1420, W, H], fill=(0, 0, 0, 210))
+        f_url = _font_reg(26)
+        url_text = "reviews.thehappy-healthy-life.com"
+        uw = draw.textlength(url_text, font=f_url)
+        draw.text(((W - uw) // 2, 1438), url_text, font=f_url, fill=(200, 200, 200))
+
+        buf = io.BytesIO()
+        img.save(buf, format="JPEG", quality=90)
+        img_bytes = buf.getvalue()
+
+    if not img_bytes:
+        log("    Blog pin image generation failed — skip")
+        return False
+
+    status, resp = upload_pin(
+        pin["board_id"],
+        pin["title"][:100],
+        pin["description"][:500],
+        img_bytes,
+        pin["url"],
+        headers,
+    )
+    if status in (200, 201):
+        log(f"    Blog pin OK pin_id={resp.get('id', '?')}")
+        return True
+    else:
+        log(f"    Blog pin ERREUR {status}: {resp}")
+        return False
+
 PHOTO_QUERIES = {
     "dental":   "woman toothache pain jaw holding face grimace",
     "prostate": "man bathroom night urgency pain discomfort",
@@ -402,19 +566,16 @@ def make_pin_image(board_key, headline, body, hashtags):
     """Generate a 1000x1500 Pinterest pin: pain photo + dark overlay + hook title."""
     W, H = 1000, 1500
 
-    # --- background photo ---
-    query = PHOTO_QUERIES.get(board_key, "health wellness person")
-    photo_url = fetch_pexels_photo(query)
-    if photo_url:
-        resp = requests.get(photo_url, timeout=15)
-        img = Image.open(BytesIO(resp.content)).convert("RGB")
+    # --- background photo (Pexels portrait) ---
+    bg = fetch_pexels_photo(board_key)
+    if bg:
+        img = _crop_cover(bg, W, H)
     else:
-        img = Image.new("RGB", (W, H), (30, 30, 40))
-    img = _crop_cover(img, W, H)
+        img = Image.new("RGB", (W, H), (20, 20, 30))
+        img = _crop_cover(img, W, H)
 
-    # --- dark gradient overlay (heavier than before for legibility) ---
-    overlay = _gradient_overlay(W, H, top_alpha=120, bottom_alpha=230)
-    img = Image.alpha_composite(img.convert("RGBA"), overlay).convert("RGB")
+    # --- dark gradient overlay ---
+    img = _gradient_overlay(img)
     draw = ImageDraw.Draw(img)
 
     # --- font setup ---
@@ -1058,7 +1219,8 @@ def main():
         log("=== Video Idea Pin (AM slot only) ===")
         publish_video_pin(headers)
     else:
-        log("=== Video Idea Pin skipped (PM slot) ===")
+        log("=== Blog Article Pin (PM slot) ===")
+        publish_blog_pin(headers)
 
     done[slot_key] = {
         "published": published,
