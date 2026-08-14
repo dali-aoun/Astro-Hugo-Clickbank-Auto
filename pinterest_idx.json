@@ -1,11 +1,11 @@
 {
-  "board_idx": 360,
+  "board_idx": 365,
   "content_idx": {
-    "dental": 10,
-    "weight": 10,
-    "brain": 10,
-    "prostate": 10,
-    "beauty": 10,
+    "dental": 11,
+    "weight": 11,
+    "brain": 11,
+    "prostate": 11,
+    "beauty": 11,
     "heart": 10,
     "male": 10,
     "blood": 10,
