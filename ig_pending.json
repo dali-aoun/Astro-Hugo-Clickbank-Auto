@@ -1,23 +1,23 @@
 {
-  "date": "2026-08-13",
+  "date": "2026-08-14",
   "posts": [
     {
-      "filename": "2026-08-13_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-13_1.jpg",
-      "cat_key": "womens",
-      "headline": "Statistic",
-      "body": "Women experience anxiety and depression at 2x the rate of men.\nHormonal fluctuations directly affect serotonin and GABA.",
-      "cta": "Hormones drive women's mood disorders.",
-      "hashtags": "#WomensHealth #PelvicFloor #BladderHealth #WomenWellness #WomensBodyHealth #PelvicHealthTips #UTIPrevention #WomensHormones #HormoneBalance #WomensFitness"
+      "filename": "2026-08-14_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-14_1.jpg",
+      "cat_key": "dental",
+      "headline": "Did You Know?",
+      "body": "Sugar doesn't directly rot your teeth.\nBacteria eat sugar and produce acid \u2014 the acid destroys enamel.",
+      "cta": "The real culprit is acid, not sugar.",
+      "hashtags": "#OralHealth #DentalTips #GumHealth #TeethCare #OralCare #DentalHealth #SmileHealth #ToothCare #OralHygiene #HealthySmile"
     },
     {
-      "filename": "2026-08-13_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-13_2.jpg",
-      "cat_key": "general",
-      "headline": "Statistic",
-      "body": "People with strong social connections live an average of 7 years longer.",
-      "cta": "Loneliness shortens your life by 7 years.",
-      "hashtags": "#HealthTips #WellnessTips #NaturalHealth #HealthFacts #HealthyLiving #Supplements #NaturalRemedies #WellnessJourney #HealthAndWellness #DailyHealth"
+      "filename": "2026-08-14_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-14_2.jpg",
+      "cat_key": "weight",
+      "headline": "Fact",
+      "body": "Green tea extract increases fat burning by 17% during exercise.\nThe EGCG compound activates fat oxidation enzymes.",
+      "cta": "Green tea is a real fat burner.",
+      "hashtags": "#WeightLoss #FatBurner #MetabolismBoost #WeightLossTips #HealthyWeight #WeightLossJourney #Slim #FatLoss #WeightLossFacts #Metabolism"
     }
   ]
 }
