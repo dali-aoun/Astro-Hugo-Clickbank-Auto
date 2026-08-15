@@ -1,9 +1,9 @@
 {
-  "board_idx": 370,
+  "board_idx": 375,
   "content_idx": {
-    "dental": 11,
-    "weight": 11,
-    "brain": 11,
+    "dental": 12,
+    "weight": 12,
+    "brain": 12,
     "prostate": 11,
     "beauty": 11,
     "heart": 11,
@@ -11,7 +11,7 @@
     "blood": 11,
     "sleep": 11,
     "joint": 11,
-    "womens": 10,
-    "general": 10
+    "womens": 11,
+    "general": 11
   }
 }
