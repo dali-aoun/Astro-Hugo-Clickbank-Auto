@@ -1,23 +1,25 @@
 {
-  "date": "2026-08-14",
+  "date": "2026-08-15",
   "posts": [
     {
-      "filename": "2026-08-14_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-14_1.jpg",
-      "cat_key": "dental",
+      "filename": "2026-08-15_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-15_1.jpg",
+      "cat_key": "brain",
       "headline": "Did You Know?",
-      "body": "Sugar doesn't directly rot your teeth.\nBacteria eat sugar and produce acid \u2014 the acid destroys enamel.",
-      "cta": "The real culprit is acid, not sugar.",
-      "hashtags": "#OralHealth #DentalTips #GumHealth #TeethCare #OralCare #DentalHealth #SmileHealth #ToothCare #OralHygiene #HealthySmile"
+      "body": "Blueberries contain anthocyanins that cross the blood-brain barrier.\nStudies show they improve memory by 20% in older adults.",
+      "cta": "Blueberries are brain food.",
+      "hashtags": "#BrainHealth #CognitiveHealth #Nootropics #MentalClarity #BrainFog #NeuroplasticityTraining #BrainFacts #MemoryBoost #FocusTips #BrainScience",
+      "blog_url": null
     },
     {
-      "filename": "2026-08-14_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-14_2.jpg",
-      "cat_key": "weight",
-      "headline": "Fact",
-      "body": "Green tea extract increases fat burning by 17% during exercise.\nThe EGCG compound activates fat oxidation enzymes.",
-      "cta": "Green tea is a real fat burner.",
-      "hashtags": "#WeightLoss #FatBurner #MetabolismBoost #WeightLossTips #HealthyWeight #WeightLossJourney #Slim #FatLoss #WeightLossFacts #Metabolism"
+      "filename": "2026-08-15_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-15_2.jpg",
+      "cat_key": "prostate",
+      "headline": "Tip",
+      "body": "Green tea catechins reduce PSA levels and slow prostate cell division.\n3 cups per day shows measurable effects in studies.",
+      "cta": "Drink green tea for prostate health.",
+      "hashtags": "#ProstateHealth #MensHealth #BPH #ProstateSupport #MensWellness #ProstateCancer #MaleHealth #UrinaryHealth #MensNutrition #HealthyMen",
+      "blog_url": null
     }
   ]
 }
