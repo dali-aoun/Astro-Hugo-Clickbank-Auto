@@ -1,24 +1,24 @@
 {
-  "date": "2026-08-15",
+  "date": "2026-08-16",
   "posts": [
     {
-      "filename": "2026-08-15_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-15_1.jpg",
-      "cat_key": "brain",
+      "filename": "2026-08-16_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-16_1.jpg",
+      "cat_key": "beauty",
       "headline": "Did You Know?",
-      "body": "Blueberries contain anthocyanins that cross the blood-brain barrier.\nStudies show they improve memory by 20% in older adults.",
-      "cta": "Blueberries are brain food.",
-      "hashtags": "#BrainHealth #CognitiveHealth #Nootropics #MentalClarity #BrainFog #NeuroplasticityTraining #BrainFacts #MemoryBoost #FocusTips #BrainScience",
+      "body": "Sleep is when your skin regenerates \u2014 growth hormone peaks at night.\nMissing sleep ages your skin faster than sun exposure.",
+      "cta": "Sleep is your skin's repair time.",
+      "hashtags": "#SkinCare #Beauty #AntiAging #GlowingSkin #SkincareTips #HealthySkin #SkincareFacts #BeautyTips #NaturalBeauty #SkincareRoutine",
       "blog_url": null
     },
     {
-      "filename": "2026-08-15_2.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-15_2.jpg",
-      "cat_key": "prostate",
-      "headline": "Tip",
-      "body": "Green tea catechins reduce PSA levels and slow prostate cell division.\n3 cups per day shows measurable effects in studies.",
-      "cta": "Drink green tea for prostate health.",
-      "hashtags": "#ProstateHealth #MensHealth #BPH #ProstateSupport #MensWellness #ProstateCancer #MaleHealth #UrinaryHealth #MensNutrition #HealthyMen",
+      "filename": "2026-08-16_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-16_2.jpg",
+      "cat_key": "heart",
+      "headline": "Did You Know?",
+      "body": "Gum disease bacteria have been found in arterial plaques.\nYour dental hygiene affects your heart.",
+      "cta": "Gum disease is a heart disease risk factor.",
+      "hashtags": "#HeartHealth #CardiovascularHealth #HeartDisease #HeartCare #HeartHealthTips #CardiovascularFitness #HealthyHeart #HeartFacts #BloodPressure #Cholesterol",
       "blog_url": null
     }
   ]
