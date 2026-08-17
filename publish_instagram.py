@@ -1,4 +1,4 @@
-﻿"""
+"""
 publish_instagram.py — Instagram educational content publisher
 Strategy: informational health tips → followers → bio link clicks (no product photos)
 Images generated with Pillow (1080x1350), committed to the repo, then served via
@@ -27,7 +27,7 @@ IG_USER_ID = os.environ.get("INSTAGRAM_USER_ID", "")
 ASSETS_REPO = "dali-aoun/ig-assets"  # Public repo — accessible by Meta crawlers
 
 SITE_URL     = "https://reviews.thehappy-healthy-life.com"
-POSTS_PER_DAY = 2
+POSTS_PER_DAY = 1
 PEXELS_API_KEY = os.environ.get("PEXELS_API_KEY", "")
 
 # ── Pexels search queries per category ───────────────────────────────────────
@@ -897,56 +897,59 @@ def generate_phase():
     # Generate Reel video dynamically with Pexels + edge-tts + FFmpeg
     reel_products = load_all_products()
     if reel_products:
-        r_state = load_reel_idx()
-        r_idx = r_state.get("idx", 0) % len(reel_products)
-        product = reel_products[r_idx]
-        r_state["idx"] = r_idx + 1
-        save_reel_idx(r_state)
-
-        cat_slug     = product["category_slug"]
-        reel_filename = f"{today_key}.mp4"
-        reels_dir    = os.path.join(BASE_DIR, "ig_reels")
+        reels_dir = os.path.join(BASE_DIR, "ig_reels")
         os.makedirs(reels_dir, exist_ok=True)
-        reel_path    = os.path.join(reels_dir, reel_filename)
-        generated_ok = False
+        reel_entries = []
+        for reel_n in range(1, 3):
+            r_state = load_reel_idx()
+            r_idx = r_state.get("idx", 0) % len(reel_products)
+            product = reel_products[r_idx]
+            r_state["idx"] = r_idx + 1
+            save_reel_idx(r_state)
 
-        if PEXELS_API_KEY:
-            try:
-                queries   = PEXELS_QUERIES.get(cat_slug, ["healthy lifestyle woman"])
-                query     = _random.choice(queries)
-                log(f"Reel [{product['name']}]: Pexels search '{query}'")
-                video_url = pexels_search_video(query, PEXELS_API_KEY)
-                if video_url:
-                    with tempfile.TemporaryDirectory() as tmp:
-                        raw_path   = os.path.join(tmp, "raw.mp4")
-                        audio_path = os.path.join(tmp, "audio.mp3")
-                        download_video(video_url, raw_path)
-                        size_kb = os.path.getsize(raw_path) // 1024
-                        log(f"  downloaded {size_kb}KB")
-                        log(f"  generating voiceover (edge-tts)...")
-                        make_reel_voiceover(product, audio_path)
-                        log(f"  processing FFmpeg overlay...")
-                        process_reel_video(raw_path, audio_path, reel_path, product)
-                        generated_ok = os.path.exists(reel_path)
-                        if generated_ok:
-                            log(f"  reel video {reel_filename} {os.path.getsize(reel_path)//1024}KB OK")
-                else:
-                    log("  Pexels: no video found")
-            except Exception as e:
-                log(f"  Reel generation error: {e}")
-        else:
-            log("  PEXELS_API_KEY not set — skipping reel video generation")
+            cat_slug      = product["category_slug"]
+            reel_filename = f"{today_key}_{reel_n}.mp4"
+            reel_path     = os.path.join(reels_dir, reel_filename)
+            generated_ok  = False
 
-        with open(REEL_PENDING_FILE, "w") as f:
-            json.dump({
-                "date": today_key,
+            if PEXELS_API_KEY:
+                try:
+                    queries   = PEXELS_QUERIES.get(cat_slug, ["healthy lifestyle woman"])
+                    query     = _random.choice(queries)
+                    log(f"Reel {reel_n}/2 [{product['name']}]: Pexels search '{query}'")
+                    video_url = pexels_search_video(query, PEXELS_API_KEY)
+                    if video_url:
+                        with tempfile.TemporaryDirectory() as tmp:
+                            raw_path   = os.path.join(tmp, "raw.mp4")
+                            audio_path = os.path.join(tmp, "audio.mp3")
+                            download_video(video_url, raw_path)
+                            size_kb = os.path.getsize(raw_path) // 1024
+                            log(f"  downloaded {size_kb}KB")
+                            log(f"  generating voiceover (edge-tts)...")
+                            make_reel_voiceover(product, audio_path)
+                            log(f"  processing FFmpeg overlay...")
+                            process_reel_video(raw_path, audio_path, reel_path, product)
+                            generated_ok = os.path.exists(reel_path)
+                            if generated_ok:
+                                log(f"  reel {reel_n} {reel_filename} {os.path.getsize(reel_path)//1024}KB OK")
+                    else:
+                        log("  Pexels: no video found")
+                except Exception as e:
+                    log(f"  Reel {reel_n} generation error: {e}")
+            else:
+                log("  PEXELS_API_KEY not set — skipping reel video generation")
+
+            reel_entries.append({
                 "slug": product["slug"],
                 "name": product["name"],
                 "category_slug": cat_slug,
                 "mp4_filename": reel_filename,
                 "generated": generated_ok,
-            }, f, indent=2)
-        log(f"Reel pending: {product['name']} generated={generated_ok}")
+            })
+
+        with open(REEL_PENDING_FILE, "w") as f:
+            json.dump({"date": today_key, "reels": reel_entries}, f, indent=2)
+        log(f"Reels pending: {[r['name'] for r in reel_entries]}")
 
     log(f"=== Generate done: {len([p for p in pending if p['filename']])} images saved ===")
 
@@ -1055,30 +1058,43 @@ def publish_reel_phase():
         log(f"ERREUR: ig_reel_pending.json est pour {reel_data.get('date')}, pas {today_key}")
         sys.exit(1)
 
-    if not reel_data.get("generated"):
-        log(f"  Reel non genere (generated=False) — skip publication")
-        sys.exit(0)
+    # Support new format (list of reels) and old format (single reel dict) for backward compat
+    reels = reel_data.get("reels")
+    if reels is None:
+        reels = [reel_data]
 
-    video_url = get_github_reels_url(reel_data["mp4_filename"])
-    caption = make_reel_caption(reel_data["name"], reel_data["category_slug"], reel_data["slug"])
+    published_count = 0
+    for ridx, reel_entry in enumerate(reels):
+        if not reel_entry.get("generated"):
+            log(f"  Reel {ridx+1}/{len(reels)} non genere — skip")
+            continue
 
-    log(f"=== Publishing Reel: {reel_data['name']} ===")
-    log(f"  URL: {video_url}")
+        video_url = get_github_reels_url(reel_entry["mp4_filename"])
+        caption   = make_reel_caption(reel_entry["name"], reel_entry["category_slug"], reel_entry["slug"])
 
-    log(f"  Verification CDN video ({video_url})...")
-    if not wait_for_url(video_url, max_wait=120, interval=10):
-        log(f"  ERREUR: video inaccessible apres 120s — skip")
-        sys.exit(1)
-    log(f"  CDN OK — publication...")
+        log(f"=== Publishing Reel {ridx+1}/{len(reels)}: {reel_entry['name']} ===")
+        log(f"  URL: {video_url}")
 
-    reel_status, reel_resp = publish_ig_reel(video_url, caption)
-    if reel_status == 200:
-        log(f"  Reel OK id={reel_resp.get('id', '?')}")
-        reel_done[today_key] = {"id": reel_resp.get("id"), "at": datetime.utcnow().isoformat()}
-        with open(REEL_DONE_FILE, "w") as f:
-            json.dump(reel_done, f, indent=2)
-    else:
-        log(f"  Reel ERREUR {reel_status}: {reel_resp}")
+        log(f"  Verification CDN video ({video_url})...")
+        if not wait_for_url(video_url, max_wait=120, interval=10):
+            log(f"  ERREUR: video inaccessible apres 120s — skip")
+            continue
+        log(f"  CDN OK — publication...")
+
+        reel_status, reel_resp = publish_ig_reel(video_url, caption)
+        if reel_status == 200:
+            log(f"  Reel OK id={reel_resp.get('id', '?')}")
+            published_count += 1
+        else:
+            log(f"  Reel ERREUR {reel_status}: {reel_resp}")
+
+        if ridx < len(reels) - 1:
+            time.sleep(30)
+
+    reel_done[today_key] = {"published": published_count, "at": datetime.utcnow().isoformat()}
+    with open(REEL_DONE_FILE, "w") as f:
+        json.dump(reel_done, f, indent=2)
+    if published_count == 0:
         sys.exit(1)
 
 

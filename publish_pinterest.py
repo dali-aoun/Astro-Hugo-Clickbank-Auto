@@ -1,4 +1,4 @@
-﻿"""
+"""
 publish_pinterest.py â€” Pinterest educational content publisher
 Strategy: informational tips/facts per board â†’ saves â†’ organic reach â†’ bio link clicks
 Images generated on-the-fly with Pillow, uploaded as base64 directly to Pinterest API v5
@@ -18,7 +18,7 @@ VIDEO_IDX_FILE = os.path.join(BASE_DIR, "pinterest_video_idx.json")
 PINTEREST_TOKEN = os.environ.get("PINTEREST_ACCESS_TOKEN", "")
 SITE_URL = "https://reviews.thehappy-healthy-life.com"
 
-PINS_PER_DAY = 5
+PINS_PER_DAY = 2
 PEXELS_API_KEY = os.environ.get("PEXELS_API_KEY", "")
 
 # â”€â”€ Board map â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -1216,7 +1216,9 @@ def main():
     save_idx(state)
 
     if slot_id == "am":
-        log("=== Video Idea Pin (AM slot only) ===")
+        log("=== Video Idea Pins (AM slot: 2 videos) ===")
+        publish_video_pin(headers)
+        time.sleep(30)
         publish_video_pin(headers)
     else:
         log("=== Blog Article Pin (PM slot) ===")
