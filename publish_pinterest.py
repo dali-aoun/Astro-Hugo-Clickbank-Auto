@@ -688,7 +688,7 @@ def make_pin_image(board_key, headline, body, hashtags):
     uw = draw.textlength(url_text, font=f_url)
     draw.text(((W - uw) // 2, footer_y + 18), url_text, font=f_url, fill=(200, 200, 200))
 
-    buf = BytesIO()
+    buf = io.BytesIO()
     img.save(buf, format="JPEG", quality=90)
     return base64.b64encode(buf.getvalue()).decode()
 
