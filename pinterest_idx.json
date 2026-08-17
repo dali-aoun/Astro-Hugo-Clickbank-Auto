@@ -1,5 +1,5 @@
 {
-  "board_idx": 390,
+  "board_idx": 395,
   "content_idx": {
     "dental": 13,
     "weight": 13,
@@ -7,11 +7,11 @@
     "prostate": 13,
     "beauty": 13,
     "heart": 13,
-    "male": 12,
-    "blood": 12,
-    "sleep": 12,
-    "joint": 12,
-    "womens": 12,
+    "male": 13,
+    "blood": 13,
+    "sleep": 13,
+    "joint": 13,
+    "womens": 13,
     "general": 12
   }
 }
