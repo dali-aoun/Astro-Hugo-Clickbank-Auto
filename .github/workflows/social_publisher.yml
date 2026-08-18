@@ -104,14 +104,7 @@ jobs:
 
           # Copy today's reel videos if generated (supports 1 or 2 reels)
           if [ -f ig_reel_pending.json ]; then
-            python3 -c "
-import json, sys
-d = json.load(open('ig_reel_pending.json'))
-reels = d.get('reels', [d])
-for r in reels:
-    f = r.get('mp4_filename', '')
-    if f: print(f)
-" | while read REEL_FILE; do
+            python3 -c "import json; d=json.load(open('ig_reel_pending.json')); [print(r['mp4_filename']) for r in d.get('reels',[d]) if r.get('mp4_filename')]" | while read REEL_FILE; do
               if [ -f "ig_reels/$REEL_FILE" ]; then
                 mkdir -p /tmp/ig-assets/ig_reels
                 cp "ig_reels/$REEL_FILE" "/tmp/ig-assets/ig_reels/$REEL_FILE"
