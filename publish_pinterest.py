@@ -690,7 +690,7 @@ def make_pin_image(board_key, headline, body, hashtags):
 
     buf = io.BytesIO()
     img.save(buf, format="JPEG", quality=90)
-    return base64.b64encode(buf.getvalue()).decode()
+    return buf.getvalue()
 
 
 def upload_pin(board_id, title, description, img_bytes, link, headers):
@@ -703,7 +703,7 @@ def upload_pin(board_id, title, description, img_bytes, link, headers):
         "board_id": board_id,
         "media_source": {
             "source_type": "image_base64",
-            "content_type": "image/png",
+            "content_type": "image/jpeg",
             "data": img_b64,
         },
         "link": link,
