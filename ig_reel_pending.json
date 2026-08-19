@@ -1,18 +1,18 @@
 {
-  "date": "2026-08-18",
+  "date": "2026-08-19",
   "reels": [
     {
-      "slug": "primebiome",
-      "name": "PrimeBiome",
+      "slug": "neotonics",
+      "name": "Neotonics",
       "category_slug": "beauty-skin",
-      "mp4_filename": "2026-08-18_1.mp4",
+      "mp4_filename": "2026-08-19_1.mp4",
       "generated": true
     },
     {
-      "slug": "metanail-complex",
-      "name": "Metanail Complex",
-      "category_slug": "beauty-skin",
-      "mp4_filename": "2026-08-18_2.mp4",
+      "slug": "femipro",
+      "name": "FemiPro",
+      "category_slug": "womens-health",
+      "mp4_filename": "2026-08-19_2.mp4",
       "generated": true
     }
   ]
