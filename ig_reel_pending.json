@@ -1,18 +1,18 @@
 {
-  "date": "2026-08-20",
+  "date": "2026-08-21",
   "reels": [
     {
-      "slug": "femicore",
-      "name": "FemiCore",
+      "slug": "menoscue",
+      "name": "MenoRescue",
       "category_slug": "womens-health",
-      "mp4_filename": "2026-08-20_1.mp4",
+      "mp4_filename": "2026-08-21_1.mp4",
       "generated": true
     },
     {
-      "slug": "venoplus-8",
-      "name": "VenoPlus 8",
-      "category_slug": "womens-health",
-      "mp4_filename": "2026-08-20_2.mp4",
+      "slug": "gluco6",
+      "name": "Gluco6",
+      "category_slug": "blood-sugar",
+      "mp4_filename": "2026-08-21_2.mp4",
       "generated": true
     }
   ]
