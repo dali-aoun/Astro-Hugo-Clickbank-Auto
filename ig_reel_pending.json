@@ -1,18 +1,18 @@
 {
-  "date": "2026-08-21",
+  "date": "2026-08-22",
   "reels": [
     {
-      "slug": "menoscue",
-      "name": "MenoRescue",
-      "category_slug": "womens-health",
-      "mp4_filename": "2026-08-21_1.mp4",
+      "slug": "sugar-defender",
+      "name": "Sugar Defender",
+      "category_slug": "blood-sugar",
+      "mp4_filename": "2026-08-22_1.mp4",
       "generated": true
     },
     {
-      "slug": "gluco6",
-      "name": "Gluco6",
+      "slug": "glucotrust",
+      "name": "GlucoTrust",
       "category_slug": "blood-sugar",
-      "mp4_filename": "2026-08-21_2.mp4",
+      "mp4_filename": "2026-08-22_2.mp4",
       "generated": true
     }
   ]
