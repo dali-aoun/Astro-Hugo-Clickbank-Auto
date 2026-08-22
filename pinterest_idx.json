@@ -1,7 +1,7 @@
 {
-  "board_idx": 407,
+  "board_idx": 409,
   "content_idx": {
-    "dental": 14,
+    "dental": 15,
     "weight": 14,
     "brain": 14,
     "prostate": 14,
@@ -12,6 +12,6 @@
     "sleep": 14,
     "joint": 14,
     "womens": 14,
-    "general": 13
+    "general": 14
   }
 }
