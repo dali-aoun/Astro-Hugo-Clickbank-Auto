@@ -1,18 +1,18 @@
 {
-  "date": "2026-08-24",
+  "date": "2026-08-25",
   "reels": [
     {
-      "slug": "flexotone",
-      "name": "Flexotone",
-      "category_slug": "joint-pain",
-      "mp4_filename": "2026-08-24_1.mp4",
+      "slug": "resurge",
+      "name": "Resurge",
+      "category_slug": "sleep",
+      "mp4_filename": "2026-08-25_1.mp4",
       "generated": true
     },
     {
-      "slug": "yu-sleep",
-      "name": "Yu Sleep",
-      "category_slug": "sleep",
-      "mp4_filename": "2026-08-24_2.mp4",
+      "slug": "cholibrium",
+      "name": "Cholibrium",
+      "category_slug": "heart-health",
+      "mp4_filename": "2026-08-25_2.mp4",
       "generated": true
     }
   ]
