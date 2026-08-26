@@ -1,18 +1,18 @@
 {
-  "date": "2026-08-25",
+  "date": "2026-08-26",
   "reels": [
     {
-      "slug": "resurge",
-      "name": "Resurge",
-      "category_slug": "sleep",
-      "mp4_filename": "2026-08-25_1.mp4",
+      "slug": "cardioshield",
+      "name": "CardioShield",
+      "category_slug": "heart-health",
+      "mp4_filename": "2026-08-26_1.mp4",
       "generated": true
     },
     {
-      "slug": "cholibrium",
-      "name": "Cholibrium",
-      "category_slug": "heart-health",
-      "mp4_filename": "2026-08-25_2.mp4",
+      "slug": "breathe",
+      "name": "Breathe",
+      "category_slug": "general-health",
+      "mp4_filename": "2026-08-26_2.mp4",
       "generated": true
     }
   ]
