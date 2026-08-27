@@ -1,18 +1,18 @@
 {
-  "date": "2026-08-26",
+  "date": "2026-08-27",
   "reels": [
     {
-      "slug": "cardioshield",
-      "name": "CardioShield",
-      "category_slug": "heart-health",
-      "mp4_filename": "2026-08-26_1.mp4",
+      "slug": "electroslim",
+      "name": "ElectroSlim",
+      "category_slug": "general-health",
+      "mp4_filename": "2026-08-27_1.mp4",
       "generated": true
     },
     {
-      "slug": "breathe",
-      "name": "Breathe",
-      "category_slug": "general-health",
-      "mp4_filename": "2026-08-26_2.mp4",
+      "slug": "prodentim",
+      "name": "ProDentim",
+      "category_slug": "dental-health",
+      "mp4_filename": "2026-08-27_2.mp4",
       "generated": true
     }
   ]
