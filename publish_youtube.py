@@ -46,20 +46,21 @@ CATEGORY_LABELS = {
     "general-health":   "wellness",
 }
 
-DESCRIPTION_TEMPLATE = """{hook}
+DESCRIPTION_TEMPLATE = """⭐ {rating}/5 — Full Review + Best Price → {site_url}/{cat_slug}/{slug}/?utm_source=youtube&utm_medium=shorts&utm_content={slug}
+
+{hook}
 
 {name} — does it actually work in 2026?
 
 {desc}
 
-Designed for: {audience}
+Who it's for: {audience}
 
-Our independent rating: ⭐ {rating}/5
+📋 Honest breakdown: ingredients, real user results, side effects, and where to get the guaranteed best price — link above.
 
-📋 Full review (ingredients, side effects, where to buy at best price):
-{site_url}/{cat_slug}/{slug}/?utm_source=youtube&utm_medium=shorts&utm_content={slug}
+Follow for honest, research-backed supplement reviews every week.
 
-#{cat_tag} #supplementreview #{name_tag}review #naturalhealth #honestreviews #shorts
+#{name_tag}review #{cat_tag} #supplementreview #naturalhealth #honestreviews #shorts
 """
 
 CATEGORY_TAGS = {
@@ -654,6 +655,22 @@ def get_access_token():
     log(f"OAuth erreur {r.status_code}: {r.text[:200]}")
     return None
 
+def upload_thumbnail(video_id, image_bytes, access_token):
+    """Upload a JPEG thumbnail to a YouTube video. Returns HTTP status code."""
+    import requests
+    url = f"https://www.googleapis.com/upload/youtube/v3/thumbnails/set?videoId={video_id}"
+    r = requests.post(
+        url,
+        data=image_bytes,
+        headers={
+            "Authorization": f"Bearer {access_token}",
+            "Content-Type": "image/jpeg",
+        },
+        timeout=60,
+    )
+    return r.status_code
+
+
 def upload_short(video_path, title, description, tags, access_token):
     import requests
 
@@ -750,9 +767,13 @@ def main():
             name_tag=name_tag,
         )
         tags = [
-            product["name"], "supplement review", "honest review",
-            "health supplement", "natural health", "2026", cat_tag,
-            cat_label, "does it work", "shorts",
+            product["name"],
+            f"{product['name']} review",
+            f"{product['name']} review 2026",
+            f"does {product['name']} work",
+            f"{product['name']} honest review",
+            "supplement review", "honest review", "health supplement",
+            "natural health", "2026", cat_tag, cat_label, "shorts",
         ]
 
         log(f"  Uploading to YouTube...")
@@ -761,6 +782,22 @@ def main():
     if status == 200:
         video_id = resp.get("id", "")
         log(f"  OK: {product['name']} -> https://youtube.com/shorts/{video_id}")
+
+        # Upload custom thumbnail (boosts CTR in search results)
+        import io as _io
+        try:
+            log(f"  Uploading custom thumbnail...")
+            thumb_img = make_background_image(product)
+            thumb_buf = _io.BytesIO()
+            thumb_img.save(thumb_buf, format="JPEG", quality=95)
+            thumb_status = upload_thumbnail(video_id, thumb_buf.getvalue(), access_token)
+            if thumb_status in (200, 204):
+                log(f"  Thumbnail OK ({thumb_status})")
+            else:
+                log(f"  Thumbnail upload returned {thumb_status} (non-blocking)")
+        except Exception as e:
+            log(f"  Thumbnail upload failed (non-blocking): {e}")
+
         result_status = "ok"
     else:
         log(f"  ERREUR {status}: {resp}")
