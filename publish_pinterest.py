@@ -1108,9 +1108,11 @@ def publish_video_pin(headers):
     payload = {
         "title": f"{name} Review {datetime.utcnow().year} — {rating:.1f}/5 ⭐",
         "description": (
-            f"Honest review of {name}. {product.get('description', '')[:200]} "
-            f"Real results, no fluff. Full review: {link} "
-            f"#supplementreview #{cat_slug.replace('-', '')} #healthtips #honestreviews"
+            f"Honest {cat_slug.replace('-', ' ')} supplement review: {name}. "
+            f"{product.get('description', '')[:180]} "
+            f"Rated {rating:.1f}/5 after independent testing. Full ingredient breakdown, side effects, "
+            f"and best price: {link} "
+            f"#supplementreview #{cat_slug.replace('-', '')} #naturalhealth #honestreviews #healthtips"
         )[:500],
         "board_id": board["id"],
         "media_source": {
@@ -1186,7 +1188,8 @@ def main():
         link = f"{SITE_URL}/{cat_url}/?utm_source=pinterest&utm_medium=pin&utm_content={board_key}"
         first_line = body.split("\n")[0].strip()
         title = headline[:100]
-        description = f"{body.replace(chr(10), ' ')} | Full reviews: {link}"[:500]
+        clean_body = body.replace(chr(10), " ").strip()
+        description = f"{headline}. {clean_body} {hashtags} | Full guide: {SITE_URL}/{cat_url}/"[:500]
 
         log(f"  [{i+1}/{PINS_PER_DAY}] {board['name']} â€” {headline}: {first_line[:50]}")
 

@@ -21,11 +21,11 @@ PEXELS_API_KEY   = os.environ.get("PEXELS_API_KEY", "")
 SITE_URL = "https://reviews.thehappy-healthy-life.com"
 
 TITLE_TEMPLATES = [
-    "Why {name} is the #1 {cat_label} supplement in 2026 #shorts",
+    "{name} review 2026 — does it actually work? #shorts",
     "I tested {name} for 30 days — the result shocked me #shorts",
     "The truth about {name} nobody tells you #shorts",
     "{name}: before you buy, watch this #shorts",
-    "Doctors hate this — {name} exposed #shorts",
+    "{name} — honest {cat_label} supplement review #shorts",
     "{name} — real results or total scam? #shorts",
     "3 reasons {name} actually works (and 1 reason it doesn't) #shorts",
     "What happened when I took {name} every day for a month #shorts",
@@ -204,6 +204,75 @@ CATEGORY_HOOKS = {
     ],
 }
 
+CATEGORY_MECHANISMS = {
+    "dental-health": (
+        "Most oral products focus on killing bacteria — but that kills the good ones too. "
+        "The research now points to restoring the oral microbiome with specific probiotic strains "
+        "as the real solution for bleeding gums, bad breath, and tooth sensitivity. "
+        "{name} targets this mechanism directly."
+    ),
+    "prostate-health": (
+        "Prostate problems are driven by DHT accumulation and chronic low-level inflammation — not just age. "
+        "The most effective formulas combine plant-based DHT blockers with anti-inflammatory compounds "
+        "that reduce pressure on the urethra. {name} addresses both pathways."
+    ),
+    "male-performance": (
+        "The issue isn't usually total testosterone — it's free testosterone. "
+        "When SHBG proteins bind too much of it, your body can't use what it has. "
+        "The best formulas work by freeing bound testosterone and supporting natural production. "
+        "{name} is designed specifically for this."
+    ),
+    "brain-and-senses": (
+        "Brain fog and tinnitus often share one root: restricted blood flow and oxidative stress in neural tissue. "
+        "The most studied approach combines cerebral circulation support with neuroprotective antioxidants "
+        "that protect the auditory and memory pathways. {name} uses this research-backed approach."
+    ),
+    "weight-loss": (
+        "The real barrier to fat loss isn't willpower — it's metabolic rate and how efficiently your cells burn stored fat. "
+        "New research focuses on brown adipose tissue activation and thermogenic pathways "
+        "that determine whether your body burns fat or stores it. {name} targets these pathways."
+    ),
+    "beauty-skin": (
+        "Topical products only reach the outer layers of skin. "
+        "The real aging happens deeper — collagen breakdown, oxidative damage, and chronic inflammation "
+        "that no cream can fix from the outside. {name} works from the inside at the cellular level."
+    ),
+    "womens-health": (
+        "Bladder leaks, urgency, and recurring UTIs often trace back to the urinary microbiome — "
+        "an ecosystem that standard probiotics don't target. "
+        "Specialized strains like Lactobacillus Rhamnosus and Lactobacillus Reuteri have shown "
+        "real results in clinical studies. {name} is formulated around this science."
+    ),
+    "blood-sugar": (
+        "Blood sugar problems aren't just about insulin resistance — they involve mitochondrial function "
+        "in muscle cells and how efficiently glucose gets converted to energy instead of stored as fat. "
+        "{name} addresses this at the cellular level, not just by blunting glucose spikes."
+    ),
+    "joint-pain": (
+        "Most joint supplements add glucosamine and call it done. But the science shows that bioavailability "
+        "and the synergy between joint-cushioning compounds, collagen precursors, and anti-inflammatory enzymes "
+        "is what actually makes a difference in synovial fluid and cartilage. {name} is formulated with this in mind."
+    ),
+    "sleep": (
+        "High-dose melatonin works short-term but suppresses your natural melatonin production over time. "
+        "The research-backed approach uses GABA precursors, adaptogenic herbs like ashwagandha, "
+        "and low physiological doses of melatonin to support all four stages of sleep — not just falling asleep. "
+        "{name} follows this multi-pathway approach."
+    ),
+    "heart-health": (
+        "Cholesterol numbers aren't the full story. Arterial stiffness, homocysteine levels, and endothelial inflammation "
+        "predict cardiovascular risk far better — and are rarely checked. "
+        "{name} targets these overlooked markers with ingredients that have actual clinical backing."
+    ),
+    "general-health": (
+        "Chronic fatigue and weak immunity often come down to mitochondrial dysfunction — "
+        "your cells aren't producing energy efficiently. "
+        "The compounds with the best evidence for this include CoQ10, magnesium glycinate, and adaptogenic herbs "
+        "that reduce cortisol load. {name} addresses this pathway directly."
+    ),
+}
+
+
 def make_voiceover_script(product):
     name     = product["name"]
     desc     = product.get("description", "a popular health supplement")
@@ -215,36 +284,35 @@ def make_voiceover_script(product):
     hooks = CATEGORY_HOOKS.get(cat_slug, CATEGORY_HOOKS["general-health"])
     hook  = random.choice(hooks)
 
+    mechanism = CATEGORY_MECHANISMS.get(cat_slug, CATEGORY_MECHANISMS["general-health"]).format(name=name)
+
     script = f"""
 {hook}
 
-I'm going to tell you about {name} — and I'm going to be completely honest with you.
+I'm going to tell you exactly what {name} is and give you an honest assessment.
 
 {name} is {desc}
 
-It was specifically created for {audience}
+It was created specifically for {audience}.
 
-Here's what makes it different from everything else out there.
+{mechanism}
 
-Most supplements treat symptoms. {name} targets the root cause.
-The formula uses clinically studied natural ingredients — no stimulants, no harsh chemicals.
-And thousands of people are reporting real results within the first few weeks.
+Is it worth it? Here's the honest breakdown.
 
-Is it perfect? No. Let me give you the honest breakdown.
+What works: the formula is well-dosed, the ingredients have research behind them,
+and the feedback from verified buyers is consistently positive.
+The company also offers a money-back guarantee, which is a good sign.
 
-What works: the ingredients are well-dosed and research-backed.
-The feedback from real users is consistently positive.
-And the company stands behind it with a money-back guarantee.
+What to know before buying: results take 4 to 6 weeks of consistent use.
+It's not a quick fix — it's a daily supplement that works cumulatively.
 
-What to know: it takes 4 to 6 weeks for full results. Supplements are not magic.
-You need to be consistent.
+My independent rating? {rating:.1f} out of 5 stars.
 
-My rating? {rating:.1f} out of 5 stars.
+I've left the full review in the description below —
+the complete ingredient breakdown, potential side effects, pricing comparison,
+and where to get the best price with the guarantee.
 
-If {name} sounds right for you, I've left the full review in the description —
-ingredients breakdown, pricing, side effects, and where to get the best deal.
-
-Follow for more honest health supplement reviews.
+Follow for more honest, research-backed supplement reviews every week.
 """.strip()
     return script, hook
 

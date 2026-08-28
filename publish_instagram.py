@@ -86,25 +86,121 @@ def _reel_tts_async(script, audio_path):
     asyncio.run(_run())
 
 
+REEL_CATEGORY_HOOKS = {
+    "dental-health":    "Here's what your dentist never tells you about gum disease and bad breath.",
+    "prostate-health":  "If you're waking up more than twice a night to use the bathroom — this is important.",
+    "male-performance": "If your energy and drive have dropped significantly in your 40s, here's the real reason why.",
+    "brain-and-senses": "Brain fog, memory issues, and tinnitus often share one root cause that nobody talks about.",
+    "weight-loss":      "If you've tried everything and still can't lose the belly fat, here's what the research actually says.",
+    "beauty-skin":      "Your skin ages 3 times faster when this one thing is missing — and it has nothing to do with creams.",
+    "womens-health":    "Bladder leaks and urgency are not just part of aging — here's what's actually causing it.",
+    "blood-sugar":      "If you crash after meals and crave sugar constantly, your blood sugar is doing something dangerous.",
+    "joint-pain":       "Cartilage damage doesn't have to be permanent — researchers found something that actually helps.",
+    "sleep":            "If you wake up at 3am and can't fall back asleep, this is not a melatonin problem.",
+    "heart-health":     "High cholesterol numbers aren't the real cardiovascular risk — here's what actually is.",
+    "general-health":   "Chronic fatigue and brain fog often have one fixable root cause that most doctors never test for.",
+}
+
+REEL_CATEGORY_BODIES = {
+    "dental-health": (
+        "Most people don't know that brushing removes less than 30 percent of the bacteria in your mouth. "
+        "The rest live in the gum pockets and on your tongue — and most oral products actually kill the good bacteria too. "
+        "That's why the research on oral probiotics has exploded in the last five years. "
+        "Specific probiotic strains can crowd out the bacteria that cause decay, bleeding gums, and chronic bad breath."
+    ),
+    "prostate-health": (
+        "Prostate problems aren't just about age. "
+        "They're driven by DHT accumulation and low-grade inflammation that slowly compress the urethra. "
+        "The most effective natural formulas address both pathways — not just one — "
+        "which is why some men see real improvements in flow and sleep quality within 4 to 6 weeks."
+    ),
+    "male-performance": (
+        "Most men with low drive have normal total testosterone — but their free testosterone is low. "
+        "That's because binding proteins lock up the testosterone your body produces. "
+        "The best formulas work by freeing that bound testosterone and supporting natural production, "
+        "which is a fundamentally different approach than stimulants or synthetic boosters."
+    ),
+    "brain-and-senses": (
+        "The ringing in your ears and the brain fog you feel aren't separate problems. "
+        "New research shows they often share a root: restricted blood flow and oxidative stress in neural tissue. "
+        "The most studied approach combines cerebral circulation support with neuroprotective compounds "
+        "that actually protect the auditory and memory pathways over time."
+    ),
+    "weight-loss": (
+        "Eating less and exercising more works for some people — but not everyone. "
+        "And there's a biological reason for that. Your metabolic rate and how efficiently your cells burn stored fat "
+        "depends on factors that have nothing to do with willpower. "
+        "The new science focuses on brown adipose tissue and thermogenic activation as the real levers."
+    ),
+    "beauty-skin": (
+        "Collagen creams can't penetrate deep enough to make a real difference. "
+        "The aging that matters — the breakdown of collagen fibers, the loss of elasticity, the inflammation "
+        "that makes skin look dull and tired — happens at a cellular level that only internal support can reach. "
+        "That's the science behind a new generation of inside-out beauty supplements."
+    ),
+    "womens-health": (
+        "Most bladder and UTI issues trace back to the urinary microbiome — "
+        "an ecosystem that standard probiotics don't target at all. "
+        "Clinical studies on specific Lactobacillus strains have shown real reductions in urgency, leaks, and recurring infections. "
+        "It's one of the most underpublicized areas of women's health research right now."
+    ),
+    "blood-sugar": (
+        "The blood sugar crash after meals isn't just uncomfortable — it drives fat storage, cravings, and long-term insulin resistance. "
+        "The compounds with the best clinical backing for stabilizing glucose don't just block absorption — "
+        "they improve how your cells actually process glucose at the mitochondrial level, "
+        "which is why some people notice sustained energy improvements within weeks."
+    ),
+    "joint-pain": (
+        "Glucosamine is only part of the story. On its own, it has poor bioavailability "
+        "and doesn't address the inflammatory enzymes breaking down cartilage from the inside. "
+        "The best joint formulas combine cartilage-building compounds with bioavailability enhancers "
+        "and natural COX-2 inhibitors — working on the damage and the cause simultaneously."
+    ),
+    "sleep": (
+        "Melatonin helps you fall asleep — but it doesn't help you stay asleep or reach deep restorative sleep. "
+        "That requires a different approach: GABA pathway support, cortisol modulation, and the right adaptogenic herbs "
+        "that tell your nervous system it's safe to power down. "
+        "Most sleep supplements skip these steps entirely and wonder why people wake up at 3am anyway."
+    ),
+    "heart-health": (
+        "Your doctor measures your cholesterol — but not the things that actually predict heart risk. "
+        "Arterial stiffness, homocysteine, and endothelial inflammation are far more predictive markers "
+        "and they're almost never tested in a routine checkup. "
+        "The most evidence-backed cardiovascular supplements target these overlooked pathways directly."
+    ),
+    "general-health": (
+        "Mitochondrial dysfunction — your cells not producing energy efficiently — is behind most cases of chronic fatigue, "
+        "brain fog, and immune weakness that blood tests don't explain. "
+        "The compounds with the best research include CoQ10, magnesium glycinate, and adaptogens that lower cortisol load — "
+        "but dose and bioavailability matter enormously."
+    ),
+}
+
+
 def make_reel_voiceover(product, audio_path):
     name     = product["name"]
     desc     = product.get("description", "a health supplement")
-    audience = product.get("audience", "people looking to improve their health")
     gravity  = float(product.get("gravity", 50))
     rating   = min(5.0, max(3.5, 3.5 + (gravity / 200.0)))
-    slug     = product.get("slug", "")
     cat_slug = product.get("category_slug", "general-health")
-    link     = f"{SITE_URL}/{cat_slug}/{slug}/"
+
+    hook = REEL_CATEGORY_HOOKS.get(cat_slug, "Here's what the research actually says about this supplement.")
+    body = REEL_CATEGORY_BODIES.get(cat_slug, REEL_CATEGORY_BODIES["general-health"])
+    follow_reason = REEL_FOLLOW_REASONS.get(cat_slug, "Follow for honest, evidence-based supplement reviews every week.")
 
     script = f"""
-{name}. Is it really worth it?
+{hook}
+
 {name} is {desc}.
-It's designed for {audience}.
-With a popularity score of {int(gravity)}, thousands of people are already using it.
-My honest rating? {rating:.1f} out of 5 stars.
-Want the full ingredient breakdown and real results?
-Tap the link in my bio right now.
-Follow me for more honest supplement reviews every day.
+
+{body}
+
+So where does {name} fit in? My independent rating is {rating:.1f} out of 5 stars.
+
+The full ingredient breakdown, what users are actually reporting, and where to get the best price
+are all in the link in my bio right now.
+
+{follow_reason}
 """.strip()
     _reel_tts_async(script, audio_path)
 
@@ -771,14 +867,47 @@ def save_reel_idx(state):
         json.dump(state, f, indent=2)
 
 
+REEL_CAT_HASHTAGS = {
+    "dental-health":    "#DentalHealth #OralHealth #GumDisease #BadBreath #ToothPain #OralCare #TeethHealth #DentalTips",
+    "prostate-health":  "#ProstateHealth #MensHealth #ProstateCare #MensWellness #NaturalHealth #HealthyAging #MenOver40",
+    "male-performance": "#MensHealth #Testosterone #MaleHealth #MensWellness #EnergyBoost #NaturalHealth #MenOver40",
+    "brain-and-senses": "#BrainHealth #BrainFog #Tinnitus #MemoryLoss #CognitiveHealth #MentalClarity #BrainSupport",
+    "weight-loss":      "#WeightLoss #FatLoss #MetabolismBoost #BellyFat #WeightLossJourney #HealthyWeight #NaturalWeightLoss",
+    "beauty-skin":      "#SkinCare #AntiAging #Collagen #SkinHealth #GlowingSkin #NaturalBeauty #SkincareRoutine",
+    "womens-health":    "#WomensHealth #HormoneBalance #BladderHealth #WomensWellness #NaturalHealth #WomenOver40",
+    "blood-sugar":      "#BloodSugar #DiabetesSupport #Glucose #MetabolicHealth #EnergyLevels #BloodSugarControl",
+    "joint-pain":       "#JointPain #ArthritisRelief #KneePain #JointHealth #NaturalPainRelief #Inflammation #JointCare",
+    "sleep":            "#SleepBetter #Insomnia #SleepAid #DeepSleep #SleepHealth #NaturalSleep #BetterSleep",
+    "heart-health":     "#HeartHealth #Cardiovascular #BloodPressure #HealthyHeart #CardioHealth #NaturalHealth",
+    "general-health":   "#NaturalHealth #HealthTips #Wellness #EnergyBoost #ImmuneHealth #HealthyLiving",
+}
+
+REEL_FOLLOW_REASONS = {
+    "dental-health":    "Follow for honest dental supplement reviews — ranked by real evidence, no sponsored posts.",
+    "prostate-health":  "Follow for straightforward men's health reviews — no paid promotions, just honest research.",
+    "male-performance": "Follow for honest men's wellness supplement reviews — evidence-based, not advertiser-funded.",
+    "brain-and-senses": "Follow for honest brain health and cognitive supplement reviews — updated weekly.",
+    "weight-loss":      "Follow for honest weight loss supplement reviews — what works, what doesn't, no hype.",
+    "beauty-skin":      "Follow for honest beauty supplement reviews — real results, real ingredients, no BS.",
+    "womens-health":    "Follow for honest women's health supplement reviews — ranked by effectiveness, not profit.",
+    "blood-sugar":      "Follow for honest blood sugar supplement reviews — evidence-based, updated regularly.",
+    "joint-pain":       "Follow for honest joint health supplement reviews — what actually reduces inflammation.",
+    "sleep":            "Follow for honest sleep supplement reviews — what actually delivers deep, restorative sleep.",
+    "heart-health":     "Follow for honest cardiovascular supplement reviews — ranked by clinical backing.",
+    "general-health":   "Follow for honest health supplement reviews — evidence-based, no paid placements.",
+}
+
+
 def make_reel_caption(product_name, cat_slug, slug):
     review_url = f"{SITE_URL}/{cat_slug}/{slug}/?utm_source=instagram&utm_medium=reel&utm_content={slug}"
+    hashtags = REEL_CAT_HASHTAGS.get(cat_slug, "#NaturalHealth #SupplementReview #HonestReview #HealthTips")
+    follow_reason = REEL_FOLLOW_REASONS.get(cat_slug, "Follow for honest health supplement reviews — updated weekly.")
     return (
-        f"Honest review of {product_name}\n\n"
-        f"Does it really work? We break down the ingredients, benefits, and real results.\n\n"
-        f"Full review: {review_url}\n\n"
-        f"#HealthSupplements #SupplementReview #NaturalHealth #HonestReview #HealthTips "
-        f"#WellnessReview #HealthReview #SupplementFacts"
+        f"Honest review of {product_name} — is it worth it in 2026?\n\n"
+        f"We break down the actual ingredients, what the research says, and real user results.\n\n"
+        f"Full ingredient breakdown + where to buy at best price: {review_url}\n\n"
+        f"{follow_reason}\n\n"
+        f"{hashtags} #SupplementReview #HonestReview"
     )
 
 
