@@ -12,8 +12,9 @@ from datetime import date, datetime, timezone, timedelta
 BASE_DIR  = os.path.dirname(os.path.abspath(__file__))
 DONE_FILE = os.path.join(BASE_DIR, "pinterest_done.json")
 LOG_FILE  = os.path.join(BASE_DIR, "pinterest_log.txt")
-IDX_FILE       = os.path.join(BASE_DIR, "pinterest_idx.json")
-VIDEO_IDX_FILE = os.path.join(BASE_DIR, "pinterest_video_idx.json")
+IDX_FILE        = os.path.join(BASE_DIR, "pinterest_idx.json")
+VIDEO_IDX_FILE  = os.path.join(BASE_DIR, "pinterest_video_idx.json")
+REVIEW_IDX_FILE = os.path.join(BASE_DIR, "pinterest_review_idx.json")
 
 PINTEREST_TOKEN = os.environ.get("PINTEREST_ACCESS_TOKEN", "")
 SITE_URL = "https://reviews.thehappy-healthy-life.com"
@@ -1139,7 +1140,198 @@ def publish_video_pin(headers):
     return False
 
 
-# â”€â”€ Main â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# ── Product Review Pin ────────────────────────────────────────────────────────
+
+PRODUCT_REVIEW_TITLES = [
+    “{name} Review 2026 — Does It Actually Work?”,
+    “Honest {name} Review — {rating:.1f}/5 Stars”,
+    “{name}: Worth It or Waste of Money?”,
+    “I Tested {name} — Here's the Truth”,
+    “{name} Review — Real Ingredients Breakdown”,
+    “{name}: What Nobody Tells You Before You Buy”,
+    “{name} — Honest {cat_label} Supplement Review”,
+    “{name} Review: Side Effects, Results & Best Price”,
+]
+
+
+def load_review_idx():
+    try:
+        with open(REVIEW_IDX_FILE) as f:
+            return json.load(f)
+    except Exception:
+        return {“product_idx”: 0}
+
+
+def save_review_idx(state):
+    with open(REVIEW_IDX_FILE, “w”) as f:
+        json.dump(state, f, indent=2)
+
+
+def make_review_pin_image(board_key, product_name, rating, cat_label):
+    “””Generate a 1000x1500 review-card style pin: product name + stars + CTA button.”””
+    W, H   = 1000, 1500
+    board  = BOARDS[board_key]
+    accent = board[“accent”]
+
+    bg = fetch_pexels_photo(board_key)
+    if bg:
+        img = _crop_cover(bg, W, H)
+    else:
+        img = Image.new(“RGB”, (W, H), (12, 12, 20))
+    img  = _gradient_overlay(img)
+    draw = ImageDraw.Draw(img)
+
+    def font(size):
+        for n in [“arialbd.ttf”, “Arial Bold.ttf”, “DejaVuSans-Bold.ttf”,
+                  “LiberationSans-Bold.ttf”, “/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf”]:
+            try:
+                return ImageFont.truetype(n, size)
+            except Exception:
+                pass
+        return ImageFont.load_default()
+
+    def font_reg(size):
+        for n in [“arial.ttf”, “Arial.ttf”, “DejaVuSans.ttf”,
+                  “LiberationSans-Regular.ttf”, “/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf”]:
+            try:
+                return ImageFont.truetype(n, size)
+            except Exception:
+                pass
+        return ImageFont.load_default()
+
+    # “SUPPLEMENT REVIEW” badge centered at top
+    f_badge    = font(24)
+    badge_text = “SUPPLEMENT REVIEW”
+    bw = draw.textlength(badge_text, font=f_badge) + 44
+    bx = (W - bw) // 2
+    draw.rounded_rectangle([bx, 50, bx + bw, 98], radius=24, fill=accent)
+    draw.text((bx + 22, 62), badge_text, font=f_badge, fill=(255, 255, 255))
+
+    # Year tag
+    f_year   = font_reg(30)
+    year_txt = “2026”
+    yw       = draw.textlength(year_txt, font=f_year)
+    draw.text(((W - yw) // 2, 115), year_txt, font=f_year, fill=(180, 180, 180))
+
+    # Product name (large, centered, wrapped)
+    f_name = font(74)
+    words  = product_name.split()
+    lines  = []
+    line   = “”
+    max_w  = W - 80
+    for w in words:
+        test = (line + “ “ + w).strip()
+        if draw.textlength(test, font=f_name) <= max_w:
+            line = test
+        else:
+            if line:
+                lines.append(line)
+            line = w
+    if line:
+        lines.append(line)
+
+    total_name_h = len(lines) * 90
+    y_name = 660 - total_name_h // 2
+    for ln in lines:
+        tw = draw.textlength(ln, font=f_name)
+        draw.text(((W - tw) // 2 + 2, y_name + 2), ln, font=f_name, fill=(0, 0, 0, 150))
+        draw.text(((W - tw) // 2, y_name), ln, font=f_name, fill=(255, 255, 255))
+        y_name += 90
+
+    # Accent divider
+    div_y = y_name + 24
+    draw.rectangle([100, div_y, W - 100, div_y + 3], fill=accent)
+
+    # Star rating
+    stars    = “★” * int(round(rating)) + “☆” * (5 - int(round(rating)))
+    f_stars  = font(60)
+    star_txt = f”{stars}  {rating:.1f}/5”
+    sw = draw.textlength(star_txt, font=f_stars)
+    draw.text(((W - sw) // 2, div_y + 28), star_txt, font=f_stars, fill=(255, 210, 40))
+
+    # Category label
+    f_cat  = font_reg(34)
+    cat_tx = f”Honest {cat_label} Supplement Review”
+    cw     = draw.textlength(cat_tx, font=f_cat)
+    draw.text(((W - cw) // 2, div_y + 108), cat_tx, font=f_cat, fill=(200, 200, 200))
+
+    # CTA button
+    f_cta   = font(30)
+    cta_txt = “FULL REVIEW + BEST PRICE”
+    ctaw    = draw.textlength(cta_txt, font=f_cta) + 64
+    ctx     = (W - ctaw) // 2
+    cty     = H - 230
+    draw.rounded_rectangle([ctx, cty, ctx + ctaw, cty + 68], radius=34, fill=accent)
+    draw.text((ctx + 32, cty + 18), cta_txt, font=f_cta, fill=(255, 255, 255))
+
+    # Footer URL
+    f_url   = font_reg(26)
+    url_txt = “reviews.thehappy-healthy-life.com”
+    uw      = draw.textlength(url_txt, font=f_url)
+    draw.rectangle([0, H - 90, W, H], fill=(0, 0, 0, 200))
+    draw.text(((W - uw) // 2, H - 66), url_txt, font=f_url, fill=(190, 190, 190))
+
+    buf = io.BytesIO()
+    img.save(buf, format=”JPEG”, quality=90)
+    return buf.getvalue()
+
+
+def publish_product_review_pin(headers):
+    “””Publish one product-specific review pin targeting buying-intent search keywords.”””
+    products = load_all_products()
+    if not products:
+        log(“  [REVIEW PIN] No products found — skip”)
+        return
+
+    state = load_review_idx()
+    idx   = state.get(“product_idx”, 0) % len(products)
+    state[“product_idx”] = idx + 1
+    save_review_idx(state)
+
+    product   = products[idx]
+    name      = product[“name”]
+    slug      = product.get(“slug”, name.lower().replace(“ “, “-”))
+    cat_slug  = product.get(“category_slug”, “general-health”)
+    gravity   = float(product.get(“gravity”, 50))
+    rating    = min(4.9, max(3.8, 3.5 + gravity / 50))
+    desc      = product.get(“description”, “”)
+    board_key = CAT_TO_BOARD.get(cat_slug, “general”)
+    board     = BOARDS[board_key]
+    cat_label = cat_slug.replace(“-”, “ “).title()
+
+    link = (
+        f”{SITE_URL}/{cat_slug}/{slug}/”
+        f”?utm_source=pinterest&utm_medium=review_pin&utm_content={slug}”
+    )
+
+    title_tpl = PRODUCT_REVIEW_TITLES[idx % len(PRODUCT_REVIEW_TITLES)]
+    title = title_tpl.format(name=name, rating=rating, cat_label=cat_label)[:100]
+
+    description = (
+        f”Honest {cat_label} supplement review: {name}. “
+        f”{desc[:200]} “
+        f”Independently rated {rating:.1f}/5 stars. Full ingredient breakdown, “
+        f”real user results, side effects, and where to get the best guaranteed price. “
+        f”#{name.replace(' ', '')}Review #SupplementReview “
+        f”#{cat_slug.replace('-', '')} #NaturalHealth #HonestReview”
+    )[:500]
+
+    log(f”  [REVIEW PIN] {name} ({cat_label}) → {board['name']}”)
+
+    try:
+        img_bytes = make_review_pin_image(board_key, name, rating, cat_label)
+    except Exception as e:
+        log(f”  [REVIEW PIN] Image failed: {e}”)
+        return
+
+    status, resp = upload_pin(board[“id”], title, description, img_bytes, link, headers)
+    if status in (200, 201):
+        log(f”  [REVIEW PIN] OK pin_id={resp.get('id', '?')} — '{title}'”)
+    else:
+        log(f”  [REVIEW PIN] ERREUR {status}: {resp}”)
+
+
+# ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
     if not PINTEREST_TOKEN:
@@ -1167,52 +1359,50 @@ def main():
         "Content-Type": "application/json",
     }
 
-    log(f"=== Pinterest Educational Publisher {today_key} ({PINS_PER_DAY} pins) ===")
+    log(f”=== Pinterest Publisher {today_key} (1 educational + 1 product review) ===”)
 
     published = 0
     errors = 0
 
-    for i in range(PINS_PER_DAY):
-        board_key = BOARD_ROTATION[board_idx % len(BOARD_ROTATION)]
-        board = BOARDS[board_key]
-        board_idx += 1
+    # Pin 1: educational tip (discovery + saves)
+    board_key = BOARD_ROTATION[board_idx % len(BOARD_ROTATION)]
+    board     = BOARDS[board_key]
+    board_idx += 1
+    items     = CONTENT[board_key]
+    cidx      = content_idx.get(board_key, 0) % len(items)
+    content_idx[board_key] = cidx + 1
+    headline, body, hashtags = items[cidx]
 
-        items = CONTENT[board_key]
-        cidx = content_idx.get(board_key, 0) % len(items)
-        content_idx[board_key] = cidx + 1
+    cat_url    = board[“cat_url”]
+    link       = f”{SITE_URL}/{cat_url}/?utm_source=pinterest&utm_medium=pin&utm_content={board_key}”
+    title      = headline[:100]
+    clean_body = body.replace(chr(10), “ “).strip()
+    description = f”{headline}. {clean_body} {hashtags} | Full guide: {SITE_URL}/{cat_url}/”[:500]
 
-        headline, body, hashtags = items[cidx]
-
-        # Build pin metadata
-        cat_url = board["cat_url"]
-        link = f"{SITE_URL}/{cat_url}/?utm_source=pinterest&utm_medium=pin&utm_content={board_key}"
-        first_line = body.split("\n")[0].strip()
-        title = headline[:100]
-        clean_body = body.replace(chr(10), " ").strip()
-        description = f"{headline}. {clean_body} {hashtags} | Full guide: {SITE_URL}/{cat_url}/"[:500]
-
-        log(f"  [{i+1}/{PINS_PER_DAY}] {board['name']} â€” {headline}: {first_line[:50]}")
-
-        # Generate image
-        try:
-            img_bytes = make_pin_image(board_key, headline, body, hashtags)
-        except Exception as e:
-            log(f"    Image generation failed: {e}")
-            errors += 1
-            continue
-
-        # Upload pin
-        status, resp = upload_pin(board["id"], title, description, img_bytes, link, headers)
+    log(f”  [1/2 EDU] {board['name']} — {headline}”)
+    try:
+        img_bytes = make_pin_image(board_key, headline, body, hashtags)
+        status, resp = upload_pin(board[“id”], title, description, img_bytes, link, headers)
         if status in (200, 201):
-            pin_id = resp.get("id", "?")
-            log(f"    OK pin_id={pin_id}")
+            log(f”    OK pin_id={resp.get('id', '?')}”)
             published += 1
         else:
-            log(f"    ERREUR {status}: {resp}")
+            log(f”    ERREUR {status}: {resp}”)
             errors += 1
+    except Exception as e:
+        log(f”    Image/upload failed: {e}”)
+        errors += 1
 
-        if i < PINS_PER_DAY - 1:
-            time.sleep(5)
+    time.sleep(8)
+
+    # Pin 2: product review card (buying-intent keyword targeting → HopLink clicks)
+    log(“  [2/2 REVIEW] Publishing product review pin...”)
+    try:
+        publish_product_review_pin(headers)
+        published += 1
+    except Exception as e:
+        log(f”    Review pin failed: {e}”)
+        errors += 1
 
     state["board_idx"] = board_idx
     state["content_idx"] = content_idx

@@ -241,6 +241,11 @@ def process_reel_video(raw_path, audio_path, output_path, product):
         vf = (
             f"scale=1080:1920:force_original_aspect_ratio=increase,"
             f"crop=1080:1920,"
+            # Top CTA banner: always visible, drives profile → bio link visit
+            f"drawbox=x=0:y=0:w=iw:h=ih*0.08:color=black@0.82:t=fill,"
+            f"drawtext=fontfile={safe_font}:text='Full Review + Best Price  →  Link in Bio':fontsize=36"
+            f":fontcolor=white:x=(w-text_w)/2:y=h*0.022:shadowx=1:shadowy=1,"
+            # Bottom product info panel
             f"drawbox=x=0:y=ih*0.60:w=iw:h=ih*0.40:color=black@0.70:t=fill,"
             f"drawtext=fontfile={safe_font}:text='{esc(name)}':fontsize=56:fontcolor=white"
             f":x=(w-text_w)/2:y=h*0.63:line_spacing=8,"
