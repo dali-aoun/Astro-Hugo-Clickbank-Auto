@@ -1,18 +1,18 @@
 {
-  "date": "2026-08-29",
+  "date": "2026-08-30",
   "reels": [
     {
-      "slug": "dentasmile",
-      "name": "DentaSmile",
-      "category_slug": "dental-health",
-      "mp4_filename": "2026-08-29_1.mp4",
+      "slug": "prostavive",
+      "name": "ProstaVive",
+      "category_slug": "prostate-health",
+      "mp4_filename": "2026-08-30_1.mp4",
       "generated": true
     },
     {
-      "slug": "provadent",
-      "name": "ProvaDent",
-      "category_slug": "dental-health",
-      "mp4_filename": "2026-08-29_2.mp4",
+      "slug": "prostadine",
+      "name": "Prostadine",
+      "category_slug": "prostate-health",
+      "mp4_filename": "2026-08-30_2.mp4",
       "generated": true
     }
   ]
