@@ -1,18 +1,18 @@
 {
-  "date": "2026-08-30",
+  "date": "2026-08-31",
   "reels": [
     {
-      "slug": "prostavive",
-      "name": "ProstaVive",
+      "slug": "viriflow",
+      "name": "ViriFlow",
       "category_slug": "prostate-health",
-      "mp4_filename": "2026-08-30_1.mp4",
+      "mp4_filename": "2026-08-31_1.mp4",
       "generated": true
     },
     {
-      "slug": "prostadine",
-      "name": "Prostadine",
+      "slug": "titanflow",
+      "name": "TitanFlow",
       "category_slug": "prostate-health",
-      "mp4_filename": "2026-08-30_2.mp4",
+      "mp4_filename": "2026-08-31_2.mp4",
       "generated": true
     }
   ]

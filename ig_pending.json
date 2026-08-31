@@ -1,14 +1,14 @@
 {
-  "date": "2026-08-30",
+  "date": "2026-08-31",
   "posts": [
     {
-      "filename": "2026-08-30_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-30_1.jpg",
-      "cat_key": "male",
-      "headline": "Warning",
-      "body": "Soy contains phytoestrogens that can suppress testosterone in high amounts.\nLimit processed soy products.",
-      "cta": "Soy can lower testosterone in men.",
-      "hashtags": "#Testosterone #MensHealth #MalePerformance #TestosteroneBoost #MaleVitality #MensWellness #HormoneHealth #MaleFitness #MensFitness #Vitality",
+      "filename": "2026-08-31_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-08-31_1.jpg",
+      "cat_key": "blood",
+      "headline": "Did You Know?",
+      "body": "Stress causes the liver to dump glucose into the bloodstream, even without eating.\nEmotional stress directly raises blood sugar.",
+      "cta": "Stress raises blood sugar without eating.",
+      "hashtags": "#BloodSugar #Diabetes #PreDiabetes #MetabolicHealth #BloodSugarControl #InsulinResistance #DiabetesTips #GlucoseControl #DiabetesPrevention #HealthyBloodSugar",
       "blog_url": null
     }
   ]
