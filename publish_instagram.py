@@ -235,7 +235,7 @@ def process_reel_video(raw_path, audio_path, output_path, product):
     safe_font = font_file.replace(":", "\\:")
 
     def esc(t):
-        return t.replace("'", "’").replace(":", "\\:")
+        return t.replace("'", "'").replace(":", "\\:")
 
     if safe_font:
         vf = (
