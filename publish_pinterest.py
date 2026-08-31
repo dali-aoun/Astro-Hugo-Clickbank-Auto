@@ -1307,13 +1307,17 @@ def publish_product_review_pin(headers):
     title_tpl = PRODUCT_REVIEW_TITLES[idx % len(PRODUCT_REVIEW_TITLES)]
     title = title_tpl.format(name=name, rating=rating, cat_label=cat_label)[:100]
 
+    from trends_helper import get_trending_terms, terms_to_hashtags
+    trend_terms = get_trending_terms(name, cat_slug)
+    trend_tags = (" " + terms_to_hashtags(trend_terms)) if trend_terms else ""
+
     description = (
         f"Honest {cat_label} supplement review: {name}. "
         f"{desc[:200]} "
         f"Independently rated {rating:.1f}/5 stars. Full ingredient breakdown, "
         f"real user results, side effects, and where to get the best guaranteed price. "
         f"#{name.replace(' ', '')}Review #SupplementReview "
-        f"#{cat_slug.replace('-', '')} #NaturalHealth #HonestReview"
+        f"#{cat_slug.replace('-', '')} #NaturalHealth #HonestReview{trend_tags}"
     )[:500]
 
     log(f"  [REVIEW PIN] {name} ({cat_label}) → {board['name']}")

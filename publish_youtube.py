@@ -766,6 +766,8 @@ def main():
             cat_tag=cat_tag,
             name_tag=name_tag,
         )
+        from trends_helper import get_trending_terms
+        trend_terms = get_trending_terms(product["name"], product["category_slug"])
         tags = [
             product["name"],
             f"{product['name']} review",
@@ -774,7 +776,7 @@ def main():
             f"{product['name']} honest review",
             "supplement review", "honest review", "health supplement",
             "natural health", "2026", cat_tag, cat_label, "shorts",
-        ]
+        ] + trend_terms
 
         log(f"  Uploading to YouTube...")
         status, resp = upload_short(video_path, title, description, tags, access_token)

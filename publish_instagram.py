@@ -907,12 +907,15 @@ def make_reel_caption(product_name, cat_slug, slug):
     review_url = f"{SITE_URL}/{cat_slug}/{slug}/?utm_source=instagram&utm_medium=reel&utm_content={slug}"
     hashtags = REEL_CAT_HASHTAGS.get(cat_slug, "#NaturalHealth #SupplementReview #HonestReview #HealthTips")
     follow_reason = REEL_FOLLOW_REASONS.get(cat_slug, "Follow for honest health supplement reviews — updated weekly.")
+    from trends_helper import get_trending_terms, terms_to_hashtags
+    trend_terms = get_trending_terms(product_name, cat_slug)
+    trend_tags = (" " + terms_to_hashtags(trend_terms)) if trend_terms else ""
     return (
         f"Honest review of {product_name} — is it worth it in 2026?\n\n"
         f"We break down the actual ingredients, what the research says, and real user results.\n\n"
         f"Full ingredient breakdown + where to buy at best price: {review_url}\n\n"
         f"{follow_reason}\n\n"
-        f"{hashtags} #SupplementReview #HonestReview"
+        f"{hashtags} #SupplementReview #HonestReview{trend_tags}"
     )
 
 

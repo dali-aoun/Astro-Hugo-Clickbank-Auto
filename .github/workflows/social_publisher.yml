@@ -39,7 +39,7 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends fonts-liberation fonts-dejavu-core ffmpeg
-      - run: pip install requests Pillow edge-tts
+      - run: pip install requests Pillow edge-tts pytrends
       - name: Publish Pinterest pins
         env:
           PINTEREST_ACCESS_TOKEN: ${{ secrets.PINTEREST_ACCESS_TOKEN }}
@@ -76,7 +76,7 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends fonts-liberation fonts-dejavu-core ffmpeg
-      - run: pip install requests Pillow edge-tts
+      - run: pip install requests Pillow edge-tts pytrends
 
       # Step 1: Generate images + reel video (saved to ig_content/ and ig_reels/)
       - name: Generate images and reel
@@ -184,7 +184,7 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends fonts-liberation fonts-dejavu-core ffmpeg
-      - run: pip install requests Pillow edge-tts
+      - run: pip install requests Pillow edge-tts pytrends
       - name: Upload YouTube Short
         env:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
