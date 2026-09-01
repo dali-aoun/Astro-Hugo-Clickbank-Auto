@@ -50,8 +50,8 @@ def try_refresh_basic_display(t):
 
 def try_refresh_graph(t):
     """graph.facebook.com exchange — works for Business/Graph API tokens."""
-    app_id     = os.environ.get("FB_APP_ID", "")
-    app_secret = os.environ.get("FB_APP_SECRET", "")
+    app_id     = os.environ.get("FB_APP_ID", "") or os.environ.get("FACEBOOK_APP_ID", "")
+    app_secret = os.environ.get("FB_APP_SECRET", "") or os.environ.get("FACEBOOK_APP_SECRET", "")
     if not app_id or not app_secret:
         print("  [graph_api] FB_APP_ID / FB_APP_SECRET non configurés — skip")
         return "", 0
