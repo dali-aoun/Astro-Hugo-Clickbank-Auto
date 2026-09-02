@@ -1,14 +1,14 @@
 {
-  "date": "2026-09-01",
+  "date": "2026-09-02",
   "posts": [
     {
-      "filename": "2026-09-01_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-09-01_1.jpg",
-      "cat_key": "sleep",
+      "filename": "2026-09-02_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-09-02_1.jpg",
+      "cat_key": "joint",
       "headline": "Tip",
-      "body": "L-theanine promotes relaxation without sedation.\nIt increases alpha brain waves \u2014 the same state as meditation.",
-      "cta": "L-theanine: calm focus without drowsiness.",
-      "hashtags": "#SleepTips #BetterSleep #SleepHealth #Insomnia #SleepScience #NaturalSleepAid #SleepBetter #SleepFacts #SleepSupport #HealthySleep",
+      "body": "Glucosamine + chondroitin together reduce joint pain as effectively as Celebrex for moderate osteoarthritis.",
+      "cta": "Glucosamine + chondroitin beat prescription meds.",
+      "hashtags": "#JointHealth #JointPain #Arthritis #JointCare #JointRelief #JointPainRelief #AntiInflammatory #BoneHealth #ArthritisTips #JointSupport",
       "blog_url": null
     }
   ]
