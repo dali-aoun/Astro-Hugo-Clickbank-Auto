@@ -89,7 +89,7 @@ def pinterest_metrics():
     pins_url = (
         f"https://api.pinterest.com/v5/user_account/analytics/top_pins"
         f"?start_date={START_30}&end_date={TODAY}"
-        f"&metric_types=IMPRESSION,OUTBOUND_CLICK,SAVE&num_of_pins=5"
+        f"&metric_types=IMPRESSION,OUTBOUND_CLICK,SAVE&num_of_pins=5&sort_by=IMPRESSION"
     )
     pins = _get(pins_url, PINTEREST_TOKEN)
     if pins and "pins" in pins:
@@ -119,31 +119,34 @@ def instagram_metrics():
         print(f"  Following   : {acct.get('follows_count', 0):,}")
         print(f"  Posts total : {acct.get('media_count', 0):,}")
 
-    # Insights — new v19+ metric names (impressions deprecated)
-    tried = False
-    for metric_set, period in [
-        ("reach,profile_views,website_clicks,total_interactions,likes,comments,shares,saves", "day"),
-        ("reach,profile_views,website_clicks", "day"),
-        ("reach,follower_count", "day"),
-    ]:
-        url_ins = (
-            f"https://graph.facebook.com/v19.0/{INSTAGRAM_USER_ID}/insights"
-            f"?metric={metric_set}&period={period}&since={START_30}&until={TODAY}"
-            f"&access_token={INSTAGRAM_TOKEN}"
-        )
-        ins = _get(url_ins)
-        if ins and "data" in ins:
-            print(f"\n  --- Insights 30j ---")
-            for m in ins["data"]:
-                name = m.get("name", "?")
-                vals = m.get("values", [])
-                total = sum(v.get("value", 0) if isinstance(v.get("value"), (int, float)) else 0 for v in vals)
-                print(f"  {name:<28}: {total:,}")
-            tried = True
-            break
+    # Insights — reach (period=day, no metric_type needed)
+    url_reach = (
+        f"https://graph.facebook.com/v19.0/{INSTAGRAM_USER_ID}/insights"
+        f"?metric=reach&period=day&since={START_30}&until={TODAY}"
+        f"&access_token={INSTAGRAM_TOKEN}"
+    )
+    ins_reach = _get(url_reach)
+    if ins_reach and "data" in ins_reach:
+        print(f"\n  --- Insights 30j ---")
+        for m in ins_reach["data"]:
+            vals = m.get("values", [])
+            total = sum(v.get("value", 0) if isinstance(v.get("value"), (int, float)) else 0 for v in vals)
+            print(f"  {'reach':<28}: {total:,}")
 
-    if not tried:
-        print("  Insights: non disponible")
+    # Insights — total_value metrics (profile_views, website_clicks, likes, etc.)
+    url_total = (
+        f"https://graph.facebook.com/v19.0/{INSTAGRAM_USER_ID}/insights"
+        f"?metric=profile_views,website_clicks,total_interactions,likes,comments,shares,saves"
+        f"&period=day&metric_type=total_value&since={START_30}&until={TODAY}"
+        f"&access_token={INSTAGRAM_TOKEN}"
+    )
+    ins_total = _get(url_total)
+    if ins_total and "data" in ins_total:
+        for m in ins_total["data"]:
+            name = m.get("name", "?")
+            tv = m.get("total_value", {})
+            val = tv.get("value", 0) if isinstance(tv, dict) else tv
+            print(f"  {name:<28}: {val:,}")
 
     # Media performance (always works with basic access)
     url_media = (
