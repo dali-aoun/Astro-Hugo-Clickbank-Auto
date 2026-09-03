@@ -119,13 +119,12 @@ def instagram_metrics():
         print(f"  Following   : {acct.get('follows_count', 0):,}")
         print(f"  Posts total : {acct.get('media_count', 0):,}")
 
-    # Insights — try multiple metric sets (permissions vary by app mode)
-    # Set 1: reach + impressions (requires instagram_manage_insights OR basic scope)
+    # Insights — new v19+ metric names (impressions deprecated)
     tried = False
     for metric_set, period in [
-        ("reach,impressions,profile_views", "day"),
-        ("reach,impressions", "day"),
-        ("follower_count", "day"),
+        ("reach,profile_views,website_clicks,total_interactions,likes,comments,shares,saves", "day"),
+        ("reach,profile_views,website_clicks", "day"),
+        ("reach,follower_count", "day"),
     ]:
         url_ins = (
             f"https://graph.facebook.com/v19.0/{INSTAGRAM_USER_ID}/insights"
@@ -134,18 +133,17 @@ def instagram_metrics():
         )
         ins = _get(url_ins)
         if ins and "data" in ins:
-            print(f"\n  --- Insights ({metric_set}) ---")
+            print(f"\n  --- Insights 30j ---")
             for m in ins["data"]:
                 name = m.get("name", "?")
                 vals = m.get("values", [])
-                total = sum(v.get("value", 0) for v in vals)
-                print(f"  {name:<22}: {total:,}")
+                total = sum(v.get("value", 0) if isinstance(v.get("value"), (int, float)) else 0 for v in vals)
+                print(f"  {name:<28}: {total:,}")
             tried = True
             break
 
     if not tried:
-        print("  Insights: permission instagram_manage_insights requise")
-        print("  → Activer Live mode sur app Meta + demander la permission")
+        print("  Insights: non disponible")
 
     # Media performance (always works with basic access)
     url_media = (
