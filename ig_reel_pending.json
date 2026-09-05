@@ -1,18 +1,18 @@
 {
-  "date": "2026-09-04",
+  "date": "2026-09-05",
   "reels": [
     {
-      "slug": "audifort",
-      "name": "Audifort",
+      "slug": "neuro-serge",
+      "name": "Neuro Serge",
       "category_slug": "brain-and-senses",
-      "mp4_filename": "2026-09-04_1.mp4",
+      "mp4_filename": "2026-09-05_1.mp4",
       "generated": true
     },
     {
-      "slug": "visiflora",
-      "name": "VisiFlora",
+      "slug": "pineal-guardian-x",
+      "name": "Pineal Guardian X",
       "category_slug": "brain-and-senses",
-      "mp4_filename": "2026-09-04_2.mp4",
+      "mp4_filename": "2026-09-05_2.mp4",
       "generated": true
     }
   ]
