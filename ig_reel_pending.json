@@ -1,18 +1,18 @@
 {
-  "date": "2026-09-05",
+  "date": "2026-09-06",
   "reels": [
     {
-      "slug": "neuro-serge",
-      "name": "Neuro Serge",
-      "category_slug": "brain-and-senses",
-      "mp4_filename": "2026-09-05_1.mp4",
+      "slug": "all-day-slimming-tea",
+      "name": "All Day Slimming Tea",
+      "category_slug": "weight-loss",
+      "mp4_filename": "2026-09-06_1.mp4",
       "generated": true
     },
     {
-      "slug": "pineal-guardian-x",
-      "name": "Pineal Guardian X",
-      "category_slug": "brain-and-senses",
-      "mp4_filename": "2026-09-05_2.mp4",
+      "slug": "java-burn",
+      "name": "Java Burn",
+      "category_slug": "weight-loss",
+      "mp4_filename": "2026-09-06_2.mp4",
       "generated": true
     }
   ]
