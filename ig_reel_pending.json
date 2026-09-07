@@ -1,18 +1,18 @@
 {
-  "date": "2026-09-06",
+  "date": "2026-09-07",
   "reels": [
     {
-      "slug": "all-day-slimming-tea",
-      "name": "All Day Slimming Tea",
+      "slug": "ikaria-juice",
+      "name": "Ikaria Juice",
       "category_slug": "weight-loss",
-      "mp4_filename": "2026-09-06_1.mp4",
+      "mp4_filename": "2026-09-07_1.mp4",
       "generated": true
     },
     {
-      "slug": "java-burn",
-      "name": "Java Burn",
-      "category_slug": "weight-loss",
-      "mp4_filename": "2026-09-06_2.mp4",
+      "slug": "kerassentials",
+      "name": "Kerassentials",
+      "category_slug": "beauty-skin",
+      "mp4_filename": "2026-09-07_2.mp4",
       "generated": true
     }
   ]
