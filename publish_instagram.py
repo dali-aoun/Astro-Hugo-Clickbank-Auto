@@ -188,18 +188,10 @@ def make_reel_voiceover(product, audio_path):
     body = REEL_CATEGORY_BODIES.get(cat_slug, REEL_CATEGORY_BODIES["general-health"])
     follow_reason = REEL_FOLLOW_REASONS.get(cat_slug, "Follow for honest, evidence-based supplement reviews every week.")
 
-    script = f"""
-{hook}
-
-{name} is {desc}.
-
-{body}
-
-So where does {name} fit in? My independent rating is {rating:.1f} out of 5 stars.
-
-The full ingredient breakdown, what users are actually reporting, and where to get the best price
-are all in the link in my bio right now.
-
+    script = f"""{hook}
+{name}: {desc}.
+My independent rating is {rating:.1f} out of 5.
+Full ingredient breakdown in the link in my bio.
 {follow_reason}
 """.strip()
     _reel_tts_async(script, audio_path)
@@ -225,7 +217,7 @@ def process_reel_video(raw_path, audio_path, output_path, product):
     site    = "reviews.thehappy-healthy-life.com"
     cta     = "Link in bio → Full Review"
 
-    target_dur = get_audio_duration_ig(audio_path) + 1.5
+    target_dur = min(30.0, get_audio_duration_ig(audio_path) + 1.5)
 
     font_paths = [
         "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
@@ -292,18 +284,18 @@ def load_all_products():
 
 # ── Category config ───────────────────────────────────────────────────────────
 CATEGORIES = {
-    "dental":   {"name": "Dental Health",       "accent": (16, 185, 129),  "cat_url": "dental-health",     "hashtags": "#OralHealth #DentalTips #GumHealth #TeethCare #OralCare #DentalHealth #SmileHealth #ToothCare #OralHygiene #HealthySmile"},
-    "prostate": {"name": "Prostate Health",      "accent": (59, 130, 246),  "cat_url": "prostate-health",   "hashtags": "#ProstateHealth #MensHealth #BPH #ProstateSupport #MensWellness #ProstateCancer #MaleHealth #UrinaryHealth #MensNutrition #HealthyMen"},
-    "male":     {"name": "Male Performance",     "accent": (239, 68, 68),   "cat_url": "male-performance",  "hashtags": "#Testosterone #MensHealth #MalePerformance #TestosteroneBoost #MaleVitality #MensWellness #HormoneHealth #MaleFitness #MensFitness #Vitality"},
-    "brain":    {"name": "Brain & Cognitive",    "accent": (139, 92, 246),  "cat_url": "brain-and-senses",  "hashtags": "#BrainHealth #CognitiveHealth #Nootropics #MentalClarity #BrainFog #NeuroplasticityTraining #BrainFacts #MemoryBoost #FocusTips #BrainScience"},
-    "weight":   {"name": "Weight Loss",          "accent": (245, 158, 11),  "cat_url": "weight-loss",       "hashtags": "#WeightLoss #FatBurner #MetabolismBoost #WeightLossTips #HealthyWeight #WeightLossJourney #Slim #FatLoss #WeightLossFacts #Metabolism"},
-    "beauty":   {"name": "Beauty & Skin Care",   "accent": (236, 72, 153),  "cat_url": "beauty-skin",       "hashtags": "#SkinCare #Beauty #AntiAging #GlowingSkin #SkincareTips #HealthySkin #SkincareFacts #BeautyTips #NaturalBeauty #SkincareRoutine"},
-    "womens":   {"name": "Women's Health",       "accent": (168, 85, 247),  "cat_url": "womens-health",     "hashtags": "#WomensHealth #PelvicFloor #BladderHealth #WomenWellness #WomensBodyHealth #PelvicHealthTips #UTIPrevention #WomensHormones #HormoneBalance #WomensFitness"},
-    "blood":    {"name": "Blood Sugar Support",  "accent": (6, 182, 212),   "cat_url": "blood-sugar",       "hashtags": "#BloodSugar #Diabetes #PreDiabetes #MetabolicHealth #BloodSugarControl #InsulinResistance #DiabetesTips #GlucoseControl #DiabetesPrevention #HealthyBloodSugar"},
-    "joint":    {"name": "Joint Pain Relief",    "accent": (20, 184, 166),  "cat_url": "joint-pain",        "hashtags": "#JointHealth #JointPain #Arthritis #JointCare #JointRelief #JointPainRelief #AntiInflammatory #BoneHealth #ArthritisTips #JointSupport"},
-    "sleep":    {"name": "Sleep Supplements",    "accent": (99, 102, 241),  "cat_url": "sleep",             "hashtags": "#SleepTips #BetterSleep #SleepHealth #Insomnia #SleepScience #NaturalSleepAid #SleepBetter #SleepFacts #SleepSupport #HealthySleep"},
-    "heart":    {"name": "Heart Health",         "accent": (244, 63, 94),   "cat_url": "heart-health",      "hashtags": "#HeartHealth #CardiovascularHealth #HeartDisease #HeartCare #HeartHealthTips #CardiovascularFitness #HealthyHeart #HeartFacts #BloodPressure #Cholesterol"},
-    "general":  {"name": "General Health",       "accent": (34, 197, 94),   "cat_url": "general-health",    "hashtags": "#HealthTips #WellnessTips #NaturalHealth #HealthFacts #HealthyLiving #Supplements #NaturalRemedies #WellnessJourney #HealthAndWellness #DailyHealth"},
+    "dental":   {"name": "Dental Health",       "accent": (16, 185, 129),  "cat_url": "dental-health",     "hashtags": "#GumDiseaseRemedies #OralMicrobiome #GumHealthTips #BadBreathCure #ToothDecayPrevention #OralProbiotics #GumInflammation #GumRecession #OralBacteria #DentalWellness"},
+    "prostate": {"name": "Prostate Health",      "accent": (59, 130, 246),  "cat_url": "prostate-health",   "hashtags": "#BPHRelief #ProstateSupplements #NightUrination #ProstateSupport #MenOver50Health #ProstateShrink #UrinationProblems #ProstateInflammation #DHTControl #ProstateNutrition"},
+    "male":     {"name": "Male Performance",     "accent": (239, 68, 68),   "cat_url": "male-performance",  "hashtags": "#LowTestosteroneSymptoms #FreeTestosterone #TestosteroneSupport #MaleEnergyBoost #TestosteroneTips #MenOver40Health #LowTSigns #TestosteroneDecline #NaturalTBoost #MaleDrive"},
+    "brain":    {"name": "Brain & Cognitive",    "accent": (139, 92, 246),  "cat_url": "brain-and-senses",  "hashtags": "#BrainFogFix #TinnitusRelief #MemorySupplements #CognitiveDecline #BrainFogCauses #TinnitusSupport #NeuroplasticityTips #MemoryLossPrevention #BrainCirculation #NeuralHealth"},
+    "weight":   {"name": "Weight Loss",          "accent": (245, 158, 11),  "cat_url": "weight-loss",       "hashtags": "#BellyFatScience #MetabolismFix #BrownFatActivation #FatLossResearch #BellyFatTips #MetabolismBooster #ThermogenicFoods #FatBurningScience #WeightLossResearch #SlowMetabolism"},
+    "beauty":   {"name": "Beauty & Skin Care",   "accent": (236, 72, 153),  "cat_url": "beauty-skin",       "hashtags": "#CollagenFromWithin #SkinAgingRemedies #InsideOutBeauty #CollagenSupplements #AntiAgingNutrition #SkinHealthTips #CollagenBoost #SkinElasticity #NaturalAntiAging #GlowFromWithin"},
+    "womens":   {"name": "Women's Health",       "accent": (168, 85, 247),  "cat_url": "womens-health",     "hashtags": "#PelvicFloorHealth #BladderLeakage #WomensUrinaryHealth #UrinaryMicrobiome #UTIPrevention #BladderSupport #WomenPelvicHealth #BladderControl #WomensHormoneHealth #PelvicStrength"},
+    "blood":    {"name": "Blood Sugar Support",  "accent": (6, 182, 212),   "cat_url": "blood-sugar",       "hashtags": "#BloodSugarCrash #InsulinSensitivity #GlucoseControl #PreDiabetesReversible #BloodSugarBalance #MitochondrialHealth #GlucoseMetabolism #CarbCravings #BloodSugarSpikes #DiabetesPrevention"},
+    "joint":    {"name": "Joint Pain Relief",    "accent": (20, 184, 166),  "cat_url": "joint-pain",        "hashtags": "#CartilageRepair #JointInflammation #NaturalArthritisRelief #KneeCartilage #JointSupplements #InflammationReduction #CartilageSupport #JointMobility #ArthritisNatural #KneePainRelief"},
+    "sleep":    {"name": "Sleep Supplements",    "accent": (99, 102, 241),  "cat_url": "sleep",             "hashtags": "#WakeAt3am #DeepSleepRemedies #GabaPathway #CortisolAndSleep #SleepCycles #NaturalSleepSupport #SleepHormones #RestorateSleep #SleepArchitecture #CortisoCycles"},
+    "heart":    {"name": "Heart Health",         "accent": (244, 63, 94),   "cat_url": "heart-health",      "hashtags": "#ArterialInflammation #HomocysteineHealth #CardiovascularNutrition #HeartHealthSupplements #EndothelialHealth #BloodPressureNatural #HeartAge #CardioProtection #ArteryHealth #HeartRiskFactors"},
+    "general":  {"name": "General Health",       "accent": (34, 197, 94),   "cat_url": "general-health",    "hashtags": "#MitochondrialHealth #ChronicFatigueFix #BrainFogCauses #CellularEnergy #CoQ10Benefits #AdaptogenHerbs #ImmuneSystemBoost #InflammationFix #GutImmunity #MetabolicHealth"},
 }
 
 CAT_ROTATION = [
@@ -873,18 +865,18 @@ def save_reel_idx(state):
 
 
 REEL_CAT_HASHTAGS = {
-    "dental-health":    "#DentalHealth #OralHealth #GumDisease #BadBreath #ToothPain #OralCare #TeethHealth #DentalTips",
-    "prostate-health":  "#ProstateHealth #MensHealth #ProstateCare #MensWellness #NaturalHealth #HealthyAging #MenOver40",
-    "male-performance": "#MensHealth #Testosterone #MaleHealth #MensWellness #EnergyBoost #NaturalHealth #MenOver40",
-    "brain-and-senses": "#BrainHealth #BrainFog #Tinnitus #MemoryLoss #CognitiveHealth #MentalClarity #BrainSupport",
-    "weight-loss":      "#WeightLoss #FatLoss #MetabolismBoost #BellyFat #WeightLossJourney #HealthyWeight #NaturalWeightLoss",
-    "beauty-skin":      "#SkinCare #AntiAging #Collagen #SkinHealth #GlowingSkin #NaturalBeauty #SkincareRoutine",
-    "womens-health":    "#WomensHealth #HormoneBalance #BladderHealth #WomensWellness #NaturalHealth #WomenOver40",
-    "blood-sugar":      "#BloodSugar #DiabetesSupport #Glucose #MetabolicHealth #EnergyLevels #BloodSugarControl",
-    "joint-pain":       "#JointPain #ArthritisRelief #KneePain #JointHealth #NaturalPainRelief #Inflammation #JointCare",
-    "sleep":            "#SleepBetter #Insomnia #SleepAid #DeepSleep #SleepHealth #NaturalSleep #BetterSleep",
-    "heart-health":     "#HeartHealth #Cardiovascular #BloodPressure #HealthyHeart #CardioHealth #NaturalHealth",
-    "general-health":   "#NaturalHealth #HealthTips #Wellness #EnergyBoost #ImmuneHealth #HealthyLiving",
+    "dental-health":    "#GumDiseaseRemedies #OralMicrobiome #BadBreathCure #OralProbiotics #GumInflammation #ToothDecayPrevention #DentalWellness",
+    "prostate-health":  "#BPHRelief #NightUrination #ProstateSupplements #ProstateShrink #UrinationProblems #MenOver50Health #DHTControl",
+    "male-performance": "#LowTestosteroneSymptoms #FreeTestosterone #TestosteroneSupport #MenOver40Health #LowTSigns #TestosteroneDecline #MaleDrive",
+    "brain-and-senses": "#BrainFogFix #TinnitusRelief #MemorySupplements #CognitiveDecline #TinnitusSupport #BrainCirculation #NeuralHealth",
+    "weight-loss":      "#BellyFatScience #MetabolismFix #BrownFatActivation #FatLossResearch #ThermogenicFoods #SlowMetabolism #FatBurningScience",
+    "beauty-skin":      "#CollagenFromWithin #SkinAgingRemedies #InsideOutBeauty #CollagenSupplements #AntiAgingNutrition #SkinElasticity #GlowFromWithin",
+    "womens-health":    "#PelvicFloorHealth #BladderLeakage #UrinaryMicrobiome #UTIPrevention #BladderControl #WomenPelvicHealth #PelvicStrength",
+    "blood-sugar":      "#BloodSugarCrash #InsulinSensitivity #GlucoseControl #PreDiabetesReversible #BloodSugarBalance #GlucoseMetabolism #CarbCravings",
+    "joint-pain":       "#CartilageRepair #JointInflammation #NaturalArthritisRelief #KneeCartilage #InflammationReduction #CartilageSupport #JointMobility",
+    "sleep":            "#WakeAt3am #DeepSleepRemedies #GabaPathway #CortisolAndSleep #NaturalSleepSupport #SleepHormones #RestorativeSleep",
+    "heart-health":     "#ArterialInflammation #HomocysteineHealth #CardiovascularNutrition #EndothelialHealth #BloodPressureNatural #ArteryHealth #HeartRiskFactors",
+    "general-health":   "#MitochondrialHealth #ChronicFatigueFix #CellularEnergy #CoQ10Benefits #AdaptogenHerbs #ImmuneSystemBoost #GutImmunity",
 }
 
 REEL_FOLLOW_REASONS = {
