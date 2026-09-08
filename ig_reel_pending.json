@@ -1,18 +1,18 @@
 {
-  "date": "2026-09-07",
+  "date": "2026-09-08",
   "reels": [
     {
-      "slug": "ikaria-juice",
-      "name": "Ikaria Juice",
-      "category_slug": "weight-loss",
-      "mp4_filename": "2026-09-07_1.mp4",
+      "slug": "primebiome",
+      "name": "PrimeBiome",
+      "category_slug": "beauty-skin",
+      "mp4_filename": "2026-09-08_1.mp4",
       "generated": true
     },
     {
-      "slug": "kerassentials",
-      "name": "Kerassentials",
+      "slug": "metanail-complex",
+      "name": "Metanail Complex",
       "category_slug": "beauty-skin",
-      "mp4_filename": "2026-09-07_2.mp4",
+      "mp4_filename": "2026-09-08_2.mp4",
       "generated": true
     }
   ]
