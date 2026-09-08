@@ -208,5 +208,10 @@
     "product": "ProDentim",
     "status": "ok",
     "at": "2026-09-07T16:16:57.304686"
+  },
+  "2026-09-08": {
+    "product": "DentaBiome",
+    "status": "ok",
+    "at": "2026-09-08T14:54:12.462669"
   }
 }
