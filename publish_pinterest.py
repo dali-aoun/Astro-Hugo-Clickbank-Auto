@@ -1421,13 +1421,18 @@ def main():
         log("=== Blog Article Pin (PM slot) ===")
         publish_blog_pin(headers)
 
-    done[slot_key] = {
-        "published": published,
-        "errors": errors,
-        "at": datetime.utcnow().isoformat(),
-    }
-    save_done(done)
     log(f"=== Termine: {published} publies | {errors} erreurs ===")
+
+    if errors == 0:
+        done[slot_key] = {
+            "published": published,
+            "errors": 0,
+            "at": datetime.utcnow().isoformat(),
+        }
+        save_done(done)
+    else:
+        log(f"WARN: {errors} erreur(s) — slot {slot_key} NON marque done, retry au prochain run")
+        sys.exit(1)
 
 
 if __name__ == "__main__":
