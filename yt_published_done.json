@@ -223,5 +223,10 @@
     "product": "DentaSmile",
     "status": "ok",
     "at": "2026-09-10T14:48:03.097858"
+  },
+  "2026-09-11": {
+    "product": "ProvaDent",
+    "status": "ok",
+    "at": "2026-09-11T12:36:41.420659"
   }
 }
