@@ -1,18 +1,18 @@
 {
-  "date": "2026-09-12",
+  "date": "2026-09-13",
   "reels": [
     {
-      "slug": "sugar-defender",
-      "name": "Sugar Defender",
+      "slug": "gluco-tonic",
+      "name": "Gluco Tonic",
       "category_slug": "blood-sugar",
-      "mp4_filename": "2026-09-12_1.mp4",
+      "mp4_filename": "2026-09-13_1.mp4",
       "generated": true
     },
     {
-      "slug": "glucotrust",
-      "name": "GlucoTrust",
-      "category_slug": "blood-sugar",
-      "mp4_filename": "2026-09-12_2.mp4",
+      "slug": "joint-genesis",
+      "name": "Joint Genesis",
+      "category_slug": "joint-pain",
+      "mp4_filename": "2026-09-13_2.mp4",
       "generated": true
     }
   ]
