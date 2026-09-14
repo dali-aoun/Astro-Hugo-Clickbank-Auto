@@ -117,8 +117,12 @@ def ig_get(path, params=None):
         p.update(params)
     url = f"{BASE_URL}{path}?{urllib.parse.urlencode(p)}"
     req = urllib.request.Request(url)
-    with urllib.request.urlopen(req, timeout=20) as r:
-        return json.loads(r.read())
+    try:
+        with urllib.request.urlopen(req, timeout=20) as r:
+            return json.loads(r.read())
+    except Exception as e:
+        body = e.read().decode() if hasattr(e, "read") else str(e)
+        raise RuntimeError(f"ig_get {path} → {body}")
 
 
 def ig_post(path, data):
@@ -128,8 +132,12 @@ def ig_post(path, data):
     url = f"{BASE_URL}{path}"
     req = urllib.request.Request(url, data=encoded, method="POST")
     req.add_header("Content-Type", "application/x-www-form-urlencoded")
-    with urllib.request.urlopen(req, timeout=20) as r:
-        return json.loads(r.read())
+    try:
+        with urllib.request.urlopen(req, timeout=20) as r:
+            return json.loads(r.read())
+    except Exception as e:
+        body = e.read().decode() if hasattr(e, "read") else str(e)
+        raise RuntimeError(f"ig_post {path} → {body}")
 
 
 def pick_reply(comment_text, username):
@@ -186,8 +194,12 @@ def post_reply(comment_id, message):
 
 
 def get_own_username():
-    resp = ig_get(f"/{IG_USER_ID}", {"fields": "username"})
-    return resp.get("username", "hhl.reviews")
+    try:
+        resp = ig_get(f"/{IG_USER_ID}", {"fields": "username"})
+        return resp.get("username", "hhl.reviews")
+    except Exception as e:
+        log(f"  WARN get_own_username: {e}")
+        return "hhl.reviews"
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 
