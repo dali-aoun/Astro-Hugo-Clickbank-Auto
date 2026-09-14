@@ -707,8 +707,9 @@ def upload_pin(board_id, title, description, img_bytes, link, headers):
             "content_type": "image/jpeg",
             "data": img_b64,
         },
-        "link": link,
     }
+    if link:
+        payload["link"] = link
     for attempt in range(3):
         try:
             r = requests.post(
@@ -1107,7 +1108,7 @@ def publish_video_pin(headers):
     gravity = product.get("gravity", 0)
     rating = min(4.9, max(3.8, 3.5 + gravity / 50))
     payload = {
-        "title": f"{name} Review {datetime.utcnow().year} — {rating:.1f}/5 ⭐",
+        "title": f"{name} Review {datetime.utcnow().year} — {rating:.1f}/5 Stars",
         "description": (
             f"Honest {cat_slug.replace('-', ' ')} supplement review: {name}. "
             f"{product.get('description', '')[:180]} "
@@ -1378,15 +1379,14 @@ def main():
     headline, body, hashtags = items[cidx]
 
     cat_url    = board["cat_url"]
-    link       = f"{SITE_URL}/{cat_url}/?utm_source=pinterest&utm_medium=pin&utm_content={board_key}"
     title      = headline[:100]
     clean_body = body.replace(chr(10), " ").strip()
-    description = f"{headline}. {clean_body} {hashtags} | Full guide: {SITE_URL}/{cat_url}/"[:500]
+    description = f"{headline}. {clean_body} {hashtags}"[:500]
 
     log(f"  [1/2 EDU] {board['name']} — {headline}")
     try:
         img_bytes = make_pin_image(board_key, headline, body, hashtags)
-        status, resp = upload_pin(board["id"], title, description, img_bytes, link, headers)
+        status, resp = upload_pin(board["id"], title, description, img_bytes, None, headers)
         if status in (200, 201):
             log(f"    OK pin_id={resp.get('id', '?')}")
             published += 1
