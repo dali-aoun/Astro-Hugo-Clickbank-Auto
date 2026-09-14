@@ -1347,7 +1347,12 @@ def main():
     today_key = datetime.now(timezone.utc).astimezone(tz_tunis).strftime("%Y-%m-%d")
 
     hour_utc = datetime.now(timezone.utc).hour
-    slot_id = "am" if hour_utc < 12 else "pm"
+    if hour_utc < 10:
+        slot_id = "morning"
+    elif hour_utc < 14:
+        slot_id = "midday"
+    else:
+        slot_id = "evening"
     slot_key = f"{today_key}_{slot_id}"
 
     done = load_done()
@@ -1364,61 +1369,66 @@ def main():
         "Content-Type": "application/json",
     }
 
-    log(f"=== Pinterest Publisher {today_key} (1 educational + 1 product review) ===")
+    log(f"=== Pinterest Publisher {today_key} slot={slot_id} (2 edu + 2 review) ===")
 
     published = 0
     errors = 0
 
-    # Pin 1: educational tip (discovery + saves)
-    board_key = BOARD_ROTATION[board_idx % len(BOARD_ROTATION)]
-    board     = BOARDS[board_key]
-    board_idx += 1
-    items     = CONTENT[board_key]
-    cidx      = content_idx.get(board_key, 0) % len(items)
-    content_idx[board_key] = cidx + 1
-    headline, body, hashtags = items[cidx]
+    # 2 paires edu+review par slot → 6 pins morning, 4 midday, 5 evening
+    PAIRS_PER_SLOT = 2
+    for pair_n in range(PAIRS_PER_SLOT):
+        # Pin A: educational tip (no link — builds saves and algo trust)
+        board_key = BOARD_ROTATION[board_idx % len(BOARD_ROTATION)]
+        board     = BOARDS[board_key]
+        board_idx += 1
+        items     = CONTENT[board_key]
+        cidx      = content_idx.get(board_key, 0) % len(items)
+        content_idx[board_key] = cidx + 1
+        headline, body, hashtags = items[cidx]
 
-    cat_url    = board["cat_url"]
-    title      = headline[:100]
-    clean_body = body.replace(chr(10), " ").strip()
-    description = f"{headline}. {clean_body} {hashtags}"[:500]
+        title      = headline[:100]
+        clean_body = body.replace(chr(10), " ").strip()
+        description = f"{headline}. {clean_body} {hashtags}"[:500]
 
-    log(f"  [1/2 EDU] {board['name']} — {headline}")
-    try:
-        img_bytes = make_pin_image(board_key, headline, body, hashtags)
-        status, resp = upload_pin(board["id"], title, description, img_bytes, None, headers)
-        if status in (200, 201):
-            log(f"    OK pin_id={resp.get('id', '?')}")
-            published += 1
-        else:
-            log(f"    ERREUR {status}: {resp}")
+        log(f"  [pair {pair_n+1}/EDU] {board['name']} — {headline}")
+        try:
+            img_bytes = make_pin_image(board_key, headline, body, hashtags)
+            status, resp = upload_pin(board["id"], title, description, img_bytes, None, headers)
+            if status in (200, 201):
+                log(f"    OK pin_id={resp.get('id', '?')}")
+                published += 1
+            else:
+                log(f"    ERREUR {status}: {resp}")
+                errors += 1
+        except Exception as e:
+            log(f"    Image/upload failed: {e}")
             errors += 1
-    except Exception as e:
-        log(f"    Image/upload failed: {e}")
-        errors += 1
 
-    time.sleep(8)
+        time.sleep(8)
 
-    # Pin 2: product review card (buying-intent keyword targeting → HopLink clicks)
-    log("  [2/2 REVIEW] Publishing product review pin...")
-    try:
-        publish_product_review_pin(headers)
-        published += 1
-    except Exception as e:
-        log(f"    Review pin failed: {e}")
-        errors += 1
+        # Pin B: product review card (with link — buying intent → HopLink)
+        log(f"  [pair {pair_n+1}/REVIEW] Publishing product review pin...")
+        try:
+            publish_product_review_pin(headers)
+            published += 1
+        except Exception as e:
+            log(f"    Review pin failed: {e}")
+            errors += 1
+
+        if pair_n < PAIRS_PER_SLOT - 1:
+            time.sleep(15)
 
     state["board_idx"] = board_idx
     state["content_idx"] = content_idx
     save_idx(state)
 
-    if slot_id == "am":
-        log("=== Video Idea Pins (AM slot: 2 videos) ===")
+    if slot_id == "morning":
+        log("=== Video Idea Pins (morning slot: 2 videos) ===")
         publish_video_pin(headers)
         time.sleep(30)
         publish_video_pin(headers)
-    else:
-        log("=== Blog Article Pin (PM slot) ===")
+    elif slot_id == "evening":
+        log("=== Blog Article Pin (evening slot) ===")
         publish_blog_pin(headers)
 
     log(f"=== Termine: {published} publies | {errors} erreurs ===")
