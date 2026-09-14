@@ -18,7 +18,7 @@ from datetime import datetime, timezone, timedelta
 
 IG_USER_ID   = os.environ.get("INSTAGRAM_USER_ID", "")
 ACCESS_TOKEN = os.environ.get("INSTAGRAM_ACCESS_TOKEN", "")
-BASE_URL     = "https://graph.instagram.com/v21.0"
+BASE_URL     = "https://graph.facebook.com/v21.0"
 
 BASE_DIR  = os.path.dirname(os.path.abspath(__file__))
 DONE_FILE = os.path.join(BASE_DIR, "ig_engagement_done.json")
