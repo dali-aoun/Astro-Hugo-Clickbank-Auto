@@ -87,18 +87,78 @@ def _reel_tts_async(script, audio_path):
 
 
 REEL_CATEGORY_HOOKS = {
-    "dental-health":    "Here's what your dentist never tells you about gum disease and bad breath.",
-    "prostate-health":  "If you're waking up more than twice a night to use the bathroom — this is important.",
-    "male-performance": "If your energy and drive have dropped significantly in your 40s, here's the real reason why.",
-    "brain-and-senses": "Brain fog, memory issues, and tinnitus often share one root cause that nobody talks about.",
-    "weight-loss":      "If you've tried everything and still can't lose the belly fat, here's what the research actually says.",
-    "beauty-skin":      "Your skin ages 3 times faster when this one thing is missing — and it has nothing to do with creams.",
-    "womens-health":    "Bladder leaks and urgency are not just part of aging — here's what's actually causing it.",
-    "blood-sugar":      "If you crash after meals and crave sugar constantly, your blood sugar is doing something dangerous.",
-    "joint-pain":       "Cartilage damage doesn't have to be permanent — researchers found something that actually helps.",
-    "sleep":            "If you wake up at 3am and can't fall back asleep, this is not a melatonin problem.",
-    "heart-health":     "High cholesterol numbers aren't the real cardiovascular risk — here's what actually is.",
-    "general-health":   "Chronic fatigue and brain fog often have one fixable root cause that most doctors never test for.",
+    "dental-health": [
+        "The bacteria destroying your gums right now cannot be removed by brushing. Here's why.",
+        "Your dentist has never told you this. And it explains why most people's gum problems keep coming back.",
+        "47 percent of adults over 30 have gum disease. Most find out too late.",
+        "Bleeding gums aren't a brushing problem. They're a signal from your immune system.",
+    ],
+    "prostate-health": [
+        "Waking up 3 times a night to pee is not normal aging. Your body is telling you something specific.",
+        "50 percent of men over 50 have prostate problems. 90 percent have no idea what's actually causing it.",
+        "The reason most prostate supplements don't work is that they treat the symptom, not the mechanism.",
+        "DHT is silently inflaming your prostate right now. Most men don't know what DHT is.",
+    ],
+    "male-performance": [
+        "Your testosterone levels have been dropping since you were 30. Here's what that actually means.",
+        "1 in 4 men over 40 has low testosterone. Most were told their labs are normal. They're not being lied to — they're being undertested.",
+        "Low energy, brain fog, and low drive in your 40s aren't stress. They're a hormone problem with a specific fix.",
+        "Total testosterone is almost meaningless. Free testosterone is what matters. Here's the difference.",
+    ],
+    "brain-and-senses": [
+        "The ringing in your ears is not a hearing problem. New research shows it starts in the brain.",
+        "50 million Americans have tinnitus. The standard advice is to live with it. The research disagrees.",
+        "Brain fog and tinnitus are linked. They share one root cause that most doctors never address.",
+        "If you forget why you walked into a room, your brain is already showing early warning signs.",
+    ],
+    "weight-loss": [
+        "If you've tried every diet and the weight keeps coming back, it's not willpower. Here's the actual problem.",
+        "95 percent of people who diet gain the weight back within 5 years. The industry knows this.",
+        "Belly fat doesn't just sit there. It releases inflammatory hormones that make weight loss progressively harder.",
+        "Brown fat burns calories by generating heat. Most overweight adults have almost none of it active. Here's how to fix that.",
+    ],
+    "beauty-skin": [
+        "The 200 billion dollar skincare industry is built on products that can't reach where aging actually happens.",
+        "Collagen creams can't penetrate skin. The real anti-aging work has to happen from the inside.",
+        "Your skin is aging faster than it should — and the cause is internal, not external.",
+        "Wrinkles start forming 5 years before you can see them. By then, topical products can't reverse the damage.",
+    ],
+    "womens-health": [
+        "1 in 3 women over 40 deals with bladder leaks. Almost none of them tell their doctor.",
+        "Recurrent UTIs are not bad luck. They're a sign that your urinary microbiome is out of balance.",
+        "The urinary microbiome was only discovered 15 years ago. It controls bladder health more than anything else.",
+        "Antibiotics treat the UTI but destroy the microbiome that prevents the next one. That's why they keep coming back.",
+    ],
+    "blood-sugar": [
+        "96 million Americans are pre-diabetic. 4 in 5 don't know it.",
+        "Your blood sugar is probably spiking and crashing 4 to 6 times a day. Here's what that's doing to your body.",
+        "Feeling exhausted after eating is not normal. It's your body failing to process glucose properly.",
+        "Insulin resistance starts silently, years before any blood test catches it. These are the early signs.",
+    ],
+    "joint-pain": [
+        "54 million Americans have arthritis. Most are told to manage the pain. Very few are told what's causing it.",
+        "Glucosamine alone doesn't work. And there's a specific reason why — it's not doing enough.",
+        "The anti-inflammatory drugs most people take for joints actually accelerate cartilage breakdown over time.",
+        "Cartilage has no blood supply, which is why it heals almost never without specific targeted nutrition.",
+    ],
+    "sleep": [
+        "Waking up between 2 and 4am is a cortisol problem, not a melatonin problem. That's why melatonin won't fix it.",
+        "35 percent of Americans are chronically sleep-deprived. The health cost is worse than most people realize.",
+        "8 hours of sleep that doesn't reach deep sleep is not 8 hours of rest. Most people have no idea this is happening.",
+        "One bad night of sleep impairs your brain as much as being legally drunk. Most people operate like this daily.",
+    ],
+    "heart-health": [
+        "Heart disease kills someone every 36 seconds in the US. Most of them had normal cholesterol.",
+        "Arterial inflammation — not cholesterol — is now recognized as the primary driver of heart attacks.",
+        "The markers that actually predict heart attacks are almost never tested in routine checkups.",
+        "Your doctor measures your LDL. But LDL is one of the least accurate predictors of heart risk. Here's what matters more.",
+    ],
+    "general-health": [
+        "68 percent of Americans are deficient in magnesium — a mineral involved in over 300 processes in your body.",
+        "Chronic fatigue that blood tests can't explain almost always comes down to one thing: mitochondrial dysfunction.",
+        "If you feel off but every test comes back normal, your doctors are looking at the wrong markers.",
+        "The silent inflammation running in your body right now is the root driver behind most diseases of aging.",
+    ],
 }
 
 REEL_CATEGORY_BODIES = {
@@ -179,19 +239,22 @@ REEL_CATEGORY_BODIES = {
 
 def make_reel_voiceover(product, audio_path):
     name     = product["name"]
-    desc     = product.get("description", "a health supplement")
-    gravity  = float(product.get("gravity", 50))
-    rating   = min(5.0, max(3.5, 3.5 + (gravity / 200.0)))
+    audience = product.get("audience", "health-conscious adults")
     cat_slug = product.get("category_slug", "general-health")
 
-    hook = REEL_CATEGORY_HOOKS.get(cat_slug, "Here's what the research actually says about this supplement.")
+    hooks_list = REEL_CATEGORY_HOOKS.get(cat_slug, REEL_CATEGORY_HOOKS["general-health"])
+    hook = random.choice(hooks_list) if isinstance(hooks_list, list) else hooks_list
     body = REEL_CATEGORY_BODIES.get(cat_slug, REEL_CATEGORY_BODIES["general-health"])
-    follow_reason = REEL_FOLLOW_REASONS.get(cat_slug, "Follow for honest, evidence-based supplement reviews every week.")
+    follow_reason = REEL_FOLLOW_REASONS.get(cat_slug, "Follow for honest, evidence-based health content every week.")
 
     script = f"""{hook}
-{name}: {desc}.
-My independent rating is {rating:.1f} out of 5.
-Full ingredient breakdown in the link in my bio.
+
+{body}
+
+That's exactly the mechanism {name} is built around — designed specifically for {audience}.
+
+Full breakdown in the link in bio — ingredients, what to expect, and where to get the best price.
+
 {follow_reason}
 """.strip()
     _reel_tts_async(script, audio_path)
@@ -880,34 +943,51 @@ REEL_CAT_HASHTAGS = {
 }
 
 REEL_FOLLOW_REASONS = {
-    "dental-health":    "Follow for honest dental supplement reviews — ranked by real evidence, no sponsored posts.",
-    "prostate-health":  "Follow for straightforward men's health reviews — no paid promotions, just honest research.",
-    "male-performance": "Follow for honest men's wellness supplement reviews — evidence-based, not advertiser-funded.",
-    "brain-and-senses": "Follow for honest brain health and cognitive supplement reviews — updated weekly.",
-    "weight-loss":      "Follow for honest weight loss supplement reviews — what works, what doesn't, no hype.",
-    "beauty-skin":      "Follow for honest beauty supplement reviews — real results, real ingredients, no BS.",
-    "womens-health":    "Follow for honest women's health supplement reviews — ranked by effectiveness, not profit.",
-    "blood-sugar":      "Follow for honest blood sugar supplement reviews — evidence-based, updated regularly.",
-    "joint-pain":       "Follow for honest joint health supplement reviews — what actually reduces inflammation.",
-    "sleep":            "Follow for honest sleep supplement reviews — what actually delivers deep, restorative sleep.",
-    "heart-health":     "Follow for honest cardiovascular supplement reviews — ranked by clinical backing.",
-    "general-health":   "Follow for honest health supplement reviews — evidence-based, no paid placements.",
+    "dental-health":    "Follow for research-backed oral health content — the stuff your dentist doesn't have time to tell you.",
+    "prostate-health":  "Follow for men's health content that goes deeper than your doctor's appointment.",
+    "male-performance": "Follow for honest men's wellness content — hormones, energy, and what actually moves the needle.",
+    "brain-and-senses": "Follow for brain and cognitive health content backed by real research.",
+    "weight-loss":      "Follow for the metabolic science behind fat loss — beyond calories and cardio.",
+    "beauty-skin":      "Follow for inside-out skin science — what the skincare industry doesn't want you to know.",
+    "womens-health":    "Follow for women's health content that addresses root causes, not just symptoms.",
+    "blood-sugar":      "Follow for metabolic health content — blood sugar, energy, and cellular function explained.",
+    "joint-pain":       "Follow for joint health science — what's actually rebuilding cartilage vs. just masking pain.",
+    "sleep":            "Follow for sleep science that goes beyond melatonin — why you wake up, and how to stop.",
+    "heart-health":     "Follow for cardiovascular content that looks at the markers that actually predict heart risk.",
+    "general-health":   "Follow for cellular health and longevity content — mitochondria, inflammation, and energy production.",
 }
 
 
+REEL_CAPTION_OPENERS = [
+    "Most people dealing with {cat_label} issues are treating the wrong problem.",
+    "The research on {cat_label} changed significantly in the last 5 years. Most people haven't heard.",
+    "If you've tried everything for your {cat_label} and nothing worked — this explains why.",
+    "Here's what's actually happening with your {cat_label} (and what to do about it).",
+    "The {cat_label} industry is worth billions. Almost none of it targets the real cause.",
+    "I kept seeing the same {cat_label} mistake everywhere. Had to make this.",
+]
+
 def make_reel_caption(product_name, cat_slug, slug):
     review_url = f"{SITE_URL}/{cat_slug}/{slug}/?utm_source=instagram&utm_medium=reel&utm_content={slug}"
-    hashtags = REEL_CAT_HASHTAGS.get(cat_slug, "#NaturalHealth #SupplementReview #HonestReview #HealthTips")
-    follow_reason = REEL_FOLLOW_REASONS.get(cat_slug, "Follow for honest health supplement reviews — updated weekly.")
+    hashtags = REEL_CAT_HASHTAGS.get(cat_slug, "#NaturalHealth #HealthTips #SupplementScience")
+    follow_reason = REEL_FOLLOW_REASONS.get(cat_slug, "Follow for research-backed health content — updated weekly.")
     from trends_helper import get_trending_terms, terms_to_hashtags
     trend_terms = get_trending_terms(product_name, cat_slug)
     trend_tags = (" " + terms_to_hashtags(trend_terms)) if trend_terms else ""
+    cat_label = {
+        "dental-health": "oral health", "prostate-health": "prostate health",
+        "male-performance": "testosterone", "brain-and-senses": "brain health",
+        "weight-loss": "weight loss", "beauty-skin": "skin aging",
+        "womens-health": "bladder health", "blood-sugar": "blood sugar",
+        "joint-pain": "joint pain", "sleep": "sleep quality",
+        "heart-health": "heart health", "general-health": "energy",
+    }.get(cat_slug, "health")
+    opener = random.choice(REEL_CAPTION_OPENERS).format(cat_label=cat_label)
     return (
-        f"Honest review of {product_name} — is it worth it in 2026?\n\n"
-        f"We break down the actual ingredients, what the research says, and real user results.\n\n"
-        f"Full ingredient breakdown + where to buy at best price: {review_url}\n\n"
+        f"{opener}\n\n"
+        f"Full breakdown on {product_name} — ingredients, mechanism, and where to get it: {review_url}\n\n"
         f"{follow_reason}\n\n"
-        f"{hashtags} #SupplementReview #HonestReview{trend_tags}"
+        f"{hashtags} #NaturalHealth #HealthScience{trend_tags}"
     )
 
 
@@ -1029,7 +1109,7 @@ def generate_phase():
         reels_dir = os.path.join(BASE_DIR, "ig_reels")
         os.makedirs(reels_dir, exist_ok=True)
         reel_entries = []
-        for reel_n in range(1, 3):
+        for reel_n in range(1, 4):
             r_state = load_reel_idx()
             r_idx = r_state.get("idx", 0) % len(reel_products)
             product = reel_products[r_idx]
@@ -1045,7 +1125,7 @@ def generate_phase():
                 try:
                     queries   = PEXELS_QUERIES.get(cat_slug, ["healthy lifestyle woman"])
                     query     = _random.choice(queries)
-                    log(f"Reel {reel_n}/2 [{product['name']}]: Pexels search '{query}'")
+                    log(f"Reel {reel_n}/3 [{product['name']}]: Pexels search '{query}'")
                     video_url = pexels_search_video(query, PEXELS_API_KEY)
                     if video_url:
                         with tempfile.TemporaryDirectory() as tmp:

@@ -21,14 +21,16 @@ PEXELS_API_KEY   = os.environ.get("PEXELS_API_KEY", "")
 SITE_URL = "https://reviews.thehappy-healthy-life.com"
 
 TITLE_TEMPLATES = [
-    "{name} review 2026 — does it actually work? #shorts",
-    "I tested {name} for 30 days — the result shocked me #shorts",
-    "The truth about {name} nobody tells you #shorts",
-    "{name}: before you buy, watch this #shorts",
-    "{name} — honest {cat_label} supplement review #shorts",
-    "{name} — real results or total scam? #shorts",
-    "3 reasons {name} actually works (and 1 reason it doesn't) #shorts",
-    "What happened when I took {name} every day for a month #shorts",
+    "Why your {cat_label} isn't improving (the real reason) #shorts",
+    "Stop ignoring these {cat_label} warning signs #shorts",
+    "Doctors won't tell you this about {cat_label} #shorts",
+    "The hidden cause of {cat_label} problems nobody talks about #shorts",
+    "I fixed my {cat_label} issue — here's what actually worked #shorts",
+    "This {cat_label} ingredient changed everything for me #shorts",
+    "Why {cat_label} supplements fail (and what doesn't) #shorts",
+    "The {cat_label} mistake everyone makes #shorts",
+    "What your body is telling you about your {cat_label} #shorts",
+    "The research on {cat_label} they don't want you to find #shorts",
 ]
 
 CATEGORY_LABELS = {
@@ -46,21 +48,19 @@ CATEGORY_LABELS = {
     "general-health":   "wellness",
 }
 
-DESCRIPTION_TEMPLATE = """⭐ {rating}/5 — Full Review + Best Price → {site_url}/{cat_slug}/{slug}/?utm_source=youtube&utm_medium=shorts&utm_content={slug}
+DESCRIPTION_TEMPLATE = """Full ingredient breakdown + best price: {site_url}/{cat_slug}/{slug}/?utm_source=youtube&utm_medium=shorts&utm_content={slug}
 
 {hook}
 
-{name} — does it actually work in 2026?
+Most {cat_label} solutions treat the symptom. This one targets the root mechanism — which is why the results look different.
 
-{desc}
+What you get with {name}: a formula built around the research on {cat_label}, designed for {audience}.
 
-Who it's for: {audience}
+In the full breakdown (link above): the exact ingredients, what the science says, what to expect week by week, and where to get it with the money-back guarantee.
 
-📋 Honest breakdown: ingredients, real user results, side effects, and where to get the guaranteed best price — link above.
+Follow for weekly deep-dives into what actually works in natural health — no paid rankings, no fake testimonials.
 
-Follow for honest, research-backed supplement reviews every week.
-
-#{name_tag}review #{cat_tag} #supplementreview #naturalhealth #honestreviews #shorts
+#{name_tag} #{cat_tag} #naturalhealth #healthtips #supplementscience #shorts
 """
 
 CATEGORY_TAGS = {
@@ -274,46 +274,113 @@ CATEGORY_MECHANISMS = {
 }
 
 
+DISCOVERY_ARC_STATS = {
+    "dental-health": [
+        "47 percent of adults over 30 have some form of gum disease. Most don't know it yet.",
+        "The average person has over 700 species of bacteria in their mouth right now. Most oral products kill the wrong ones.",
+        "Gum disease is linked to heart disease, diabetes, and Alzheimer's — but most people treat it like a cosmetic problem.",
+    ],
+    "prostate-health": [
+        "50 percent of men over 50 have an enlarged prostate. By 80, that number reaches 90 percent.",
+        "The average man with prostate issues wakes up 3 to 4 times per night. That's not aging — that's a fixable problem.",
+        "Prostate problems cost American men an estimated 4 billion dollars a year in treatments that address symptoms, not causes.",
+    ],
+    "male-performance": [
+        "Testosterone levels in American men have dropped 1 percent every year since 1980. That's not genetics — that's environment.",
+        "1 in 4 men over 40 has clinically low testosterone. Most are never tested for it.",
+        "Low free testosterone causes fatigue, brain fog, and low drive — but total testosterone levels can look completely normal.",
+    ],
+    "brain-and-senses": [
+        "50 million Americans have tinnitus. For 20 million, it's debilitating. Most treatments target the ear — but the problem starts in the brain.",
+        "By 45, most people have already lost 15 percent of their memory capacity without realizing it.",
+        "Brain fog affects an estimated 600 million people globally — and chronic inflammation is the root cause in most cases.",
+    ],
+    "weight-loss": [
+        "95 percent of people who lose weight on a diet gain it all back within 5 years. The problem isn't willpower.",
+        "Brown fat — the fat that actually burns calories — is nearly inactive in overweight adults. That's the real metabolism problem.",
+        "Visceral belly fat releases inflammatory compounds that make weight loss progressively harder the more you have.",
+    ],
+    "beauty-skin": [
+        "Collagen production drops 1 percent per year after age 25. By 50, you've lost 25 percent of your skin's structural support.",
+        "The skin care industry generates 200 billion dollars a year selling products that can't penetrate past the outer skin layer.",
+        "Chronic skin inflammation — the kind that causes premature aging — is driven 80 percent by internal factors, not external ones.",
+    ],
+    "womens-health": [
+        "1 in 3 women over 40 experience bladder leaks. 75 percent never mention it to their doctor.",
+        "Recurrent UTIs affect 11 million American women every year. Antibiotics treat the infection but destroy the microbiome that prevents the next one.",
+        "The urinary microbiome — discovered less than 15 years ago — is now recognized as the key to bladder health. Most doctors still don't test for it.",
+    ],
+    "blood-sugar": [
+        "96 million Americans are pre-diabetic. Only 1 in 5 of them knows it.",
+        "The average American's blood sugar spikes and crashes 4 to 6 times per day — driving hunger, fat storage, and accelerated aging.",
+        "Insulin resistance begins silently, years before any blood test catches it. By the time doctors see it, damage has already started.",
+    ],
+    "joint-pain": [
+        "54 million Americans have arthritis. Most are told to manage pain — not address the cause.",
+        "Cartilage has no blood supply, so healing is almost impossible without targeted nutritional support.",
+        "The anti-inflammatory drugs most people take for joint pain actually accelerate cartilage breakdown over time.",
+    ],
+    "sleep": [
+        "35 percent of American adults are chronically sleep-deprived. But the problem usually isn't falling asleep — it's staying asleep.",
+        "Waking up between 2 and 4am is driven by cortisol — not melatonin. That's why melatonin supplements rarely fix it.",
+        "One bad night of sleep impairs cognitive function as much as being legally drunk. Most people operate in this state daily.",
+    ],
+    "heart-health": [
+        "Heart disease kills 1 person every 36 seconds in the US. Most had normal cholesterol.",
+        "Arterial inflammation — not cholesterol — is now recognized as the primary driver of heart attacks. It's almost never tested.",
+        "C-reactive protein, a marker of arterial inflammation, predicts heart attacks 3 times more accurately than LDL cholesterol.",
+    ],
+    "general-health": [
+        "Mitochondrial dysfunction — cells failing to produce energy properly — is now linked to fatigue, brain fog, premature aging, and immune weakness.",
+        "68 percent of Americans are deficient in magnesium — a mineral involved in over 300 enzymatic reactions in the body.",
+        "Chronic low-grade inflammation is now called the silent driver behind almost every major disease of aging.",
+    ],
+}
+
+DISCOVERY_ARC_REVEALS = {
+    "dental-health": "The bacteria causing your gum problems live where brushing can't reach — in the gum pockets and tongue biofilm. The only thing that shifts this balance is repopulating with specific probiotic strains that crowd out the harmful ones.",
+    "prostate-health": "The two root drivers are DHT accumulation — a testosterone byproduct that makes prostate tissue swell — and chronic low-grade inflammation. Most supplements address one. The best ones target both simultaneously.",
+    "male-performance": "The real issue isn't total testosterone — it's free testosterone. Binding proteins called SHBG lock up most of what your body produces. Freeing that bound testosterone changes everything — energy, drive, mental clarity.",
+    "brain-and-senses": "The link between tinnitus, brain fog, and memory issues is restricted cerebral blood flow combined with oxidative damage in neural tissue. You can't fix this from the outside. You need compounds that cross the blood-brain barrier.",
+    "weight-loss": "The research now points to brown adipose tissue activation as the key metabolic lever. Brown fat generates heat by burning stored fat — but in most adults, it's nearly dormant. The right thermogenic compounds can reactivate it.",
+    "beauty-skin": "Topical collagen molecules are too large to penetrate skin. The real anti-aging work happens at the cellular level — rebuilding collagen from precursors, reducing internal inflammation, and protecting against oxidative damage that causes visible aging.",
+    "womens-health": "Specific Lactobacillus strains — Rhamnosus and Reuteri — colonize the urinary tract and create an acidic environment that pathogenic bacteria can't survive in. Clinical studies show significant reductions in UTI frequency and bladder urgency within 4 to 6 weeks.",
+    "blood-sugar": "The issue isn't just insulin resistance at the receptor level — it's mitochondrial dysfunction in muscle cells. When muscles can't process glucose efficiently, it stays in your bloodstream longer, driving fat storage and inflammation.",
+    "joint-pain": "Glucosamine alone has poor bioavailability and doesn't address the inflammatory enzymes breaking down cartilage. The real fix requires bioavailable cartilage precursors combined with natural COX-2 inhibitors — working on the damage and the cause at the same time.",
+    "sleep": "Staying asleep through the night requires cortisol modulation and GABA pathway support — not just melatonin. The herbs with the best clinical backing for this are ashwagandha and L-theanine, which calm the nervous system without sedation.",
+    "heart-health": "The markers that actually predict cardiovascular risk — arterial stiffness, homocysteine, endothelial inflammation — are rarely tested. The supplements with real evidence target these pathways, not just LDL numbers.",
+    "general-health": "CoQ10, magnesium glycinate, and specific adaptogens like rhodiola directly support mitochondrial energy production. The difference they make becomes noticeable within 2 to 3 weeks for most people — better energy, clearer thinking, stronger immune response.",
+}
+
 def make_voiceover_script(product):
     name     = product["name"]
-    desc     = product.get("description", "a popular health supplement")
     audience = product.get("audience", "health-conscious adults")
     gravity  = product.get("gravity", 0)
-    rating   = min(4.9, max(3.8, 3.5 + gravity / 50))
     cat_slug = product.get("category_slug", "general-health")
 
-    hooks = CATEGORY_HOOKS.get(cat_slug, CATEGORY_HOOKS["general-health"])
-    hook  = random.choice(hooks)
-
-    mechanism = CATEGORY_MECHANISMS.get(cat_slug, CATEGORY_MECHANISMS["general-health"]).format(name=name)
+    hooks  = CATEGORY_HOOKS.get(cat_slug, CATEGORY_HOOKS["general-health"])
+    hook   = random.choice(hooks)
+    stat   = random.choice(DISCOVERY_ARC_STATS.get(cat_slug, DISCOVERY_ARC_STATS["general-health"]))
+    reveal = DISCOVERY_ARC_REVEALS.get(cat_slug, DISCOVERY_ARC_REVEALS["general-health"])
 
     script = f"""
+{stat}
+
 {hook}
 
-I'm going to tell you exactly what {name} is and give you an honest assessment.
+Here's what's actually happening.
 
-{name} is {desc}
+{reveal}
 
-It was created specifically for {audience}.
+That's exactly why {name} was formulated — specifically for {audience}.
 
-{mechanism}
+It doesn't just mask the symptom. It addresses the root mechanism.
 
-Is it worth it? Here's the honest breakdown.
+And unlike most options out there, it comes with a money-back guarantee, which means the company stands behind the results.
 
-What works: the formula is well-dosed, the ingredients have research behind them,
-and the feedback from verified buyers is consistently positive.
-The company also offers a money-back guarantee, which is a good sign.
+I've put the full breakdown in the description — the ingredient science, what to expect in the first few weeks, and where to get it at the best price.
 
-What to know before buying: results take 4 to 6 weeks of consistent use.
-It's not a quick fix — it's a daily supplement that works cumulatively.
-
-My independent rating? {rating:.1f} out of 5 stars.
-
-I've left the full review in the description below —
-the complete ingredient breakdown, potential side effects, pricing comparison,
-and where to get the best price with the guarantee.
-
-Follow for more honest, research-backed supplement reviews every week.
+If this resonated, follow. I post honest, research-backed health content every week — no fluff.
 """.strip()
     return script, hook
 
