@@ -1,25 +1,25 @@
 {
-  "date": "2026-09-14",
+  "date": "2026-09-15",
   "reels": [
     {
-      "slug": "flexotone",
-      "name": "Flexotone",
-      "category_slug": "joint-pain",
-      "mp4_filename": "2026-09-14_1.mp4",
+      "slug": "cholibrium",
+      "name": "Cholibrium",
+      "category_slug": "heart-health",
+      "mp4_filename": "2026-09-15_1.mp4",
       "generated": true
     },
     {
-      "slug": "yu-sleep",
-      "name": "Yu Sleep",
-      "category_slug": "sleep",
-      "mp4_filename": "2026-09-14_2.mp4",
+      "slug": "cardioshield",
+      "name": "CardioShield",
+      "category_slug": "heart-health",
+      "mp4_filename": "2026-09-15_2.mp4",
       "generated": true
     },
     {
-      "slug": "resurge",
-      "name": "Resurge",
-      "category_slug": "sleep",
-      "mp4_filename": "2026-09-14_3.mp4",
+      "slug": "breathe",
+      "name": "Breathe",
+      "category_slug": "general-health",
+      "mp4_filename": "2026-09-15_3.mp4",
       "generated": true
     }
   ]
