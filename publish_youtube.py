@@ -831,6 +831,7 @@ def main():
             cat_slug=product["category_slug"],
             slug=product["slug"],
             cat_tag=cat_tag,
+            cat_label=cat_label,
             name_tag=name_tag,
         )
         from trends_helper import get_trending_terms
