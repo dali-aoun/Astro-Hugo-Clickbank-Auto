@@ -51,10 +51,7 @@ def get_trending_terms(product_name, category_slug, max_terms=5):
     terms = []
     try:
         from pytrends.request import TrendReq
-        pytrends = TrendReq(
-            hl="en-US", tz=360,
-            timeout=(10, 25), retries=2, backoff_factor=0.5
-        )
+        pytrends = TrendReq(hl="en-US", tz=360, timeout=(10, 25))
         keyword = f"{product_name} supplement"
         pytrends.build_payload([keyword], timeframe="now 7-d", geo="US")
         time.sleep(1)
