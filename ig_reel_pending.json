@@ -1,25 +1,25 @@
 {
-  "date": "2026-09-18",
+  "date": "2026-09-19",
   "reels": [
     {
-      "slug": "prostavive",
-      "name": "ProstaVive",
+      "slug": "titanflow",
+      "name": "TitanFlow",
       "category_slug": "prostate-health",
-      "mp4_filename": "2026-09-18_1.mp4",
+      "mp4_filename": "2026-09-19_1.mp4",
       "generated": true
     },
     {
-      "slug": "prostadine",
-      "name": "Prostadine",
+      "slug": "flowforce-max",
+      "name": "FlowForce Max",
       "category_slug": "prostate-health",
-      "mp4_filename": "2026-09-18_2.mp4",
+      "mp4_filename": "2026-09-19_2.mp4",
       "generated": true
     },
     {
-      "slug": "viriflow",
-      "name": "ViriFlow",
-      "category_slug": "prostate-health",
-      "mp4_filename": "2026-09-18_3.mp4",
+      "slug": "nitric-boost",
+      "name": "Nitric Boost",
+      "category_slug": "male-performance",
+      "mp4_filename": "2026-09-19_3.mp4",
       "generated": true
     }
   ]
