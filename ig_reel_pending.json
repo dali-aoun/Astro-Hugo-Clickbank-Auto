@@ -1,25 +1,25 @@
 {
-  "date": "2026-09-19",
+  "date": "2026-09-20",
   "reels": [
     {
-      "slug": "titanflow",
-      "name": "TitanFlow",
-      "category_slug": "prostate-health",
-      "mp4_filename": "2026-09-19_1.mp4",
-      "generated": true
-    },
-    {
-      "slug": "flowforce-max",
-      "name": "FlowForce Max",
-      "category_slug": "prostate-health",
-      "mp4_filename": "2026-09-19_2.mp4",
-      "generated": true
-    },
-    {
-      "slug": "nitric-boost",
-      "name": "Nitric Boost",
+      "slug": "alpha-tonic",
+      "name": "Alpha Tonic",
       "category_slug": "male-performance",
-      "mp4_filename": "2026-09-19_3.mp4",
+      "mp4_filename": "2026-09-20_1.mp4",
+      "generated": true
+    },
+    {
+      "slug": "spartamax",
+      "name": "Spartamax",
+      "category_slug": "male-performance",
+      "mp4_filename": "2026-09-20_2.mp4",
+      "generated": true
+    },
+    {
+      "slug": "red-boost",
+      "name": "Red Boost",
+      "category_slug": "male-performance",
+      "mp4_filename": "2026-09-20_3.mp4",
       "generated": true
     }
   ]
