@@ -1,25 +1,25 @@
 {
-  "date": "2026-09-20",
+  "date": "2026-09-21",
   "reels": [
     {
-      "slug": "alpha-tonic",
-      "name": "Alpha Tonic",
+      "slug": "erecprime",
+      "name": "ErecPrime",
       "category_slug": "male-performance",
-      "mp4_filename": "2026-09-20_1.mp4",
+      "mp4_filename": "2026-09-21_1.mp4",
       "generated": true
     },
     {
-      "slug": "spartamax",
-      "name": "Spartamax",
-      "category_slug": "male-performance",
-      "mp4_filename": "2026-09-20_2.mp4",
+      "slug": "audifort",
+      "name": "Audifort",
+      "category_slug": "brain-and-senses",
+      "mp4_filename": "2026-09-21_2.mp4",
       "generated": true
     },
     {
-      "slug": "red-boost",
-      "name": "Red Boost",
-      "category_slug": "male-performance",
-      "mp4_filename": "2026-09-20_3.mp4",
+      "slug": "visiflora",
+      "name": "VisiFlora",
+      "category_slug": "brain-and-senses",
+      "mp4_filename": "2026-09-21_3.mp4",
       "generated": true
     }
   ]
