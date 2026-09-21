@@ -1374,8 +1374,8 @@ def main():
     published = 0
     errors = 0
 
-    # 2 paires edu+review par slot → 6 pins morning, 4 midday, 5 evening
-    PAIRS_PER_SLOT = 2
+    # 3 paires edu+review par slot → 8 pins morning, 6 midday, 7 evening = ~21/jour
+    PAIRS_PER_SLOT = 3
     for pair_n in range(PAIRS_PER_SLOT):
         # Pin A: educational tip (no link — builds saves and algo trust)
         board_key = BOARD_ROTATION[board_idx % len(BOARD_ROTATION)]
