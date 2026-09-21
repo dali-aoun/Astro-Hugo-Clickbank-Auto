@@ -78,6 +78,20 @@ jobs:
           sudo apt-get install -y --no-install-recommends fonts-liberation fonts-dejavu-core ffmpeg
       - run: pip install requests Pillow edge-tts pytrends
 
+      # Step 0: Refresh Instagram long-lived token (extends expiry by 60 days)
+      - name: Refresh Instagram access token
+        env:
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          NEW_TOKEN=$(curl -s "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=$INSTAGRAM_ACCESS_TOKEN" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('access_token',''))")
+          if [ -n "$NEW_TOKEN" ] && [ "$NEW_TOKEN" != "None" ]; then
+            echo "$NEW_TOKEN" | gh secret set INSTAGRAM_ACCESS_TOKEN -R ${{ github.repository }}
+            echo "Token refreshed OK"
+          else
+            echo "Token refresh failed — using existing token"
+          fi
+
       # Step 1: Generate images + reel video (saved to ig_content/ and ig_reels/)
       - name: Generate images and reel
         env:
