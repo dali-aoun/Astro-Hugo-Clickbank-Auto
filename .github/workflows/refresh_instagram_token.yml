@@ -1,0 +1,29 @@
+name: Refresh Instagram Token
+
+on:
+  schedule:
+    # Every 2 days at 06:00 UTC — well before any expiry
+    - cron: '0 6 */2 * *'
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Refresh Instagram long-lived token
+        env:
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          RESPONSE=$(curl -s "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=$INSTAGRAM_ACCESS_TOKEN")
+          echo "API response: $RESPONSE"
+          NEW_TOKEN=$(echo "$RESPONSE" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('access_token',''))")
+          EXPIRES_IN=$(echo "$RESPONSE" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('expires_in','?'))")
+          if [ -n "$NEW_TOKEN" ] && [ "$NEW_TOKEN" != "None" ] && [ "$NEW_TOKEN" != "" ]; then
+            echo "$NEW_TOKEN" | gh secret set INSTAGRAM_ACCESS_TOKEN -R ${{ github.repository }}
+            echo "Token refreshed OK — expires in ${EXPIRES_IN}s (~$((${EXPIRES_IN:-0} / 86400)) days)"
+          else
+            echo "ERROR: Token refresh failed"
+            echo "Response was: $RESPONSE"
+            exit 1
+          fi
