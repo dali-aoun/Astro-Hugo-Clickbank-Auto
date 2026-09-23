@@ -13,15 +13,17 @@ jobs:
       - name: Refresh Instagram long-lived token
         env:
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          FB_APP_ID: ${{ secrets.FB_APP_ID }}
+          FB_APP_SECRET: ${{ secrets.FB_APP_SECRET }}
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
-          RESPONSE=$(curl -s "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=$INSTAGRAM_ACCESS_TOKEN")
-          echo "API response: $RESPONSE"
+          # Instagram Graph API (business) uses Facebook User Tokens — refresh via fb_exchange_token
+          RESPONSE=$(curl -s "https://graph.facebook.com/v25.0/oauth/access_token?grant_type=fb_exchange_token&client_id=${FB_APP_ID}&client_secret=${FB_APP_SECRET}&fb_exchange_token=${INSTAGRAM_ACCESS_TOKEN}")
+          echo "API keys in response: $(echo "$RESPONSE" | python3 -c "import sys,json; d=json.load(sys.stdin); print(list(d.keys()))")"
           NEW_TOKEN=$(echo "$RESPONSE" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('access_token',''))")
-          EXPIRES_IN=$(echo "$RESPONSE" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('expires_in','?'))")
           if [ -n "$NEW_TOKEN" ] && [ "$NEW_TOKEN" != "None" ] && [ "$NEW_TOKEN" != "" ]; then
             echo "$NEW_TOKEN" | gh secret set INSTAGRAM_ACCESS_TOKEN -R ${{ github.repository }}
-            echo "Token refreshed OK — expires in ${EXPIRES_IN}s (~$((${EXPIRES_IN:-0} / 86400)) days)"
+            echo "Token refreshed OK (new 60-day Facebook long-lived token)"
           else
             echo "ERROR: Token refresh failed"
             echo "Response was: $RESPONSE"
