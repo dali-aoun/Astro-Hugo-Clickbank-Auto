@@ -564,22 +564,84 @@ def _gradient_overlay(img):
 
 
 def make_pin_image(board_key, headline, body, hashtags):
-    """Generate a 1000x1500 Pinterest pin: pain photo + dark overlay + hook title."""
+    """Generate a 1000x1500 infographic-style Pinterest pin designed to generate saves."""
     W, H = 1000, 1500
 
-    # --- background photo (Pexels portrait) ---
-    bg = fetch_pexels_photo(board_key)
-    if bg:
-        img = _crop_cover(bg, W, H)
-    else:
-        img = Image.new("RGB", (W, H), (20, 20, 30))
-        img = _crop_cover(img, W, H)
+    # Per-niche gradient pairs (top_color, bottom_color)
+    DARK_GRADIENTS = {
+        "dental":   ((10, 28, 60),  (8,  55, 115)),
+        "prostate": ((12, 35, 72),  (25, 75, 140)),
+        "male":     ((18, 52, 48),  (10, 88, 78)),
+        "brain":    ((38, 18, 78),  (68, 28, 138)),
+        "weight":   ((78, 18, 18),  (138, 38, 38)),
+        "beauty":   ((78, 18, 58),  (138, 28, 88)),
+        "womens":   ((68, 13, 78),  (108, 23, 128)),
+        "blood":    ((88, 32, 8),   (158, 52, 18)),
+        "joint":    ((12, 62, 38),  (18, 108, 58)),
+        "sleep":    ((18, 22, 78),  (28, 42, 128)),
+        "heart":    ((78, 13, 28),  (138, 23, 48)),
+        "general":  ((18, 48, 58),  (13, 78, 88)),
+    }
+    LIGHT_GRADIENTS = {
+        "dental":   ((232, 243, 255), (208, 228, 255)),
+        "prostate": ((228, 238, 255), (208, 223, 250)),
+        "male":     ((222, 243, 238), (198, 233, 223)),
+        "brain":    ((238, 228, 255), (222, 208, 255)),
+        "weight":   ((255, 233, 228), (255, 208, 203)),
+        "beauty":   ((255, 228, 243), (255, 203, 233)),
+        "womens":   ((243, 222, 255), (233, 203, 250)),
+        "blood":    ((255, 238, 222), (255, 218, 193)),
+        "joint":    ((222, 243, 228), (198, 233, 208)),
+        "sleep":    ((222, 228, 255), (203, 213, 250)),
+        "heart":    ((255, 222, 228), (255, 203, 213)),
+        "general":  ((222, 243, 246), (198, 233, 238)),
+    }
+    BADGE_COLORS = {
+        "dental": (41, 182, 246), "prostate": (66, 165, 245),
+        "male": (38, 166, 154), "brain": (126, 87, 194),
+        "weight": (239, 83, 80), "beauty": (236, 64, 122),
+        "womens": (171, 71, 188), "blood": (255, 112, 67),
+        "joint": (102, 187, 106), "sleep": (92, 107, 192),
+        "heart": (239, 83, 80), "general": (38, 166, 154),
+    }
+    NICHE_LABELS = {
+        "dental": "DENTAL HEALTH", "prostate": "MEN'S HEALTH",
+        "male": "MEN'S WELLNESS", "brain": "BRAIN HEALTH",
+        "weight": "WEIGHT LOSS", "beauty": "BEAUTY & SKIN",
+        "womens": "WOMEN'S HEALTH", "blood": "BLOOD SUGAR",
+        "joint": "JOINT HEALTH", "sleep": "SLEEP HEALTH",
+        "heart": "HEART HEALTH", "general": "HEALTH TIPS",
+    }
 
-    # --- dark gradient overlay ---
-    img = _gradient_overlay(img)
+    accent = BADGE_COLORS.get(board_key, (41, 182, 246))
+    # 67% dark mode, 33% light — alternates for feed variety
+    use_dark = abs(hash(headline)) % 3 != 0
+
+    if use_dark:
+        top_col, bot_col = DARK_GRADIENTS.get(board_key, ((15, 30, 60), (25, 55, 90)))
+        text_color  = (255, 255, 255)
+        body_color  = (218, 224, 234)
+        footer_fill = (0, 0, 0)
+        footer_text = (180, 185, 200)
+    else:
+        top_col, bot_col = LIGHT_GRADIENTS.get(board_key, ((235, 245, 255), (215, 232, 255)))
+        text_color  = (18, 24, 42)
+        body_color  = (45, 55, 78)
+        footer_fill = (195, 200, 215)
+        footer_text = (65, 75, 100)
+
+    # Gradient background — scanline method (fast)
+    img = Image.new("RGB", (W, H))
+    draw_bg = ImageDraw.Draw(img)
+    for y in range(H):
+        t = y / H
+        r = int(top_col[0] + (bot_col[0] - top_col[0]) * t)
+        g = int(top_col[1] + (bot_col[1] - top_col[1]) * t)
+        b = int(top_col[2] + (bot_col[2] - top_col[2]) * t)
+        draw_bg.line([(0, y), (W - 1, y)], fill=(r, g, b))
+
     draw = ImageDraw.Draw(img)
 
-    # --- font setup ---
     def font(size):
         for name in ["arialbd.ttf", "Arial Bold.ttf", "DejaVuSans-Bold.ttf",
                      "LiberationSans-Bold.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"]:
@@ -598,39 +660,19 @@ def make_pin_image(board_key, headline, body, hashtags):
                 pass
         return ImageFont.load_default()
 
-    # --- niche label badge (top-left) ---
-    NICHE_LABELS = {
-        "dental": "DENTAL HEALTH", "prostate": "MEN'S HEALTH",
-        "male": "MEN'S WELLNESS", "brain": "BRAIN HEALTH",
-        "weight": "WEIGHT LOSS", "beauty": "BEAUTY & SKIN",
-        "womens": "WOMEN'S HEALTH", "blood": "BLOOD SUGAR",
-        "joint": "JOINT HEALTH", "sleep": "SLEEP HEALTH",
-        "heart": "HEART HEALTH", "general": "HEALTH TIPS",
-    }
-    BADGE_COLORS = {
-        "dental": (41, 182, 246), "prostate": (66, 165, 245),
-        "male": (38, 166, 154), "brain": (126, 87, 194),
-        "weight": (239, 83, 80), "beauty": (236, 64, 122),
-        "womens": (171, 71, 188), "blood": (255, 112, 67),
-        "joint": (102, 187, 106), "sleep": (92, 107, 192),
-        "heart": (239, 83, 80), "general": (38, 166, 154),
-    }
+    # Niche badge (top-left)
     label_text = NICHE_LABELS.get(board_key, "HEALTH")
-    badge_color = BADGE_COLORS.get(board_key, (41, 182, 246))
-    f_badge = font(22)
-    badge_pad = (18, 10)
-    bw = draw.textlength(label_text, font=f_badge) + badge_pad[0] * 2
-    bh = 42
-    bx, by = 36, 40
-    draw.rounded_rectangle([bx, by, bx + bw, by + bh], radius=8, fill=badge_color)
-    draw.text((bx + badge_pad[0], by + badge_pad[1] - 2), label_text, font=f_badge, fill=(255, 255, 255))
+    f_badge    = font(22)
+    bw = draw.textlength(label_text, font=f_badge) + 36
+    draw.rounded_rectangle([36, 40, 36 + bw, 82], radius=8, fill=accent)
+    draw.text((54, 50), label_text, font=f_badge, fill=(255, 255, 255))
 
-    # --- HEADLINE (dominant, centered, large) ---
-    f_headline = font(62)
-    max_w = W - 80
-    words = headline.split()
-    lines_h = []
-    line = ""
+    # Large headline — occupies top ~30% of card
+    f_headline = font(66)
+    max_w      = W - 80
+    words      = headline.split()
+    lines_h    = []
+    line       = ""
     for w in words:
         test = (line + " " + w).strip()
         if draw.textlength(test, font=f_headline) <= max_w:
@@ -642,52 +684,86 @@ def make_pin_image(board_key, headline, body, hashtags):
     if line:
         lines_h.append(line)
 
-    line_h_px = 76
-    total_h_block = len(lines_h) * line_h_px
-    y_headline = 520 - total_h_block // 2
+    line_h_px    = 82
+    total_h_blk  = len(lines_h) * line_h_px
+    y_headline   = max(110, 280 - total_h_blk // 2)
     for ln in lines_h:
         tw = draw.textlength(ln, font=f_headline)
-        draw.text(((W - tw) // 2 + 2, y_headline + 2), ln, font=f_headline, fill=(0, 0, 0, 180))
-        draw.text(((W - tw) // 2, y_headline), ln, font=f_headline, fill=(255, 255, 255))
+        draw.text(((W - tw) // 2, y_headline), ln, font=f_headline, fill=text_color)
         y_headline += line_h_px
 
-    # --- accent divider ---
-    div_y = y_headline + 18
-    draw.rectangle([80, div_y, W - 80, div_y + 3], fill=badge_color)
+    # Accent divider
+    div_y = max(y_headline + 22, 390)
+    draw.rectangle([50, div_y, W - 50, div_y + 4], fill=accent)
 
-    # --- BODY (numbered list) ---
-    f_body = font_reg(32)
-    body_lines = [l.strip() for l in body.split("\n") if l.strip()]
-    y_body = div_y + 24
-    for bl in body_lines[:5]:
-        # wrap long lines
-        words_b = bl.split()
-        cur = ""
+    # Numbered infographic rows
+    body_lines  = [ln.strip() for ln in body.split("\n") if ln.strip()]
+    CIRCLE_R    = 32          # radius of number circle
+    CIRCLE_CX   = 50 + CIRCLE_R   # center x
+    TEXT_X      = CIRCLE_CX + CIRCLE_R + 22
+    TEXT_MAX_W  = W - TEXT_X - 36
+
+    f_num  = font(38)
+    f_body = font_reg(29)
+
+    y_row = div_y + 30
+    for i, bl in enumerate(body_lines[:5]):
+        # Strip leading "N. " prefix — circle provides the number visually
+        text = bl
+        if len(text) > 2 and text[0].isdigit() and text[1] == '.':
+            text = text[2:].strip()
+        elif len(text) > 3 and text[0].isdigit() and text[1].isdigit() and text[2] == '.':
+            text = text[3:].strip()
+
+        # Wrap text into up to 2 lines
+        words_b   = text.split()
+        cur       = ""
         sub_lines = []
         for wb in words_b:
-            test = (cur + " " + wb).strip()
-            if draw.textlength(test, font=f_body) <= max_w - 20:
-                cur = test
+            test_line = (cur + " " + wb).strip()
+            if draw.textlength(test_line, font=f_body) <= TEXT_MAX_W:
+                cur = test_line
             else:
                 if cur:
                     sub_lines.append(cur)
                 cur = wb
         if cur:
             sub_lines.append(cur)
-        for sl in sub_lines:
-            if y_body > 1320:
-                break
-            draw.text((60, y_body), sl, font=f_body, fill=(230, 230, 230))
-            y_body += 44
-        y_body += 4
+        sub_lines = sub_lines[:2]
 
-    # --- footer bar ---
-    footer_y = 1420
-    draw.rectangle([0, footer_y, W, H], fill=(0, 0, 0, 200))
-    f_url = font_reg(26)
+        row_h   = max(CIRCLE_R * 2 + 8, len(sub_lines) * 37 + 8)
+        cy      = y_row + row_h // 2
+
+        # Number circle
+        draw.ellipse(
+            [CIRCLE_CX - CIRCLE_R, cy - CIRCLE_R, CIRCLE_CX + CIRCLE_R, cy + CIRCLE_R],
+            fill=accent,
+        )
+        num_str = str(i + 1)
+        nw      = draw.textlength(num_str, font=f_num)
+        # Vertical center: textbbox gives ascent
+        nb      = draw.textbbox((0, 0), num_str, font=f_num)
+        n_h     = nb[3] - nb[1]
+        draw.text((CIRCLE_CX - nw / 2, cy - n_h / 2 - 2), num_str, font=f_num, fill=(255, 255, 255))
+
+        # Row text — vertically centered in row
+        text_block_h = len(sub_lines) * 37
+        ty = cy - text_block_h // 2
+        for sl in sub_lines:
+            if y_row > 1340:
+                break
+            draw.text((TEXT_X, ty), sl, font=f_body, fill=body_color)
+            ty += 37
+
+        y_row += row_h + 18
+
+    # Footer
+    footer_y = 1400
+    draw.rectangle([0, footer_y, W, H], fill=footer_fill)
+    f_url    = font_reg(26)
     url_text = "reviews.thehappy-healthy-life.com"
-    uw = draw.textlength(url_text, font=f_url)
-    draw.text(((W - uw) // 2, footer_y + 18), url_text, font=f_url, fill=(200, 200, 200))
+    uw       = draw.textlength(url_text, font=f_url)
+    draw.text(((W - uw) // 2, footer_y + 22), url_text, font=f_url, fill=footer_text)
 
     buf = io.BytesIO()
     img.save(buf, format="JPEG", quality=90)
