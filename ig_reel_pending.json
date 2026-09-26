@@ -1,25 +1,25 @@
 {
-  "date": "2026-09-25",
+  "date": "2026-09-26",
   "reels": [
     {
-      "slug": "femipro",
-      "name": "FemiPro",
+      "slug": "menoscue",
+      "name": "MenoRescue",
       "category_slug": "womens-health",
-      "mp4_filename": "2026-09-25_1.mp4",
+      "mp4_filename": "2026-09-26_1.mp4",
       "generated": true
     },
     {
-      "slug": "femicore",
-      "name": "FemiCore",
-      "category_slug": "womens-health",
-      "mp4_filename": "2026-09-25_2.mp4",
+      "slug": "gluco6",
+      "name": "Gluco6",
+      "category_slug": "blood-sugar",
+      "mp4_filename": "2026-09-26_2.mp4",
       "generated": true
     },
     {
-      "slug": "venoplus-8",
-      "name": "VenoPlus 8",
-      "category_slug": "womens-health",
-      "mp4_filename": "2026-09-25_3.mp4",
+      "slug": "sugar-defender",
+      "name": "Sugar Defender",
+      "category_slug": "blood-sugar",
+      "mp4_filename": "2026-09-26_3.mp4",
       "generated": true
     }
   ]
