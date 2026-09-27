@@ -1,8 +1,8 @@
 {
-  "board_idx": 515,
+  "board_idx": 518,
   "content_idx": {
-    "dental": 3,
-    "weight": 3,
+    "dental": 4,
+    "weight": 4,
     "brain": 3,
     "prostate": 3,
     "beauty": 3,
@@ -12,6 +12,6 @@
     "sleep": 3,
     "joint": 3,
     "womens": 3,
-    "general": 2
+    "general": 3
   }
 }
