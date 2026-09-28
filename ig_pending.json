@@ -1,15 +1,30 @@
 {
-  "date": "2026-09-27",
+  "date": "2026-09-28",
   "posts": [
     {
-      "filename": "2026-09-27_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-09-27_1.jpg",
-      "cat_key": "womens",
-      "headline": "Fact",
-      "body": "Probiotics with Lactobacillus strains protect vaginal microbiome and reduce recurrent UTIs by 50%.",
-      "cta": "Probiotics cut UTI recurrence in half.",
-      "hashtags": "#PelvicFloorHealth #BladderLeakage #WomensUrinaryHealth #UrinaryMicrobiome #UTIPrevention #BladderSupport #WomenPelvicHealth #BladderControl #WomensHormoneHealth #PelvicStrength",
-      "blog_url": null
+      "filename": "2026-09-28_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-09-28_1.jpg",
+      "cat_key": "general",
+      "headline": "Statistic",
+      "body": "People who meditate regularly have telomeres 10% longer than non-meditators.\nLonger telomeres = slower biological aging.",
+      "cta": "Meditation slows aging at the cellular level.",
+      "hashtags": "#MitochondrialHealth #ChronicFatigueFix #BrainFogCauses #CellularEnergy #CoQ10Benefits #AdaptogenHerbs #ImmuneSystemBoost #InflammationFix #GutImmunity #MetabolicHealth",
+      "blog_url": null,
+      "bridge_product": {
+        "name": "ElectroSlim",
+        "slug": "electroslim",
+        "nickname": "elctrslm",
+        "tier": 2,
+        "gravity": 38.1,
+        "payout": 128.0,
+        "aov": "$294",
+        "description": "Electrolyte-enhanced weight management formula that activates thermogenesis and replenishes cellular energy to break fat storage cycles.",
+        "audience": "Adults who feel drained on low-carb diets and need a metabolism boost without stimulants.",
+        "vendor_page": "electroslim.com",
+        "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=elecslim&cbpage=lander&pid=indexvsl",
+        "status": "ok",
+        "category_slug": "general-health"
+      }
     }
   ]
 }

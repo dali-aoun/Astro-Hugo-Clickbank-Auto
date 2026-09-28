@@ -1,25 +1,25 @@
 {
-  "date": "2026-09-27",
+  "date": "2026-09-28",
   "reels": [
     {
-      "slug": "glucotrust",
-      "name": "GlucoTrust",
-      "category_slug": "blood-sugar",
-      "mp4_filename": "2026-09-27_1.mp4",
-      "generated": true
-    },
-    {
-      "slug": "gluco-tonic",
-      "name": "Gluco Tonic",
-      "category_slug": "blood-sugar",
-      "mp4_filename": "2026-09-27_2.mp4",
-      "generated": true
-    },
-    {
-      "slug": "joint-genesis",
-      "name": "Joint Genesis",
+      "slug": "flexotone",
+      "name": "Flexotone",
       "category_slug": "joint-pain",
-      "mp4_filename": "2026-09-27_3.mp4",
+      "mp4_filename": "2026-09-28_1.mp4",
+      "generated": true
+    },
+    {
+      "slug": "yu-sleep",
+      "name": "Yu Sleep",
+      "category_slug": "sleep",
+      "mp4_filename": "2026-09-28_2.mp4",
+      "generated": true
+    },
+    {
+      "slug": "resurge",
+      "name": "Resurge",
+      "category_slug": "sleep",
+      "mp4_filename": "2026-09-28_3.mp4",
       "generated": true
     }
   ]
