@@ -834,7 +834,7 @@ def publish_ig_image(image_url, caption):
 
 # ── Caption builder ───────────────────────────────────────────────────────────
 
-def make_caption(cat_key, headline, body, cta, hashtags, blog_url=None):
+def make_caption(cat_key, headline, body, cta, hashtags, blog_url=None, product=None):
     cat_name = CATEGORIES[cat_key]["name"]
     body_clean = body.replace("\n", " ")
     save_cta = random.choice([
@@ -850,6 +850,14 @@ def make_caption(cat_key, headline, body, cta, hashtags, blog_url=None):
     cat_url = CATEGORIES[cat_key]["cat_url"]
     if blog_url:
         bio_cta = f"Full ranked review: {blog_url} (link in bio)"
+    elif product:
+        p_slug = product.get("slug", "")
+        p_name = product.get("name", "")
+        product_url = f"{SITE_URL}/{cat_url}/{p_slug}/?utm_source=instagram&utm_medium=post&utm_content={p_slug}"
+        bio_cta = (
+            f"🔍 We reviewed {p_name} — designed specifically for {cat_name} support.\n"
+            f"Full ingredient breakdown + best price: {product_url} (link in bio)"
+        )
     else:
         bio_cta = f"Full reviews & guides: {SITE_URL}/{cat_url}/?utm_source=instagram&utm_medium=post&utm_content={cat_key} (link in bio)"
 
@@ -857,11 +865,11 @@ def make_caption(cat_key, headline, body, cta, hashtags, blog_url=None):
 
 {cta}
 
+{bio_cta}
+
 {save_cta}
 
 {follow_cta}
-
-{bio_cta}
 
 .
 .
@@ -1057,6 +1065,8 @@ def generate_phase():
 
     log(f"=== Instagram Generate Phase {today_key} ({POSTS_PER_DAY} images) ===")
 
+    all_products = load_all_products()
+
     pending = []
     for i in range(POSTS_PER_DAY):
         cat_key = CAT_ROTATION[cat_idx % len(CAT_ROTATION)]
@@ -1072,7 +1082,14 @@ def generate_phase():
         hashtags = CATEGORIES[cat_key]["hashtags"]
         filename = f"{today_key}_{i+1}.jpg"
 
-        log(f"  [{i+1}/{POSTS_PER_DAY}] {CATEGORIES[cat_key]['name']} — {headline}")
+        # Pick a matching product for the caption bridge
+        cat_url = CATEGORIES[cat_key]["cat_url"]
+        cat_products = [p for p in all_products if p.get("category_slug") == cat_url]
+        bridge_product = _random.choice(cat_products) if cat_products else None
+        if bridge_product:
+            log(f"  [{i+1}/{POSTS_PER_DAY}] {CATEGORIES[cat_key]['name']} — {headline} → bridge: {bridge_product['name']}")
+        else:
+            log(f"  [{i+1}/{POSTS_PER_DAY}] {CATEGORIES[cat_key]['name']} — {headline}")
 
         public_url = None
         try:
@@ -1094,6 +1111,7 @@ def generate_phase():
             "cta": cta,
             "hashtags": hashtags,
             "blog_url": blog_url,
+            "bridge_product": bridge_product,
         })
 
     state["cat_idx"] = cat_idx
@@ -1212,7 +1230,7 @@ def publish_phase():
             continue
         log(f"    CDN OK — publication...")
 
-        caption = make_caption(post["cat_key"], post["headline"], post["body"], post["cta"], post["hashtags"], blog_url=post.get("blog_url"))
+        caption = make_caption(post["cat_key"], post["headline"], post["body"], post["cta"], post["hashtags"], blog_url=post.get("blog_url"), product=post.get("bridge_product"))
 
         status, resp = publish_ig_image(img_url, caption)
         if status == 200:
