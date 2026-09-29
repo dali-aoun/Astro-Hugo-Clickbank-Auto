@@ -352,6 +352,58 @@ DISCOVERY_ARC_REVEALS = {
     "general-health": "CoQ10, magnesium glycinate, and specific adaptogens like rhodiola directly support mitochondrial energy production. The difference they make becomes noticeable within 2 to 3 weeks for most people — better energy, clearer thinking, stronger immune response.",
 }
 
+EDU_TITLE_TEMPLATES = [
+    "{stat_short} #shorts",
+    "{stat_short} — most people ignore this #shorts",
+    "The truth about {cat_label}: {stat_short} #shorts",
+    "{stat_short} — here's why it matters #shorts",
+    "Did you know? {stat_short} #shorts",
+]
+
+EDU_DESCRIPTION_TEMPLATE = """Learn more + research sources: {site_url}/{cat_slug}/?utm_source=youtube&utm_medium=shorts&utm_content=edu_{cat_slug}
+
+{stat}
+
+{reveal}
+
+{cta}
+
+Follow for weekly research-backed health insights — no product rankings, no fluff.
+
+#{cat_tag} #healthfacts #naturalhealth #healthtips #didyouknow #shorts
+"""
+
+def make_educational_script(cat_slug):
+    """Generate a voiceover script based on educational health facts (no product pitch)."""
+    stats  = DISCOVERY_ARC_STATS.get(cat_slug, DISCOVERY_ARC_STATS["general-health"])
+    reveal = DISCOVERY_ARC_REVEALS.get(cat_slug, DISCOVERY_ARC_REVEALS["general-health"])
+    stat   = random.choice(stats)
+
+    cat_label = CATEGORY_LABELS.get(cat_slug, "health")
+
+    ctas = [
+        f"If you care about your {cat_label}, follow — I post research-backed facts every week.",
+        f"Follow if you want the research they never teach you about {cat_label}.",
+        f"Save this. Share it with someone who needs it. And follow for more.",
+    ]
+    cta = random.choice(ctas)
+
+    script = f"""
+{stat}
+
+Most people never hear this — because the health industry profits more from keeping you confused.
+
+Here's what the research actually shows.
+
+{reveal}
+
+This changes how you should approach your {cat_label}.
+
+{cta}
+""".strip()
+    return script, stat
+
+
 def make_voiceover_script(product):
     name     = product["name"]
     audience = product.get("audience", "health-conscious adults")
@@ -799,65 +851,132 @@ def main():
     idx        = post_state["idx"] % len(products)
     product    = products[idx]
 
+    # Alternate: even idx = educational health fact, odd idx = product review
+    is_educational = (idx % 2 == 0)
+    cat_slug  = product["category_slug"]
+    cat_label = CATEGORY_LABELS.get(cat_slug, "health")
+    cat_tag   = CATEGORY_TAGS.get(cat_slug, "health")
+
     log(f"=== YouTube Shorts Generator {today_key} ===")
-    log(f"  Produit: {product['name']} ({product['category_slug']})")
+    log(f"  Mode: {'EDUCATIONAL' if is_educational else 'PRODUCT REVIEW'}")
+    log(f"  Catégorie: {cat_label} ({cat_slug})")
 
     access_token = get_access_token()
     if not access_token:
         log("Impossible d'obtenir access token YouTube")
         sys.exit(1)
 
-    rating  = min(4.9, max(3.8, 3.5 + product.get("gravity", 0) / 50))
-    cat_tag = CATEGORY_TAGS.get(product["category_slug"], "health")
-
     with tempfile.TemporaryDirectory() as tmp:
-        video_path = os.path.join(tmp, f"{product['slug']}.mp4")
-        generate_short(product, video_path)
+        video_path = os.path.join(tmp, f"short_{idx}.mp4")
 
-        hook       = product.get("_hook", "")
-        cat_label  = CATEGORY_LABELS.get(product["category_slug"], "health")
-        name_tag   = product["name"].lower().replace(" ", "").replace("-", "")
+        if is_educational:
+            script, stat = make_educational_script(cat_slug)
+            log(f"  Script éducatif: {stat[:80]}...")
 
-        title = random.choice(TITLE_TEMPLATES).format(
-            name=product["name"], rating=f"{rating:.1f}", cat_label=cat_label
-        )
-        description = DESCRIPTION_TEMPLATE.format(
-            name=product["name"],
-            hook=hook,
-            desc=product["description"][:250],
-            audience=product.get("audience", "adults seeking better health"),
-            rating=f"{rating:.1f}",
-            site_url=SITE_URL,
-            cat_slug=product["category_slug"],
-            slug=product["slug"],
-            cat_tag=cat_tag,
-            cat_label=cat_label,
-            name_tag=name_tag,
-        )
-        from trends_helper import get_trending_terms
-        trend_terms = get_trending_terms(product["name"], product["category_slug"])
-        tags = [
-            product["name"],
-            f"{product['name']} review",
-            f"{product['name']} review 2026",
-            f"does {product['name']} work",
-            f"{product['name']} honest review",
-            "supplement review", "honest review", "health supplement",
-            "natural health", "2026", cat_tag, cat_label, "shorts",
-        ] + trend_terms
+            # Generate audio from educational script
+            audio_path = os.path.join(tmp, "audio.mp3")
+            log(f"  TTS audio (edge-tts)...")
+            generate_tts(script, audio_path)
+
+            # Try Pexels video for background
+            pexels_ok = False
+            if PEXELS_API_KEY:
+                queries = PEXELS_QUERIES.get(cat_slug, ["healthy lifestyle"])
+                for query in queries:
+                    log(f"  Pexels search: '{query}'")
+                    video_url = pexels_search_video(query)
+                    if video_url:
+                        raw_path = os.path.join(tmp, "raw.mp4")
+                        try:
+                            download_video(video_url, raw_path)
+                            # Use a simplified product dict for overlay (no product name, just category)
+                            edu_overlay = {
+                                "name": cat_label.upper() + " FACTS",
+                                "category_slug": cat_slug,
+                                "gravity": 50,
+                            }
+                            process_pexels_video(raw_path, audio_path, video_path, edu_overlay)
+                            pexels_ok = True
+                        except Exception as e:
+                            log(f"  Pexels failed: {e}")
+                        break
+            if not pexels_ok:
+                bg_path = os.path.join(tmp, "bg.jpg")
+                edu_product = {"name": cat_label.title() + " Facts", "category_slug": cat_slug, "gravity": 50}
+                bg = make_background_image(edu_product)
+                bg.save(bg_path, "JPEG", quality=95)
+                assemble_video(bg_path, audio_path, video_path)
+
+            # Title: use the stat as-is (people actually search for these facts)
+            stat_short = stat.split(".")[0][:85]
+            title = random.choice(EDU_TITLE_TEMPLATES).format(
+                stat_short=stat_short, cat_label=cat_label
+            )[:100]
+            description = EDU_DESCRIPTION_TEMPLATE.format(
+                site_url=SITE_URL,
+                cat_slug=cat_slug,
+                stat=stat,
+                reveal=DISCOVERY_ARC_REVEALS.get(cat_slug, ""),
+                cta=f"Follow for weekly {cat_label} research — no fluff, no selling.",
+                cat_tag=cat_tag,
+            )
+            tags = [
+                f"{cat_label} facts", f"{cat_label} health", f"{cat_label} tips",
+                f"{cat_label} research", "health facts", "did you know",
+                "natural health", "health tips", "2026", cat_tag, cat_label, "shorts",
+            ]
+
+        else:
+            log(f"  Produit: {product['name']}")
+            rating  = min(4.9, max(3.8, 3.5 + product.get("gravity", 0) / 50))
+            generate_short(product, video_path)
+
+            hook      = product.get("_hook", "")
+            name_tag  = product["name"].lower().replace(" ", "").replace("-", "")
+
+            title = random.choice(TITLE_TEMPLATES).format(
+                name=product["name"], rating=f"{rating:.1f}", cat_label=cat_label
+            )
+            description = DESCRIPTION_TEMPLATE.format(
+                name=product["name"],
+                hook=hook,
+                desc=product["description"][:250],
+                audience=product.get("audience", "adults seeking better health"),
+                rating=f"{rating:.1f}",
+                site_url=SITE_URL,
+                cat_slug=cat_slug,
+                slug=product["slug"],
+                cat_tag=cat_tag,
+                cat_label=cat_label,
+                name_tag=name_tag,
+            )
+            from trends_helper import get_trending_terms
+            trend_terms = get_trending_terms(product["name"], cat_slug)
+            tags = [
+                product["name"],
+                f"{product['name']} review",
+                f"{product['name']} review 2026",
+                f"does {product['name']} work",
+                f"{product['name']} honest review",
+                "supplement review", "honest review", "health supplement",
+                "natural health", "2026", cat_tag, cat_label, "shorts",
+            ] + trend_terms
 
         log(f"  Uploading to YouTube...")
         status, resp = upload_short(video_path, title, description, tags, access_token)
 
+    content_label = f"EDU:{cat_label}" if is_educational else product["name"]
+
     if status == 200:
         video_id = resp.get("id", "")
-        log(f"  OK: {product['name']} -> https://youtube.com/shorts/{video_id}")
+        log(f"  OK: {content_label} -> https://youtube.com/shorts/{video_id}")
 
         # Upload custom thumbnail (boosts CTR in search results)
         import io as _io
         try:
             log(f"  Uploading custom thumbnail...")
-            thumb_img = make_background_image(product)
+            thumb_product = {"name": cat_label.title() + " Facts", "category_slug": cat_slug, "gravity": 50} if is_educational else product
+            thumb_img = make_background_image(thumb_product)
             thumb_buf = _io.BytesIO()
             thumb_img.save(thumb_buf, format="JPEG", quality=95)
             thumb_status = upload_thumbnail(video_id, thumb_buf.getvalue(), access_token)
@@ -877,7 +996,8 @@ def main():
     save_post_index(post_state)
 
     done[today_key] = {
-        "product": product["name"],
+        "content": content_label,
+        "mode":    "educational" if is_educational else "product_review",
         "status":  result_status,
         "at":      datetime.utcnow().isoformat(),
     }

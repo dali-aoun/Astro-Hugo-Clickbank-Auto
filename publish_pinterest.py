@@ -1464,12 +1464,13 @@ def main():
 
         title      = headline[:100]
         clean_body = body.replace(chr(10), " ").strip()
-        description = f"{headline}. {clean_body} {hashtags}"[:500]
+        edu_link   = f"{SITE_URL}/{board_key}/?utm_source=pinterest&utm_medium=edu_pin"
+        description = f"💾 Save this for later! {headline}. {clean_body} {hashtags}"[:500]
 
         log(f"  [pair {pair_n+1}/EDU] {board['name']} — {headline}")
         try:
             img_bytes = make_pin_image(board_key, headline, body, hashtags)
-            status, resp = upload_pin(board["id"], title, description, img_bytes, None, headers)
+            status, resp = upload_pin(board["id"], title, description, img_bytes, edu_link, headers)
             if status in (200, 201):
                 log(f"    OK pin_id={resp.get('id', '?')}")
                 published += 1
