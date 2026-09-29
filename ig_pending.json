@@ -1,29 +1,29 @@
 {
-  "date": "2026-09-28",
+  "date": "2026-09-29",
   "posts": [
     {
-      "filename": "2026-09-28_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-09-28_1.jpg",
-      "cat_key": "general",
-      "headline": "Statistic",
-      "body": "People who meditate regularly have telomeres 10% longer than non-meditators.\nLonger telomeres = slower biological aging.",
-      "cta": "Meditation slows aging at the cellular level.",
-      "hashtags": "#MitochondrialHealth #ChronicFatigueFix #BrainFogCauses #CellularEnergy #CoQ10Benefits #AdaptogenHerbs #ImmuneSystemBoost #InflammationFix #GutImmunity #MetabolicHealth",
+      "filename": "2026-09-29_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-09-29_1.jpg",
+      "cat_key": "dental",
+      "headline": "Warning",
+      "body": "Many mouthwashes with alcohol kill good bacteria too.\nLook for alcohol-free formulas that preserve your oral microbiome.",
+      "cta": "Choose your mouthwash wisely.",
+      "hashtags": "#GumDiseaseRemedies #OralMicrobiome #GumHealthTips #BadBreathCure #ToothDecayPrevention #OralProbiotics #GumInflammation #GumRecession #OralBacteria #DentalWellness",
       "blog_url": null,
       "bridge_product": {
-        "name": "ElectroSlim",
-        "slug": "electroslim",
-        "nickname": "elctrslm",
+        "name": "DentaSmile",
+        "slug": "dentasmile",
+        "nickname": "dentasmile",
         "tier": 2,
-        "gravity": 38.1,
-        "payout": 128.0,
-        "aov": "$294",
-        "description": "Electrolyte-enhanced weight management formula that activates thermogenesis and replenishes cellular energy to break fat storage cycles.",
-        "audience": "Adults who feel drained on low-carb diets and need a metabolism boost without stimulants.",
-        "vendor_page": "electroslim.com",
-        "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=elecslim&cbpage=lander&pid=indexvsl",
+        "gravity": 18.3,
+        "payout": 118.0,
+        "aov": "$234",
+        "description": "Natural oral health formula targeting the root cause of tooth decay and gum inflammation with plant-based ingredients.",
+        "audience": "Adults experiencing tooth pain, sensitivity, and early signs of gum disease.",
+        "vendor_page": "dentasmile.com",
+        "hoplink": "https://a44250l5q2dz1y9zl8vgv4r9r0.hop.clickbank.net",
         "status": "ok",
-        "category_slug": "general-health"
+        "category_slug": "dental-health"
       }
     }
   ]
