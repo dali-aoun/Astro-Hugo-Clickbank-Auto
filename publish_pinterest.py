@@ -1464,7 +1464,7 @@ def main():
 
         title      = headline[:100]
         clean_body = body.replace(chr(10), " ").strip()
-        edu_link   = f"{SITE_URL}/{board_key}/?utm_source=pinterest&utm_medium=edu_pin"
+        edu_link   = f"{SITE_URL}/{board['cat_url']}/?utm_source=pinterest&utm_medium=edu_pin"
         description = f"💾 Save this for later! {headline}. {clean_body} {hashtags}"[:500]
 
         log(f"  [pair {pair_n+1}/EDU] {board['name']} — {headline}")
