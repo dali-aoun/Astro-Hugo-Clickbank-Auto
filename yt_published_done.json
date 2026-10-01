@@ -320,5 +320,11 @@
     "mode": "educational",
     "status": "ok",
     "at": "2026-09-30T16:39:46.457240"
+  },
+  "2026-10-01": {
+    "content": "PrimeBiome",
+    "mode": "product_review",
+    "status": "ok",
+    "at": "2026-10-01T17:16:31.592944"
   }
 }
