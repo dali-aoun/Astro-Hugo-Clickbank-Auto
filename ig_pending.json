@@ -1,29 +1,29 @@
 {
-  "date": "2026-09-30",
+  "date": "2026-10-01",
   "posts": [
     {
-      "filename": "2026-09-30_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-09-30_1.jpg",
-      "cat_key": "weight",
-      "headline": "Warning",
-      "body": "Fad diets that eliminate entire food groups cause muscle loss, not just fat loss.\nMuscle burns calories even at rest.",
-      "cta": "Protect your muscle mass.",
-      "hashtags": "#BellyFatScience #MetabolismFix #BrownFatActivation #FatLossResearch #BellyFatTips #MetabolismBooster #ThermogenicFoods #FatBurningScience #WeightLossResearch #SlowMetabolism",
+      "filename": "2026-10-01_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-10-01_1.jpg",
+      "cat_key": "brain",
+      "headline": "Statistic",
+      "body": "Bilingual people develop Alzheimer's 4\u20135 years later than monolinguals.\nYour brain can be trained to be more resilient.",
+      "cta": "Speaking two languages protects your brain.",
+      "hashtags": "#BrainFogFix #TinnitusRelief #MemorySupplements #CognitiveDecline #BrainFogCauses #TinnitusSupport #NeuroplasticityTips #MemoryLossPrevention #BrainCirculation #NeuralHealth",
       "blog_url": null,
       "bridge_product": {
-        "name": "Java Burn",
-        "slug": "java-burn",
-        "nickname": "javaburn",
-        "tier": 2,
-        "gravity": 38.6,
-        "payout": 109.0,
+        "name": "Audifort",
+        "slug": "audifort",
+        "nickname": "audifort",
+        "tier": 1,
+        "gravity": 59.87,
+        "payout": 116.52,
         "aov": "$294",
-        "description": "Tasteless powder to add to your morning coffee that ignites metabolism and triggers all-day fat burning.",
-        "audience": "Coffee drinkers who want an effortless metabolism boost without changing their routine.",
-        "vendor_page": "javaburn.com",
-        "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=javaburn&cbpage=tsl&affop=1",
+        "description": "Natural liquid drops with 20+ plant-based ingredients to support hearing health, reduce tinnitus, and boost cognitive clarity.",
+        "audience": "Adults 30-70 concerned about hearing, tinnitus, and mental sharpness.",
+        "vendor_page": "audisoothe.com",
+        "hoplink": "https://hop.clickbank.net/?custom=1&affiliate=dali84&vendor=audifort&pid=new",
         "status": "ok",
-        "category_slug": "weight-loss"
+        "category_slug": "brain-and-senses"
       }
     }
   ]
