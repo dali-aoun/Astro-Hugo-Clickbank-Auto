@@ -1,29 +1,29 @@
 {
-  "date": "2026-10-01",
+  "date": "2026-10-02",
   "posts": [
     {
-      "filename": "2026-10-01_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-10-01_1.jpg",
-      "cat_key": "brain",
-      "headline": "Statistic",
-      "body": "Bilingual people develop Alzheimer's 4\u20135 years later than monolinguals.\nYour brain can be trained to be more resilient.",
-      "cta": "Speaking two languages protects your brain.",
-      "hashtags": "#BrainFogFix #TinnitusRelief #MemorySupplements #CognitiveDecline #BrainFogCauses #TinnitusSupport #NeuroplasticityTips #MemoryLossPrevention #BrainCirculation #NeuralHealth",
+      "filename": "2026-10-02_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-10-02_1.jpg",
+      "cat_key": "prostate",
+      "headline": "Did You Know?",
+      "body": "The PSA test isn't perfect \u2014 75% of high PSA results are NOT cancer.\nDiscuss your PSA score with context.",
+      "cta": "High PSA doesn't always mean cancer.",
+      "hashtags": "#BPHRelief #ProstateSupplements #NightUrination #ProstateSupport #MenOver50Health #ProstateShrink #UrinationProblems #ProstateInflammation #DHTControl #ProstateNutrition",
       "blog_url": null,
       "bridge_product": {
-        "name": "Audifort",
-        "slug": "audifort",
-        "nickname": "audifort",
-        "tier": 1,
-        "gravity": 59.87,
-        "payout": 116.52,
+        "name": "ViriFlow",
+        "slug": "viriflow",
+        "nickname": "viriflow",
+        "tier": 2,
+        "gravity": 18.45,
+        "payout": 156.27,
         "aov": "$294",
-        "description": "Natural liquid drops with 20+ plant-based ingredients to support hearing health, reduce tinnitus, and boost cognitive clarity.",
-        "audience": "Adults 30-70 concerned about hearing, tinnitus, and mental sharpness.",
-        "vendor_page": "audisoothe.com",
-        "hoplink": "https://hop.clickbank.net/?custom=1&affiliate=dali84&vendor=audifort&pid=new",
+        "description": "Natural formula targeting harmful mineral buildup in the urinary system to maintain a healthy prostate well into old age.",
+        "audience": "Men concerned with prostate health, bladder control, and urinary function.",
+        "vendor_page": "viriflow.com",
+        "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=viriflow&affop=1",
         "status": "ok",
-        "category_slug": "brain-and-senses"
+        "category_slug": "prostate-health"
       }
     }
   ]
