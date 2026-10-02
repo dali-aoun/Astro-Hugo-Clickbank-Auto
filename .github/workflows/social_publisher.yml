@@ -2,12 +2,12 @@
 
 on:
   schedule:
-    # Pinterest slot 1: 08h Tunis = 07:00 UTC
-    - cron: '0 7 * * *'
-    # Instagram + YouTube: 12h Tunis = 11:00 UTC
-    - cron: '0 11 * * *'
-    # Pinterest slot 2: 17h Tunis = 16:00 UTC
-    - cron: '0 16 * * *'
+    # Pinterest slot 1: 09:00 UTC
+    - cron: '0 9 * * *'
+    # Instagram + YouTube: 09h00 PST = 17:00 UTC
+    - cron: '0 17 * * *'
+    # Pinterest slot 2: 20:00 UTC
+    - cron: '0 20 * * *'
   workflow_dispatch:
     inputs:
       platform:
@@ -61,7 +61,7 @@ jobs:
 
   instagram:
     if: >
-      (github.event_name == 'schedule' && github.event.schedule == '0 11 * * *') ||
+      (github.event_name == 'schedule' && github.event.schedule == '0 17 * * *') ||
       github.event.inputs.platform == 'all' ||
       github.event.inputs.platform == 'instagram'
     runs-on: ubuntu-latest
@@ -185,7 +185,7 @@ jobs:
 
   youtube:
     if: >
-      (github.event_name == 'schedule' && github.event.schedule == '0 11 * * *') ||
+      (github.event_name == 'schedule' && github.event.schedule == '0 17 * * *') ||
       github.event.inputs.platform == 'all' ||
       github.event.inputs.platform == 'youtube'
     runs-on: ubuntu-latest
