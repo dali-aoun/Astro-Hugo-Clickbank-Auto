@@ -1,29 +1,29 @@
 {
-  "date": "2026-10-02",
+  "date": "2026-10-03",
   "posts": [
     {
-      "filename": "2026-10-02_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-10-02_1.jpg",
-      "cat_key": "prostate",
-      "headline": "Did You Know?",
-      "body": "The PSA test isn't perfect \u2014 75% of high PSA results are NOT cancer.\nDiscuss your PSA score with context.",
-      "cta": "High PSA doesn't always mean cancer.",
-      "hashtags": "#BPHRelief #ProstateSupplements #NightUrination #ProstateSupport #MenOver50Health #ProstateShrink #UrinationProblems #ProstateInflammation #DHTControl #ProstateNutrition",
+      "filename": "2026-10-03_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-10-03_1.jpg",
+      "cat_key": "beauty",
+      "headline": "Statistic",
+      "body": "People who eat 5+ vegetable servings daily show measurably younger-looking skin at any age.\nYour plate is your skincare routine.",
+      "cta": "Eat your way to younger skin.",
+      "hashtags": "#CollagenFromWithin #SkinAgingRemedies #InsideOutBeauty #CollagenSupplements #AntiAgingNutrition #SkinHealthTips #CollagenBoost #SkinElasticity #NaturalAntiAging #GlowFromWithin",
       "blog_url": null,
       "bridge_product": {
-        "name": "ViriFlow",
-        "slug": "viriflow",
-        "nickname": "viriflow",
+        "name": "Neotonics",
+        "slug": "neotonics",
+        "nickname": "neotonics",
         "tier": 2,
-        "gravity": 18.45,
-        "payout": 156.27,
+        "gravity": 14.46,
+        "payout": 114.45,
         "aov": "$294",
-        "description": "Natural formula targeting harmful mineral buildup in the urinary system to maintain a healthy prostate well into old age.",
-        "audience": "Men concerned with prostate health, bladder control, and urinary function.",
-        "vendor_page": "viriflow.com",
-        "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=viriflow&affop=1",
+        "description": "Probiotic gummy with 500 million bacteria units and 9 natural ingredients to improve skin and digestion via the gut microbiome.",
+        "audience": "Adults dealing with wrinkles, dark spots, sagging skin, and digestive issues seeking natural anti-aging.",
+        "vendor_page": "neotonics.com",
+        "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=neotonics&cbpage=tsl&affop=1",
         "status": "ok",
-        "category_slug": "prostate-health"
+        "category_slug": "beauty-skin"
       }
     }
   ]
