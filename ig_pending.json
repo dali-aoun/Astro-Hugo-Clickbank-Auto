@@ -1,29 +1,29 @@
 {
-  "date": "2026-10-03",
+  "date": "2026-10-04",
   "posts": [
     {
-      "filename": "2026-10-03_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-10-03_1.jpg",
-      "cat_key": "beauty",
+      "filename": "2026-10-04_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-10-04_1.jpg",
+      "cat_key": "heart",
       "headline": "Statistic",
-      "body": "People who eat 5+ vegetable servings daily show measurably younger-looking skin at any age.\nYour plate is your skincare routine.",
-      "cta": "Eat your way to younger skin.",
-      "hashtags": "#CollagenFromWithin #SkinAgingRemedies #InsideOutBeauty #CollagenSupplements #AntiAgingNutrition #SkinHealthTips #CollagenBoost #SkinElasticity #NaturalAntiAging #GlowFromWithin",
+      "body": "Reducing sodium by just 1g per day lowers blood pressure by 5 mmHg.\nSmall dietary changes have measurable impact.",
+      "cta": "Less salt = lower blood pressure.",
+      "hashtags": "#ArterialInflammation #HomocysteineHealth #CardiovascularNutrition #HeartHealthSupplements #EndothelialHealth #BloodPressureNatural #HeartAge #CardioProtection #ArteryHealth #HeartRiskFactors",
       "blog_url": null,
       "bridge_product": {
-        "name": "Neotonics",
-        "slug": "neotonics",
-        "nickname": "neotonics",
+        "name": "CardioShield",
+        "slug": "cardioshield",
+        "nickname": "cardsld",
         "tier": 2,
-        "gravity": 14.46,
-        "payout": 114.45,
-        "aov": "$294",
-        "description": "Probiotic gummy with 500 million bacteria units and 9 natural ingredients to improve skin and digestion via the gut microbiome.",
-        "audience": "Adults dealing with wrinkles, dark spots, sagging skin, and digestive issues seeking natural anti-aging.",
-        "vendor_page": "neotonics.com",
-        "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=neotonics&cbpage=tsl&affop=1",
+        "gravity": 24.1,
+        "payout": 119.0,
+        "aov": "$234",
+        "description": "8-ingredient natural blood pressure formula with olive leaf extract and hawthorn berry to support healthy circulation.",
+        "audience": "Adults with borderline hypertension who want to avoid prescription blood pressure medications.",
+        "vendor_page": "cardioshield.net",
+        "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=cardioshie&pid=cstsl",
         "status": "ok",
-        "category_slug": "beauty-skin"
+        "category_slug": "heart-health"
       }
     }
   ]
