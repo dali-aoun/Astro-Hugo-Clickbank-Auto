@@ -251,11 +251,11 @@ def make_reel_voiceover(product, audio_path):
 
 {body}
 
+{follow_reason}
+
 That's exactly the mechanism {name} is built around — designed specifically for {audience}.
 
-Full breakdown in the link in bio — ingredients, what to expect, and where to get the best price.
-
-{follow_reason}
+Tap our profile and click the link in bio for the full ingredient breakdown and where to get it.
 """.strip()
     _reel_tts_async(script, audio_path)
 
@@ -849,17 +849,15 @@ def make_caption(cat_key, headline, body, cta, hashtags, blog_url=None, product=
     ])
     cat_url = CATEGORIES[cat_key]["cat_url"]
     if blog_url:
-        bio_cta = f"Full ranked review: {blog_url} (link in bio)"
+        bio_cta = f"🔗 Tap our profile → click the link in bio for the full ranked review."
     elif product:
-        p_slug = product.get("slug", "")
         p_name = product.get("name", "")
-        product_url = f"{SITE_URL}/{cat_url}/{p_slug}/?utm_source=instagram&utm_medium=post&utm_content={p_slug}"
         bio_cta = (
             f"🔍 We reviewed {p_name} — designed specifically for {cat_name} support.\n"
-            f"Full ingredient breakdown + best price: {product_url} (link in bio)"
+            f"🔗 Tap our profile → click the link in bio for the full ingredient breakdown."
         )
     else:
-        bio_cta = f"Full reviews & guides: {SITE_URL}/{cat_url}/?utm_source=instagram&utm_medium=post&utm_content={cat_key} (link in bio)"
+        bio_cta = f"🔗 Tap our profile → click the link in bio for full reviews & guides on {cat_name}."
 
     return f"""{headline}: {body_clean}
 
@@ -993,7 +991,7 @@ def make_reel_caption(product_name, cat_slug, slug):
     opener = random.choice(REEL_CAPTION_OPENERS).format(cat_label=cat_label)
     return (
         f"{opener}\n\n"
-        f"Full breakdown on {product_name} — ingredients, mechanism, and where to get it: {review_url}\n\n"
+        f"🔗 Tap our profile → click the link in bio for the full breakdown on {product_name} — ingredients, what works and why.\n\n"
         f"{follow_reason}\n\n"
         f"{hashtags} #NaturalHealth #HealthScience{trend_tags}"
     )
