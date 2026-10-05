@@ -21,16 +21,16 @@ PEXELS_API_KEY   = os.environ.get("PEXELS_API_KEY", "")
 SITE_URL = "https://reviews.thehappy-healthy-life.com"
 
 TITLE_TEMPLATES = [
-    "Why your {cat_label} isn't improving (the real reason) #shorts",
-    "Stop ignoring these {cat_label} warning signs #shorts",
-    "Doctors won't tell you this about {cat_label} #shorts",
-    "The hidden cause of {cat_label} problems nobody talks about #shorts",
-    "I fixed my {cat_label} issue — here's what actually worked #shorts",
-    "This {cat_label} ingredient changed everything for me #shorts",
-    "Why {cat_label} supplements fail (and what doesn't) #shorts",
-    "The {cat_label} mistake everyone makes #shorts",
-    "What your body is telling you about your {cat_label} #shorts",
-    "The research on {cat_label} they don't want you to find #shorts",
+    "I tested {cat_label} supplements for 90 days — honest results #shorts",
+    "Why nothing works for {cat_label} until you fix this first #shorts",
+    "The {cat_label} ingredient they quietly removed from the label #shorts",
+    "3 signs your {cat_label} problem is being ignored by doctors #shorts",
+    "I stopped buying {cat_label} pills and did this instead #shorts",
+    "The only {cat_label} supplement that passed real clinical trials #shorts",
+    "My {cat_label} got worse until I read this buried study #shorts",
+    "Why cheap {cat_label} supplements are making things worse #shorts",
+    "What actually happens when you fix the root cause of {cat_label} #shorts",
+    "The {cat_label} ingredient that works in 2 to 4 weeks according to research #shorts",
 ]
 
 CATEGORY_LABELS = {
@@ -353,11 +353,11 @@ DISCOVERY_ARC_REVEALS = {
 }
 
 EDU_TITLE_TEMPLATES = [
-    "{stat_short} #shorts",
-    "{stat_short} — most people ignore this #shorts",
-    "The truth about {cat_label}: {stat_short} #shorts",
-    "{stat_short} — here's why it matters #shorts",
-    "Did you know? {stat_short} #shorts",
+    "Doctors won't say this about {cat_label} #shorts",
+    "{stat_short} — and most people have no idea #shorts",
+    "The {cat_label} fact that changes everything #shorts",
+    "This {cat_label} study was buried — here's what it found #shorts",
+    "{stat_short} — this is why nothing is working #shorts",
 ]
 
 EDU_DESCRIPTION_TEMPLATE = """Learn more + research sources: {site_url}/{cat_slug}/?utm_source=youtube&utm_medium=shorts&utm_content=edu_{cat_slug}

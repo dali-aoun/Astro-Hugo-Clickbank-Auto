@@ -1389,12 +1389,13 @@ def publish_product_review_pin(headers):
     trend_tags = (" " + terms_to_hashtags(trend_terms)) if trend_terms else ""
 
     description = (
-        f"Honest {cat_label} supplement review: {name}. "
-        f"{desc[:200]} "
-        f"Independently rated {rating:.1f}/5 stars. Full ingredient breakdown, "
-        f"real user results, side effects, and where to get the best guaranteed price. "
-        f"#{name.replace(' ', '')}Review #SupplementReview "
-        f"#{cat_slug.replace('-', '')} #NaturalHealth #HonestReview{trend_tags}"
+        f"{name} review — does it really work? Rated {rating:.1f}/5 after testing. "
+        f"{desc[:150]} "
+        f"Best {cat_label} supplement for natural results without side effects. "
+        f"Full ingredient breakdown, clinical research, real before/after results. "
+        f"#{name.replace(' ', '')}Review #{name.replace(' ', '')} "
+        f"#best{cat_slug.replace('-', '')}supplement "
+        f"#{cat_slug.replace('-', '')} #NaturalHealth #SupplementReview{trend_tags}"
     )[:500]
 
     log(f"  [REVIEW PIN] {name} ({cat_label}) → {board['name']}")
@@ -1465,7 +1466,13 @@ def main():
         title      = headline[:100]
         clean_body = body.replace(chr(10), " ").strip()
         edu_link   = f"{SITE_URL}/{board['cat_url']}/?utm_source=pinterest&utm_medium=edu_pin"
-        description = f"💾 Save this for later! {headline}. {clean_body} {hashtags}"[:500]
+        cat_label_pin = board["cat_url"].replace("-", " ")
+        description = (
+            f"{headline} | {cat_label_pin.title()} tips backed by research. "
+            f"{clean_body} "
+            f"Save this — best natural {cat_label_pin} remedies and supplements explained. "
+            f"{hashtags}"
+        )[:500]
 
         log(f"  [pair {pair_n+1}/EDU] {board['name']} — {headline}")
         try:
