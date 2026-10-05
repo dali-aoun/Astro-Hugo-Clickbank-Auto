@@ -1,29 +1,29 @@
 {
-  "date": "2026-10-04",
+  "date": "2026-10-06",
   "posts": [
     {
-      "filename": "2026-10-04_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-10-04_1.jpg",
-      "cat_key": "heart",
-      "headline": "Statistic",
-      "body": "Reducing sodium by just 1g per day lowers blood pressure by 5 mmHg.\nSmall dietary changes have measurable impact.",
-      "cta": "Less salt = lower blood pressure.",
-      "hashtags": "#ArterialInflammation #HomocysteineHealth #CardiovascularNutrition #HeartHealthSupplements #EndothelialHealth #BloodPressureNatural #HeartAge #CardioProtection #ArteryHealth #HeartRiskFactors",
+      "filename": "2026-10-06_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-10-06_1.jpg",
+      "cat_key": "male",
+      "headline": "Tip",
+      "body": "7\u20139 hours of sleep is when your body produces 70% of its daily testosterone.\nSleep debt = testosterone debt.",
+      "cta": "Sleep debt is testosterone debt.",
+      "hashtags": "#LowTestosteroneSymptoms #FreeTestosterone #TestosteroneSupport #MaleEnergyBoost #TestosteroneTips #MenOver40Health #LowTSigns #TestosteroneDecline #NaturalTBoost #MaleDrive",
       "blog_url": null,
       "bridge_product": {
-        "name": "CardioShield",
-        "slug": "cardioshield",
-        "nickname": "cardsld",
-        "tier": 2,
-        "gravity": 24.1,
-        "payout": 119.0,
-        "aov": "$234",
-        "description": "8-ingredient natural blood pressure formula with olive leaf extract and hawthorn berry to support healthy circulation.",
-        "audience": "Adults with borderline hypertension who want to avoid prescription blood pressure medications.",
-        "vendor_page": "cardioshield.net",
-        "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=cardioshie&pid=cstsl",
+        "name": "Alpha Tonic",
+        "slug": "alpha-tonic",
+        "nickname": "alphatonic",
+        "tier": 1,
+        "gravity": 62.4,
+        "payout": 138.0,
+        "aov": "$294",
+        "description": "Himalayan tonic powder formula with 11 clinically studied ingredients to boost testosterone, energy, and sexual drive naturally.",
+        "audience": "Men 30+ experiencing low energy, reduced libido, and declining physical performance.",
+        "vendor_page": "getalphatonic.com",
+        "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=alphatonic&pid=11&tid=track",
         "status": "ok",
-        "category_slug": "heart-health"
+        "category_slug": "male-performance"
       }
     }
   ]
