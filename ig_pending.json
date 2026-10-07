@@ -1,29 +1,29 @@
 {
-  "date": "2026-10-06",
+  "date": "2026-10-07",
   "posts": [
     {
-      "filename": "2026-10-06_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-10-06_1.jpg",
-      "cat_key": "male",
-      "headline": "Tip",
-      "body": "7\u20139 hours of sleep is when your body produces 70% of its daily testosterone.\nSleep debt = testosterone debt.",
-      "cta": "Sleep debt is testosterone debt.",
-      "hashtags": "#LowTestosteroneSymptoms #FreeTestosterone #TestosteroneSupport #MaleEnergyBoost #TestosteroneTips #MenOver40Health #LowTSigns #TestosteroneDecline #NaturalTBoost #MaleDrive",
+      "filename": "2026-10-07_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-10-07_1.jpg",
+      "cat_key": "blood",
+      "headline": "Warning",
+      "body": "Diet sodas alter gut bacteria in ways that impair glucose metabolism.",
+      "cta": "Diet sodas are not safe for blood sugar.",
+      "hashtags": "#BloodSugarCrash #InsulinSensitivity #GlucoseControl #PreDiabetesReversible #BloodSugarBalance #MitochondrialHealth #GlucoseMetabolism #CarbCravings #BloodSugarSpikes #DiabetesPrevention",
       "blog_url": null,
       "bridge_product": {
-        "name": "Alpha Tonic",
-        "slug": "alpha-tonic",
-        "nickname": "alphatonic",
-        "tier": 1,
-        "gravity": 62.4,
-        "payout": 138.0,
+        "name": "GlucoTrust",
+        "slug": "glucotrust",
+        "nickname": "glucotru",
+        "tier": 2,
+        "gravity": 44.8,
+        "payout": 118.0,
         "aov": "$294",
-        "description": "Himalayan tonic powder formula with 11 clinically studied ingredients to boost testosterone, energy, and sexual drive naturally.",
-        "audience": "Men 30+ experiencing low energy, reduced libido, and declining physical performance.",
-        "vendor_page": "getalphatonic.com",
-        "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=alphatonic&pid=11&tid=track",
+        "description": "Clinically validated formula with gymnema sylvestre, biotin, and chromium to regulate blood sugar while improving deep sleep quality.",
+        "audience": "Adults with type 2 diabetes risk, insulin resistance, and poor sleep tied to blood sugar swings.",
+        "vendor_page": "glucotrustoffer.com",
+        "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=gtrustger&cbpage=gtgervsl",
         "status": "ok",
-        "category_slug": "male-performance"
+        "category_slug": "blood-sugar"
       }
     }
   ]
