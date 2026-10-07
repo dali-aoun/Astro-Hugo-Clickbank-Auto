@@ -366,6 +366,22 @@ CAT_ROTATION = [
     "male", "blood", "sleep", "joint", "womens", "general",
 ]
 
+# Bridge CTAs override the educational cta in image cards
+CTA_BRIDGE = {
+    "dental":   "Best oral health supplements ranked  →  Link in bio",
+    "weight":   "Best weight loss supplements ranked  →  Link in bio",
+    "brain":    "Best brain & vision supplements  →  Link in bio",
+    "prostate": "Best prostate supplements ranked  →  Link in bio",
+    "beauty":   "Best skin & nail supplements ranked  →  Link in bio",
+    "heart":    "Best heart health supplements  →  Link in bio",
+    "male":     "Best male performance supplements  →  Link in bio",
+    "blood":    "Best blood sugar supplements ranked  →  Link in bio",
+    "sleep":    "Best sleep supplements ranked  →  Link in bio",
+    "joint":    "Best joint supplements ranked  →  Link in bio",
+    "womens":   "Best women's health supplements  →  Link in bio",
+    "general":  "Full supplement reviews  →  Link in bio",
+}
+
 # ── Content library (same as Pinterest) ───────────────────────────────────────
 CONTENT = {
     "dental": [
@@ -745,11 +761,12 @@ def make_ig_image(cat_key, headline, body, cta):
         draw.text((x, cur_y - lb[1]), line, fill=(200, 200, 210), font=f_body)
         cur_y += lh
 
-    # CTA box
+    # CTA box — always a product-bridge CTA, not the educational summary
+    bridge_cta = CTA_BRIDGE.get(cat_key, cta)
     cta_y = 1080
     draw.rounded_rectangle([60, cta_y, W-60, cta_y+68], radius=12, fill=(accent[0]//5, accent[1]//5, accent[2]//5), outline=accent, width=2)
-    cb = draw.textbbox((0,0), cta, font=f_cta)
-    draw.text(((W-(cb[2]-cb[0]))//2, cta_y+18-cb[1]), cta, fill=accent, font=f_cta)
+    cb = draw.textbbox((0,0), bridge_cta, font=f_cta)
+    draw.text(((W-(cb[2]-cb[0]))//2, cta_y+18-cb[1]), bridge_cta, fill=accent, font=f_cta)
 
     # Footer
     draw.rectangle([0, 1178, W, 1350], fill=(18, 18, 24))
