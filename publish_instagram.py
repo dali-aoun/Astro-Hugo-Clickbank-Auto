@@ -852,39 +852,40 @@ def publish_ig_image(image_url, caption):
 # ── Caption builder ───────────────────────────────────────────────────────────
 
 def make_caption(cat_key, headline, body, cta, hashtags, blog_url=None, product=None):
-    cat_name = CATEGORIES[cat_key]["name"]
-    body_clean = body.replace("\n", " ")
+    # Truncate body at 2 sentences to create an open loop — reader goes to bio for the rest
+    sentences = [s.strip() for s in body.replace("\n", " ").split(".") if s.strip()]
+    body_teaser = ". ".join(sentences[:2]) + ("." if sentences else "")
+
+    # Open-loop bridge: promise the ranked list in bio, don't close the loop in the caption
+    OPEN_LOOP_BRIDGES = {
+        "dental":   "I ranked the top oral health supplements that actually target this. Link in bio.",
+        "weight":   "I ranked the top weight loss supplements that address the real cause. Link in bio.",
+        "brain":    "I ranked the top brain & vision supplements by mechanism. Link in bio.",
+        "prostate": "I ranked the top prostate supplements that work on this pathway. Link in bio.",
+        "beauty":   "I ranked the top skin & nail supplements with clinical backing. Link in bio.",
+        "heart":    "I ranked the top heart health supplements by evidence. Link in bio.",
+        "male":     "I ranked the top male performance supplements that target this. Link in bio.",
+        "blood":    "I ranked the top blood sugar supplements that fix the actual mechanism. Link in bio.",
+        "sleep":    "I ranked the top sleep supplements that address the cortisol pathway. Link in bio.",
+        "joint":    "I ranked the top joint supplements with bioavailability that works. Link in bio.",
+        "womens":   "I ranked the top women's health supplements for this. Link in bio.",
+        "general":  "I ranked the top supplements that address this. Full breakdown at the link in bio.",
+    }
+    open_loop = OPEN_LOOP_BRIDGES.get(cat_key, "Full ranked review at the link in bio.")
+
     save_cta = random.choice([
-        "Save this post to remember it later!",
-        "Save this! You'll want to read it again.",
-        "Bookmark this post — share it with someone who needs it.",
+        "Save this post — you'll want to come back to it.",
+        "Save this! Share it with someone who needs it.",
+        "Bookmark this for later.",
     ])
-    follow_cta = random.choice([
-        "Follow for daily health tips.",
-        "Follow us for more research-backed health content.",
-        "Follow to learn something new about your health every day.",
-    ])
-    cat_url = CATEGORIES[cat_key]["cat_url"]
-    if blog_url:
-        bio_cta = f"🔗 Tap our profile → click the link in bio for the full ranked review."
-    elif product:
-        p_name = product.get("name", "")
-        bio_cta = (
-            f"🔍 We reviewed {p_name} — designed specifically for {cat_name} support.\n"
-            f"🔗 Tap our profile → click the link in bio for the full ingredient breakdown."
-        )
-    else:
-        bio_cta = f"🔗 Tap our profile → click the link in bio for full reviews & guides on {cat_name}."
 
-    return f"""{headline}: {body_clean}
+    return f"""{headline}
 
-{cta}
+{body_teaser}
 
-{bio_cta}
+\U0001f447 {open_loop}
 
 {save_cta}
-
-{follow_cta}
 
 .
 .
