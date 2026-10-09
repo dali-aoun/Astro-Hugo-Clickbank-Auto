@@ -362,5 +362,11 @@
     "mode": "product_review",
     "status": "ok",
     "at": "2026-10-08T21:59:47.517715"
+  },
+  "2026-10-09": {
+    "content": "EDU:blood sugar",
+    "mode": "educational",
+    "status": "ok",
+    "at": "2026-10-09T21:34:44.364929"
   }
 }
