@@ -1,5 +1,5 @@
 {
-  "board_idx": 572,
+  "board_idx": 575,
   "content_idx": {
     "dental": 8,
     "weight": 8,
@@ -9,9 +9,9 @@
     "heart": 8,
     "male": 8,
     "blood": 8,
-    "sleep": 7,
-    "joint": 7,
-    "womens": 7,
+    "sleep": 8,
+    "joint": 8,
+    "womens": 8,
     "general": 7
   }
 }
