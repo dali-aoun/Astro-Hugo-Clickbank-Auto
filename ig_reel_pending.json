@@ -1,25 +1,25 @@
 {
-  "date": "2026-10-08",
+  "date": "2026-10-09",
   "reels": [
     {
-      "slug": "java-burn",
-      "name": "Java Burn",
-      "category_slug": "weight-loss",
-      "mp4_filename": "2026-10-08_1.mp4",
-      "generated": true
-    },
-    {
-      "slug": "ikaria-juice",
-      "name": "Ikaria Juice",
-      "category_slug": "weight-loss",
-      "mp4_filename": "2026-10-08_2.mp4",
-      "generated": true
-    },
-    {
-      "slug": "kerassentials",
-      "name": "Kerassentials",
+      "slug": "primebiome",
+      "name": "PrimeBiome",
       "category_slug": "beauty-skin",
-      "mp4_filename": "2026-10-08_3.mp4",
+      "mp4_filename": "2026-10-09_1.mp4",
+      "generated": true
+    },
+    {
+      "slug": "metanail-complex",
+      "name": "Metanail Complex",
+      "category_slug": "beauty-skin",
+      "mp4_filename": "2026-10-09_2.mp4",
+      "generated": true
+    },
+    {
+      "slug": "neotonics",
+      "name": "Neotonics",
+      "category_slug": "beauty-skin",
+      "mp4_filename": "2026-10-09_3.mp4",
       "generated": true
     }
   ]

@@ -1,29 +1,29 @@
 {
-  "date": "2026-10-08",
+  "date": "2026-10-09",
   "posts": [
     {
-      "filename": "2026-10-08_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-10-08_1.jpg",
-      "cat_key": "sleep",
+      "filename": "2026-10-09_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-10-09_1.jpg",
+      "cat_key": "joint",
       "headline": "Did You Know?",
-      "body": "Sleeping on your left side improves lymphatic drainage and reduces acid reflux.",
-      "cta": "Left-side sleeping has real health benefits.",
-      "hashtags": "#WakeAt3am #DeepSleepRemedies #GabaPathway #CortisolAndSleep #SleepCycles #NaturalSleepSupport #SleepHormones #RestorateSleep #SleepArchitecture #CortisoCycles",
+      "body": "Your gut microbiome is directly linked to rheumatoid arthritis.\nCertain bacteria trigger the immune attack on joint tissue.",
+      "cta": "Gut bacteria cause joint inflammation.",
+      "hashtags": "#CartilageRepair #JointInflammation #NaturalArthritisRelief #KneeCartilage #JointSupplements #InflammationReduction #CartilageSupport #JointMobility #ArthritisNatural #KneePainRelief",
       "blog_url": null,
       "bridge_product": {
-        "name": "Yu Sleep",
-        "slug": "yu-sleep",
-        "nickname": "yusleep",
-        "tier": 1,
-        "gravity": 118.06,
-        "payout": 149.44,
+        "name": "Flexotone",
+        "slug": "flexotone",
+        "nickname": "flexotone",
+        "tier": 2,
+        "gravity": 24.7,
+        "payout": 114.0,
         "aov": "$294",
-        "description": "Natural sleep supplement to improve sleep quality and help you fall asleep faster without creating dependency.",
-        "audience": "Adults with sleep disorders, insomnia, and nighttime waking issues.",
-        "vendor_page": "getyusleep.com",
-        "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=yusleep&op=glp&tid=tracking",
+        "description": "10-ingredient joint relief formula targeting the nervous system root cause of joint inflammation and chronic pain.",
+        "audience": "Adults suffering from chronic joint pain, stiffness, and limited movement.",
+        "vendor_page": "flexotone.com",
+        "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=flexotone&cbpage=tsl&affop=1",
         "status": "ok",
-        "category_slug": "sleep"
+        "category_slug": "joint-pain"
       }
     }
   ]
