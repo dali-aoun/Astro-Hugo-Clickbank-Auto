@@ -1,25 +1,25 @@
 {
-  "date": "2026-10-09",
+  "date": "2026-10-10",
   "reels": [
     {
-      "slug": "primebiome",
-      "name": "PrimeBiome",
-      "category_slug": "beauty-skin",
-      "mp4_filename": "2026-10-09_1.mp4",
+      "slug": "femipro",
+      "name": "FemiPro",
+      "category_slug": "womens-health",
+      "mp4_filename": "2026-10-10_1.mp4",
       "generated": true
     },
     {
-      "slug": "metanail-complex",
-      "name": "Metanail Complex",
-      "category_slug": "beauty-skin",
-      "mp4_filename": "2026-10-09_2.mp4",
+      "slug": "femicore",
+      "name": "FemiCore",
+      "category_slug": "womens-health",
+      "mp4_filename": "2026-10-10_2.mp4",
       "generated": true
     },
     {
-      "slug": "neotonics",
-      "name": "Neotonics",
-      "category_slug": "beauty-skin",
-      "mp4_filename": "2026-10-09_3.mp4",
+      "slug": "venoplus-8",
+      "name": "VenoPlus 8",
+      "category_slug": "womens-health",
+      "mp4_filename": "2026-10-10_3.mp4",
       "generated": true
     }
   ]

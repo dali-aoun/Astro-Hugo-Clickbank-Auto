@@ -1,29 +1,29 @@
 {
-  "date": "2026-10-09",
+  "date": "2026-10-10",
   "posts": [
     {
-      "filename": "2026-10-09_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-10-09_1.jpg",
-      "cat_key": "joint",
-      "headline": "Did You Know?",
-      "body": "Your gut microbiome is directly linked to rheumatoid arthritis.\nCertain bacteria trigger the immune attack on joint tissue.",
-      "cta": "Gut bacteria cause joint inflammation.",
-      "hashtags": "#CartilageRepair #JointInflammation #NaturalArthritisRelief #KneeCartilage #JointSupplements #InflammationReduction #CartilageSupport #JointMobility #ArthritisNatural #KneePainRelief",
+      "filename": "2026-10-10_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-10-10_1.jpg",
+      "cat_key": "womens",
+      "headline": "Statistic",
+      "body": "1 in 2 women over 50 will experience a bone fracture due to osteoporosis.\nThe window to build bone density closes in your 30s.",
+      "cta": "Build bone density in your 30s or lose it.",
+      "hashtags": "#PelvicFloorHealth #BladderLeakage #WomensUrinaryHealth #UrinaryMicrobiome #UTIPrevention #BladderSupport #WomenPelvicHealth #BladderControl #WomensHormoneHealth #PelvicStrength",
       "blog_url": null,
       "bridge_product": {
-        "name": "Flexotone",
-        "slug": "flexotone",
-        "nickname": "flexotone",
-        "tier": 2,
-        "gravity": 24.7,
-        "payout": 114.0,
+        "name": "FemiPro",
+        "slug": "femipro",
+        "nickname": "femipro",
+        "tier": 1,
+        "gravity": 48.9,
+        "payout": 151.4,
         "aov": "$294",
-        "description": "10-ingredient joint relief formula targeting the nervous system root cause of joint inflammation and chronic pain.",
-        "audience": "Adults suffering from chronic joint pain, stiffness, and limited movement.",
-        "vendor_page": "flexotone.com",
-        "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=flexotone&cbpage=tsl&affop=1",
+        "description": "Natural bladder-rebalancing supplement to support healthy urinary microbiome bacteria and reduce involuntary leaks.",
+        "audience": "Women seeking natural solutions for bladder control and urinary tract health.",
+        "vendor_page": "getfemipro.com",
+        "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=femipro&cbpage=tsl&affop=1",
         "status": "ok",
-        "category_slug": "joint-pain"
+        "category_slug": "womens-health"
       }
     }
   ]
