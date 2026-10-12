@@ -1,29 +1,29 @@
 {
-  "date": "2026-10-11",
+  "date": "2026-10-13",
   "posts": [
     {
-      "filename": "2026-10-11_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-10-11_1.jpg",
-      "cat_key": "general",
-      "headline": "Tip",
-      "body": "Cold + heat contrast therapy boosts growth hormone by 200\u2013300% and improves cardiovascular resilience.",
-      "cta": "Sauna + cold plunge = 300% growth hormone boost.",
-      "hashtags": "#MitochondrialHealth #ChronicFatigueFix #BrainFogCauses #CellularEnergy #CoQ10Benefits #AdaptogenHerbs #ImmuneSystemBoost #InflammationFix #GutImmunity #MetabolicHealth",
+      "filename": "2026-10-13_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-10-13_1.jpg",
+      "cat_key": "dental",
+      "headline": "Did You Know?",
+      "body": "Your enamel is the hardest substance in your body \u2014 harder than bone.\nBut once it's gone, it doesn't grow back.",
+      "cta": "Protect what you can't replace.",
+      "hashtags": "#GumDiseaseRemedies #OralMicrobiome #GumHealthTips #BadBreathCure #ToothDecayPrevention #OralProbiotics #GumInflammation #GumRecession #OralBacteria #DentalWellness",
       "blog_url": null,
       "bridge_product": {
-        "name": "ElectroSlim",
-        "slug": "electroslim",
-        "nickname": "elctrslm",
+        "name": "DentaBiome",
+        "slug": "dentabiome",
+        "nickname": "dentabiome",
         "tier": 2,
-        "gravity": 38.1,
-        "payout": 128.0,
+        "gravity": 23.72,
+        "payout": 163.49,
         "aov": "$294",
-        "description": "Electrolyte-enhanced weight management formula that activates thermogenesis and replenishes cellular energy to break fat storage cycles.",
-        "audience": "Adults who feel drained on low-carb diets and need a metabolism boost without stimulants.",
-        "vendor_page": "electroslim.com",
-        "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=elecslim&cbpage=lander&pid=indexvsl",
+        "description": "Oral probiotic supplement to support teeth and gum health through microbiome balance.",
+        "audience": "Adults looking for a natural complement to their regular dental hygiene routine.",
+        "vendor_page": "getdentabiome.com",
+        "hoplink": "https://hop.clickbank.net/?vendor=dentabiome&pid=21&affiliate=dali84",
         "status": "ok",
-        "category_slug": "general-health"
+        "category_slug": "dental-health"
       }
     }
   ]
