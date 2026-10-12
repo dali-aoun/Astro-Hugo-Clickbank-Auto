@@ -21,16 +21,20 @@ PEXELS_API_KEY   = os.environ.get("PEXELS_API_KEY", "")
 SITE_URL = "https://reviews.thehappy-healthy-life.com"
 
 TITLE_TEMPLATES = [
+    # Product-name templates — rank on "[product] review" searches
+    "{name}: what they don't tell you #shorts",
+    "I tested {name} for 30 days — here's what happened #shorts",
+    "Is {name} worth it? Honest review #shorts",
+    "{name} review — the ingredient truth #shorts",
+    "{name}: does it actually work? #shorts",
+    "{name} — I read every ingredient study so you don't have to #shorts",
+    # Category templates — broader educational reach
     "I tested {cat_label} supplements for 90 days — honest results #shorts",
     "Why nothing works for {cat_label} until you fix this first #shorts",
     "The {cat_label} ingredient they quietly removed from the label #shorts",
     "3 signs your {cat_label} problem is being ignored by doctors #shorts",
-    "I stopped buying {cat_label} pills and did this instead #shorts",
     "The only {cat_label} supplement that passed real clinical trials #shorts",
-    "My {cat_label} got worse until I read this buried study #shorts",
-    "Why cheap {cat_label} supplements are making things worse #shorts",
     "What actually happens when you fix the root cause of {cat_label} #shorts",
-    "The {cat_label} ingredient that works in 2 to 4 weeks according to research #shorts",
 ]
 
 CATEGORY_LABELS = {
