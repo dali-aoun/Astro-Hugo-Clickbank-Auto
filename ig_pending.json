@@ -4,26 +4,26 @@
     {
       "filename": "2026-10-13_1.jpg",
       "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-10-13_1.jpg",
-      "cat_key": "dental",
+      "cat_key": "weight",
       "headline": "Did You Know?",
-      "body": "Your enamel is the hardest substance in your body \u2014 harder than bone.\nBut once it's gone, it doesn't grow back.",
-      "cta": "Protect what you can't replace.",
-      "hashtags": "#GumDiseaseRemedies #OralMicrobiome #GumHealthTips #BadBreathCure #ToothDecayPrevention #OralProbiotics #GumInflammation #GumRecession #OralBacteria #DentalWellness",
+      "body": "Your liver is your primary fat-burning organ.\nNon-alcoholic fatty liver is found in 25% of adults \u2014 it kills metabolism.",
+      "cta": "Liver health = fat-burning capacity.",
+      "hashtags": "#BellyFatScience #MetabolismFix #BrownFatActivation #FatLossResearch #BellyFatTips #MetabolismBooster #ThermogenicFoods #FatBurningScience #WeightLossResearch #SlowMetabolism",
       "blog_url": null,
       "bridge_product": {
-        "name": "DentaBiome",
-        "slug": "dentabiome",
-        "nickname": "dentabiome",
+        "name": "Java Burn",
+        "slug": "java-burn",
+        "nickname": "javaburn",
         "tier": 2,
-        "gravity": 23.72,
-        "payout": 163.49,
+        "gravity": 38.6,
+        "payout": 109.0,
         "aov": "$294",
-        "description": "Oral probiotic supplement to support teeth and gum health through microbiome balance.",
-        "audience": "Adults looking for a natural complement to their regular dental hygiene routine.",
-        "vendor_page": "getdentabiome.com",
-        "hoplink": "https://hop.clickbank.net/?vendor=dentabiome&pid=21&affiliate=dali84",
+        "description": "Tasteless powder to add to your morning coffee that ignites metabolism and triggers all-day fat burning.",
+        "audience": "Coffee drinkers who want an effortless metabolism boost without changing their routine.",
+        "vendor_page": "javaburn.com",
+        "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=javaburn&cbpage=tsl&affop=1",
         "status": "ok",
-        "category_slug": "dental-health"
+        "category_slug": "weight-loss"
       }
     }
   ]
