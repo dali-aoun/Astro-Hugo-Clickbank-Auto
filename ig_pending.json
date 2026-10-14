@@ -1,29 +1,54 @@
 {
-  "date": "2026-10-13",
+  "date": "2026-10-14",
   "posts": [
     {
-      "filename": "2026-10-13_1.jpg",
-      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-10-13_1.jpg",
-      "cat_key": "weight",
+      "filename": "2026-10-14_1.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-10-14_1.jpg",
+      "cat_key": "brain",
       "headline": "Did You Know?",
-      "body": "Your liver is your primary fat-burning organ.\nNon-alcoholic fatty liver is found in 25% of adults \u2014 it kills metabolism.",
-      "cta": "Liver health = fat-burning capacity.",
-      "hashtags": "#BellyFatScience #MetabolismFix #BrownFatActivation #FatLossResearch #BellyFatTips #MetabolismBooster #ThermogenicFoods #FatBurningScience #WeightLossResearch #SlowMetabolism",
+      "body": "The brain uses 20% of your body's energy while being only 2% of body weight.\nBrain fog often means your brain is simply under-fueled.",
+      "cta": "Brain fog = underfueled brain.",
+      "hashtags": "#BrainFogFix #TinnitusRelief #MemorySupplements #CognitiveDecline #BrainFogCauses #TinnitusSupport #NeuroplasticityTips #MemoryLossPrevention #BrainCirculation #NeuralHealth",
       "blog_url": null,
       "bridge_product": {
-        "name": "Java Burn",
-        "slug": "java-burn",
-        "nickname": "javaburn",
-        "tier": 2,
-        "gravity": 38.6,
-        "payout": 109.0,
+        "name": "VisiFlora",
+        "slug": "visiflora",
+        "nickname": "visiflora",
+        "tier": 1,
+        "gravity": 62.26,
+        "payout": 110.83,
         "aov": "$294",
-        "description": "Tasteless powder to add to your morning coffee that ignites metabolism and triggers all-day fat burning.",
-        "audience": "Coffee drinkers who want an effortless metabolism boost without changing their routine.",
-        "vendor_page": "javaburn.com",
-        "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=javaburn&cbpage=tsl&affop=1",
+        "description": "Natural supplement to support eye health and preserve vision with targeted ingredients.",
+        "audience": "Adults concerned about vision decline, eye fatigue, and age-related eye health.",
+        "vendor_page": "getvisiflora.com",
+        "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=visiflora&pid=v1",
         "status": "ok",
-        "category_slug": "weight-loss"
+        "category_slug": "brain-and-senses"
+      }
+    },
+    {
+      "filename": "2026-10-14_2.jpg",
+      "public_url": "https://raw.githubusercontent.com/dali-aoun/ig-assets/master/ig_content/2026-10-14_2.jpg",
+      "cat_key": "prostate",
+      "headline": "Tip",
+      "body": "Vitamin D3 deficiency is strongly linked to aggressive prostate cancer.\nOptimal levels are 60\u201380 ng/mL.",
+      "cta": "Test your Vitamin D3 levels now.",
+      "hashtags": "#BPHRelief #ProstateSupplements #NightUrination #ProstateSupport #MenOver50Health #ProstateShrink #UrinationProblems #ProstateInflammation #DHTControl #ProstateNutrition",
+      "blog_url": null,
+      "bridge_product": {
+        "name": "ProstaVive",
+        "slug": "prostavive",
+        "nickname": "provive",
+        "tier": 1,
+        "gravity": 94.82,
+        "payout": 144.34,
+        "aov": "$234",
+        "description": "Natural powder supplement to support prostate health, urinary flow, and sexual performance through improved blood circulation.",
+        "audience": "Men of all ages seeking prostate support, better urinary flow, and renewed sexual vitality.",
+        "vendor_page": "prostavive.org",
+        "hoplink": "https://hop.clickbank.net/?affiliate=dali84&vendor=provive&pid=20&tid=track",
+        "status": "ok",
+        "category_slug": "prostate-health"
       }
     }
   ]
