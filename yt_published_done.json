@@ -392,5 +392,11 @@
     "mode": "educational",
     "status": "ok",
     "at": "2026-10-14T14:37:04.785072"
+  },
+  "2026-10-14_r2": {
+    "content": "Flexotone",
+    "mode": "product_review",
+    "status": "ok",
+    "at": "2026-10-14T20:34:29.083162"
   }
 }
