@@ -842,8 +842,10 @@ def main():
     today_key = datetime.now(timezone.utc).astimezone(tz_tunis).strftime("%Y-%m-%d")
 
     done = load_done()
-    if done.get(today_key):
-        log(f"YouTube deja publie pour {today_key}")
+    MAX_SHORTS_PER_DAY = 2
+    today_runs = sum(1 for k in done if k.startswith(today_key))
+    if today_runs >= MAX_SHORTS_PER_DAY:
+        log(f"YouTube deja publie {MAX_SHORTS_PER_DAY}x pour {today_key} — skip")
         sys.exit(0)
 
     products = load_products()
@@ -999,7 +1001,9 @@ def main():
     post_state["idx"] = idx + 1
     save_post_index(post_state)
 
-    done[today_key] = {
+    run_n = sum(1 for k in done if k.startswith(today_key))
+    run_key = today_key if run_n == 0 else f"{today_key}_r{run_n + 1}"
+    done[run_key] = {
         "content": content_label,
         "mode":    "educational" if is_educational else "product_review",
         "status":  result_status,

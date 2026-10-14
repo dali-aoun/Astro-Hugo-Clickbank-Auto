@@ -4,7 +4,9 @@ on:
   schedule:
     # Pinterest slot 1: 09:00 UTC
     - cron: '0 9 * * *'
-    # Instagram + YouTube: 09h00 PST = 17:00 UTC
+    # YouTube slot 1: 09:30 UTC
+    - cron: '30 9 * * *'
+    # Instagram + YouTube slot 2: 09h00 PST = 17:00 UTC
     - cron: '0 17 * * *'
     # Pinterest slot 2: 20:00 UTC
     - cron: '0 20 * * *'
@@ -185,7 +187,7 @@ jobs:
 
   youtube:
     if: >
-      (github.event_name == 'schedule' && github.event.schedule == '0 17 * * *') ||
+      (github.event_name == 'schedule' && (github.event.schedule == '0 17 * * *' || github.event.schedule == '30 9 * * *')) ||
       github.event.inputs.platform == 'all' ||
       github.event.inputs.platform == 'youtube'
     runs-on: ubuntu-latest
