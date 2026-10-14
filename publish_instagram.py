@@ -27,7 +27,7 @@ IG_USER_ID = os.environ.get("INSTAGRAM_USER_ID", "")
 ASSETS_REPO = "dali-aoun/ig-assets"  # Public repo — accessible by Meta crawlers
 
 SITE_URL     = "https://reviews.thehappy-healthy-life.com"
-POSTS_PER_DAY = 1
+POSTS_PER_DAY = 2
 PEXELS_API_KEY = os.environ.get("PEXELS_API_KEY", "")
 
 # ── Pexels search queries per category ───────────────────────────────────────
