@@ -386,5 +386,11 @@
     "mode": "product_review",
     "status": "ok",
     "at": "2026-10-13T21:48:44.401263"
+  },
+  "2026-10-14": {
+    "content": "EDU:joint pain",
+    "mode": "educational",
+    "status": "ok",
+    "at": "2026-10-14T14:37:04.785072"
   }
 }
