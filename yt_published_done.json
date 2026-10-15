@@ -398,5 +398,11 @@
     "mode": "product_review",
     "status": "ok",
     "at": "2026-10-14T20:34:29.083162"
+  },
+  "2026-10-15": {
+    "content": "EDU:sleep",
+    "mode": "educational",
+    "status": "ok",
+    "at": "2026-10-15T14:17:42.268826"
   }
 }
