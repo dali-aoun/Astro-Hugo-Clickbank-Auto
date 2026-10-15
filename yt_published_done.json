@@ -404,5 +404,11 @@
     "mode": "educational",
     "status": "ok",
     "at": "2026-10-15T14:17:42.268826"
+  },
+  "2026-10-15_r2": {
+    "content": "Resurge",
+    "mode": "product_review",
+    "status": "ok",
+    "at": "2026-10-15T20:16:40.147076"
   }
 }
