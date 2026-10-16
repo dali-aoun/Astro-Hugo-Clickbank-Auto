@@ -416,5 +416,11 @@
     "mode": "educational",
     "status": "ok",
     "at": "2026-10-16T14:06:36.238436"
+  },
+  "2026-10-16_r2": {
+    "content": "CardioShield",
+    "mode": "product_review",
+    "status": "ok",
+    "at": "2026-10-16T19:53:10.455087"
   }
 }
