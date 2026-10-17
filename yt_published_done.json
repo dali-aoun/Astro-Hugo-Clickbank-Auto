@@ -428,5 +428,11 @@
     "mode": "educational",
     "status": "ok",
     "at": "2026-10-17T13:06:20.628246"
+  },
+  "2026-10-17_r2": {
+    "content": "ElectroSlim",
+    "mode": "product_review",
+    "status": "ok",
+    "at": "2026-10-17T19:12:16.150184"
   }
 }
