@@ -422,5 +422,11 @@
     "mode": "product_review",
     "status": "ok",
     "at": "2026-10-16T19:53:10.455087"
+  },
+  "2026-10-17": {
+    "content": "EDU:wellness",
+    "mode": "educational",
+    "status": "ok",
+    "at": "2026-10-17T13:06:20.628246"
   }
 }
