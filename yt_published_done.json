@@ -452,5 +452,11 @@
     "mode": "educational",
     "status": "ok",
     "at": "2026-10-19T16:35:41.843653"
+  },
+  "2026-10-19_r2": {
+    "content": "DentaSmile",
+    "mode": "product_review",
+    "status": "ok",
+    "at": "2026-10-19T21:25:15.333313"
   }
 }
