@@ -458,5 +458,11 @@
     "mode": "product_review",
     "status": "ok",
     "at": "2026-10-19T21:25:15.333313"
+  },
+  "2026-10-20": {
+    "content": "EDU:dental health",
+    "mode": "educational",
+    "status": "ok",
+    "at": "2026-10-20T14:25:52.580740"
   }
 }
