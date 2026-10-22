@@ -482,5 +482,11 @@
     "mode": "product_review",
     "status": "ok",
     "at": "2026-10-21T20:32:20.043293"
+  },
+  "2026-10-22": {
+    "content": "EDU:prostate health",
+    "mode": "educational",
+    "status": "ok",
+    "at": "2026-10-22T14:38:37.312415"
   }
 }
