@@ -500,5 +500,11 @@
     "mode": "educational",
     "status": "ok",
     "at": "2026-10-23T14:20:37.027106"
+  },
+  "2026-10-23_r2": {
+    "content": "Alpha Tonic",
+    "mode": "product_review",
+    "status": "ok",
+    "at": "2026-10-23T20:18:33.903848"
   }
 }
