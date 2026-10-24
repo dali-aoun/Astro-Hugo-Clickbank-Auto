@@ -512,5 +512,11 @@
     "mode": "educational",
     "status": "ok",
     "at": "2026-10-24T13:27:37.237168"
+  },
+  "2026-10-24_r2": {
+    "content": "Red Boost",
+    "mode": "product_review",
+    "status": "ok",
+    "at": "2026-10-24T19:24:35.707697"
   }
 }
