@@ -524,5 +524,11 @@
     "mode": "educational",
     "status": "ok",
     "at": "2026-10-25T13:49:03.513601"
+  },
+  "2026-10-25_r2": {
+    "content": "Audifort",
+    "mode": "product_review",
+    "status": "ok",
+    "at": "2026-10-25T19:31:17.294962"
   }
 }
