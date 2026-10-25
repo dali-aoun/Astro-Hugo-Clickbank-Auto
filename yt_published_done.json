@@ -518,5 +518,11 @@
     "mode": "product_review",
     "status": "ok",
     "at": "2026-10-24T19:24:35.707697"
+  },
+  "2026-10-25": {
+    "content": "EDU:male performance",
+    "mode": "educational",
+    "status": "ok",
+    "at": "2026-10-25T13:49:03.513601"
   }
 }
