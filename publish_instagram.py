@@ -20,6 +20,8 @@ POST_IDX_FILE  = os.path.join(BASE_DIR, "ig_post_index.json")
 CONTENT_DIR    = os.path.join(BASE_DIR, "ig_content")
 PENDING_FILE      = os.path.join(BASE_DIR, "ig_pending.json")
 REEL_IDX_FILE     = os.path.join(BASE_DIR, "ig_reel_idx.json")
+BS_REEL_IDX_FILE  = os.path.join(BASE_DIR, "ig_bs_reel_idx.json")
+BOOSTED_CATEGORY  = "blood-sugar"  # reel_n==3 always picks from this category
 REEL_PENDING_FILE = os.path.join(BASE_DIR, "ig_reel_pending.json")
 
 IG_TOKEN   = os.environ.get("INSTAGRAM_ACCESS_TOKEN", "")
@@ -951,6 +953,19 @@ def save_reel_idx(state):
         json.dump(state, f, indent=2)
 
 
+def load_bs_reel_idx():
+    try:
+        with open(BS_REEL_IDX_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {"idx": 0}
+
+
+def save_bs_reel_idx(state):
+    with open(BS_REEL_IDX_FILE, "w", encoding="utf-8") as f:
+        json.dump(state, f, indent=2)
+
+
 REEL_CAT_HASHTAGS = {
     "dental-health":    "#GumDiseaseRemedies #OralMicrobiome #BadBreathCure #OralProbiotics #GumInflammation #ToothDecayPrevention #DentalWellness",
     "prostate-health":  "#BPHRelief #NightUrination #ProstateSupplements #ProstateShrink #UrinationProblems #MenOver50Health #DHTControl",
@@ -1143,12 +1158,21 @@ def generate_phase():
         reels_dir = os.path.join(BASE_DIR, "ig_reels")
         os.makedirs(reels_dir, exist_ok=True)
         reel_entries = []
+        bs_products = [p for p in reel_products if p.get("category_slug") == BOOSTED_CATEGORY]
         for reel_n in range(1, 4):
-            r_state = load_reel_idx()
-            r_idx = r_state.get("idx", 0) % len(reel_products)
-            product = reel_products[r_idx]
-            r_state["idx"] = r_idx + 1
-            save_reel_idx(r_state)
+            if reel_n == 3 and bs_products:
+                # 3rd reel of each day = blood-sugar boost (consistently highest views)
+                bs_state = load_bs_reel_idx()
+                bs_idx = bs_state.get("idx", 0) % len(bs_products)
+                product = bs_products[bs_idx]
+                bs_state["idx"] = bs_idx + 1
+                save_bs_reel_idx(bs_state)
+            else:
+                r_state = load_reel_idx()
+                r_idx = r_state.get("idx", 0) % len(reel_products)
+                product = reel_products[r_idx]
+                r_state["idx"] = r_idx + 1
+                save_reel_idx(r_state)
 
             cat_slug      = product["category_slug"]
             reel_filename = f"{today_key}_{reel_n}.mp4"
