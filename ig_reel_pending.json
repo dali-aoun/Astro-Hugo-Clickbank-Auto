@@ -1,25 +1,25 @@
 {
-  "date": "2026-10-25",
+  "date": "2026-10-26",
   "reels": [
     {
-      "slug": "menoscue",
-      "name": "MenoRescue",
-      "category_slug": "womens-health",
-      "mp4_filename": "2026-10-25_1.mp4",
+      "slug": "glucotrust",
+      "name": "GlucoTrust",
+      "category_slug": "blood-sugar",
+      "mp4_filename": "2026-10-26_1.mp4",
+      "generated": true
+    },
+    {
+      "slug": "gluco-tonic",
+      "name": "Gluco Tonic",
+      "category_slug": "blood-sugar",
+      "mp4_filename": "2026-10-26_2.mp4",
       "generated": true
     },
     {
       "slug": "gluco6",
       "name": "Gluco6",
       "category_slug": "blood-sugar",
-      "mp4_filename": "2026-10-25_2.mp4",
-      "generated": true
-    },
-    {
-      "slug": "sugar-defender",
-      "name": "Sugar Defender",
-      "category_slug": "blood-sugar",
-      "mp4_filename": "2026-10-25_3.mp4",
+      "mp4_filename": "2026-10-26_3.mp4",
       "generated": true
     }
   ]
