@@ -536,5 +536,11 @@
     "mode": "educational",
     "status": "ok",
     "at": "2026-10-26T16:15:00.830978"
+  },
+  "2026-10-26_r2": {
+    "content": "Neuro Serge",
+    "mode": "product_review",
+    "status": "ok",
+    "at": "2026-10-26T21:33:19.774481"
   }
 }
