@@ -542,5 +542,11 @@
     "mode": "product_review",
     "status": "ok",
     "at": "2026-10-26T21:33:19.774481"
+  },
+  "2026-10-27": {
+    "content": "EDU:brain health",
+    "mode": "educational",
+    "status": "ok",
+    "at": "2026-10-27T15:29:02.508692"
   }
 }
