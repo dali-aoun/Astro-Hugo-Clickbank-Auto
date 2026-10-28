@@ -554,5 +554,11 @@
     "mode": "product_review",
     "status": "ok",
     "at": "2026-10-27T21:13:27.562563"
+  },
+  "2026-10-28": {
+    "content": "EDU:weight loss",
+    "mode": "educational",
+    "status": "ok",
+    "at": "2026-10-28T21:37:11.122270"
   }
 }
