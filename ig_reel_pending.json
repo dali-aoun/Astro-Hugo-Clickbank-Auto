@@ -1,25 +1,25 @@
 {
-  "date": "2026-10-28",
+  "date": "2026-10-29",
   "reels": [
     {
-      "slug": "yu-sleep",
-      "name": "Yu Sleep",
-      "category_slug": "sleep",
-      "mp4_filename": "2026-10-28_1.mp4",
+      "slug": "cholibrium",
+      "name": "Cholibrium",
+      "category_slug": "heart-health",
+      "mp4_filename": "2026-10-29_1.mp4",
       "generated": true
     },
     {
-      "slug": "resurge",
-      "name": "Resurge",
-      "category_slug": "sleep",
-      "mp4_filename": "2026-10-28_2.mp4",
+      "slug": "cardioshield",
+      "name": "CardioShield",
+      "category_slug": "heart-health",
+      "mp4_filename": "2026-10-29_2.mp4",
       "generated": true
     },
     {
-      "slug": "glucotrust",
-      "name": "GlucoTrust",
+      "slug": "gluco-tonic",
+      "name": "Gluco Tonic",
       "category_slug": "blood-sugar",
-      "mp4_filename": "2026-10-28_3.mp4",
+      "mp4_filename": "2026-10-29_3.mp4",
       "generated": true
     }
   ]
