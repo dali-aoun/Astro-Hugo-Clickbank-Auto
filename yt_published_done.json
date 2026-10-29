@@ -566,5 +566,11 @@
     "mode": "product_review",
     "status": "ok",
     "at": "2026-10-29T16:18:56.195526"
+  },
+  "2026-10-29_r2": {
+    "content": "EDU:skin care",
+    "mode": "educational",
+    "status": "ok",
+    "at": "2026-10-29T21:44:03.355932"
   }
 }
