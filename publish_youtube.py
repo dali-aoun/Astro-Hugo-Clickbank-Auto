@@ -22,19 +22,21 @@ SITE_URL = "https://reviews.thehappy-healthy-life.com"
 
 TITLE_TEMPLATES = [
     # Product-name templates — rank on "[product] review" searches
-    "{name}: what they don't tell you #shorts",
-    "I tested {name} for 30 days — here's what happened #shorts",
-    "Is {name} worth it? Honest review #shorts",
-    "{name} review — the ingredient truth #shorts",
-    "{name}: does it actually work? #shorts",
-    "{name} — I read every ingredient study so you don't have to #shorts",
+    "{name}: what they don't tell you",
+    "I tried {name} for 30 days — week by week results",
+    "{name} honest review — does it actually work?",
+    "{name}: the ingredient breakdown they skip in ads",
+    "I read every {name} study so you don't have to",
+    "{name} — what changed after 4 weeks (honest)",
+    "{name} review: real results, no fluff",
+    "Why I switched to {name} after trying 5 others",
     # Category templates — broader educational reach
-    "I tested {cat_label} supplements for 90 days — honest results #shorts",
-    "Why nothing works for {cat_label} until you fix this first #shorts",
-    "The {cat_label} ingredient they quietly removed from the label #shorts",
-    "3 signs your {cat_label} problem is being ignored by doctors #shorts",
-    "The only {cat_label} supplement that passed real clinical trials #shorts",
-    "What actually happens when you fix the root cause of {cat_label} #shorts",
+    "I tested {cat_label} supplements for 90 days — honest results",
+    "Why nothing works for {cat_label} until you fix this first",
+    "The {cat_label} ingredient they quietly removed from the label",
+    "3 signs your {cat_label} problem is being ignored by doctors",
+    "The only {cat_label} supplement that passed real clinical trials",
+    "What actually happens when you fix the root cause of {cat_label}",
 ]
 
 CATEGORY_LABELS = {
@@ -52,19 +54,17 @@ CATEGORY_LABELS = {
     "general-health":   "wellness",
 }
 
-DESCRIPTION_TEMPLATE = """Full ingredient breakdown + best price: {site_url}/{cat_slug}/{slug}/?utm_source=youtube&utm_medium=shorts&utm_content={slug}
-
-{hook}
+DESCRIPTION_TEMPLATE = """{hook}
 
 Most {cat_label} solutions treat the symptom. This one targets the root mechanism — which is why the results look different.
 
 What you get with {name}: a formula built around the research on {cat_label}, designed for {audience}.
 
-In the full breakdown (link above): the exact ingredients, what the science says, what to expect week by week, and where to get it with the money-back guarantee.
+Full ingredient breakdown + best price → {site_url}/{cat_slug}/{slug}/?utm_source=youtube&utm_medium=shorts&utm_content={slug}
 
 Follow for weekly deep-dives into what actually works in natural health — no paid rankings, no fake testimonials.
 
-#{name_tag} #{cat_tag} #naturalhealth #healthtips #supplementscience #shorts
+#{name_tag} #{cat_tag} #naturalhealth #healthtips #supplementscience
 """
 
 CATEGORY_TAGS = {
@@ -357,24 +357,26 @@ DISCOVERY_ARC_REVEALS = {
 }
 
 EDU_TITLE_TEMPLATES = [
-    "Doctors won't say this about {cat_label} #shorts",
-    "{stat_short} — and most people have no idea #shorts",
-    "The {cat_label} fact that changes everything #shorts",
-    "This {cat_label} study was buried — here's what it found #shorts",
-    "{stat_short} — this is why nothing is working #shorts",
+    "Doctors won't say this about {cat_label}",
+    "{stat_short} — and most people have no idea",
+    "The {cat_label} fact that changes everything",
+    "This {cat_label} study was buried — here's what it found",
+    "{stat_short} — this is why nothing is working",
+    "The truth about {cat_label} they don't teach in med school",
+    "Most {cat_label} advice is backwards — here's why",
 ]
 
-EDU_DESCRIPTION_TEMPLATE = """Learn more + research sources: {site_url}/{cat_slug}/?utm_source=youtube&utm_medium=shorts&utm_content=edu_{cat_slug}
-
-{stat}
+EDU_DESCRIPTION_TEMPLATE = """{stat}
 
 {reveal}
 
 {cta}
 
+Research sources + more: {site_url}/{cat_slug}/?utm_source=youtube&utm_medium=shorts&utm_content=edu_{cat_slug}
+
 Follow for weekly research-backed health insights — no product rankings, no fluff.
 
-#{cat_tag} #healthfacts #naturalhealth #healthtips #didyouknow #shorts
+#{cat_tag} #healthfacts #naturalhealth #healthtips #didyouknow
 """
 
 def make_educational_script(cat_slug):
@@ -497,13 +499,15 @@ def make_background_image(product, width=1080, height=1920):
     f_small  = get_font(40)
     f_tag    = get_font(34)
 
-    # ── Top badge ──
+    # ── Top badge — rotates to avoid template look ──
+    badges = ["HONEST REVIEW", "INGREDIENT TRUTH", "REAL RESULTS", "NO SPONSORSHIP", "UNFILTERED"]
+    badge_text = random.choice(badges)
     badge_y = 160
     draw.rounded_rectangle(
-        [(width//2 - 240, badge_y - 36), (width//2 + 240, badge_y + 36)],
+        [(width//2 - 260, badge_y - 36), (width//2 + 260, badge_y + 36)],
         radius=30, fill=(255, 255, 255, 40)
     )
-    draw.text((width//2, badge_y), "HONEST REVIEW", font=f_tag,
+    draw.text((width//2, badge_y), badge_text, font=f_tag,
               fill=(255, 255, 255), anchor="mm")
 
     # ── Product name ──
@@ -675,9 +679,11 @@ def process_pexels_video(raw_path, audio_path, output_path, product):
     if font_path:
         safe_font   = font_path.replace(":", "\\:")
         name_escaped = name.replace("'", "\\'").replace(":", "\\:")
+        badge_options = ["HONEST REVIEW", "INGREDIENT TRUTH", "REAL RESULTS", "NO SPONSORSHIP", "UNFILTERED"]
+        badge_text = random.choice(badge_options)
         font_filter = (
             f"drawbox=x=0:y=ih*0.62:w=iw:h=ih*0.38:color=black@0.65:t=fill,"
-            f"drawtext=fontfile={safe_font}:text='HONEST REVIEW':fontsize=36"
+            f"drawtext=fontfile={safe_font}:text='{badge_text}':fontsize=36"
             f":fontcolor=white@0.85:x=(w-text_w)/2:y=h*0.60:shadowx=1:shadowy=1,"
             f"drawtext=fontfile={safe_font}:text='{name_escaped}':fontsize=58:fontcolor=white"
             f":x=(w-text_w)/2:y=h*0.66:shadowx=2:shadowy=2,"
