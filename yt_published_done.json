@@ -590,5 +590,11 @@
     "mode": "product_review",
     "status": "ok",
     "at": "2026-10-31T15:27:22.766250"
+  },
+  "2026-10-31_r2": {
+    "content": "EDU:women's health",
+    "mode": "educational",
+    "status": "ok",
+    "at": "2026-10-31T20:26:22.009588"
   }
 }
