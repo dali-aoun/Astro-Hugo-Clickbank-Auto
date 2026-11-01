@@ -602,5 +602,11 @@
     "mode": "product_review",
     "status": "ok",
     "at": "2026-11-01T16:12:36.662515"
+  },
+  "2026-11-01_r2": {
+    "content": "EDU:women's health",
+    "mode": "educational",
+    "status": "ok",
+    "at": "2026-11-01T21:04:21.246109"
   }
 }
