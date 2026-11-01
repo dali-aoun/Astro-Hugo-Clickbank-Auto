@@ -1,12 +1,12 @@
 {
   "idx": 4,
   "reel_idx": 0,
-  "cat_idx": 218,
+  "cat_idx": 220,
   "content_idx": {
     "dental": 19,
     "weight": 19,
-    "brain": 18,
-    "prostate": 18,
+    "brain": 19,
+    "prostate": 19,
     "beauty": 18,
     "heart": 18,
     "male": 18,
