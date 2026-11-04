@@ -1,25 +1,25 @@
 {
-  "date": "2026-11-03",
+  "date": "2026-11-04",
   "reels": [
     {
-      "slug": "provadent",
-      "name": "ProvaDent",
-      "category_slug": "dental-health",
-      "mp4_filename": "2026-11-03_1.mp4",
-      "generated": true
-    },
-    {
-      "slug": "prostavive",
-      "name": "ProstaVive",
+      "slug": "prostadine",
+      "name": "Prostadine",
       "category_slug": "prostate-health",
-      "mp4_filename": "2026-11-03_2.mp4",
+      "mp4_filename": "2026-11-04_1.mp4",
       "generated": true
     },
     {
-      "slug": "gluco-tonic",
-      "name": "Gluco Tonic",
+      "slug": "viriflow",
+      "name": "ViriFlow",
+      "category_slug": "prostate-health",
+      "mp4_filename": "2026-11-04_2.mp4",
+      "generated": true
+    },
+    {
+      "slug": "gluco6",
+      "name": "Gluco6",
       "category_slug": "blood-sugar",
-      "mp4_filename": "2026-11-03_3.mp4",
+      "mp4_filename": "2026-11-04_3.mp4",
       "generated": true
     }
   ]
