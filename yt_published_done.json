@@ -656,5 +656,11 @@
     "mode": "educational",
     "status": "ok",
     "at": "2026-11-06T16:52:47.529361"
+  },
+  "2026-11-06_r2": {
+    "content": "Resurge",
+    "mode": "product_review",
+    "status": "ok",
+    "at": "2026-11-06T22:00:37.478670"
   }
 }
