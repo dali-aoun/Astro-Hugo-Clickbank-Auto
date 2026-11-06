@@ -1,25 +1,25 @@
 {
-  "date": "2026-11-05",
+  "date": "2026-11-06",
   "reels": [
     {
-      "slug": "titanflow",
-      "name": "TitanFlow",
-      "category_slug": "prostate-health",
-      "mp4_filename": "2026-11-05_1.mp4",
+      "slug": "nitric-boost",
+      "name": "Nitric Boost",
+      "category_slug": "male-performance",
+      "mp4_filename": "2026-11-06_1.mp4",
       "generated": true
     },
     {
-      "slug": "flowforce-max",
-      "name": "FlowForce Max",
-      "category_slug": "prostate-health",
-      "mp4_filename": "2026-11-05_2.mp4",
+      "slug": "alpha-tonic",
+      "name": "Alpha Tonic",
+      "category_slug": "male-performance",
+      "mp4_filename": "2026-11-06_2.mp4",
       "generated": true
     },
     {
-      "slug": "sugar-defender",
-      "name": "Sugar Defender",
+      "slug": "glucotrust",
+      "name": "GlucoTrust",
       "category_slug": "blood-sugar",
-      "mp4_filename": "2026-11-05_3.mp4",
+      "mp4_filename": "2026-11-06_3.mp4",
       "generated": true
     }
   ]
