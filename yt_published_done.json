@@ -668,5 +668,11 @@
     "mode": "educational",
     "status": "ok",
     "at": "2026-11-07T15:49:06.822653"
+  },
+  "2026-11-07_r2": {
+    "content": "CardioShield",
+    "mode": "product_review",
+    "status": "ok",
+    "at": "2026-11-07T20:47:23.311605"
   }
 }
