@@ -674,5 +674,11 @@
     "mode": "product_review",
     "status": "ok",
     "at": "2026-11-07T20:47:23.311605"
+  },
+  "2026-11-08": {
+    "content": "EDU:wellness",
+    "mode": "educational",
+    "status": "ok",
+    "at": "2026-11-08T16:09:00.924525"
   }
 }
