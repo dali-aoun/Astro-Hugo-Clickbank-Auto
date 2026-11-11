@@ -704,5 +704,11 @@
     "mode": "educational",
     "status": "ok",
     "at": "2026-11-10T17:12:13.313048"
+  },
+  "2026-11-11": {
+    "content": "DentaSmile",
+    "mode": "product_review",
+    "status": "ok",
+    "at": "2026-11-11T17:20:48.897709"
   }
 }
