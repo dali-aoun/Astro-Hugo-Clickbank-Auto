@@ -728,5 +728,11 @@
     "mode": "educational",
     "status": "ok",
     "at": "2026-11-13T17:18:50.462045"
+  },
+  "2026-11-13_r2": {
+    "content": "ViriFlow",
+    "mode": "product_review",
+    "status": "ok",
+    "at": "2026-11-13T22:30:27.839754"
   }
 }
