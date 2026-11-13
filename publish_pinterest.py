@@ -459,7 +459,7 @@ def publish_blog_pin(headers):
         draw.rectangle([80, y + 16, W - 80, y + 19], fill=badge_color)
 
         f_sub = _font_reg(34)
-        sub = "Full evidence-based ranking — link in bio"
+        sub = "Tap pin · read full review ↓"
         sw = draw.textlength(sub, font=f_sub)
         draw.text(((W - sw) // 2, y + 36), sub, font=f_sub, fill=(220, 220, 220))
 
@@ -756,6 +756,12 @@ def make_pin_image(board_key, headline, body, hashtags):
             ty += 37
 
         y_row += row_h + 18
+
+    # CTA above footer
+    f_cta = font_reg(32)
+    cta_text = "Tap pin · see top-rated supplements ↓"
+    cw = draw.textlength(cta_text, font=f_cta)
+    draw.text(((W - cw) // 2, 1358), cta_text, font=f_cta, fill=accent)
 
     # Footer
     footer_y = 1400
