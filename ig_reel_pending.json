@@ -1,25 +1,25 @@
 {
-  "date": "2026-11-12",
+  "date": "2026-11-13",
   "reels": [
     {
-      "slug": "pineal-guardian-x",
-      "name": "Pineal Guardian X",
-      "category_slug": "brain-and-senses",
-      "mp4_filename": "2026-11-12_1.mp4",
-      "generated": true
-    },
-    {
-      "slug": "all-day-slimming-tea",
-      "name": "All Day Slimming Tea",
+      "slug": "java-burn",
+      "name": "Java Burn",
       "category_slug": "weight-loss",
-      "mp4_filename": "2026-11-12_2.mp4",
+      "mp4_filename": "2026-11-13_1.mp4",
       "generated": true
     },
     {
-      "slug": "glucotrust",
-      "name": "GlucoTrust",
+      "slug": "ikaria-juice",
+      "name": "Ikaria Juice",
+      "category_slug": "weight-loss",
+      "mp4_filename": "2026-11-13_2.mp4",
+      "generated": true
+    },
+    {
+      "slug": "gluco-tonic",
+      "name": "Gluco Tonic",
       "category_slug": "blood-sugar",
-      "mp4_filename": "2026-11-12_3.mp4",
+      "mp4_filename": "2026-11-13_3.mp4",
       "generated": true
     }
   ]
