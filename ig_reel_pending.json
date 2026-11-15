@@ -1,25 +1,25 @@
 {
-  "date": "2026-11-14",
+  "date": "2026-11-15",
   "reels": [
     {
-      "slug": "kerassentials",
-      "name": "Kerassentials",
+      "slug": "metanail-complex",
+      "name": "Metanail Complex",
       "category_slug": "beauty-skin",
-      "mp4_filename": "2026-11-14_1.mp4",
+      "mp4_filename": "2026-11-15_1.mp4",
       "generated": true
     },
     {
-      "slug": "primebiome",
-      "name": "PrimeBiome",
+      "slug": "neotonics",
+      "name": "Neotonics",
       "category_slug": "beauty-skin",
-      "mp4_filename": "2026-11-14_2.mp4",
+      "mp4_filename": "2026-11-15_2.mp4",
       "generated": true
     },
     {
-      "slug": "gluco6",
-      "name": "Gluco6",
+      "slug": "sugar-defender",
+      "name": "Sugar Defender",
       "category_slug": "blood-sugar",
-      "mp4_filename": "2026-11-14_3.mp4",
+      "mp4_filename": "2026-11-15_3.mp4",
       "generated": true
     }
   ]
