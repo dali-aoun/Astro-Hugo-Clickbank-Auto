@@ -752,5 +752,11 @@
     "mode": "educational",
     "status": "ok",
     "at": "2026-11-15T16:31:20.177004"
+  },
+  "2026-11-15_r2": {
+    "content": "Alpha Tonic",
+    "mode": "product_review",
+    "status": "ok",
+    "at": "2026-11-15T21:39:13.190418"
   }
 }
