@@ -1,25 +1,25 @@
 {
-  "date": "2026-11-17",
+  "date": "2026-11-18",
   "reels": [
     {
-      "slug": "femipro",
-      "name": "FemiPro",
+      "slug": "venoplus-8",
+      "name": "VenoPlus 8",
       "category_slug": "womens-health",
-      "mp4_filename": "2026-11-17_1.mp4",
+      "mp4_filename": "2026-11-18_1.mp4",
       "generated": true
     },
     {
-      "slug": "femicore",
-      "name": "FemiCore",
+      "slug": "menoscue",
+      "name": "MenoRescue",
       "category_slug": "womens-health",
-      "mp4_filename": "2026-11-17_2.mp4",
+      "mp4_filename": "2026-11-18_2.mp4",
       "generated": true
     },
     {
-      "slug": "glucotrust",
-      "name": "GlucoTrust",
+      "slug": "gluco-tonic",
+      "name": "Gluco Tonic",
       "category_slug": "blood-sugar",
-      "mp4_filename": "2026-11-17_3.mp4",
+      "mp4_filename": "2026-11-18_3.mp4",
       "generated": true
     }
   ]
