@@ -776,5 +776,11 @@
     "mode": "educational",
     "status": "ok",
     "at": "2026-11-17T18:42:04.366179"
+  },
+  "2026-11-18": {
+    "content": "Audifort",
+    "mode": "product_review",
+    "status": "ok",
+    "at": "2026-11-17T23:49:54.562863"
   }
 }
