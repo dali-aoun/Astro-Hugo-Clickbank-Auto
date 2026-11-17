@@ -770,5 +770,11 @@
     "mode": "product_review",
     "status": "ok",
     "at": "2026-11-17T00:44:17.778433"
+  },
+  "2026-11-17_r2": {
+    "content": "EDU:male performance",
+    "mode": "educational",
+    "status": "ok",
+    "at": "2026-11-17T18:42:04.366179"
   }
 }
