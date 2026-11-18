@@ -1,25 +1,25 @@
 {
-  "date": "2026-11-18",
+  "date": "2026-11-19",
   "reels": [
     {
-      "slug": "venoplus-8",
-      "name": "VenoPlus 8",
-      "category_slug": "womens-health",
-      "mp4_filename": "2026-11-18_1.mp4",
-      "generated": true
-    },
-    {
-      "slug": "menoscue",
-      "name": "MenoRescue",
-      "category_slug": "womens-health",
-      "mp4_filename": "2026-11-18_2.mp4",
-      "generated": true
-    },
-    {
-      "slug": "gluco-tonic",
-      "name": "Gluco Tonic",
+      "slug": "gluco6",
+      "name": "Gluco6",
       "category_slug": "blood-sugar",
-      "mp4_filename": "2026-11-18_3.mp4",
+      "mp4_filename": "2026-11-19_1.mp4",
+      "generated": true
+    },
+    {
+      "slug": "sugar-defender",
+      "name": "Sugar Defender",
+      "category_slug": "blood-sugar",
+      "mp4_filename": "2026-11-19_2.mp4",
+      "generated": true
+    },
+    {
+      "slug": "gluco6",
+      "name": "Gluco6",
+      "category_slug": "blood-sugar",
+      "mp4_filename": "2026-11-19_3.mp4",
       "generated": true
     }
   ]
