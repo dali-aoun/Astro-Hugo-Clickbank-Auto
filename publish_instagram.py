@@ -875,6 +875,12 @@ def make_caption(cat_key, headline, body, cta, hashtags, blog_url=None, product=
     }
     open_loop = OPEN_LOOP_BRIDGES.get(cat_key, "Full ranked review at the link in bio.")
 
+    follow_cta = random.choice([
+        "Follow @hhl.reviews — we post one health fact like this every day.",
+        "Follow us for daily research-backed health facts that actually matter.",
+        "Follow for more — we break down health science you can actually use.",
+    ])
+
     save_cta = random.choice([
         "Save this post — you'll want to come back to it.",
         "Save this! Share it with someone who needs it.",
@@ -886,6 +892,8 @@ def make_caption(cat_key, headline, body, cta, hashtags, blog_url=None, product=
 {body_teaser}
 
 \U0001f447 {open_loop}
+
+{follow_cta}
 
 {save_cta}
 
