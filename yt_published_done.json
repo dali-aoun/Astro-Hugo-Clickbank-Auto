@@ -848,5 +848,11 @@
     "mode": "educational",
     "status": "ok",
     "at": "2026-11-24T03:14:49.971032"
+  },
+  "2026-11-24_r2": {
+    "content": "FemiCore",
+    "mode": "product_review",
+    "status": "ok",
+    "at": "2026-11-24T20:17:14.511936"
   }
 }
