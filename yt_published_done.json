@@ -860,5 +860,11 @@
     "mode": "educational",
     "status": "ok",
     "at": "2026-11-25T01:20:12.292784"
+  },
+  "2026-11-25_r2": {
+    "content": "MenoRescue",
+    "mode": "product_review",
+    "status": "ok",
+    "at": "2026-11-25T19:30:42.784780"
   }
 }
