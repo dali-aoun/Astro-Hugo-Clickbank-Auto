@@ -854,5 +854,11 @@
     "mode": "product_review",
     "status": "ok",
     "at": "2026-11-24T20:17:14.511936"
+  },
+  "2026-11-25": {
+    "content": "EDU:women's health",
+    "mode": "educational",
+    "status": "ok",
+    "at": "2026-11-25T01:20:12.292784"
   }
 }
