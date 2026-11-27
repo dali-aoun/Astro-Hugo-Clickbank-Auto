@@ -1,25 +1,25 @@
 {
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "reels": [
     {
-      "slug": "prodentim",
-      "name": "ProDentim",
+      "slug": "steel-bite-pro",
+      "name": "Steel Bite Pro",
       "category_slug": "dental-health",
-      "mp4_filename": "2026-11-26_1.mp4",
+      "mp4_filename": "2026-11-27_1.mp4",
       "generated": true
     },
     {
-      "slug": "dentabiome",
-      "name": "DentaBiome",
+      "slug": "dentasmile",
+      "name": "DentaSmile",
       "category_slug": "dental-health",
-      "mp4_filename": "2026-11-26_2.mp4",
+      "mp4_filename": "2026-11-27_2.mp4",
       "generated": true
     },
     {
-      "slug": "glucotrust",
-      "name": "GlucoTrust",
+      "slug": "gluco-tonic",
+      "name": "Gluco Tonic",
       "category_slug": "blood-sugar",
-      "mp4_filename": "2026-11-26_3.mp4",
+      "mp4_filename": "2026-11-27_3.mp4",
       "generated": true
     }
   ]
