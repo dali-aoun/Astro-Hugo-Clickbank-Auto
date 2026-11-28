@@ -1,25 +1,25 @@
 {
-  "date": "2026-11-27",
+  "date": "2026-11-28",
   "reels": [
     {
-      "slug": "steel-bite-pro",
-      "name": "Steel Bite Pro",
+      "slug": "provadent",
+      "name": "ProvaDent",
       "category_slug": "dental-health",
-      "mp4_filename": "2026-11-27_1.mp4",
+      "mp4_filename": "2026-11-28_1.mp4",
       "generated": true
     },
     {
-      "slug": "dentasmile",
-      "name": "DentaSmile",
-      "category_slug": "dental-health",
-      "mp4_filename": "2026-11-27_2.mp4",
+      "slug": "prostavive",
+      "name": "ProstaVive",
+      "category_slug": "prostate-health",
+      "mp4_filename": "2026-11-28_2.mp4",
       "generated": true
     },
     {
-      "slug": "gluco-tonic",
-      "name": "Gluco Tonic",
+      "slug": "gluco6",
+      "name": "Gluco6",
       "category_slug": "blood-sugar",
-      "mp4_filename": "2026-11-27_3.mp4",
+      "mp4_filename": "2026-11-28_3.mp4",
       "generated": true
     }
   ]

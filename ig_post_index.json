@@ -1,7 +1,7 @@
 {
   "idx": 4,
   "reel_idx": 0,
-  "cat_idx": 262,
+  "cat_idx": 264,
   "content_idx": {
     "dental": 2,
     "weight": 2,
@@ -13,7 +13,7 @@
     "blood": 22,
     "sleep": 22,
     "joint": 2,
-    "womens": 1,
-    "general": 1
+    "womens": 2,
+    "general": 2
   }
 }
